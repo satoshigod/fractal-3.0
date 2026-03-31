@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fractal Exchange — El ecosistema de experiencias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0b;--cream:#f5f0e8;--gold:#b8935a;--gold-l:#d4b07a;
+  --stone:#7a7468;--w:#fff;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.nav-back:hover{color:var(--gold)}
+.nav-links-x{display:flex;gap:24px}
+.nav-links-x a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .2s}
+.nav-links-x a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{padding:100px 56px 80px;background:linear-gradient(180deg,#09090a 0%,var(--ink) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(184,147,90,.06) 0%,transparent 70%);pointer-events:none}
+.h-tag{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.h-tag::before{content:'';width:28px;height:2px;background:var(--gold)}
+.h-title{font-family:var(--serif);font-size:clamp(44px,7vw,96px);font-weight:300;color:var(--w);line-height:.95;margin-bottom:24px}
+.h-title em{font-style:italic;color:var(--gold-l)}
+.h-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:580px;margin-bottom:48px}
+.h-rule{font-family:var(--serif);font-size:clamp(18px,2vw,26px);font-weight:300;color:rgba(245,240,232,.6);max-width:700px;line-height:1.5;padding:24px 0;border-top:1px solid rgba(184,147,90,.2);border-bottom:1px solid rgba(184,147,90,.2)}
+.h-rule strong{color:var(--gold);font-weight:400}
+
+/* DIVIDER */
+.dvd{display:flex;align-items:center;width:100%;overflow:hidden;padding:0 56px}
+.dvd-l{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,147,90,.3) 20%,rgba(184,147,90,.3) 80%,transparent)}
+.dvd-d{display:flex;gap:10px;padding:0 24px;flex-shrink:0}
+.dvd-d span{width:4px;height:4px;border-radius:50%;background:rgba(184,147,90,.4)}
+.dvd-d span:nth-child(2){background:var(--gold);width:6px;height:6px}
+
+/* SECTIONS */
+.sec{padding:72px 56px}
+.sec-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:'';width:20px;height:2px;background:var(--gold)}
+.sec-h{font-family:var(--serif);font-size:clamp(28px,3.5vw,52px);font-weight:300;color:var(--cream);margin-bottom:14px;line-height:1.05}
+.sec-p{font-size:14px;color:var(--stone);line-height:1.75;max-width:680px}
+
+/* REGLA CARD */
+.rule-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin-top:40px}
+.rule-box{background:#0d0d0b;padding:32px 36px}
+.rb-num{font-family:var(--serif);font-size:56px;font-weight:300;color:rgba(184,147,90,.15);line-height:1;margin-bottom:8px}
+.rb-title{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500}
+.rb-val{font-family:var(--serif);font-size:36px;font-weight:300;color:var(--cream);margin-bottom:8px}
+.rb-desc{font-size:13px;color:var(--stone);line-height:1.65}
+
+/* ECOSYSTEM DIAGRAM */
+.eco-diagram{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:40px 0}
+.eco-node{background:#0d0d0b;padding:28px 24px;text-align:center;position:relative}
+.eco-node.central{background:#111009;border:1px solid rgba(184,147,90,.2)}
+.eco-icon{font-size:32px;margin-bottom:12px}
+.eco-name{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:500}
+.eco-pts{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:4px}
+.eco-sub{font-size:11px;color:var(--stone);line-height:1.5}
+.eco-arrow{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:20px;color:rgba(184,147,90,.4);z-index:2}
+
+/* PROP TABLE */
+.prop-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
+.prop-table th{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);padding:10px 16px;text-align:right;border-bottom:1px solid rgba(122,116,104,.2);font-weight:400;background:#09090a}
+.prop-table th:first-child{text-align:left}
+.prop-table td{padding:11px 16px;text-align:right;border-bottom:1px solid rgba(122,116,104,.06)}
+.prop-table td:first-child{text-align:left;color:var(--cream)}
+.prop-table tr:hover td{background:rgba(184,147,90,.03)}
+.gold{color:var(--gold);font-family:var(--serif);font-size:15px}
+.muted{color:var(--stone)}
+.cat-row td{background:#09090a;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 16px;border-bottom:none}
+
+/* EXCHANGE CALCULATOR */
+.calc-wrap{background:#09090a;border:1px solid rgba(122,116,104,.15);padding:48px;margin-top:40px}
+.calc-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:start;margin-bottom:32px}
+.calc-arrow-mid{font-family:var(--serif);font-size:48px;color:rgba(184,147,90,.3);text-align:center;padding-top:32px}
+.calc-panel{background:#0d0d0b;padding:24px;border:1px solid rgba(122,116,104,.12)}
+.calc-panel h4{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:16px}
+.calc-panel select,.calc-panel input[type=number]{width:100%;background:#09090a;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;margin-bottom:12px;-webkit-appearance:none}
+.calc-panel select option{background:#09090a}
+.calc-type-row{display:flex;gap:8px;margin-bottom:12px}
+.type-btn{flex:1;padding:10px;border:1px solid rgba(122,116,104,.2);background:transparent;color:var(--stone);font-family:var(--sans);font-size:12px;cursor:pointer;transition:all .15s}
+.type-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
+.calc-result{background:#0a0a08;border:1px solid rgba(184,147,90,.2);padding:28px;text-align:center}
+.cr-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
+.cr-pts{font-family:var(--serif);font-size:52px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:4px}
+.cr-sub{font-size:13px;color:var(--stone)}
+.cr-money{font-family:var(--serif);font-size:20px;color:rgba(245,240,232,.5);margin-top:6px}
+.cr-avail{font-size:12px;color:rgba(122,116,104,.5);margin-top:12px;padding-top:12px;border-top:1px solid rgba(122,116,104,.1)}
+
+/* SCENARIOS */
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);margin-top:32px}
+.sc-card{background:#0d0d0b;padding:32px 28px}
+.sc-tag{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.sc-title{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.2}
+.sc-items{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.sc-item{font-size:12px;color:rgba(245,240,232,.6);display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(122,116,104,.06)}
+.sc-item span{font-family:var(--serif);font-size:14px;color:var(--cream)}
+.sc-total{display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(184,147,90,.15)}
+.sc-total-label{font-size:12px;font-weight:500;color:var(--cream)}
+.sc-total-pts{font-family:var(--serif);font-size:24px;color:var(--gold)}
+
+/* RULES LIST */
+.rules-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:32px}
+.rule-item{background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.ri-icon{font-size:24px;margin-bottom:12px}
+.ri-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.ri-desc{font-size:12px;color:var(--stone);line-height:1.65}
+
+/* CTA */
+.cta-x{background:#111009;border:1px solid rgba(184,147,90,.2);padding:64px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:72px}
+.cx-title{font-family:var(--serif);font-size:clamp(24px,3.5vw,44px);font-weight:300;color:var(--cream);margin-bottom:8px;line-height:1.1}
+.cx-sub{font-size:14px;color:var(--stone);max-width:480px}
+.cx-btn{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:var(--sans);font-weight:500;text-decoration:none;white-space:nowrap}
+
+@media(max-width:1000px){
+  nav,.hero,.sec{padding-left:20px;padding-right:20px}
+  .dvd{padding:0 20px}
+  .rule-grid,.eco-diagram,.scenario-grid,.rules-grid{grid-template-columns:1fr}
+  .calc-grid{grid-template-columns:1fr}
+  .calc-arrow-mid{display:none}
+  .cta-x{grid-template-columns:1fr;padding:40px 20px;gap:24px}
+  .prop-table{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Fra<span>c</span>tal</a>
+  <div class="nav-links-x">
+    <a href="index.html#como-funciona">Modelo</a>
+    <a href="verticales.html">Verticales</a>
+    <a href="#calculadora">Calculadora</a>
+  </div>
+  <a href="index.html" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-tag">Fractal Exchange</div>
+  <h1 class="h-title">Un ecosistema.<br><em>Todas las experiencias.</em></h1>
+  <p class="h-sub">Ser propietario en Fractal no es solo tener acceso a una casa. Es acceder a un ecosistema donde tus días no usados se convierten en puntos — y esos puntos te abren puertas a propiedades, carros y embarcaciones de todo el portafolio.</p>
+  <div class="h-rule">
+    Tu punto vale <strong>exactamente lo que vale 1 noche entre semana en tu propiedad.</strong> Si quieres algo más caro, gastas más puntos. Si quieres algo más accesible, te sobran.
+  </div>
+</section>
+
+<div class="dvd"><div class="dvd-l"></div><div class="dvd-d"><span></span><span></span><span></span></div><div class="dvd-l"></div></div>
+
+<!-- LA REGLA FUNDAMENTAL -->
+<section class="sec" style="background:#09090a;padding-bottom:0">
+  <div class="sec-tag">La regla del sistema</div>
+  <h2 class="sec-h">Simple. Justo. Calibrado<br>al valor real de cada activo.</h2>
+  <p class="sec-p">No hay una moneda universal arbitraria. El valor de tu punto está anclado al valor de mercado de tu propiedad específica. Más valiosa tu propiedad — más poder de compra tiene cada punto.</p>
+
+  <div class="rule-grid">
+    <div class="rule-box">
+      <div class="rb-num">01</div>
+      <div class="rb-title">Valor del punto</div>
+      <div class="rb-val">= Tarifa WD de tu casa</div>
+      <div class="rb-desc">1 punto equivale al precio de mercado de 1 noche entre semana (lunes–jueves) en tu propiedad específica. Si tu casa tiene activo de $4.800M, 1 punto = $2.016.000. Si tiene $8.000M, 1 punto = $3.360.000.</div>
+    </div>
+    <div class="rule-box">
+      <div class="rb-num">02</div>
+      <div class="rb-title">Costo de 1 noche en tu misma casa</div>
+      <div class="rb-val">WD = 1.00 pt · FDS = 1.68 pt</div>
+      <div class="rb-desc">Una noche entre semana en tu propiedad cuesta exactamente 1 punto. Una noche de fin de semana, festivo o temporada alta cuesta 1.68 puntos — el mismo ratio que refleja la demanda real del mercado.</div>
+    </div>
+    <div class="rule-box">
+      <div class="rb-num">03</div>
+      <div class="rb-title">Intercambio entre propiedades</div>
+      <div class="rb-val">Pts = Ratio × (Tarifa destino ÷ Tarifa origen)</div>
+      <div class="rb-desc">Si quieres una noche en una casa más cara, necesitas más puntos. Si quieres una más accesible, necesitas menos. El mercado es transparente — cada punto tiene el mismo poder de compra en cualquier activo.</div>
+    </div>
+    <div class="rule-box">
+      <div class="rb-num">04</div>
+      <div class="rb-title">Cómo se generan</div>
+      <div class="rb-val">Cedes días → recibes puntos</div>
+      <div class="rb-desc">Cuando no vas a usar un día de tu calendario y lo cedes al operador para renta, recibes puntos equivalentes a la tarifa de ese día. No usaste — pero acumulaste. Los puntos vencen en 18 meses.</div>
+    </div>
+  </div>
+</section>
+
+<div class="dvd" style="margin-top:72px"><div class="dvd-l"></div><div class="dvd-d"><span></span><span></span><span></span></div><div class="dvd-l"></div></div>
+
+<!-- EL ECOSISTEMA -->
+<section class="sec" style="padding-top:56px;padding-bottom:0">
+  <div class="sec-tag">El ecosistema completo</div>
+  <h2 class="sec-h">Cuatro verticales.<br>Un solo sistema de intercambio.</h2>
+  <p class="sec-p">Tus puntos son transferibles entre cualquier vertical del ecosistema Fractal. Una noche no usada en tu casa puede convertirse en un Ferrari el fin de semana siguiente.</p>
+
+  <div class="eco-diagram">
+    <div class="eco-node">
+      <div class="eco-icon">🏡</div>
+      <div class="eco-name">Fractal Homes</div>
+      <div class="eco-pts">69.8 pts/año</div>
+      <div class="eco-sub">Fracción A/B $4.8B<br>1pt = $2.016M</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-icon">📈</div>
+      <div class="eco-name">Fractal Invest</div>
+      <div class="eco-pts">360 pts/año</div>
+      <div class="eco-sub">Fidelidad fija<br>1pt = $30k</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-icon">🚗</div>
+      <div class="eco-name">Fractal Cars</div>
+      <div class="eco-pts">59 pts/año</div>
+      <div class="eco-sub">Porsche 1/8<br>1pt = $744k</div>
+    </div>
+    <div class="eco-node">
+      <div class="eco-icon">⚓</div>
+      <div class="eco-name">Fractal Náutico</div>
+      <div class="eco-pts">59 pts/año</div>
+      <div class="eco-sub">Lancha 1/8<br>1pt = $1.080M</div>
+    </div>
+  </div>
+
+  <!-- TABLA DE TASACIONES -->
+  <div style="margin-top:48px">
+    <h3 style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--cream);margin-bottom:6px">Tasación oficial de cada activo</h3>
+    <p style="font-size:13px;color:var(--stone);margin-bottom:0">Tarifa diaria = Valor del activo × factor de mercado. Esta es la base para calcular el costo en puntos de cualquier experiencia.</p>
+
+    <table class="prop-table">
+      <thead>
+        <tr>
+          <th>Activo</th>
+          <th>Valor activo</th>
+          <th>Tarifa WD/día</th>
+          <th>Tarifa FDS/día</th>
+          <th>Valor 1 punto</th>
+          <th>Pts que genera/año</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="cat-row"><td colspan="6">FRACTAL HOMES</td></tr>
+        <tr>
+          <td>Casa Cauca Viejo</td>
+          <td class="muted">$4.800M</td>
+          <td>$2.016M</td>
+          <td>$3.387M</td>
+          <td class="gold">$2.016M</td>
+          <td class="gold">69.8 pts</td>
+        </tr>
+        <tr>
+          <td>Casa Guatapé Premium</td>
+          <td class="muted">$6.500M</td>
+          <td>$2.730M</td>
+          <td>$4.586M</td>
+          <td class="gold">$2.730M</td>
+          <td class="gold">69.8 pts</td>
+        </tr>
+        <tr>
+          <td>Apartamento Cartagena</td>
+          <td class="muted">$3.200M</td>
+          <td>$1.344M</td>
+          <td>$2.258M</td>
+          <td class="gold">$1.344M</td>
+          <td class="gold">69.8 pts</td>
+        </tr>
+        <tr>
+          <td>Villa Santa Marta</td>
+          <td class="muted">$8.000M</td>
+          <td>$3.360M</td>
+          <td>$5.645M</td>
+          <td class="gold">$3.360M</td>
+          <td class="gold">69.8 pts</td>
+        </tr>
+        <tr>
+          <td>Casa Abejorral Entry</td>
+          <td class="muted">$2.000M</td>
+          <td>$840k</td>
+          <td>$1.411M</td>
+          <td class="gold">$840k</td>
+          <td class="gold">69.8 pts</td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="6">FRACTAL PREMIUM CARS</td></tr>
+        <tr>
+          <td>Porsche 911 Carrera (activo completo)</td>
+          <td class="muted">$620M</td>
+          <td>$744k</td>
+          <td>$1.250M</td>
+          <td class="gold">$744k</td>
+          <td class="gold">59 pts</td>
+        </tr>
+        <tr>
+          <td>Ferrari Roma (activo completo)</td>
+          <td class="muted">$1.200M</td>
+          <td>$1.440M</td>
+          <td>$2.419M</td>
+          <td class="gold">$1.440M</td>
+          <td class="gold">59 pts</td>
+        </tr>
+        <tr>
+          <td>Lamborghini Urus (activo completo)</td>
+          <td class="muted">$900M</td>
+          <td>$1.080M</td>
+          <td>$1.814M</td>
+          <td class="gold">$1.080M</td>
+          <td class="gold">59 pts</td>
+        </tr>
+        <tr>
+          <td>Bentley Continental GT (activo completo)</td>
+          <td class="muted">$1.000M</td>
+          <td>$1.200M</td>
+          <td>$2.016M</td>
+          <td class="gold">$1.200M</td>
+          <td class="gold">59 pts</td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="6">FRACTAL NÁUTICO</td></tr>
+        <tr>
+          <td>Lancha Familiar 30ft (activo completo)</td>
+          <td class="muted">$1.200M</td>
+          <td>$1.080M</td>
+          <td>$1.814M</td>
+          <td class="gold">$1.080M</td>
+          <td class="gold">59 pts</td>
+        </tr>
+        <tr>
+          <td>Velero 42ft Cartagena (activo completo)</td>
+          <td class="muted">$2.400M</td>
+          <td>$2.160M</td>
+          <td>$3.629M</td>
+          <td class="gold">$2.160M</td>
+          <td class="gold">59 pts</td>
+        </tr>
+        <tr>
+          <td>Yate de Lujo 55ft (activo completo)</td>
+          <td class="muted">$4.800M</td>
+          <td>$4.320M</td>
+          <td>$7.258M</td>
+          <td class="gold">$4.320M</td>
+          <td class="gold">59 pts</td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="6">FRACTAL INVEST (fidelidad)</td></tr>
+        <tr>
+          <td>Partícipe Invest — cualquier proyecto</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td class="muted">—</td>
+          <td class="muted">$30k (fijo)</td>
+          <td class="gold">360 pts/año</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:rgba(122,116,104,.35);margin-top:10px;line-height:1.5">Factor de tasación: Homes 0.042% del activo/día · Cars 0.12%/día · Náutico 0.09%/día. Tasaciones actualizables anualmente por Fractal según condiciones de mercado.</p>
+  </div>
+</section>
+
+<div class="dvd" style="margin-top:72px"><div class="dvd-l"></div><div class="dvd-d"><span></span><span></span><span></span></div><div class="dvd-l"></div></div>
+
+<!-- CALCULADORA DE INTERCAMBIO -->
+<section class="sec" id="calculadora" style="padding-top:56px;padding-bottom:0">
+  <div class="sec-tag">Calculadora de intercambio</div>
+  <h2 class="sec-h">¿Cuántos puntos necesitas<br>para lo que quieres?</h2>
+  <p class="sec-p" style="margin-bottom:0">Selecciona tu propiedad de origen, el tipo de noche que cederías, y el activo destino que quieres usar. El sistema calcula los puntos en tiempo real.</p>
+
+  <div class="calc-wrap">
+    <div class="calc-grid">
+      <!-- ORIGEN -->
+      <div>
+        <div class="calc-panel">
+          <h4>Tu propiedad de origen</h4>
+          <select id="sel-origen" onchange="calcExchange()">
+            <optgroup label="Fractal Homes">
+              <option value="4800_homes">Casa Cauca Viejo — $4.800M</option>
+              <option value="6500_homes">Casa Guatapé Premium — $6.500M</option>
+              <option value="3200_homes">Apto Cartagena — $3.200M</option>
+              <option value="8000_homes">Villa Santa Marta — $8.000M</option>
+              <option value="2000_homes">Casa Abejorral — $2.000M</option>
+            </optgroup>
+            <optgroup label="Fractal Premium Cars">
+              <option value="620_cars">Porsche 911 — $620M</option>
+              <option value="1200_cars">Ferrari Roma — $1.200M</option>
+              <option value="900_cars">Lamborghini Urus — $900M</option>
+            </optgroup>
+            <optgroup label="Fractal Náutico">
+              <option value="1200_nautico">Lancha Familiar — $1.200M</option>
+              <option value="2400_nautico">Velero Cartagena — $2.400M</option>
+            </optgroup>
+          </select>
+
+          <h4 style="margin-top:4px">Tipo de día que cedes</h4>
+          <div class="calc-type-row">
+            <button class="type-btn active" id="btn-fds" onclick="setTipo('fds')">🌙 Fin de semana<br><small>1.68 puntos</small></button>
+            <button class="type-btn" id="btn-wd" onclick="setTipo('wd')">☀️ Entre semana<br><small>1.00 punto</small></button>
+          </div>
+
+          <h4 style="margin-top:4px">Cuántos días cedes</h4>
+          <input type="number" id="inp-dias" value="1" min="1" max="48" oninput="calcExchange()">
+          <h4 style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(122,116,104,.1)">Puntos que ya tienes acumulados</h4>
+          <input type="number" id="inp-pts-extra" value="0" min="0" step="0.1" placeholder="0" oninput="calcExchange()" style="margin-bottom:4px">
+          <div style="font-size:10px;color:rgba(122,116,104,.4);line-height:1.5">Suma los días cedidos + los puntos ya acumulados de periodos anteriores</div>
+        </div>
+      </div>
+
+      <div class="calc-arrow-mid">⇄</div>
+
+      <!-- DESTINO -->
+      <div>
+        <div class="calc-panel">
+          <h4>Experiencia destino</h4>
+          <select id="sel-destino" onchange="calcExchange()">
+            <optgroup label="Fractal Homes">
+              <option value="8000_homes">Villa Santa Marta — $8.000M (FDS)</option>
+              <option value="6500_homes">Casa Guatapé Premium — $6.500M (FDS)</option>
+              <option value="4800_homes" selected>Casa Cauca Viejo — $4.800M (FDS)</option>
+              <option value="3200_homes">Apto Cartagena — $3.200M (FDS)</option>
+              <option value="2000_homes">Casa Abejorral — $2.000M (WD)</option>
+            </optgroup>
+            <optgroup label="Fractal Premium Cars — por día">
+              <option value="1200_cars">Ferrari Roma — $1.200M/día</option>
+              <option value="900_cars">Lamborghini Urus — $900M/día</option>
+              <option value="620_cars">Porsche 911 — $620M/día</option>
+              <option value="1000_cars">Bentley Continental GT — $1.000M/día</option>
+            </optgroup>
+            <optgroup label="Fractal Náutico — por día">
+              <option value="4800_nautico">Yate de Lujo 55ft — $4.800M/día</option>
+              <option value="2400_nautico">Velero Cartagena 42ft — $2.400M/día</option>
+              <option value="1200_nautico">Lancha Familiar 30ft — $1.200M/día</option>
+            </optgroup>
+          </select>
+
+          <h4 style="margin-top:4px">Tipo de noche / día destino</h4>
+          <div class="calc-type-row">
+            <button class="type-btn active" id="btn-dest-fds" onclick="setTipoDest('fds')">🌙 Fin de semana<br><small>× 1.68</small></button>
+            <button class="type-btn" id="btn-dest-wd" onclick="setTipoDest('wd')">☀️ Entre semana<br><small>× 1.00</small></button>
+          </div>
+
+          <h4 style="margin-top:4px">Cuántas noches / días destino</h4>
+          <input type="number" id="inp-noches" value="1" min="1" max="30" oninput="calcExchange()">
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTADO -->
+    <div id="res-wrapper">
+
+      <!-- RESUMEN SUPERIOR -->
+      <div class="calc-result" style="margin-bottom:1px">
+        <div class="cr-label">Puntos necesarios para el destino</div>
+        <div class="cr-pts" id="res-pts">—</div>
+        <div class="cr-sub" id="res-sub">Selecciona origen y destino</div>
+        <div class="cr-money" id="res-money"></div>
+      </div>
+
+      <!-- OPCIONES DE COMPLEMENTO -->
+      <div id="res-opciones" style="display:none">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.15)">
+
+          <!-- OPCIÓN A: 100% puntos propios -->
+          <div id="opt-a" style="background:#0d0d0b;padding:24px 20px">
+            <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px">
+              <span style="background:var(--gold);color:var(--ink);padding:2px 8px;font-weight:500">A</span>
+              100% con tus puntos
+            </div>
+            <div id="opt-a-body"></div>
+          </div>
+
+          <!-- OPCIÓN B: puntos propios + efectivo -->
+          <div id="opt-b" style="background:#111009;padding:24px 20px;border:1px solid rgba(184,147,90,.2)">
+            <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px">
+              <span style="background:var(--gold);color:var(--ink);padding:2px 8px;font-weight:500">B</span>
+              Puntos + diferencia en efectivo
+            </div>
+            <div id="opt-b-body"></div>
+          </div>
+
+          <!-- OPCIÓN C: puntos propios + comprar puntos adicionales -->
+          <div id="opt-c" style="background:#0d0d0b;padding:24px 20px">
+            <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px">
+              <span style="background:var(--gold);color:var(--ink);padding:2px 8px;font-weight:500">C</span>
+              Puntos + comprar puntos extra
+            </div>
+            <div id="opt-c-body"></div>
+          </div>
+
+        </div>
+        <div style="background:#09090a;border:1px solid rgba(122,116,104,.1);padding:12px 20px">
+          <p style="font-size:11px;color:rgba(122,116,104,.45);line-height:1.5">Puntos comprados = valor del punto × 1.05 (fee de conversión 5%). Tienen el mismo vencimiento de 18 meses. Si tienes puntos suficientes, la opción A no tiene costo adicional.</p>
+        </div>
+      </div>
+
+      <!-- CUANDO ALCANZA -->
+      <div id="res-alcanza" style="display:none;background:#0d0d0b;border:1px solid rgba(120,200,120,.2);padding:20px 24px;text-align:center">
+        <div id="res-avail" style="color:rgba(120,200,120,.8);font-size:14px"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="dvd" style="margin-top:72px"><div class="dvd-l"></div><div class="dvd-d"><span></span><span></span><span></span></div><div class="dvd-l"></div></div>
+
+<!-- ESCENARIOS -->
+<section class="sec" style="padding-top:56px;padding-bottom:0">
+  <div class="sec-tag">Escenarios reales</div>
+  <h2 class="sec-h">Lo que puedes armar<br>con un año de puntos.</h2>
+  <p class="sec-p" style="margin-bottom:0">Propietario A/B en Casa Cauca Viejo ($4.800M) — acumula 69.8 puntos/año. Cada punto vale $2.016M. Así se pueden usar:</p>
+
+  <div class="scenario-grid">
+    <div class="sc-card">
+      <div class="sc-tag">Escenario 01 — El fin de semana perfecto</div>
+      <div class="sc-title">Casa en Guatapé + Ferrari todo el sábado</div>
+      <div class="sc-items">
+        <div class="sc-item">1 noche FDS Casa Guatapé ($6.5B) <span>2.27 pts</span></div>
+        <div class="sc-item">1 día Ferrari Roma <span>1.20 pts</span></div>
+        <div class="sc-item">1 día Lancha Familiar <span>0.54 pts</span></div>
+      </div>
+      <div class="sc-total">
+        <div class="sc-total-label">Total gastado</div>
+        <div class="sc-total-pts">4.01 pts</div>
+      </div>
+      <div style="font-size:11px;color:rgba(122,116,104,.5);margin-top:10px">Valor de mercado equivalente: $8.09M</div>
+    </div>
+
+    <div class="sc-card">
+      <div class="sc-tag">Escenario 02 — El mes de experiencias</div>
+      <div class="sc-title">4 fines de semana distintos en el ecosistema</div>
+      <div class="sc-items">
+        <div class="sc-item">FDS Casa Guatapé (2 noches) <span>4.54 pts</span></div>
+        <div class="sc-item">FDS Villa Santa Marta (1 noche) <span>2.80 pts</span></div>
+        <div class="sc-item">3 días Porsche 911 <span>1.11 pts</span></div>
+        <div class="sc-item">2 días Lancha Familiar <span>1.07 pts</span></div>
+      </div>
+      <div class="sc-total">
+        <div class="sc-total-label">Total gastado</div>
+        <div class="sc-total-pts">9.52 pts</div>
+      </div>
+      <div style="font-size:11px;color:rgba(122,116,104,.5);margin-top:10px">Le quedan 60.3 pts para el resto del año</div>
+    </div>
+
+    <div class="sc-card">
+      <div class="sc-tag">Escenario 03 — El gran viaje</div>
+      <div class="sc-title">5 días en Villa Santa Marta con velero</div>
+      <div class="sc-items">
+        <div class="sc-item">3 noches FDS Villa Santa Marta ($8B) <span>8.40 pts</span></div>
+        <div class="sc-item">2 noches WD Villa Santa Marta <span>3.33 pts</span></div>
+        <div class="sc-item">2 días Velero 42ft (mar) <span>2.14 pts</span></div>
+        <div class="sc-item">Lamborghini desde aeropuerto <span>0.54 pts</span></div>
+      </div>
+      <div class="sc-total">
+        <div class="sc-total-label">Total gastado</div>
+        <div class="sc-total-pts">14.41 pts</div>
+      </div>
+      <div style="font-size:11px;color:rgba(122,116,104,.5);margin-top:10px">Valor mercado: $29.1M · Le sobran 55.4 pts</div>
+    </div>
+  </div>
+</section>
+
+<div class="dvd" style="margin-top:72px"><div class="dvd-l"></div><div class="dvd-d"><span></span><span></span><span></span></div><div class="dvd-l"></div></div>
+
+<!-- REGLAS DEL SISTEMA -->
+<section class="sec" style="padding-top:56px;padding-bottom:56px">
+  <div class="sec-tag">Reglas del ecosistema</div>
+  <h2 class="sec-h">Transparente, justo<br>y sostenible.</h2>
+
+  <div class="rules-grid">
+    <div class="rule-item">
+      <div class="ri-icon">⏳</div>
+      <div class="ri-title">Vencimiento a 18 meses</div>
+      <div class="ri-desc">Los puntos vencen 18 meses después de generarse. Genera urgencia de uso y evita pasivos acumulados infinitos que comprometan la disponibilidad del sistema.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-icon">🔒</div>
+      <div class="ri-title">No transferibles entre personas</div>
+      <div class="ri-desc">Los puntos son personales al partícipe. No se pueden vender, regalar ni ceder a terceros. Sí se pueden usar para hospedar invitados en el activo destino.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-icon">💵</div>
+      <div class="ri-title">No se convierten en efectivo</div>
+      <div class="ri-desc">Los puntos solo se gastan en experiencias del ecosistema Fractal. No tienen valor en efectivo. Esto garantiza que el sistema genere uso real, no especulación.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-icon">📅</div>
+      <div class="ri-title">Sujeto a disponibilidad</div>
+      <div class="ri-desc">El intercambio requiere que el activo destino tenga días disponibles en el periodo solicitado. Los días de alta demanda (temporadas) pueden tener sobrecargo de 1.5×.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-icon">📱</div>
+      <div class="ri-title">Todo por APP Fractal</div>
+      <div class="ri-desc">Saldo de puntos, reservas cruzadas, disponibilidad en tiempo real y historial de intercambios — todo gestionado desde la APP. Sin trámites ni llamadas.</div>
+    </div>
+    <div class="rule-item">
+      <div class="ri-icon">📊</div>
+      <div class="ri-title">Tasaciones revisables</div>
+      <div class="ri-desc">Fractal revisa anualmente las tasaciones de cada activo según condiciones reales del mercado. Los cambios se informan con 60 días de anticipación a los partícipes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div style="padding:0 56px 80px">
+  <div class="cta-x">
+    <div>
+      <div class="cx-title">¿En qué vertical<br>empieza tu ecosistema?</div>
+      <div class="cx-sub">El Exchange está disponible para todos los propietarios Fractal. Cualquier fracción — en cualquier vertical — te da acceso al sistema completo.</div>
+    </div>
+    <a href="index.html#contacto" class="cx-btn">Hablar con un asesor →</a>
+  </div>
+</div>
+
+<script>
+var tipoOrigen = 'fds';
+var tipoDest   = 'fds';
+var FACTOR = {homes:0.000420, cars:0.001200, nautico:0.000900};
+var PT_FDS = 1.68, PT_WD = 1.00;
+var FEE_COMPRA = 1.05;   // 5% sobre el valor del punto al comprar
+
+function parseActivo(val) {
+  var parts = val.split('_');
+  return {activo: parseFloat(parts[0]) * 1e6, tipo: parts[1]};
+}
+function tarifaWD(activo, tipo) { return activo * FACTOR[tipo]; }
+function setTipo(t) {
+  tipoOrigen = t;
+  document.getElementById('btn-fds').classList.toggle('active', t==='fds');
+  document.getElementById('btn-wd').classList.toggle('active', t==='wd');
+  calcExchange();
+}
+function setTipoDest(t) {
+  tipoDest = t;
+  document.getElementById('btn-dest-fds').classList.toggle('active', t==='fds');
+  document.getElementById('btn-dest-wd').classList.toggle('active', t==='wd');
+  calcExchange();
+}
+function fmt(n) { return '$' + Math.round(n).toLocaleString('es-CO'); }
+function row(label, val, gold) {
+  return '<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(122,116,104,.08);font-size:12px">'
+    + '<span style="color:rgba(245,240,232,.5)">' + label + '</span>'
+    + '<span style="font-family:var(--serif);font-size:15px;color:' + (gold ? 'var(--gold)' : 'var(--cream)') + '">' + val + '</span>'
+    + '</div>';
+}
+
+function calcExchange() {
+  var o = parseActivo(document.getElementById('sel-origen').value);
+  var d = parseActivo(document.getElementById('sel-destino').value);
+  var diasCede   = parseInt(document.getElementById('inp-dias').value)   || 1;
+  var nochesDest = parseInt(document.getElementById('inp-noches').value) || 1;
+  var ptsExtra   = parseFloat(document.getElementById('inp-pts-extra').value) || 0;
+
+  var t_orig_wd = tarifaWD(o.activo, o.tipo);   // valor de 1 pt del origen
+  var t_dest_wd = tarifaWD(d.activo, d.tipo);
+
+  var ratio_orig = tipoOrigen === 'fds' ? PT_FDS : PT_WD;
+  var ratio_dest = tipoDest   === 'fds' ? PT_FDS : PT_WD;
+
+  var pts_gen    = diasCede * ratio_orig + ptsExtra;   // días cedidos + acumulados
+  var pts_nec    = nochesDest * ratio_dest * (t_dest_wd / t_orig_wd);
+  var val_dest   = nochesDest * ratio_dest * t_dest_wd;
+  var deficit    = pts_nec - pts_gen;
+  var alcanza    = deficit <= 0;
+
+  // Header
+  document.getElementById('res-pts').textContent = pts_nec.toFixed(2) + ' pts';
+  document.getElementById('res-sub').textContent =
+    nochesDest + ' ' + (tipoDest==='fds' ? 'noche(s) FDS' : 'noche(s)/día(s) WD')
+    + ' en destino · cediendo ' + diasCede + ' día(s) '
+    + (tipoOrigen==='fds' ? 'FDS' : 'WD') + ' de tu propiedad';
+  document.getElementById('res-money').textContent = 'Valor de mercado: ' + fmt(val_dest);
+
+  if (alcanza) {
+    document.getElementById('res-opciones').style.display = 'none';
+    document.getElementById('res-alcanza').style.display  = 'block';
+    var sobran = -deficit;
+    document.getElementById('res-avail').innerHTML =
+      '✓ Tus <strong>' + pts_gen.toFixed(2) + ' pts</strong> alcanzan sin costo adicional.'
+      + ' Te sobran <strong>' + sobran.toFixed(2) + ' pts</strong>'
+      + ' (valor: ' + fmt(sobran * t_orig_wd) + ').';
+  } else {
+    document.getElementById('res-opciones').style.display = 'block';
+    document.getElementById('res-alcanza').style.display  = 'none';
+
+    var deficit_cop       = deficit * t_orig_wd;
+    var precio_pt_compra  = t_orig_wd * FEE_COMPRA;
+    var costo_compra_pts  = deficit  * precio_pt_compra;
+
+    // OPCIÓN A — solo puntos (necesita ceder más días)
+    var dias_extra = Math.ceil(deficit / ratio_orig);
+    document.getElementById('opt-a-body').innerHTML =
+      row('Puntos disponibles (días + acumulados)', pts_gen.toFixed(2) + ' pts', false) +
+      row('Puntos que faltan', deficit.toFixed(2) + ' pts', false) +
+      row('Días adicionales a ceder', dias_extra + ' día(s) ' + (tipoOrigen==='fds'?'FDS':'WD'), false) +
+      '<div style="margin-top:10px;font-size:11px;color:rgba(122,116,104,.5);line-height:1.5">Cede ' + dias_extra + ' día(s) más de tu propiedad para acumular los puntos que faltan. Sin costo de bolsillo.</div>';
+
+    // OPCIÓN B — puntos propios + efectivo
+    document.getElementById('opt-b-body').innerHTML =
+      row('Tus puntos', pts_gen.toFixed(2) + ' pts', false) +
+      row('Diferencia en efectivo', fmt(deficit_cop), true) +
+      row('Valor por punto faltante', fmt(t_orig_wd) + '/pt', false) +
+      '<div style="margin-top:10px;font-size:11px;color:rgba(184,147,90,.5);line-height:1.5">La opción más directa. Usas tus puntos y cubres la diferencia con pago en efectivo desde la APP.</div>';
+
+    // OPCIÓN C — puntos propios + comprar puntos adicionales
+    document.getElementById('opt-c-body').innerHTML =
+      row('Tus puntos', pts_gen.toFixed(2) + ' pts', false) +
+      row('Puntos a comprar', deficit.toFixed(2) + ' pts', false) +
+      row('Precio por punto adicional', fmt(precio_pt_compra), false) +
+      row('Costo total puntos extra', fmt(costo_compra_pts), true) +
+      '<div style="margin-top:10px;font-size:11px;color:rgba(122,116,104,.5);line-height:1.5">Compras exactamente los puntos que faltan (+ 5% fee). Vencen en 18 meses y sirven para cualquier experiencia.</div>';
+  }
+}
+
+calcExchange();
+</script>
+</body>
+</html>
