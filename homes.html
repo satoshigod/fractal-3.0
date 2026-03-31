@@ -1341,34 +1341,19 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 
 <div class="strong-divider"><div class="sd-line"></div><div class="sd-dots"><span></span><span></span><span></span></div><div class="sd-line"></div></div>
 
-</div>
-</div>
 <div class="acd-section">
 <button class="acd-trigger" onclick="togAcd('costos')">
   <span class="acd-trigger-tri" id="tri-costos">›</span>
-  <span class="acd-trigger-lbl">Ver qué incluye tu cuota — 23 ítems desglosados</span>
-  <span class="acd-trigger-hint">sin letra pequeña</span>
+  <span class="acd-trigger-lbl">Ver qué incluye tu cuota — 23 ítems sin letra pequeña</span>
+  <span class="acd-trigger-hint">desglose completo</span>
 </button>
 <div class="acd-content" id="acd-costos"><!-- COSTOS -->
-<section class="costos sec-accordion" id="costos">
-  <div class="costos-inner" style="padding:0;width:100%;max-width:none">
-<div class="sec-acc-header" onclick="toggleAcc(this)">
-  <div class="sec-acc-left">
-    <div class="sec-acc-tag">Transparencia total</div>
-    <div class="sec-acc-title">Cada peso tiene nombre y apellido</div>
-    <div class="sec-acc-summary">23 ítems de costo detallados. Personal, mantenimiento, servicios, legal, fondos y fee de gestión. Sin sorpresas, sin letra pequeña.</div>
-  </div>
-  <div class="sec-acc-right">
-    <div class="sec-acc-pills"><div class="sec-acc-pill">23 ítems<span>operación</span></div><div class="sec-acc-pill">$9.742.083<span>costos mes</span></div><div class="sec-acc-pill">$1.400.000<span>fee Fractal</span></div></div>
-    <div class="sec-acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </div>
-</div>
-<div class="sec-acc-body">
-    <div style="padding:0 48px 48px">
-    <div class="costos-intro" style="padding:24px 0 0">
+<section class="costos" id="costos">
+  <div class="costos-inner">
+    <div class="costos-intro">
       <div>
-        <div class="section-tag" style="display:none">Transparencia total</div>
-        <h2 style="display:none">Cada peso tiene nombre y apellido</h2>
+        <div class="section-tag">Transparencia total</div>
+        <h2>Cada peso tiene nombre y apellido</h2>
       </div>
       <p>Estos son todos los costos mensuales de operar la propiedad. Sin sorpresas, sin letra pequeña. Lo que ves es lo que se divide entre los 8 copropietarios según el tipo de uso de cada concepto.</p>
     </div>
@@ -1451,81 +1436,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
       Las comisiones de OTAs (~15% del ingreso por noche) aplican únicamente sobre los días que el propietario decide ceder al operador para alquiler. No son un costo fijo mensual. Si no hay alquiler, no hay comisión.
     </p>
   </div>
-</div>
-</div>
 </section>
-<!-- FEE ADMIN -->
-<section class="admin sec-accordion">
-  <div class="admin-inner" style="padding:0;width:100%;max-width:none">
-<div class="sec-acc-header" onclick="toggleAcc(this)">
-  <div class="sec-acc-left">
-    <div class="sec-acc-tag">Fee de gestión</div>
-    <div class="sec-acc-title">Un fee calculado sobre el activo. No sobre lo que renta.</div>
-    <div class="sec-acc-summary">0.35% anual del valor del activo. Se ajusta con IPC cada año. El más bajo del mercado comparado con modelos equivalentes.</div>
-  </div>
-  <div class="sec-acc-right">
-    <div class="sec-acc-pills"><div class="sec-acc-pill">0.35%<span>del activo/año</span></div><div class="sec-acc-pill">$175.000<span>por fracción/mes</span></div><div class="sec-acc-pill">IPC<span>ajuste anual</span></div></div>
-    <div class="sec-acc-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </div>
-</div>
-<div class="sec-acc-body">
-    <div style="padding:0 48px 48px">
-<div class="admin-text">
-      <div class="section-tag">Fee de gestión</div>
-      <h2>Un fee calculado sobre el activo. No sobre lo que renta.</h2>
-      <p>Fractal gestiona tu segunda vivienda, no un hotel. Por eso el fee se calcula sobre el valor del activo — igual que la administración de un club campestre o un condominio de segunda vivienda.</p>
-      <p>Escalamos con el IPC cada año. Sin sorpresas, sin renegociaciones.</p>
-      <div class="admin-models">
-        <div class="am">
-          <div class="am-n">M1</div>
-          <div class="am-text"><strong>1% anual sobre el activo</strong><span>Estándar property mgmt Colombia</span></div>
-          <div class="am-val">$4.000.000/mes</div>
-        </div>
-        <div class="am">
-          <div class="am-n">M2</div>
-          <div class="am-text"><strong>Costo real de gestión</strong><span>Coordinador + overhead 30%</span></div>
-          <div class="am-val">$1.274.000/mes</div>
-        </div>
-        <div class="am">
-          <div class="am-n">M3</div>
-          <div class="am-text"><strong>Mercado segunda vivienda</strong><span>Parcelaciones y condominios Colombia</span></div>
-          <div class="am-val">$3.750.000/mes</div>
-        </div>
-        <div class="am">
-          <div class="am-n">M4</div>
-          <div class="am-text"><strong>Fee sostenible mínimo</strong><span>Viable desde el año 1</span></div>
-          <div class="am-val">$1.200.000/mes</div>
-        </div>
-      </div>
-    </div>
-    <div class="admin-result">
-      <div class="ar-tag">Fee elegido · 0.35% del activo anual</div>
-      <div class="ar-num">$1.400.000</div>
-      <div class="ar-sub">por mes · propiedad completa<br>$175.000 por fracción · igual para todas</div>
-      <div class="ipc-rows">
-        <div class="ipc-row"><span class="ipc-year">2026 — año base</span><span class="ipc-val">$175.000 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2027 — IPC +5.5%</span><span class="ipc-val">$184.625 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2028 — IPC +5.5%</span><span class="ipc-val">$194.779 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2029 — IPC +5.5%</span><span class="ipc-val">$205.492 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2030 — IPC +5.5%</span><span class="ipc-val">$216.794 / frac</span></div>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-</section>
-
-<!-- BLOQUE 5: EL ECOSISTEMA COMPLETO -->
-<div style="background:#09090a;padding:48px 56px 20px;border-top:1px solid rgba(122,116,104,.1)">
-  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:baseline;gap:20px">
-    <div style="font-family:var(--serif);font-size:52px;font-weight:300;color:rgba(184,147,90,.15);line-height:1">05</div>
-    <div>
-      <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px">El ecosistema completo</div>
-      <div style="font-size:20px;font-weight:300;color:var(--stone)">Puntos, mercado, intercambios y calendario</div>
-    </div>
-  </div>
-</div>
 
 </div>
 </div>
