@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fractal Premium Cars — Fractal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0b;--cream:#f5f0e8;--gold:#b8935a;--gold-l:#d4b07a;
+  --stone:#7a7468;--w:#fff;--red:rgba(200,80,80,.85);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.nav-back:hover{color:var(--gold)}
+.nav-tabs{display:flex;gap:0}
+.nav-tab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.5);padding:8px 20px;cursor:pointer;transition:all .2s;border:none;background:transparent;font-family:var(--sans)}
+.nav-tab:hover{color:var(--cream)}
+.nav-tab.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+
+/* HERO */
+.page-hero{padding:80px 56px 0;position:relative}
+.ph-tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.ph-tag::before{content:'';width:28px;height:2px;background:var(--gold)}
+.ph-title{font-family:var(--serif);font-size:clamp(40px,6vw,80px);font-weight:300;color:var(--w);line-height:1;margin-bottom:20px}
+.ph-title em{font-style:italic;color:var(--gold-l)}
+.ph-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:640px;margin-bottom:0}
+
+/* VERTICAL TABS */
+.vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
+.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#0a0a08;font-family:var(--sans);text-align:left;position:relative}
+.vert-tab:hover{background:#0f0f0d}
+.vert-tab.active{background:#111009;border-top:3px solid var(--gold)}
+.vt-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);line-height:1;margin-bottom:8px}
+.vert-tab.active .vt-num{color:var(--gold)}
+.vt-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500}
+.vert-tab.active .vt-name{color:var(--gold)}
+.vt-title{font-family:var(--serif);font-size:20px;font-weight:300;color:rgba(245,240,232,.6);line-height:1.2}
+.vert-tab.active .vt-title{color:var(--cream)}
+.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(122,116,104,.2);color:var(--stone)}
+.vert-tab.active .vt-tag{border-color:rgba(184,147,90,.3);color:var(--gold)}
+
+/* CONTENT PANELS */
+.vert-content{display:none}
+.vert-content.active{display:block}
+
+/* DIVIDER */
+.v-divider{display:flex;align-items:center;gap:0;width:100%;overflow:hidden;padding:0}
+.vd-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,147,90,.3) 20%,rgba(184,147,90,.3) 80%,transparent)}
+.vd-dots{display:flex;gap:10px;padding:0 24px;flex-shrink:0}
+.vd-dots span{width:4px;height:4px;border-radius:50%;background:rgba(184,147,90,.4)}
+.vd-dots span:nth-child(2){background:var(--gold);width:6px;height:6px}
+
+/* SECTION UTIL */
+.sec{padding:72px 56px}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:'';width:20px;height:2px;background:var(--gold)}
+.sec-h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.1}
+.sec-p{font-size:14px;color:var(--stone);line-height:1.75;max-width:680px}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
+.stat-box{background:#0d0d0b;padding:28px 24px;text-align:center}
+.stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
+.stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
+.col-card{background:#0d0d0b;padding:32px 28px}
+.col-card h4{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:10px}
+.col-card p{font-size:13px;color:var(--stone);line-height:1.65}
+.col-num{font-family:var(--serif);font-size:44px;font-weight:300;color:rgba(184,147,90,.18);line-height:1;margin-bottom:8px}
+
+/* ROWS */
+.row-table{display:flex;flex-direction:column;gap:0}
+.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(122,116,104,.08);font-size:13px;gap:16px}
+.rt-row:last-child{border-bottom:none}
+.rt-label{color:rgba(245,240,232,.5);flex:1}
+.rt-val{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--cream)}
+.rt-val.gold{color:var(--gold)}
+.rt-val.red{color:var(--red)}
+.rt-row.total{border-top:1px solid rgba(184,147,90,.2);padding-top:14px;margin-top:4px}
+.rt-row.total .rt-label{font-weight:500;color:var(--cream)}
+
+/* PROYECCION TABLE */
+.proy-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
+.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.2);font-weight:400}
+.proy-table th:first-child{text-align:left}
+.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.06)}
+.proy-table td:first-child{text-align:left;color:var(--cream)}
+.proy-table tr:hover td{background:rgba(122,116,104,.04)}
+.proy-table .gold-td{color:var(--gold);font-family:var(--serif);font-size:15px}
+.proy-table .muted{color:var(--stone)}
+.proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
+
+/* LEGAL */
+.legal-box{background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
+.legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
+
+/* BENCHMARK */
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
+.bench-item{background:#0d0d0b;padding:24px 20px;text-align:center}
+.bench-item.highlight{background:#111009;border-top:2px solid var(--gold)}
+.bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
+.bench-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:4px}
+.bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
+.bench-item.highlight .bench-num{color:var(--gold)}
+
+/* LEGAL STRUCT */
+.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
+.ls-item{background:#0d0d0b;padding:24px 20px;position:relative}
+.ls-num{font-family:var(--serif);font-size:40px;font-weight:300;color:rgba(184,147,90,.15);margin-bottom:8px}
+.ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.ls-desc{font-size:12px;color:var(--stone);line-height:1.6}
+.ls-arrow{position:absolute;top:50%;right:-12px;transform:translateY(-50%);font-size:18px;color:rgba(184,147,90,.3);z-index:2}
+
+/* RISK GRID */
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.risk-item{background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
+.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
+
+/* BOATS */
+.boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.bf-item{background:#0d0d0b;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-icon{font-size:28px;margin-bottom:12px}
+.bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
+
+/* DEST GRID */
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+.dest-item{background:#111009;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
+.dest-sub{font-size:11px;color:var(--stone)}
+
+/* CTA */
+.vert-cta{background:#111009;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
+.vc-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--cream);margin-bottom:8px}
+.vc-sub{font-size:14px;color:var(--stone)}
+.vc-btn{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:var(--sans);font-weight:500;text-decoration:none;white-space:nowrap;transition:all .2s}
+.vc-btn:hover{background:var(--gold-l)}
+
+@media(max-width:900px){
+  nav{padding:16px 20px}
+  .page-hero,.sec{padding:48px 20px 0}
+  .vert-tabs{flex-direction:column}
+  .stat-grid,.three-col,.bench-grid,.legal-steps,.boat-features,.dest-grid{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .vert-cta{grid-template-columns:1fr;gap:24px}
+  .risk-grid{grid-template-columns:1fr}
+}
+/* ── BOTONES CALCULADORAS ── */
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#0a0a08;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre{font-size:10px;padding:5px 11px}
+.cv-preset{font-size:10px;padding:5px 10px}
+.cv-socios{font-size:11px;padding:8px 16px}
+.pyp-btn{font-size:11px;padding:8px 16px}
+.pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
+.back-bar{background:#09090a;border-bottom:1px solid rgba(122,116,104,.12);padding:10px 56px;display:flex;align-items:center;gap:24px}
+.back-bar-link{font-size:11px;color:rgba(184,147,90,.6);text-decoration:none;letter-spacing:.06em}
+.back-bar-link:hover{color:var(--gold)}
+.back-bar-home{font-size:11px;color:rgba(122,116,104,.5);text-decoration:none;margin-right:8px}
+.back-bar-home:hover{color:var(--stone)}
+.page-standalone{background:#09090a;min-height:100vh}
+</style>
+</head>
+<body>
+<div class="page-standalone">
+<div class="back-bar">
+  <a href="index.html" class="back-bar-home">← Fractal</a>
+  <a href="invest.html" class="back-bar-link">Invest</a><a href="nautico.html" class="back-bar-link">Náutico</a><a href="pyp.html" class="back-bar-link">P&P</a>
+</div>
+
+
+  <!-- INTRO -->
+  <div class="sec" style="background:#09090a;padding-bottom:0">
+    <div class="sec-inner">
+      <div class="two-col">
+        <div>
+          <div class="sec-tag">Fractal Premium Cars</div>
+          <h2 class="sec-h2">El supercar de tus sueños.<br><em>A un octavo del precio.</em></h2>
+          <p class="sec-p">Un Ferrari Roma cuesta $1.200M. Un Porsche 911 GT3 $850M. Y lo usas, en promedio, 20 días al año. El 94% del tiempo está en el garaje depreciándose mientras pagas seguro, mantenimiento y parqueadero.</p>
+          <p class="sec-p" style="margin-top:16px">Con Fractal Premium Cars 8 co-propietarios comparten un vehículo de lujo. Cada uno paga 1/8 del precio y 1/8 de los costos. Tienes 44+ días al año. Fractal gestiona absolutamente todo — incluyendo chofer, lavada premium, parqueadero cubierto y logística de entrega.</p>
+          <div style="margin-top:24px;padding:20px 24px;background:#0a0a08;border-left:3px solid var(--gold);font-family:var(--serif);font-size:17px;font-weight:300;color:rgba(245,240,232,.7);line-height:1.6">
+            "No es alquilar un carro. Es ser dueño de uno — sin ninguno de los dolores de cabeza."
+          </div>
+        </div>
+        <div>
+          <div class="stat-grid" style="margin:0">
+            <div class="stat-box"><div class="stat-num">8</div><div class="stat-label">Co-propietarios<br>por vehículo</div></div>
+            <div class="stat-box"><div class="stat-num">44+</div><div class="stat-label">Días de uso<br>al año</div></div>
+            <div class="stat-box"><div class="stat-num">8×</div><div class="stat-label">Menos costo<br>de entrada</div></div>
+            <div class="stat-box"><div class="stat-num">$0</div><div class="stat-label">Preocupaciones<br>operativas</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- VS AUTO PROPIO -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">Lo que nadie te dice cuando compras un supercar</div>
+      <h2 class="sec-h2">El costo real de un Porsche 911<br>no es lo que vale el carro.</h2>
+      <div class="two-col">
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">AUTO PROPIO — Porsche 911 Carrera</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Precio de compra</span><span class="rt-val red">$620.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro todo riesgo anual</span><span class="rt-val red">$15.480.000</span></div>
+            <div class="rt-row"><span class="rt-label">Parqueadero cubierto anual</span><span class="rt-val red">$24.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Lavada premium 2×/semana</span><span class="rt-val red">$23.040.000</span></div>
+            <div class="rt-row"><span class="rt-label">Chofer de planta (estimado)</span><span class="rt-val red">$50.400.000</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento anual oficial</span><span class="rt-val red">$18.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación año 1 (~10%)</span><span class="rt-val red">$62.000.000</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real año 1</span><span class="rt-val red">$192.920.000</span></div>
+            <div class="rt-row"><span class="rt-label">Días de uso promedio/año</span><span class="rt-val red">~20 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día (operativos+deprec÷días)</span><span class="rt-val red">$9.646.000/día</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">FRACTAL PREMIUM CARS — mismo Porsche · 1/8</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Capital entrada 1/8 (recuperas al vender)</span><span class="rt-val gold">$77.500.000</span></div>
+            <div class="rt-row"><span class="rt-label">Cuota operativa mensual (÷8)</span><span class="rt-val gold">$1.104.792/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Depreciación mensual tu parte (÷8)</span><span class="rt-val">$645.833/mes</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real mensual (operativos + deprec)</span><span class="rt-val gold">$1.750.625/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Días disponibles/año</span><span class="rt-val gold">~46 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold">$456.685/día</span></div>
+            <div class="rt-row"><span class="rt-label">Recuperas al vender año 3</span><span class="rt-val" style="color:rgba(120,200,120,.8)">~$56.497.500</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:16px 24px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Ahorro entrada</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$542.500.000</div><div style="font-size:11px;color:var(--stone)">87% menos capital</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día auto propio</div><div style="font-family:var(--serif);font-size:26px;color:rgba(200,80,80,.8);font-weight:300">$9.646.000</div><div style="font-size:11px;color:var(--stone)">operativos + deprec ÷ 20 días</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día Fractal</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$456.685</div><div style="font-size:11px;color:var(--stone)">21× más eficiente</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- EXPERIENCIA -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">La experiencia completa</div>
+      <h2 class="sec-h2">Diseñada para Colombia.<br>Con estándares globales.</h2>
+      <div class="three-col">
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🚿</div><div class="bf-title">Lavada premium 2×/semana</div><div class="bf-desc">Lavado a mano con productos profesionales. Nunca túnel automático. Ozono interior mensual. El auto siempre luce como el día que salió del concesionario.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🏢</div><div class="bf-title">Parqueadero cubierto premium</div><div class="bf-desc">Espacio exclusivo con cámaras 24/7, control de acceso. El Poblado, Chicó o El Nogal según la ciudad. Los supercars no se parquean en la calle — nunca.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🧑‍✈️</div><div class="bf-title">Chofer de planta uniformado</div><div class="bf-desc">Conductor profesional asignado al vehículo, certificado, uniformado. Siempre el mismo — te conoce, conoce tus rutas. No es un conductor casual.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">📍</div><div class="bf-title">Entrega donde estés</div><div class="bf-desc">El chofer lleva el auto a tu puerta. Si no quieres conductor ese día, sale en Uber. Al terminar tus días, va en Uber a recoger el carro y lo conduce de vuelta.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">✨</div><div class="bf-title">Detailing mensual completo</div><div class="bf-desc">Pulida de pintura, cera carnauba, ozono interior, tratamiento de cueros. El auto en condición de showroom permanente.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🎁</div><div class="bf-title">Kit de bienvenida en cada uso</div><div class="bf-desc">Agua premium, fragancia de lujo activa, tarjeta personalizada con tu nombre y ruta sugerida curada por Fractal. Cada uso es un momento.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🛡️</div><div class="bf-title">Solo talleres oficiales de marca</div><div class="bf-desc">Cero multimarcas. Cada revisión en concesionario oficial certificado. Reporte digital con fotos después de cada servicio.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">🔄</div><div class="bf-title">Sustituto premium garantizado</div><div class="bf-desc">Si tu auto está en mantenimiento durante tus días, Fractal garantiza un vehículo sustituto de igual o mayor categoría.</div></div>
+        <div class="col-card"><div class="bf-icon" style="font-size:28px;margin-bottom:12px">📸</div><div class="bf-title">Fotografía mensual del activo</div><div class="bf-desc">Fractal envía foto del estado del vehículo cada mes — pintura, interior, odómetro, llantas. Nunca te enteras de algo malo por sorpresa.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- FRACTAL CARS CLUB -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Fractal Cars Club</div>
+      <h2 class="sec-h2">Más allá del carro.<br><em>Una comunidad que abre puertas.</em></h2>
+      <div class="three-col">
+        <div class="col-card"><div class="col-num" style="font-size:36px">🏁</div><h4>Días de pista — Tocancipá y La Guaca</h4><p>2 track days al año incluidos. Instructor de manejo deportivo certificado. Aprende el límite real del carro en ambiente controlado.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🛣️</div><h4>Road trips curados — 4 por año</h4><p>Medellín–Cartagena por la Troncal. Bogotá–Villa de Leyva. Eje Cafetero. Ruta de la Sal. Hoteles premium, restaurantes reservados, rutas diseñadas para el placer de conducir.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🤝</div><h4>Red de negocios entre miembros</h4><p>Cenas trimestrales privadas, WhatsApp exclusivo, presentaciones entre miembros. El networking más eficiente ocurre de forma natural.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🎬</div><h4>Cobertura fotográfica profesional</h4><p>Fotógrafo y videógrafo en cada road trip y evento del club. El contenido es tuyo. Fractal lo usa con tu permiso.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🏎️</div><h4>Acceso a eventos de marca</h4><p>Porsche Experience Days, eventos de Ferrari Club Colombia, presentaciones de nuevos modelos. Acceso preferencial como comunidad reconocida.</p></div>
+        <div class="col-card"><div class="col-num" style="font-size:36px">🔁</div><h4>Rotación del portafolio cada 3 años</h4><p>Cada vehículo sale antes de que la depreciación sea severa. Los co-propietarios deciden: vender y repartir plusvalía, o reinvertir en el modelo siguiente.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- CALCULADORA UNIVERSAL -->
+  <div class="sec" id="calc-cars" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Calculadora universal</div>
+      <h2 class="sec-h2">¿Cuánto costará<br><em>tu vehículo específico?</em></h2>
+      <p class="sec-p" style="margin-bottom:32px">Ingresa el precio de cualquier vehículo. La calculadora muestra el capital que pones (y cuánto recuperas al vender), los costos operativos mensuales, la depreciación y el costo real por día de uso.</p>
+
+      <div style="background:#09090a;border:1px solid rgba(122,116,104,.15);padding:40px 48px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:28px">
+          <div>
+            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Precio del vehículo (COP)</div>
+            <div style="display:flex;align-items:center;border:1px solid rgba(122,116,104,.2);background:#0a0a08;margin-bottom:8px">
+              <span style="padding:12px 14px;font-size:14px;color:var(--stone);border-right:1px solid rgba(122,116,104,.12)">$</span>
+              <input type="text" id="cv-precio" placeholder="620.000.000" autocomplete="off"
+                style="flex:1;background:#0a0a08;border:none;color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
+                oninput="onCvPrecio(this)" onblur="formatCvPrecio(this)">
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <button class="cv-preset" data-v="148000000" onclick="setCvPreset(this)">$148M</button>
+              <button class="cv-preset" data-v="300000000" onclick="setCvPreset(this)">$300M</button>
+              <button class="cv-preset active" data-v="620000000" onclick="setCvPreset(this)">$620M</button>
+              <button class="cv-preset" data-v="900000000" onclick="setCvPreset(this)">$900M</button>
+              <button class="cv-preset" data-v="1200000000" onclick="setCvPreset(this)">$1.200M</button>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Número de socios</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+              <button class="cv-socios active" data-s="8" onclick="setCvSocios(this)">8 socios</button>
+              <button class="cv-socios" data-s="6" onclick="setCvSocios(this)">6 socios</button>
+              <button class="cv-socios" data-s="4" onclick="setCvSocios(this)">4 socios</button>
+            </div>
+            <div style="font-size:11px;color:rgba(122,116,104,.4);margin-top:6px">Fractal recomienda 8 socios para maximizar la eficiencia.</div>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Nombre del vehículo</div>
+            <input type="text" id="cv-nombre" placeholder="Porsche 911, Ferrari Roma..." autocomplete="off"
+              style="width:100%;background:#0a0a08;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
+              oninput="calcVehiculo()">
+          </div>
+        </div>
+
+        <div id="cv-result" style="display:none">
+          <div id="cv-nombre-display" style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream);margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(122,116,104,.12)"></div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);margin-bottom:8px">
+            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Capital entrada<br><span style="color:rgba(120,200,120,.6)">lo recuperas al vender</span></div>
+              <div id="cv-entrada" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:var(--cream)">—</div>
+            </div>
+            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Cuota operativa/mes<br><span style="color:rgba(200,80,80,.6)">sí se pierde</span></div>
+              <div id="cv-cuota" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:var(--cream)">—</div>
+            </div>
+            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Deprec./mes tu parte<br><span style="color:rgba(200,80,80,.6)">pérdida real activo</span></div>
+              <div id="cv-dep" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:rgba(245,240,232,.6)">—</div>
+            </div>
+            <div style="background:#111009;padding:20px 16px;text-align:center;border:1px solid rgba(184,147,90,.25)">
+              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Costo real/día<br><span style="color:rgba(184,147,90,.6)">operativos+deprec÷días</span></div>
+              <div id="cv-dia" style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;color:var(--gold)">—</div>
+            </div>
+          </div>
+          <div id="cv-recuperas" style="font-size:12px;color:rgba(120,200,120,.65);padding:8px 14px;margin-bottom:16px;background:rgba(120,200,120,.04);border:1px solid rgba(120,200,120,.1)"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div>
+              <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Desglose costos operativos anuales</div>
+              <div id="cv-desglose"></div>
+              <div style="display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(184,147,90,.2);margin-top:4px;font-size:13px">
+                <span style="color:var(--cream);font-weight:500">Total operativos + deprec. año</span>
+                <span id="cv-total" style="font-family:var(--serif);font-size:16px;color:var(--gold)">—</span>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Costo por día — comparativo</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="background:#0a0a08;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Alquiler de lujo en el mercado</div><div style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</div></div>
+                <div style="background:#0a0a08;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Auto propio (operativos+deprec ÷ 20 días)</div><div id="cv-dia-propio" style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.7)">—</div></div>
+                <div style="background:#111009;padding:14px;border:1px solid rgba(184,147,90,.3)"><div style="font-size:11px;color:var(--gold);margin-bottom:4px">Fractal — tu costo real por día</div><div id="cv-dia-fractal" style="font-family:var(--serif);font-size:28px;color:var(--gold)">—</div></div>
+                <div id="cv-ahorro-box" style="background:#09090a;padding:10px 14px;border:1px solid rgba(122,116,104,.1);font-size:12px;color:var(--stone);line-height:1.6"></div>
+              </div>
+            </div>
+          </div>
+          <div style="font-size:11px;color:rgba(122,116,104,.35);margin-top:16px;line-height:1.5;padding-top:14px;border-top:1px solid rgba(122,116,104,.08)">Costos operativos incluyen: seguro 2.5%/año, chofer+prestaciones, Uber logístico, parqueadero cubierto, lavada 2×/semana, mantenimiento oficial 2.4%/año (mín $800k), fondo contingencias 1%/año, combustible, SOAT y fee Fractal. Depreciación estimada al 10% anual. Valores Medellín y Bogotá.</div>
+        </div>
+        <div id="cv-empty" style="text-align:center;padding:40px 0;color:var(--stone)">
+          <div style="font-family:var(--serif);font-size:18px;color:rgba(245,240,232,.4);margin-bottom:8px">Ingresa el precio del vehículo</div>
+          <div style="font-size:13px">Ejemplo: Porsche 911 = $620.000.000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- PORTAFOLIO -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Portafolio y costos reales</div>
+      <h2 class="sec-h2">6 marcas. Todo incluido.<br>Sin sorpresas.</h2>
+      <p class="sec-p" style="margin-bottom:24px">Costo real por día = (operativos mensuales + depreciación mensual) ÷ días de uso. El capital de entrada no es un gasto — lo recuperas al vender.</p>
+      <table class="proy-table">
+        <thead>
+          <tr><th>Vehículo</th><th>Activo</th><th>Entrada 1/8</th><th>Cuota op./mes 1/8</th><th>Deprec./mes 1/8</th><th>Costo real/día</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Range Rover Autobiography</td><td class="muted">$700M</td><td class="muted">$87.500.000</td><td class="gold-td">$1.148.958</td><td class="muted">$729.167</td><td class="gold-td">$489.946</td></tr>
+          <tr><td>Porsche 911 Carrera</td><td class="muted">$620M</td><td class="muted">$77.500.000</td><td class="gold-td">$1.104.792</td><td class="muted">$645.833</td><td class="gold-td">$456.685</td></tr>
+          <tr><td>Lamborghini Urus Performante</td><td class="muted">$900M</td><td class="muted">$112.500.000</td><td class="gold-td">$1.259.375</td><td class="muted">$937.500</td><td class="gold-td">$573.098</td></tr>
+          <tr><td>Bentley Continental GT</td><td class="muted">$900M</td><td class="muted">$112.500.000</td><td class="gold-td">$1.259.375</td><td class="muted">$937.500</td><td class="gold-td">$573.098</td></tr>
+          <tr><td>Ferrari Roma / Portofino M</td><td class="muted">$1.200M</td><td class="muted">$150.000.000</td><td class="gold-td">$1.425.000</td><td class="muted">$1.250.000</td><td class="gold-td">$697.826</td></tr>
+          <tr class="total-row"><td colspan="5">Alquiler superdeportivo en el mercado colombiano</td><td class="gold-td" style="color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:rgba(122,116,104,.35);margin-top:10px;line-height:1.5">Costo real/día = (cuota operativa + depreciación 10%/año) ÷ ~46 días de uso/año por 1/8. El capital de entrada (~87% recuperable en año 3) no se incluye en el costo diario.</p>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- CTA -->
+  <div class="sec" style="padding-top:0;padding-bottom:72px">
+    <div class="sec-inner">
+      <div class="vert-cta">
+        <div>
+          <div class="vc-title">¿Cuál es tu supercar<br>y en qué ciudad arrancamos?</div>
+          <div class="vc-sub">Fractal Premium Cars está en desarrollo. Regístrate con tu preferencia de marca, ciudad y presupuesto — los primeros en registrar tienen prioridad de selección y son parte de la comunidad fundadora.</div>
+        </div>
+        <a href="index.html#contacto" class="vc-btn">Ser co-propietario fundador →</a>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<script>
+
+function setPyp(btn) {
+  document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  var dia = btn.dataset.dia;
+  var d   = PYP[dia];
+  if (!d) return;
+  var pl = document.getElementById('pyp-placas');
+  var ho = document.getElementById('pyp-horario');
+  if (pl) pl.textContent = d.placas;
+  if (ho) ho.innerHTML  = '📍 ' + d.med + '<br>📍 ' + d.bog;
+}
+
+// Init
+(function(){ var first = document.querySelector('.pyp-btn.active'); if (first) setPyp(first); })();
+
+
+// ── CALCULADORA UNIVERSAL VEHÍCULOS ─────────────────────────────────────────
+var _cvSocios = 8;
+var _cvPrecio = 0;
+var _cvHorizonte = 3;
+var _cvDep = 0.10;
+
+function setCvPreset(btn) {
+  var v = parseInt(btn.dataset.v);
+  var inp = document.getElementById('cv-precio');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.cv-preset').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  _cvPrecio = v;
+  calcVehiculo();
+}
+
+function setCvSocios(btn) {
+  _cvSocios = parseInt(btn.dataset.s);
+  document.querySelectorAll('.cv-socios').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcVehiculo();
+}
+
+function onCvPrecio(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g, '')) || 0;
+  _cvPrecio = raw;
+  document.querySelectorAll('.cv-preset').forEach(function(b){
+    b.classList.toggle('active', parseInt(b.dataset.v) === raw);
+  });
+  calcVehiculo();
+}
+
+function formatCvPrecio(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g, '')) || 0;
+  if (raw > 0) el.value = raw.toLocaleString('es-CO');
+}
+
+function calcVehiculo() {
+  var precio  = _cvPrecio;
+  var nSocios = _cvSocios;
+  var nombreEl = document.getElementById('cv-nombre');
+  var nombre   = (nombreEl && nombreEl.value.trim()) ? nombreEl.value.trim() : 'Tu vehículo';
+
+  var emptyEl  = document.getElementById('cv-empty');
+  var resultEl = document.getElementById('cv-result');
+  if (!precio || precio < 10000000) {
+    if (emptyEl)  emptyEl.style.display  = 'block';
+    if (resultEl) resultEl.style.display = 'none';
+    return;
+  }
+  if (emptyEl)  emptyEl.style.display  = 'none';
+  if (resultEl) resultEl.style.display = 'block';
+
+  function cop(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
+  function s(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  // ── CAPITAL (no es gasto) ──────────────────────────────────────────────────
+  var entrada  = precio / nSocios;
+
+  // ── COSTOS OPERATIVOS ANUALES (÷ socios) — sí se pierden ──────────────────
+  // CONCEPTO 2: COSTOS OPERATIVOS ANUALES
+  var seguro   = precio * 0.025;           // 2.5% anual sobre activo
+  var parqueo  =  200000 * 12;             // solo V-D: 8 noches/mes × $25k
+  var lavada   = 1500000 * 12;             // diaria $50k × 30 días/mes
+  var chofer   = 2500000 * 12;             // part-time fines de semana + entregas
+  var uber     =  550000 * 12;             // uber nocturno reposicionamiento
+  var combus   =  600000 * 12;
+  var soat     =  350000 * 12;
+  var manto    = Math.max(7200000, precio * 0.020);   // 2.0% anual
+  var conting  = Math.max(3600000, precio * 0.008);
+  var fee      =  400000 * 12;
+
+  var opTotalAño = seguro + parqueo + lavada + chofer + uber + combus + soat + manto + conting + fee;
+  var opSocioAño = opTotalAño / nSocios;
+  var opSocioMes = opSocioAño / 12;
+
+  // ── DEPRECIACIÓN — pérdida real de capital ─────────────────────────────────
+  var horizonte    = _cvHorizonte;
+  var depPct       = _cvDep;
+  var valorResid   = precio * Math.pow(1 - depPct, horizonte);
+  var deprecTotal  = precio - valorResid;
+  var deprecSocio  = deprecTotal / nSocios;
+  var deprecAño    = deprecSocio / horizonte;
+  var recuperas    = valorResid / nSocios;
+
+  // ── COSTO REAL = operativos + depreciación ─────────────────────────────────
+  var costoRealAño = opSocioAño + deprecAño;
+  var diasAño      = Math.round(365 / nSocios);
+  var costoDia     = costoRealAño / diasAño;
+
+  // Update UI
+  var nd = document.getElementById('cv-nombre-display');
+  if (nd) nd.textContent = nombre + ' — ' + nSocios + ' co-propietario(s)';
+
+  s('cv-entrada',    cop(entrada));
+  s('cv-cuota',      cop(opSocioMes) + '/mes');
+  s('cv-dep',        cop(deprecAño / 12) + '/mes');
+  s('cv-dia',        cop(costoDia) + '/día');
+  s('cv-total',      cop(opSocioMes) + '/mes operativos + ' + cop(deprecAño/12) + '/mes deprec. = ' + cop(opSocioMes + deprecAño/12) + '/mes total real');
+  s('cv-recuperas',  '✓ Recuperas ' + cop(recuperas) + ' de los ' + cop(entrada) + ' que invertiste (año ' + horizonte + '). Pérdida neta capital: ' + cop(entrada - recuperas));
+
+  // Costo auto propio
+  var opPropioAño  = opTotalAño;  // mismo carro, solo tú
+  var deprecPropioAño = deprecTotal / horizonte;
+  var diaPropio    = (opPropioAño + deprecPropioAño) / 20; // ~20 días uso/año
+  s('cv-dia-propio',  cop(diaPropio) + '/día');
+  s('cv-dia-fractal', cop(costoDia) + '/día');
+
+  var ahorro = diaPropio - costoDia;
+  var ab = document.getElementById('cv-ahorro-box');
+  if (ab) ab.innerHTML =
+    '✓ Con Fractal el costo real por día de uso es <strong style="color:var(--gold)">' + cop(costoDia) + '</strong> (operativos + depreciación ÷ días de uso).<br>' +
+    'Tener el mismo carro solo costaría <strong>' + cop(diaPropio) + '/día</strong> porque lo usarías ~20 días/año vs ' + diasAño + ' días con Fractal.';
+
+  // Desglose
+  var dsg = document.getElementById('cv-desglose');
+  if (dsg) {
+    var rows = [
+      ['Seguro todo riesgo (2.5% anual)', seguro / nSocios],
+      ['Chofer de planta + prestaciones', chofer / nSocios],
+      ['Parqueadero cubierto premium',    parqueo / nSocios],
+      ['Lavada premium 2×/semana',        lavada / nSocios],
+      ['Uber logístico entrega/recogida', uber / nSocios],
+      ['Mantenimiento oficial',           manto / nSocios],
+      ['Combustible operativo',           combus / nSocios],
+      ['SOAT + rodamiento',               soat / nSocios],
+      ['Fondo contingencias',             conting / nSocios],
+      ['Fee operativo Fractal',           fee / nSocios],
+    ];
+    dsg.innerHTML =
+      '<div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(184,147,90,.6);margin-bottom:8px">COSTOS OPERATIVOS ANUALES (sí se pierden)</div>' +
+      rows.map(function(r){
+        return '<div class="cv-row"><span>' + r[0] + '</span><span>' + cop(r[1]) + '/año</span></div>';
+      }).join('') +
+      '<div class="cv-row" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(184,147,90,.15)"><span style="color:rgba(184,147,90,.7)">Depreciación ' + horizonte + ' años (' + (depPct*100).toFixed(0) + '% anual) tu parte</span><span style="color:var(--gold)">' + cop(deprecAño) + '/año</span></div>' +
+      '<div class="cv-row" style="margin-top:8px"><span style="color:rgba(120,200,120,.7)">Recuperas al vender año ' + horizonte + '</span><span style="color:rgba(120,200,120,.8)">' + cop(recuperas) + '</span></div>';
+  }
+}
+
+(function(){
+  var inp = document.getElementById('cv-precio');
+  if (inp) { inp.value = (148000000).toLocaleString('es-CO'); _cvPrecio = 148000000; }
+  document.querySelectorAll('.cv-preset').forEach(function(b){
+    if (b.dataset.v === '148000000') b.classList.add('active');
+  });
+  calcVehiculo();
+})();
+
+// ── PICO Y PLACA  ────────────────────────────────────────────────────────────
+var PYP = {
+  lunes:      { placas: '1 · 2', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  martes:     { placas: '3 · 4', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  miercoles:  { placas: '5 · 6', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  jueves:     { placas: '7 · 8', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  viernes:    { placas: '9 · 0', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+};
+
+function setPyp(btn) {
+  document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  var dia = btn.dataset.dia;
+  var d   = PYP[dia];
+  if (!d) return;
+  var pl = document.getElementById('pyp-placas');
+  var ho = document.getElementById('pyp-horario');
+  if (pl) pl.textContent = d.placas;
+  if (ho) ho.innerHTML  = '📍 ' + d.med + '<br>📍 ' + d.bog;
+}
+
+// Init
+(function(){ var first = document.querySelector('.pyp-btn.active'); if (first) setPyp(first); })();
+
+
+function showVert(id) {
+  document.querySelectorAll('.vert-content').forEach(function(p){
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  var panel = document.getElementById('panel-' + id);
+  if (panel) { panel.classList.add('active'); panel.style.display = 'block'; }
+  document.querySelectorAll('.vert-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.vert-tab').forEach(function(t){
+    if (t.onclick && t.onclick.toString().indexOf("'" + id + "'") > -1) t.classList.add('active');
+  });
+  document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t){
+    if (t.onclick && t.onclick.toString().indexOf("'" + id + "'") > -1) t.classList.add('active');
+  });
+  window.scrollTo({top: 0, behavior:'smooth'});
+}
+
+// Open from URL hash — wait for DOM
+window.addEventListener('load', function() {
+  var hash = window.location.hash.replace('#','');
+  if (hash === 'nautico' || hash === 'cars' || hash === 'invest' || hash === 'pyp') {
+    showVert(hash);
+  } else {
+    showVert('invest');
+  }
+});
+// ── PICO Y PLACA CALCULADORA ────────────────────────────────────────────────
+function setPypPre(btn) {
+  var v = parseInt(btn.dataset.v);
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.pyp-pre').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcPyp();
+}
+
+function fmtPyp(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g,'')) || 0;
+  if (raw > 0) el.value = raw.toLocaleString('es-CO');
+}
+
+function calcPyp() {
+  var inp    = document.getElementById('pyp-precio-inp');
+  var precio = inp ? (parseInt(inp.value.replace(/[^0-9]/g,'')) || 0) : 0;
+  var nomb   = (document.getElementById('pyp-nombre-inp') || {}).value || '';
+  var cop    = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
+  function s(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  // Update static table (variable part) — costos reales P&P
+  var seguro  = precio * 0.025 / 12;
+  var manto   = Math.max(600000, precio * 0.020 / 12);
+  var conting = Math.max(300000, precio * 0.008 / 12);
+  // fixed: chofer full-time + uber + parqueo solo V-D + lavada diaria + combustible + soat + fee
+  var fixed   = 4200000 + 550000 + 200000 + 1500000 + 600000 + 350000 + 400000;
+  var totalMes= seguro + manto + conting + fixed;
+  s('pyp-seguro',  cop(seguro));
+  s('pyp-manto',   cop(manto));
+  s('pyp-conting', cop(conting));
+  s('pyp-total-mes', cop(totalMes));
+
+  var n = 5;
+  var entrada  = precio / n;
+  var cuota    = totalMes / n;
+  var dep      = (precio * 0.10 / 12) / n;
+  var recuperas= precio * Math.pow(0.90,3) / n;
+  var realMes  = cuota + dep;
+  var realDia  = realMes / 4;
+  s('pyp-entrada',       cop(entrada));
+  s('pyp-recuperas',     cop(recuperas));
+  s('pyp-cuota',         cop(cuota) + '/mes');
+  s('pyp-dep',           cop(dep) + '/mes');
+  s('pyp-costo-real-mes',cop(realMes) + '/mes');
+  s('pyp-costo-dia',     cop(realDia) + '/día');
+
+  // Calculator result
+  var res = document.getElementById('pyp-calc-result');
+  if (!precio || precio < 10000000) { if(res) res.style.display='none'; return; }
+  if (res) res.style.display = 'block';
+  s('pyp-r-entrada', cop(entrada));
+  s('pyp-r-cuota',   cop(cuota) + '/mes');
+  s('pyp-r-dep',     cop(dep) + '/mes');
+  s('pyp-r-dia',     cop(realDia) + '/día');
+  var rt = document.getElementById('pyp-result-title');
+  if (rt) rt.textContent = (nomb || 'Tu vehículo') + ' — 5 socios P&P';
+  var rn = document.getElementById('pyp-r-nota');
+  if (rn) rn.innerHTML = 'Capital entrada: ' + cop(entrada) + ' · Recuperas año 3: <strong style="color:rgba(120,200,120,.8)">' + cop(recuperas) + '</strong> · Pérdida real capital 3 años: ' + cop(entrada - recuperas);
+}
+
+(function(){
+  var d = document.querySelector('.pyp-pre[data-v="250000000"]');
+  if (d) { d.classList.add('active'); }
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = (250000000).toLocaleString('es-CO');
+  calcPyp();
+  var first = document.querySelector('.pyp-btn.active');
+  if (first) setPyp(first);
+})();
+
+
+// Init page-specific calculators
+(function(){
+  var d = document.querySelector('.pyp-pre[data-v="250000000"]');
+  if (d) { d.classList.add('active'); }
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = (250000000).toLocaleString('es-CO');
+  if(typeof calcPyp === 'function') calcPyp();
+  if(typeof calcVehiculo === 'function') calcVehiculo();
+  var first = document.querySelector('.pyp-btn.active');
+  if (first && typeof setPyp === 'function') setPyp(first);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fractal Náutico — Fractal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d0b;--cream:#f5f0e8;--gold:#b8935a;--gold-l:#d4b07a;
+  --stone:#7a7468;--w:#fff;--red:rgba(200,80,80,.85);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.nav-back:hover{color:var(--gold)}
+.nav-tabs{display:flex;gap:0}
+.nav-tab{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.5);padding:8px 20px;cursor:pointer;transition:all .2s;border:none;background:transparent;font-family:var(--sans)}
+.nav-tab:hover{color:var(--cream)}
+.nav-tab.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+
+/* HERO */
+.page-hero{padding:80px 56px 0;position:relative}
+.ph-tag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.ph-tag::before{content:'';width:28px;height:2px;background:var(--gold)}
+.ph-title{font-family:var(--serif);font-size:clamp(40px,6vw,80px);font-weight:300;color:var(--w);line-height:1;margin-bottom:20px}
+.ph-title em{font-style:italic;color:var(--gold-l)}
+.ph-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:640px;margin-bottom:0}
+
+/* VERTICAL TABS */
+.vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
+.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#0a0a08;font-family:var(--sans);text-align:left;position:relative}
+.vert-tab:hover{background:#0f0f0d}
+.vert-tab.active{background:#111009;border-top:3px solid var(--gold)}
+.vt-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);line-height:1;margin-bottom:8px}
+.vert-tab.active .vt-num{color:var(--gold)}
+.vt-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500}
+.vert-tab.active .vt-name{color:var(--gold)}
+.vt-title{font-family:var(--serif);font-size:20px;font-weight:300;color:rgba(245,240,232,.6);line-height:1.2}
+.vert-tab.active .vt-title{color:var(--cream)}
+.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(122,116,104,.2);color:var(--stone)}
+.vert-tab.active .vt-tag{border-color:rgba(184,147,90,.3);color:var(--gold)}
+
+/* CONTENT PANELS */
+.vert-content{display:none}
+.vert-content.active{display:block}
+
+/* DIVIDER */
+.v-divider{display:flex;align-items:center;gap:0;width:100%;overflow:hidden;padding:0}
+.vd-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,147,90,.3) 20%,rgba(184,147,90,.3) 80%,transparent)}
+.vd-dots{display:flex;gap:10px;padding:0 24px;flex-shrink:0}
+.vd-dots span{width:4px;height:4px;border-radius:50%;background:rgba(184,147,90,.4)}
+.vd-dots span:nth-child(2){background:var(--gold);width:6px;height:6px}
+
+/* SECTION UTIL */
+.sec{padding:72px 56px}
+.sec-inner{max-width:1200px;margin:0 auto}
+.sec-tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:'';width:20px;height:2px;background:var(--gold)}
+.sec-h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.1}
+.sec-p{font-size:14px;color:var(--stone);line-height:1.75;max-width:680px}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
+.stat-box{background:#0d0d0b;padding:28px 24px;text-align:center}
+.stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
+.stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
+.col-card{background:#0d0d0b;padding:32px 28px}
+.col-card h4{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:10px}
+.col-card p{font-size:13px;color:var(--stone);line-height:1.65}
+.col-num{font-family:var(--serif);font-size:44px;font-weight:300;color:rgba(184,147,90,.18);line-height:1;margin-bottom:8px}
+
+/* ROWS */
+.row-table{display:flex;flex-direction:column;gap:0}
+.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(122,116,104,.08);font-size:13px;gap:16px}
+.rt-row:last-child{border-bottom:none}
+.rt-label{color:rgba(245,240,232,.5);flex:1}
+.rt-val{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--cream)}
+.rt-val.gold{color:var(--gold)}
+.rt-val.red{color:var(--red)}
+.rt-row.total{border-top:1px solid rgba(184,147,90,.2);padding-top:14px;margin-top:4px}
+.rt-row.total .rt-label{font-weight:500;color:var(--cream)}
+
+/* PROYECCION TABLE */
+.proy-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
+.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.2);font-weight:400}
+.proy-table th:first-child{text-align:left}
+.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.06)}
+.proy-table td:first-child{text-align:left;color:var(--cream)}
+.proy-table tr:hover td{background:rgba(122,116,104,.04)}
+.proy-table .gold-td{color:var(--gold);font-family:var(--serif);font-size:15px}
+.proy-table .muted{color:var(--stone)}
+.proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
+
+/* LEGAL */
+.legal-box{background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
+.legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
+
+/* BENCHMARK */
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
+.bench-item{background:#0d0d0b;padding:24px 20px;text-align:center}
+.bench-item.highlight{background:#111009;border-top:2px solid var(--gold)}
+.bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
+.bench-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:4px}
+.bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
+.bench-item.highlight .bench-num{color:var(--gold)}
+
+/* LEGAL STRUCT */
+.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
+.ls-item{background:#0d0d0b;padding:24px 20px;position:relative}
+.ls-num{font-family:var(--serif);font-size:40px;font-weight:300;color:rgba(184,147,90,.15);margin-bottom:8px}
+.ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.ls-desc{font-size:12px;color:var(--stone);line-height:1.6}
+.ls-arrow{position:absolute;top:50%;right:-12px;transform:translateY(-50%);font-size:18px;color:rgba(184,147,90,.3);z-index:2}
+
+/* RISK GRID */
+.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.risk-item{background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
+.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
+
+/* BOATS */
+.boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.bf-item{background:#0d0d0b;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-icon{font-size:28px;margin-bottom:12px}
+.bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
+
+/* DEST GRID */
+.dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+.dest-item{background:#111009;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
+.dest-sub{font-size:11px;color:var(--stone)}
+
+/* CTA */
+.vert-cta{background:#111009;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
+.vc-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--cream);margin-bottom:8px}
+.vc-sub{font-size:14px;color:var(--stone)}
+.vc-btn{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:var(--sans);font-weight:500;text-decoration:none;white-space:nowrap;transition:all .2s}
+.vc-btn:hover{background:var(--gold-l)}
+
+@media(max-width:900px){
+  nav{padding:16px 20px}
+  .page-hero,.sec{padding:48px 20px 0}
+  .vert-tabs{flex-direction:column}
+  .stat-grid,.three-col,.bench-grid,.legal-steps,.boat-features,.dest-grid{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
+  .vert-cta{grid-template-columns:1fr;gap:24px}
+  .risk-grid{grid-template-columns:1fr}
+}
+/* ── BOTONES CALCULADORAS ── */
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#0a0a08;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre{font-size:10px;padding:5px 11px}
+.cv-preset{font-size:10px;padding:5px 10px}
+.cv-socios{font-size:11px;padding:8px 16px}
+.pyp-btn{font-size:11px;padding:8px 16px}
+.pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
+.back-bar{background:#09090a;border-bottom:1px solid rgba(122,116,104,.12);padding:10px 56px;display:flex;align-items:center;gap:24px}
+.back-bar-link{font-size:11px;color:rgba(184,147,90,.6);text-decoration:none;letter-spacing:.06em}
+.back-bar-link:hover{color:var(--gold)}
+.back-bar-home{font-size:11px;color:rgba(122,116,104,.5);text-decoration:none;margin-right:8px}
+.back-bar-home:hover{color:var(--stone)}
+.page-standalone{background:#09090a;min-height:100vh}
+</style>
+</head>
+<body>
+<div class="page-standalone">
+<div class="back-bar">
+  <a href="index.html" class="back-bar-home">← Fractal</a>
+  <a href="invest.html" class="back-bar-link">Invest</a><a href="cars.html" class="back-bar-link">Premium Cars</a><a href="pyp.html" class="back-bar-link">P&P</a>
+</div>
+<!-- FRACTAL NÁUTICO -->
+<div id="panel-nautico" class="vert-content" style="display:none">
+
+  <!-- INTRO -->
+  <div class="sec" style="background:#09090a;padding-bottom:0">
+    <div class="sec-inner">
+      <div class="two-col">
+        <div>
+          <div class="sec-tag">Fractal Náutico</div>
+          <h2 class="sec-h2">El agua de Colombia.<br><em>Como nunca la has vivido.</em></h2>
+          <p class="sec-p">Una lancha familiar en Guatapé cuesta $1.200M. Un velero en Cartagena $2.400M. Y lo usas, como mucho, 15 días al año. El resto del tiempo paga marina, capitán, seguro y mantenimiento — sin importar si está en el agua o no.</p>
+          <p class="sec-p" style="margin-top:16px">Con Fractal Náutico 8 co-propietarios comparten una embarcación premium. Pagas 1/8 del precio y 1/8 de los costos. Tienes 44+ días al año. Fractal gestiona capitán, marinero, amarre, mantenimiento y provisiones. Llegas al muelle y navegas.</p>
+          <div style="margin-top:24px;padding:20px 24px;background:#0a0a08;border-left:3px solid var(--gold);font-family:var(--serif);font-size:17px;font-weight:300;color:rgba(245,240,232,.7);line-height:1.6">
+            "No es rentar un bote. Es ser dueño de uno — sin ninguna de las responsabilidades que arruinan la experiencia."
+          </div>
+        </div>
+        <div>
+          <div class="stat-grid" style="margin:0">
+            <div class="stat-box"><div class="stat-num">8</div><div class="stat-label">Co-propietarios<br>por embarcación</div></div>
+            <div class="stat-box"><div class="stat-num">44+</div><div class="stat-label">Días de uso<br>al año</div></div>
+            <div class="stat-box"><div class="stat-num">8×</div><div class="stat-label">Menos costo<br>de entrada</div></div>
+            <div class="stat-box"><div class="stat-num">$0</div><div class="stat-label">Gestión operativa<br>que resolver</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- VS LANCHA PROPIA -->
+  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+    <div class="sec-inner">
+      <div class="sec-tag">Lo que nadie te dice cuando compras una lancha</div>
+      <h2 class="sec-h2">El costo real de una lancha propia<br>no es lo que vale el casco.</h2>
+      <div class="two-col">
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">LANCHA PROPIA — 30 pies tipo Sea Ray</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Precio de compra</span><span class="rt-val red">$1.200.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Capitán + marinero anual</span><span class="rt-val red">$84.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Amarre / marina anual</span><span class="rt-val red">$36.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro casco y RC anual</span><span class="rt-val red">$24.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento motor y casco</span><span class="rt-val red">$30.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Combustible operativo anual</span><span class="rt-val red">$18.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Impuestos y zarpe</span><span class="rt-val red">$8.000.000</span></div>
+            <div class="rt-row total"><span class="rt-label">Costo real año 1 (sin usar)</span><span class="rt-val red">$200.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Días de uso promedio/año</span><span class="rt-val red">~15 días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val red">$13.333.333/día</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="row-table">
+            <div class="rt-row"><span class="rt-label" style="font-weight:500;color:var(--cream)">FRACTAL NÁUTICO — misma lancha · 1/8</span><span></span></div>
+            <div class="rt-row"><span class="rt-label">Precio de entrada 1/8</span><span class="rt-val gold">$150.000.000</span></div>
+            <div class="rt-row"><span class="rt-label">Capitán certificado (÷ 8)</span><span class="rt-val gold">$875.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Marinero / asistente (÷ 8)</span><span class="rt-val gold">$437.500/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Amarre en marina premium (÷ 8)</span><span class="rt-val gold">$375.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Seguro casco + RC (÷ 8)</span><span class="rt-val gold">$250.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Mantenimiento motor y casco (÷ 8)</span><span class="rt-val gold">$312.500/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Fondo contingencias + fee Fractal (÷ 8)</span><span class="rt-val gold">$250.000/mes</span></div>
+            <div class="rt-row total"><span class="rt-label">Cuota mensual 1/8 todo incluido</span><span class="rt-val gold">$2.500.000/mes</span></div>
+            <div class="rt-row"><span class="rt-label">Días disponibles/año</span><span class="rt-val gold">44+ días</span></div>
+            <div class="rt-row"><span class="rt-label">Costo real por día de uso</span><span class="rt-val gold">$681.818/día</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:16px 24px;margin-top:24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Ahorro en entrada</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">$1.050.000.000</div><div style="font-size:11px;color:var(--stone)">87% menos capital inmovilizado</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día lancha propia</div><div style="font-family:var(--serif);font-size:28px;color:rgba(200,80,80,.8);font-weight:300">$13.333.333</div><div style="font-size:11px;color:var(--stone)">con todos los gastos reales</div></div>
+        <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día Fractal</div><div style="font-family:var(--serif);font-size:28px;color:var(--gold);font-weight:300">$681.818</div><div style="font-size:11px;color:var(--stone)">20× más eficiente</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- LA EXPERIENCIA FRACTAL NÁUTICO -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">La experiencia completa</div>
+      <h2 class="sec-h2">Mejores prácticas globales.<br><em>Adaptadas al agua colombiana.</em></h2>
+      <p class="sec-p" style="margin-bottom:40px">Tomamos lo mejor de SailTime, SeaNet, MIY Yacht y Monocle Yachts — los líderes mundiales en copropiedad náutica — y lo adaptamos a Guatapé, Cartagena y San Andrés. Sin las partes que no aplican acá. Con todo lo que sí transforma la experiencia.</p>
+
+      <div class="three-col">
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">👨‍✈️</div>
+          <div class="bf-title">Capitán certificado asignado</div>
+          <div class="bf-desc">Un capitán certificado por la DIMAR asignado permanentemente a cada embarcación. Siempre el mismo — conoce la embarcación, los destinos y a los co-propietarios. No es un capitán de alquiler casual.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">⛵</div>
+          <div class="bf-title">Embarcación lista antes de que llegues</div>
+          <div class="bf-desc">Cuando llegas al muelle el bote ya está preparado: motor revisado, combustible lleno, provisiones básicas a bordo, hielo, música configurada. Igual que MIY Yacht en Europa — tu embarcación te espera, no al revés.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🛟</div>
+          <div class="bf-title">Mantenimiento preventivo riguroso</div>
+          <div class="bf-desc">Protocolo de mantenimiento después de cada uso — motor, casco, equipos de seguridad, navegación. Igual que SeaNet: el barco se revisa, no se entrega a la espera del próximo problema. Reporte digital mensual a los co-propietarios.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">📍</div>
+          <div class="bf-title">Amarre en marina premium</div>
+          <div class="bf-desc">Slip exclusivo en la marina más reconocida del destino — Marina Santa Marta, Club Náutico de Cartagena, Marina Alcatraz en Guatapé. Con seguridad 24/7, agua y electricidad incluidos.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">📱</div>
+          <div class="bf-title">Reservas por APP Fractal — hasta 12 meses</div>
+          <div class="bf-desc">Inspirado en SailTime: reserva tu tiempo con hasta 12 meses de anticipación. Sin llamadas, sin intermediarios. Si hay un día libre de último minuto, la APP te notifica para tomarlo sin costo adicional.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🎁</div>
+          <div class="bf-title">Provisiones curadas en cada salida</div>
+          <div class="bf-desc">Inspirado en MIY Yacht: antes de cada salida puedes solicitar provisiones específicas — champagne, snacks gourmet, frutas, bebidas. El capitán las tiene listas. Tu botella favorita siempre a bordo.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🔒</div>
+          <div class="bf-title">Bodega personal de co-propietario</div>
+          <div class="bf-desc">Inspirado en MIY Yacht: cada co-propietario tiene un espacio de almacenamiento privado a bordo — objetos personales, equipo de snorkel, artículos de pesca, ropa. Lo que dejes ahí está cuando regreses.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">🛡️</div>
+          <div class="bf-title">Protocolo de seguridad certificado DIMAR</div>
+          <div class="bf-desc">Todos los equipos de seguridad actualizados — salvavidas, bengalas, radio VHF, GPS de emergencia, botiquín náutico. Cumplimiento total de la normatividad de la DIMAR. Zarpe siempre legal.</div>
+        </div>
+        <div class="col-card">
+          <div class="bf-icon" style="font-size:28px;margin-bottom:12px">📸</div>
+          <div class="bf-title">Reporte mensual del estado del activo</div>
+          <div class="bf-desc">Cada mes Fractal envía foto y reporte del estado del casco, motor, equipos y mantenimientos realizados. Total transparencia — los co-propietarios siempre saben el estado de su activo sin tener que ir al muelle.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- FRACTAL NÁUTICO CLUB -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Fractal Náutico Club</div>
+      <h2 class="sec-h2">Más allá de la embarcación.<br><em>Una comunidad de agua.</em></h2>
+      <p class="sec-p" style="margin-bottom:40px">Los mejores clubes náuticos del mundo — SailTime en EE.UU., SmartYacht en Europa — construyen comunidades activas alrededor de los botes. Regatas, travesías, eventos sociales. Fractal trae ese espíritu a las aguas colombianas.</p>
+
+      <div class="three-col">
+        <div class="col-card">
+          <div class="col-num" style="font-size:36px">⛵</div>
+          <h4>Travesías anuales — 4 por año</h4>
+          <p>Todos los co-propietarios del portafolio Fractal Náutico navegan juntos. Guatapé al atardecer, travesía a las Islas del Rosario, vuelta a la bahía de Cartagena, navegación nocturna en San Andrés. Con provisiones premium y capitán experto en cada destino.</p>
+        </div>
+        <div class="col-card">
+          <div class="col-num" style="font-size:36px">🏁</div>
+          <h4>Regatas y eventos náuticos</h4>
+          <p>Acceso preferencial a regatas del Club Náutico de Cartagena, eventos del Yacht Club Santa Marta y festivales acuáticos de Guatapé. Los co-propietarios Fractal participan como comunidad reconocida — no como individuos.</p>
+        </div>
+        <div class="col-card">
+          <div class="col-num" style="font-size:36px">🤿</div>
+          <h4>Experiencias acuáticas incluidas</h4>
+          <p>2 veces al año: salida de pesca deportiva con guía experto, o snorkel en los mejores puntos de los destinos. Incluido en la membresía. Equipos a bordo. Para los co-propietarios que quieran más que solo navegar.</p>
+        </div>
+        <div class="col-card">
+          <div class="col-num" style="font-size:36px">🎓</div>
+          <h4>Curso de navegación básica incluido</h4>
+          <p>Inspirado en SailTime — que tiene la red de escuelas náuticas más grande del mundo. Fractal ofrece a cada co-propietario nuevo un curso básico de navegación a motor con capitán certificado DIMAR. Aprende a manejar tu embarcación si quieres.</p>
+        </div>
+        <div class="col-card">
+          <div class="col-num" style="font-size:36px">🌐</div>
+          <h4>Acceso cruzado entre destinos</h4>
+          <p>Inspirado en SailTime PLUS. Si eres co-propietario en Guatapé y quieres navegar en Cartagena, puedes acceder a la embarcación Fractal en ese destino vía sistema de puntos — sujeto a disponibilidad. Una sola membresía, múltiples aguas.</p>
+        </div>
+        <div class="col-card">
+          <div class="col-num" style="font-size:36px">🔁</div>
+          <h4>Renovación del casco cada 4 años</h4>
+          <p>Inspirado en las mejores prácticas de SeaNet y Monocle Yachts. Cada embarcación sale del portafolio antes de que la depreciación y los costos de mantenimiento mayor sean severos. Los co-propietarios deciden: vender y repartir, o reinvertir en el modelo siguiente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- TIPOS DE EMBARCACIÓN -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Tipos de embarcación</div>
+      <h2 class="sec-h2">Tres categorías.<br>Tres experiencias distintas.</h2>
+      <div class="three-col">
+        <div class="col-card">
+          <div class="col-num">01</div>
+          <h4>Lancha familiar</h4>
+          <p>25–32 pies. Perfecta para embalses y lagos. Guatapé, Tominé, Calima, Betania. Capacidad 10–12 personas. Motor fuera de borda o inboard. Ideal para fines de semana en familia.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:4px">Entrada 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$120M–$180M</div>
+            <div style="font-size:11px;color:var(--stone);margin-top:4px">Cuota mensual 1/8: ~$2.500.000</div>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-num">02</div>
+          <h4>Velero o catamarán</h4>
+          <p>38–48 pies. Cartagena, San Andrés, Islas del Rosario. Navegación a vela o motor. Cabinas privadas, cocina, baño. Para los que quieren el mar de verdad — días y noches a bordo.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:4px">Entrada 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$250M–$400M</div>
+            <div style="font-size:11px;color:var(--stone);margin-top:4px">Cuota mensual 1/8: ~$4.500.000</div>
+          </div>
+        </div>
+        <div class="col-card">
+          <div class="col-num">03</div>
+          <h4>Yate de lujo</h4>
+          <p>50+ pies. Caribe colombiano y panameño. Cabinas privadas, cocina completa, flybridge, jacuzzi. Para los co-propietarios que quieren la experiencia náutica más completa e íntima del portafolio Fractal.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(122,116,104,.1)">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:4px">Entrada 1/8 desde</div>
+            <div style="font-family:var(--serif);font-size:24px;color:var(--gold);font-weight:300">$500M–$900M</div>
+            <div style="font-size:11px;color:var(--stone);margin-top:4px">Cuota mensual 1/8: ~$9.000.000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- PROCESO DE INGRESO -->
+  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Proceso de ingreso</div>
+      <h2 class="sec-h2">Cómo te conviertes<br>en co-propietario náutico.</h2>
+      <div class="legal-steps">
+        <div class="ls-item">
+          <div class="ls-num">01</div>
+          <div class="ls-title">Registro y preferencia</div>
+          <div class="ls-desc">Indicas destino preferido (Guatapé, Cartagena, San Andrés), tipo de embarcación y días típicos de uso. Fractal evalúa disponibilidad y te conecta con co-propietarios afines.</div>
+          <div class="ls-arrow">→</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">02</div>
+          <div class="ls-title">Visita de familiarización</div>
+          <div class="ls-desc">Antes de comprar, una salida de prueba en la embarcación con el capitán asignado. Conoces el bote, el capitán y el destino. Solo así sabes si es tu embarcación. Igual que Monocle Yachts con su "trial cruise".</div>
+          <div class="ls-arrow">→</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">03</div>
+          <div class="ls-title">Firma y estructura legal</div>
+          <div class="ls-desc">Contrato de co-propiedad en SAS. Cada co-propietario es accionista. Derechos y obligaciones claros — calendario de uso, mantenimiento, fondo de contingencias, cláusulas de salida.</div>
+          <div class="ls-arrow">→</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-num">04</div>
+          <div class="ls-title">Primera salida — bienvenida náutica</div>
+          <div class="ls-desc">El día de tu primera salida como co-propietario: embarcación decorada, champagne a bordo, todos los co-propietarios presentes. Zarpe de bienvenida al atardecer. No es una transacción — es el inicio de una comunidad.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
+
+  <!-- DESTINOS -->
+  <div class="sec" style="padding-top:56px;padding-bottom:56px">
+    <div class="sec-inner">
+      <div class="sec-tag">Destinos náuticos Fractal</div>
+      <h2 class="sec-h2">Las mejores aguas<br>de Colombia.</h2>
+      <div class="dest-grid">
+        <div class="dest-item"><div class="dest-name">Guatapé</div><div class="dest-sub">Embalse · Lancha familiar · Fines de semana</div></div>
+        <div class="dest-item"><div class="dest-name">Cartagena</div><div class="dest-sub">Caribe · Velero · Islas del Rosario</div></div>
+        <div class="dest-item"><div class="dest-name">San Andrés</div><div class="dest-sub">Mar de 7 colores · Buceo · Catamarán</div></div>
+        <div class="dest-item"><div class="dest-name">Tominé</div><div class="dest-sub">Embalse · Sabana · Familia</div></div>
+        <div class="dest-item"><div class="dest-name">Calima</div><div class="dest-sub">Valle del Cauca · Vela · Deportivo</div></div>
+        <div class="dest-item"><div class="dest-name">Santa Marta</div><div class="dest-sub">Bahía · Tayrona · Velero</div></div>
+        <div class="dest-item"><div class="dest-name">Islas del Rosario</div><div class="dest-sub">Coral · Snorkel · Caribe</div></div>
+        <div class="dest-item"><div class="dest-name">Betania</div><div class="dest-sub">Embalse · Huila · Pesca deportiva</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sec" style="padding-top:0;padding-bottom:72px">
+    <div class="sec-inner">
+      <div class="vert-cta">
+        <div>
+          <div class="vc-title">¿En qué agua empieza<br>tu experiencia náutica?</div>
+          <div class="vc-sub">Fractal Náutico está en desarrollo. Regístrate con tu destino, tipo de embarcación y presupuesto — los co-propietarios fundadores participan en la selección de la embarcación y tienen acceso prioritario al calendario.</div>
+        </div>
+        <a href="index.html#contacto" class="vc-btn">Ser co-propietario fundador →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- /FRACTAL NÁUTICO -->
+</div>
+<script>
+
+function setPyp(btn) {
+  document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  var dia = btn.dataset.dia;
+  var d   = PYP[dia];
+  if (!d) return;
+  var pl = document.getElementById('pyp-placas');
+  var ho = document.getElementById('pyp-horario');
+  if (pl) pl.textContent = d.placas;
+  if (ho) ho.innerHTML  = '📍 ' + d.med + '<br>📍 ' + d.bog;
+}
+
+// Init
+(function(){ var first = document.querySelector('.pyp-btn.active'); if (first) setPyp(first); })();
+
+
+// ── CALCULADORA UNIVERSAL VEHÍCULOS ─────────────────────────────────────────
+var _cvSocios = 8;
+var _cvPrecio = 0;
+var _cvHorizonte = 3;
+var _cvDep = 0.10;
+
+function setCvPreset(btn) {
+  var v = parseInt(btn.dataset.v);
+  var inp = document.getElementById('cv-precio');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.cv-preset').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  _cvPrecio = v;
+  calcVehiculo();
+}
+
+function setCvSocios(btn) {
+  _cvSocios = parseInt(btn.dataset.s);
+  document.querySelectorAll('.cv-socios').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcVehiculo();
+}
+
+function onCvPrecio(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g, '')) || 0;
+  _cvPrecio = raw;
+  document.querySelectorAll('.cv-preset').forEach(function(b){
+    b.classList.toggle('active', parseInt(b.dataset.v) === raw);
+  });
+  calcVehiculo();
+}
+
+function formatCvPrecio(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g, '')) || 0;
+  if (raw > 0) el.value = raw.toLocaleString('es-CO');
+}
+
+function calcVehiculo() {
+  var precio  = _cvPrecio;
+  var nSocios = _cvSocios;
+  var nombreEl = document.getElementById('cv-nombre');
+  var nombre   = (nombreEl && nombreEl.value.trim()) ? nombreEl.value.trim() : 'Tu vehículo';
+
+  var emptyEl  = document.getElementById('cv-empty');
+  var resultEl = document.getElementById('cv-result');
+  if (!precio || precio < 10000000) {
+    if (emptyEl)  emptyEl.style.display  = 'block';
+    if (resultEl) resultEl.style.display = 'none';
+    return;
+  }
+  if (emptyEl)  emptyEl.style.display  = 'none';
+  if (resultEl) resultEl.style.display = 'block';
+
+  function cop(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
+  function s(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  // ── CAPITAL (no es gasto) ──────────────────────────────────────────────────
+  var entrada  = precio / nSocios;
+
+  // ── COSTOS OPERATIVOS ANUALES (÷ socios) — sí se pierden ──────────────────
+  // CONCEPTO 2: COSTOS OPERATIVOS ANUALES
+  var seguro   = precio * 0.025;           // 2.5% anual sobre activo
+  var parqueo  =  200000 * 12;             // solo V-D: 8 noches/mes × $25k
+  var lavada   = 1500000 * 12;             // diaria $50k × 30 días/mes
+  var chofer   = 2500000 * 12;             // part-time fines de semana + entregas
+  var uber     =  550000 * 12;             // uber nocturno reposicionamiento
+  var combus   =  600000 * 12;
+  var soat     =  350000 * 12;
+  var manto    = Math.max(7200000, precio * 0.020);   // 2.0% anual
+  var conting  = Math.max(3600000, precio * 0.008);
+  var fee      =  400000 * 12;
+
+  var opTotalAño = seguro + parqueo + lavada + chofer + uber + combus + soat + manto + conting + fee;
+  var opSocioAño = opTotalAño / nSocios;
+  var opSocioMes = opSocioAño / 12;
+
+  // ── DEPRECIACIÓN — pérdida real de capital ─────────────────────────────────
+  var horizonte    = _cvHorizonte;
+  var depPct       = _cvDep;
+  var valorResid   = precio * Math.pow(1 - depPct, horizonte);
+  var deprecTotal  = precio - valorResid;
+  var deprecSocio  = deprecTotal / nSocios;
+  var deprecAño    = deprecSocio / horizonte;
+  var recuperas    = valorResid / nSocios;
+
+  // ── COSTO REAL = operativos + depreciación ─────────────────────────────────
+  var costoRealAño = opSocioAño + deprecAño;
+  var diasAño      = Math.round(365 / nSocios);
+  var costoDia     = costoRealAño / diasAño;
+
+  // Update UI
+  var nd = document.getElementById('cv-nombre-display');
+  if (nd) nd.textContent = nombre + ' — ' + nSocios + ' co-propietario(s)';
+
+  s('cv-entrada',    cop(entrada));
+  s('cv-cuota',      cop(opSocioMes) + '/mes');
+  s('cv-dep',        cop(deprecAño / 12) + '/mes');
+  s('cv-dia',        cop(costoDia) + '/día');
+  s('cv-total',      cop(opSocioMes) + '/mes operativos + ' + cop(deprecAño/12) + '/mes deprec. = ' + cop(opSocioMes + deprecAño/12) + '/mes total real');
+  s('cv-recuperas',  '✓ Recuperas ' + cop(recuperas) + ' de los ' + cop(entrada) + ' que invertiste (año ' + horizonte + '). Pérdida neta capital: ' + cop(entrada - recuperas));
+
+  // Costo auto propio
+  var opPropioAño  = opTotalAño;  // mismo carro, solo tú
+  var deprecPropioAño = deprecTotal / horizonte;
+  var diaPropio    = (opPropioAño + deprecPropioAño) / 20; // ~20 días uso/año
+  s('cv-dia-propio',  cop(diaPropio) + '/día');
+  s('cv-dia-fractal', cop(costoDia) + '/día');
+
+  var ahorro = diaPropio - costoDia;
+  var ab = document.getElementById('cv-ahorro-box');
+  if (ab) ab.innerHTML =
+    '✓ Con Fractal el costo real por día de uso es <strong style="color:var(--gold)">' + cop(costoDia) + '</strong> (operativos + depreciación ÷ días de uso).<br>' +
+    'Tener el mismo carro solo costaría <strong>' + cop(diaPropio) + '/día</strong> porque lo usarías ~20 días/año vs ' + diasAño + ' días con Fractal.';
+
+  // Desglose
+  var dsg = document.getElementById('cv-desglose');
+  if (dsg) {
+    var rows = [
+      ['Seguro todo riesgo (2.5% anual)', seguro / nSocios],
+      ['Chofer de planta + prestaciones', chofer / nSocios],
+      ['Parqueadero cubierto premium',    parqueo / nSocios],
+      ['Lavada premium 2×/semana',        lavada / nSocios],
+      ['Uber logístico entrega/recogida', uber / nSocios],
+      ['Mantenimiento oficial',           manto / nSocios],
+      ['Combustible operativo',           combus / nSocios],
+      ['SOAT + rodamiento',               soat / nSocios],
+      ['Fondo contingencias',             conting / nSocios],
+      ['Fee operativo Fractal',           fee / nSocios],
+    ];
+    dsg.innerHTML =
+      '<div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(184,147,90,.6);margin-bottom:8px">COSTOS OPERATIVOS ANUALES (sí se pierden)</div>' +
+      rows.map(function(r){
+        return '<div class="cv-row"><span>' + r[0] + '</span><span>' + cop(r[1]) + '/año</span></div>';
+      }).join('') +
+      '<div class="cv-row" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(184,147,90,.15)"><span style="color:rgba(184,147,90,.7)">Depreciación ' + horizonte + ' años (' + (depPct*100).toFixed(0) + '% anual) tu parte</span><span style="color:var(--gold)">' + cop(deprecAño) + '/año</span></div>' +
+      '<div class="cv-row" style="margin-top:8px"><span style="color:rgba(120,200,120,.7)">Recuperas al vender año ' + horizonte + '</span><span style="color:rgba(120,200,120,.8)">' + cop(recuperas) + '</span></div>';
+  }
+}
+
+(function(){
+  var inp = document.getElementById('cv-precio');
+  if (inp) { inp.value = (148000000).toLocaleString('es-CO'); _cvPrecio = 148000000; }
+  document.querySelectorAll('.cv-preset').forEach(function(b){
+    if (b.dataset.v === '148000000') b.classList.add('active');
+  });
+  calcVehiculo();
+})();
+
+// ── PICO Y PLACA  ────────────────────────────────────────────────────────────
+var PYP = {
+  lunes:      { placas: '1 · 2', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  martes:     { placas: '3 · 4', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  miercoles:  { placas: '5 · 6', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  jueves:     { placas: '7 · 8', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+  viernes:    { placas: '9 · 0', med: 'Medellín: 7:00–8:30am y 5:30–7:00pm', bog: 'Bogotá: 6:00–9:00am y 3:00–7:00pm' },
+};
+
+function setPyp(btn) {
+  document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  var dia = btn.dataset.dia;
+  var d   = PYP[dia];
+  if (!d) return;
+  var pl = document.getElementById('pyp-placas');
+  var ho = document.getElementById('pyp-horario');
+  if (pl) pl.textContent = d.placas;
+  if (ho) ho.innerHTML  = '📍 ' + d.med + '<br>📍 ' + d.bog;
+}
+
+// Init
+(function(){ var first = document.querySelector('.pyp-btn.active'); if (first) setPyp(first); })();
+
+
+function showVert(id) {
+  document.querySelectorAll('.vert-content').forEach(function(p){
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  var panel = document.getElementById('panel-' + id);
+  if (panel) { panel.classList.add('active'); panel.style.display = 'block'; }
+  document.querySelectorAll('.vert-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.vert-tab').forEach(function(t){
+    if (t.onclick && t.onclick.toString().indexOf("'" + id + "'") > -1) t.classList.add('active');
+  });
+  document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t){
+    if (t.onclick && t.onclick.toString().indexOf("'" + id + "'") > -1) t.classList.add('active');
+  });
+  window.scrollTo({top: 0, behavior:'smooth'});
+}
+
+// Open from URL hash — wait for DOM
+window.addEventListener('load', function() {
+  var hash = window.location.hash.replace('#','');
+  if (hash === 'nautico' || hash === 'cars' || hash === 'invest' || hash === 'pyp') {
+    showVert(hash);
+  } else {
+    showVert('invest');
+  }
+});
+// ── PICO Y PLACA CALCULADORA ────────────────────────────────────────────────
+function setPypPre(btn) {
+  var v = parseInt(btn.dataset.v);
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.pyp-pre').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcPyp();
+}
+
+function fmtPyp(el) {
+  var raw = parseInt(el.value.replace(/[^0-9]/g,'')) || 0;
+  if (raw > 0) el.value = raw.toLocaleString('es-CO');
+}
+
+function calcPyp() {
+  var inp    = document.getElementById('pyp-precio-inp');
+  var precio = inp ? (parseInt(inp.value.replace(/[^0-9]/g,'')) || 0) : 0;
+  var nomb   = (document.getElementById('pyp-nombre-inp') || {}).value || '';
+  var cop    = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
+  function s(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  // Update static table (variable part) — costos reales P&P
+  var seguro  = precio * 0.025 / 12;
+  var manto   = Math.max(600000, precio * 0.020 / 12);
+  var conting = Math.max(300000, precio * 0.008 / 12);
+  // fixed: chofer full-time + uber + parqueo solo V-D + lavada diaria + combustible + soat + fee
+  var fixed   = 4200000 + 550000 + 200000 + 1500000 + 600000 + 350000 + 400000;
+  var totalMes= seguro + manto + conting + fixed;
+  s('pyp-seguro',  cop(seguro));
+  s('pyp-manto',   cop(manto));
+  s('pyp-conting', cop(conting));
+  s('pyp-total-mes', cop(totalMes));
+
+  var n = 5;
+  var entrada  = precio / n;
+  var cuota    = totalMes / n;
+  var dep      = (precio * 0.10 / 12) / n;
+  var recuperas= precio * Math.pow(0.90,3) / n;
+  var realMes  = cuota + dep;
+  var realDia  = realMes / 4;
+  s('pyp-entrada',       cop(entrada));
+  s('pyp-recuperas',     cop(recuperas));
+  s('pyp-cuota',         cop(cuota) + '/mes');
+  s('pyp-dep',           cop(dep) + '/mes');
+  s('pyp-costo-real-mes',cop(realMes) + '/mes');
+  s('pyp-costo-dia',     cop(realDia) + '/día');
+
+  // Calculator result
+  var res = document.getElementById('pyp-calc-result');
+  if (!precio || precio < 10000000) { if(res) res.style.display='none'; return; }
+  if (res) res.style.display = 'block';
+  s('pyp-r-entrada', cop(entrada));
+  s('pyp-r-cuota',   cop(cuota) + '/mes');
+  s('pyp-r-dep',     cop(dep) + '/mes');
+  s('pyp-r-dia',     cop(realDia) + '/día');
+  var rt = document.getElementById('pyp-result-title');
+  if (rt) rt.textContent = (nomb || 'Tu vehículo') + ' — 5 socios P&P';
+  var rn = document.getElementById('pyp-r-nota');
+  if (rn) rn.innerHTML = 'Capital entrada: ' + cop(entrada) + ' · Recuperas año 3: <strong style="color:rgba(120,200,120,.8)">' + cop(recuperas) + '</strong> · Pérdida real capital 3 años: ' + cop(entrada - recuperas);
+}
+
+(function(){
+  var d = document.querySelector('.pyp-pre[data-v="250000000"]');
+  if (d) { d.classList.add('active'); }
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = (250000000).toLocaleString('es-CO');
+  calcPyp();
+  var first = document.querySelector('.pyp-btn.active');
+  if (first) setPyp(first);
+})();
+
+
+// Init page-specific calculators
+(function(){
+  var d = document.querySelector('.pyp-pre[data-v="250000000"]');
+  if (d) { d.classList.add('active'); }
+  var inp = document.getElementById('pyp-precio-inp');
+  if (inp) inp.value = (250000000).toLocaleString('es-CO');
+  if(typeof calcPyp === 'function') calcPyp();
+  if(typeof calcVehiculo === 'function') calcVehiculo();
+  var first = document.querySelector('.pyp-btn.active');
+  if (first && typeof setPyp === 'function') setPyp(first);
+})();
+</script>
+</body>
+</html>
