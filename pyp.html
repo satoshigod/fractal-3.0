@@ -170,12 +170,26 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 .pyp-btn{font-size:11px;padding:8px 16px}
 .pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
 
-.pyp-nsoc{background:#09090a;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:12px;padding:10px 22px;letter-spacing:.06em;transition:all .15s;outline:none;-webkit-appearance:none}
-.pyp-nsoc:hover,.pyp-nsoc.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
+.pyp-mod-btn{background:#09090a;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:10px 24px;letter-spacing:.06em;transition:all .15s;outline:none;-webkit-appearance:none;white-space:nowrap}
+.pyp-mod-btn:hover,.pyp-mod-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
+.pyp-n-btn{background:#09090a;border:1px solid rgba(122,116,104,.18);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:8px 18px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-n-btn:hover,.pyp-n-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .pyp-asig-card{background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:14px 16px}
+.mod-panel{display:none}
+.mod-panel.active{display:block}
+.r-box{background:#09090a;padding:20px 22px}
+.r-box.gold-border{background:#111009;border:1px solid rgba(184,147,90,.18)}
+.r-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px}
+.r-val{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream)}
+.r-val.gold{color:var(--gold)}
+.r-sub{font-size:10px;color:var(--stone);margin-top:5px}
+.r-sub.green{color:rgba(120,200,120,.65)}
+.desglose-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(122,116,104,.07);font-size:11px}
+.desglose-row:last-child{border-bottom:none}
+.desglose-lbl{color:rgba(122,116,104,.6)}
+.desglose-val{color:var(--cream)}
+.desglose-val.zero{color:rgba(120,200,120,.6)}
 
-.pyp-mod{background:#09090a;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:10px 20px;letter-spacing:.06em;transition:all .15s;outline:none;-webkit-appearance:none}
-.pyp-mod:hover,.pyp-mod.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
 </style>
 </head>
 <body style="background:#09090a">
@@ -190,14 +204,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   </div>
 </nav>
 
-<div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:14px 56px;display:flex;align-items:center;gap:16px">
-  <span style="font-size:18px;opacity:.4">⇄</span>
-  <div style="font-size:11px;color:rgba(122,116,104,.45);line-height:1.6">
-    <strong style="color:var(--stone)">Fractal Exchange no aplica a P&P</strong> — los días están fijos por placa y no son cedibles. Exchange aplica en 
-    <a href="homes.html" style="color:rgba(184,147,90,.6);text-decoration:none">Homes</a>, 
-    <a href="nautico.html" style="color:rgba(184,147,90,.6);text-decoration:none">Náutico</a> y 
-    <a href="cars.html" style="color:rgba(184,147,90,.6);text-decoration:none">Premium Cars</a>.
-  </div>
+<div style="background:#0a0a08;border-bottom:1px solid rgba(122,116,104,.1);padding:12px 56px;display:flex;align-items:center;gap:14px">
+  <span style="font-size:16px;opacity:.35">⇄</span>
+  <span style="font-size:11px;color:rgba(122,116,104,.45)">Fractal Exchange no aplica — los días son fijos por placa. Exchange disponible en 
+    <a href="homes.html" style="color:rgba(184,147,90,.55);text-decoration:none">Homes</a>, 
+    <a href="nautico.html" style="color:rgba(184,147,90,.55);text-decoration:none">Náutico</a> y 
+    <a href="cars.html" style="color:rgba(184,147,90,.55);text-decoration:none">Cars</a>.
+  </span>
 </div>
 
 
@@ -259,300 +272,137 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
-  <!-- COSTOS REALES P&P -->
-  <div class="sec" style="padding-top:56px;padding-bottom:56px">
-    <div class="sec-inner">
-      <div class="sec-tag">Costos reales — modelo P&P</div>
-      <h2 class="sec-h2">Lo que pagas y lo que pierdes<br>son cosas distintas.</h2>
-      <p class="sec-p" style="margin-bottom:32px">El capital que pones al entrar <strong style="color:var(--cream)">no es un gasto</strong> — es tu parte del activo y lo recuperas al vender en año 3. Lo que sí se pierde son los costos operativos y la depreciación. Eso es tu costo real mensual.</p>
+  
+<!-- 3 MODELOS CENTRALES -->
+<div class="sec" style="background:#09090a;padding-top:0;padding-bottom:0">
+  <div style="max-width:1200px;margin:0 auto;padding:56px 56px 0">
 
-      <div class="two-col" style="margin-bottom:32px">
-        <div>
-          <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Costos operativos mensuales — activo completo</div>
-          <div class="row-table">
-            <div class="rt-row"><span class="rt-label">Seguro todo riesgo (2.5% del activo ÷ 12)</span><span class="rt-val" id="pyp-seguro">—</span></div>
-            <div class="rt-row"><span class="rt-label">Chofer de planta L-V + prestaciones</span><span class="rt-val gold">$4.200.000</span></div>
-            <div class="rt-row"><span class="rt-label">Uber nocturno reposicionamiento (22 noches)</span><span class="rt-val gold">$550.000</span></div>
-            <div class="rt-row"><span class="rt-label">Parqueadero (solo V-D, 8 noches × $25k)</span><span class="rt-val gold">$200.000</span></div>
-            <div class="rt-row"><span class="rt-label">Lavada diaria ($50.000 × 30 días)</span><span class="rt-val gold">$1.500.000</span></div>
-            <div class="rt-row"><span class="rt-label">Mantenimiento oficial (2.4% anual ÷ 12)</span><span class="rt-val" id="pyp-manto">—</span></div>
-            <div class="rt-row"><span class="rt-label">Combustible operativo</span><span class="rt-val gold">$800.000</span></div>
-            <div class="rt-row"><span class="rt-label">SOAT + rodamiento prorrateo</span><span class="rt-val gold">$350.000</span></div>
-            <div class="rt-row"><span class="rt-label">Fondo contingencias (1% anual ÷ 12)</span><span class="rt-val" id="pyp-conting">—</span></div>
-            <div class="rt-row"><span class="rt-label">Fee operativo Fractal</span><span class="rt-val gold">$500.000</span></div>
-            <div class="rt-row total"><span class="rt-label">Total mensual activo completo</span><span class="rt-val gold" id="pyp-total-mes">—</span></div>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Por socio (÷5) — lo que realmente pagas y pierdes</div>
-          <div class="row-table">
-            <div class="rt-row" style="background:rgba(120,200,120,.04)"><span class="rt-label" style="color:rgba(120,200,120,.8)">① CAPITAL entrada 1/5 (no es gasto)</span><span class="rt-val" style="color:rgba(120,200,120,.8)" id="pyp-entrada">—</span></div>
-            <div class="rt-row"><span class="rt-label" style="font-size:11px;color:rgba(122,116,104,.5)">→ Recuperas al vender año 3</span><span class="rt-val" style="color:rgba(120,200,120,.7);font-size:12px" id="pyp-recuperas">—</span></div>
-            <div class="rt-row" style="margin-top:6px"><span class="rt-label" style="color:var(--cream)">② COSTOS OPERATIVOS mensuales (÷5)</span><span class="rt-val gold" id="pyp-cuota">—</span></div>
-            <div class="rt-row" style="margin-top:4px"><span class="rt-label" style="color:var(--cream)">③ DEPRECIACIÓN mensual tu parte (÷5)</span><span class="rt-val" id="pyp-dep">—</span></div>
-            <div class="rt-row total" style="margin-top:6px"><span class="rt-label">②+③ Lo que realmente pierdes/mes</span><span class="rt-val gold" id="pyp-costo-real-mes">—</span></div>
-            <div class="rt-row"><span class="rt-label">Días de uso al mes (~4 días fijos)</span><span class="rt-val">~4 días</span></div>
-            <div class="rt-row total"><span class="rt-label">COSTO REAL POR DÍA (②+③ ÷ días)</span><span class="rt-val gold" id="pyp-costo-dia">—</span></div>
-          </div>
-          <div style="margin-top:16px;padding:14px 16px;background:#0a0a08;border:1px solid rgba(184,147,90,.12)">
-            <div style="font-size:11px;color:var(--stone);margin-bottom:6px">Comparativo de mercado</div>
-            <div style="font-size:12px;color:rgba(245,240,232,.6)">Uber ejecuti
-<!-- 3 MODELOS P&P -->
-<div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:0">
-  <div class="sec-inner">
-    <div class="sec-tag">Tres modelos según dónde vives</div>
-    <h2 class="sec-h2">El costo cambia radicalmente<br>según la distancia entre socios.</h2>
-    <p class="sec-p" style="max-width:640px;margin-bottom:40px">No necesitas conductor si tu vecino puede caminar a recoger el carro. La geografía define la logística — y la logística define el costo.</p>
+    <div class="sec-tag">Tres modelos — una sola lógica</div>
+    <h2 class="sec-h2" style="margin-bottom:12px">El costo lo define la distancia<br>entre socios.</h2>
+    <p class="sec-p" style="max-width:600px;margin-bottom:32px">
+      El modelo con conductor es el más flexible — sirve para cualquier ciudad dispersa.
+      Sin conductor, el costo se reduce radicalmente. Cuanto más cerca estén los socios, menos coordinación necesitan y menos pagan.
+    </p>
 
-    <!-- MODELO SELECTOR -->
-    <div style="display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-      <button class="pyp-mod active" data-m="a" onclick="setModelo(this)">A · Ciudad dispersa</button>
-      <button class="pyp-mod" data-m="b" onclick="setModelo(this)">B · Barrio plano</button>
-      <button class="pyp-mod" data-m="c" onclick="setModelo(this)">C · Edificios colindantes</button>
+    <!-- SELECTOR MODELO -->
+    <div style="display:flex;gap:0;margin-bottom:0;border:1px solid rgba(122,116,104,.2)">
+      <button class="pyp-mod-btn active" data-mod="A" onclick="selMod(this)" style="flex:1;border:none;border-right:1px solid rgba(122,116,104,.2)">
+        A · Con conductor<br><span style="font-size:10px;opacity:.6">ciudad dispersa</span>
+      </button>
+      <button class="pyp-mod-btn" data-mod="B" onclick="selMod(this)" style="flex:1;border:none;border-right:1px solid rgba(122,116,104,.2)">
+        B · Sin conductor<br><span style="font-size:10px;opacity:.6">barrio plano · &lt;10 min caminando</span>
+      </button>
+      <button class="pyp-mod-btn" data-mod="C" onclick="selMod(this)" style="flex:1;border:none">
+        C · Edificios colindantes<br><span style="font-size:10px;opacity:.6">máxima eficiencia</span>
+      </button>
     </div>
 
-    <!-- MODELO CONTENT -->
-    <div id="mod-content">
+    <!-- DESCRIPCIÓN DEL MODELO ACTIVO -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(122,116,104,.08);border:1px solid rgba(122,116,104,.15);border-top:none;margin-bottom:32px">
+      <div id="desc-A" style="padding:16px 20px;border-right:1px solid rgba(122,116,104,.1)">
+        <div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:4px">Mínimo viable</div>
+        <div style="font-size:12px;color:var(--cream)">4 carros en flota</div>
+        <div style="font-size:10px;color:var(--stone);margin-top:2px">Para diluir nómina del conductor</div>
+      </div>
+      <div style="padding:16px 20px;border-right:1px solid rgba(122,116,104,.1)">
+        <div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:4px">Logística nocturna</div>
+        <div id="logistica-val" style="font-size:12px;color:var(--cream)">Conductor en nómina</div>
+        <div id="logistica-sub" style="font-size:10px;color:var(--stone);margin-top:2px">ruta en cadena 9pm–1am</div>
+      </div>
+      <div style="padding:16px 20px">
+        <div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:4px">Distancia entre socios</div>
+        <div id="dist-val" style="font-size:12px;color:var(--cream)">Cualquier zona de la ciudad</div>
+        <div id="dist-sub" style="font-size:10px;color:var(--stone);margin-top:2px">Envigado, Bello, Sabaneta…</div>
+      </div>
+    </div>
 
-      <!-- MODELO A -->
-      <div id="mod-a" class="mod-panel" style="display:block">
-        <div style="display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-bottom:24px">
-          <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:24px">
-            <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px">Modelo A</div>
-            <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:8px">Ciudad dispersa</div>
-            <div style="font-size:12px;color:var(--stone);line-height:1.7;margin-bottom:16px">Socios en zonas alejadas entre sí. Envigado, Bello, Sabaneta, Itagüí, distintos sectores de Medellín.</div>
-            <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Distancia entre socios</div>
-            <div style="font-size:13px;color:var(--cream);margin-bottom:16px">+15 min en carro</div>
-            <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Logística nocturna</div>
-            <div style="font-size:13px;color:var(--cream)">Conductor en nómina<br>(compartido entre 4 carros flota)</div>
-          </div>
-          <div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.12);margin-bottom:16px">
-              <div style="background:#09090a;padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Entrada 1/5</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--cream)">$29.980.000</div>
-                <div style="font-size:10px;color:rgba(120,200,120,.6);margin-top:4px">Recuperas $23.3M año 3</div>
-              </div>
-              <div style="background:#09090a;padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Cuota mensual</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--gold)">$801.517</div>
-                <div style="font-size:10px;color:var(--stone);margin-top:4px">52 días/año con 5 socios</div>
-              </div>
-              <div style="background:#111009;border:1px solid rgba(184,147,90,.15);padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(184,147,90,.4);margin-bottom:8px">Costo real/día</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--gold)">$231.089</div>
-                <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:4px">vs alquiler $150k–$300k</div>
-              </div>
-            </div>
-            <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:14px 18px;margin-bottom:12px">
-              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Desglose cuota mensual (activo completo ÷ 5)</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px 24px;font-size:11px">
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Conductor nómina ÷ 4</span><span style="color:var(--cream)">$197.200</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Seguro (2.2%/año)</span><span style="color:var(--cream)">$54.963</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Lavada (20 días × $50k)</span><span style="color:var(--cream)">$173.400</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Impuesto HEV (2.8%)</span><span style="color:var(--cream)">$69.953</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Parqueadero cubierto</span><span style="color:var(--cream)">$40.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Combustible + manto</span><span style="color:var(--cream)">$116.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">SOAT + contingencias</span><span style="color:var(--cream)">$90.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:rgba(122,116,104,.6)">Fee Fractal</span><span style="color:var(--cream)">$60.000</span></div>
-              </div>
-            </div>
-            <div style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.65;padding:10px 14px;border-left:2px solid rgba(184,147,90,.2)">
-              El conductor hace ruta en cadena (9pm–1am) entre los 4 carros de la flota. Viaja en Uber entre entregas — ~2 horas de trabajo nocturno. La nómina se divide entre 4 vehículos, haciendo el costo por carro viable.
-            </div>
+    <!-- SELECTOR SOCIOS -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap">
+      <span style="font-size:11px;color:rgba(122,116,104,.5);letter-spacing:.08em;text-transform:uppercase">Socios:</span>
+      <button class="pyp-n-btn active" data-n="5" onclick="selN(this)">5 socios</button>
+      <button class="pyp-n-btn" data-n="4" onclick="selN(this)">4 socios</button>
+      <button class="pyp-n-btn" data-n="3" onclick="selN(this)">3 socios</button>
+      <button class="pyp-n-btn" data-n="2" onclick="selN(this)">2 socios</button>
+      <span id="pyp-dias-badge" style="font-size:11px;color:var(--gold);margin-left:8px"></span>
+    </div>
+
+    <!-- ASIGNACIÓN -->
+    <div style="margin-bottom:28px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(122,116,104,.1)">Distribución de días por socio</div>
+      <div id="pyp-asig-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:8px;margin-bottom:10px"></div>
+      <div id="pyp-asig-nota" style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.65;padding:10px 14px;background:#0a0a08;border-left:2px solid rgba(184,147,90,.2)"></div>
+    </div>
+
+    <!-- RESULTADOS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.12);margin-bottom:16px">
+      <div class="r-box">
+        <div class="r-label">① Capital entrada</div>
+        <div id="pyp-r-entrada" class="r-val"></div>
+        <div id="pyp-r-recupera" class="r-sub green"></div>
+      </div>
+      <div class="r-box">
+        <div class="r-label">② Cuota operativa/mes</div>
+        <div id="pyp-r-cuota" class="r-val gold"></div>
+        <div id="pyp-r-dias" class="r-sub"></div>
+      </div>
+      <div class="r-box">
+        <div class="r-label">③ Depreciación/mes</div>
+        <div id="pyp-r-dep" class="r-val" style="font-size:20px"></div>
+        <div id="pyp-r-total-mes" class="r-sub"></div>
+      </div>
+      <div class="r-box gold-border">
+        <div class="r-label" style="color:rgba(184,147,90,.5)">Costo real por día</div>
+        <div id="pyp-r-cdia" class="r-val gold"></div>
+        <div class="r-sub" style="color:rgba(122,116,104,.4)">②+③ ÷ días/año</div>
+      </div>
+    </div>
+
+    <!-- DESGLOSE -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:16px 18px">
+        <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Cuota mensual desglosada (÷ socios)</div>
+        <div id="pyp-desglose"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div id="pyp-nota-cond" style="font-size:11px;color:rgba(122,116,104,.45);line-height:1.7;padding:14px 16px;border-left:2px solid rgba(184,147,90,.25);background:#0a0a08;flex:1"></div>
+        <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:14px 16px">
+          <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Referencias de mercado</div>
+          <div style="font-size:11px;color:var(--stone);line-height:1.9">
+            Uber día completo (8-10 viajes) <span style="float:right;color:rgba(200,80,80,.7)">$80k–$150k</span><br>
+            Alquiler carro/día (Hertz) <span style="float:right;color:rgba(200,80,80,.7)">$150k–$300k</span><br>
+            Conductor particular <span style="float:right;color:rgba(200,80,80,.7)">$150k–$250k</span>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- MODELO B -->
-      <div id="mod-b" class="mod-panel" style="display:none">
-        <div style="display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-bottom:24px">
-          <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:24px">
-            <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px">Modelo B</div>
-            <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:8px">Barrio plano</div>
-            <div style="font-size:12px;color:var(--stone);line-height:1.7;margin-bottom:16px">Socios en el mismo barrio, terreno plano, a máximo 10 minutos caminando. Laureles, Ciudad del Río, Manila, Suramericana.</div>
-            <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Distancia entre socios</div>
-            <div style="font-size:13px;color:var(--cream);margin-bottom:16px">&lt;10 min caminando en plano</div>
-            <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Logística nocturna</div>
-            <div style="font-size:13px;color:rgba(120,200,120,.7)">Sin conductor — el próximo<br>socio camina a recogerlo</div>
-          </div>
-          <div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.12);margin-bottom:16px">
-              <div style="background:#09090a;padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Entrada 1/5</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--cream)">$29.980.000</div>
-                <div style="font-size:10px;color:rgba(120,200,120,.6);margin-top:4px">Recuperas $23.3M año 3</div>
-              </div>
-              <div style="background:#09090a;padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Cuota mensual</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--gold)">$400.917</div>
-                <div style="font-size:10px;color:var(--stone);margin-top:4px">52 días/año con 5 socios</div>
-              </div>
-              <div style="background:#111009;border:1px solid rgba(184,147,90,.15);padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(184,147,90,.4);margin-bottom:8px">Costo real/día</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--gold)">$138.642</div>
-                <div style="font-size:10px;color:rgba(120,200,120,.5);margin-top:4px">por debajo del Uber diario</div>
-              </div>
-            </div>
-            <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:14px 18px;margin-bottom:12px">
-              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Desglose cuota mensual</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px 24px;font-size:11px">
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Conductor</span><span style="color:rgba(120,200,120,.6)">$0 — sin conductor</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Seguro (2.2%/año)</span><span style="color:var(--cream)">$54.963</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Lavada 2×/sem $25k</span><span style="color:var(--cream)">$40.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Impuesto HEV (2.8%)</span><span style="color:var(--cream)">$69.953</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Parqueadero</span><span style="color:rgba(120,200,120,.6)">$0 — edificio de cada socio</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Combustible + manto</span><span style="color:var(--cream)">$106.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">SOAT + contingencias</span><span style="color:var(--cream)">$80.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:rgba(122,116,104,.6)">Fee Fractal</span><span style="color:var(--cream)">$50.000</span></div>
-              </div>
-            </div>
-            <div style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.65;padding:10px 14px;border-left:2px solid rgba(120,200,120,.3)">
-              El socio del día siguiente baja de su edificio, camina menos de 10 minutos en terreno plano y recoge el carro. El carro duerme en el parqueo del edificio del socio actual. Sin conductor, sin parqueo adicional. Laureles y Ciudad del Río son zonas planas con edificios concentrados — el modelo es completamente operativo sin ninguna logística nocturna.
-            </div>
-          </div>
-        </div>
+    <!-- COMPARATIVA 3 MODELOS -->
+    <div style="margin-bottom:40px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Comparativa los 3 modelos — mismo carro, mismos socios, mismo día</div>
+      <div id="comp-a" class="comp-row" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid rgba(122,116,104,.1);border-bottom:none;cursor:pointer" onclick="selModById('A')">
+        <div><div style="font-size:11px;color:var(--stone)">A · Ciudad dispersa · con conductor</div><div style="font-size:10px;color:rgba(122,116,104,.4)">Mínimo 4 carros en flota para viabilidad del conductor</div></div>
+        <div style="text-align:right"><div id="comp-a-cd" style="font-size:16px;font-weight:500;color:var(--cream)"></div><div id="comp-a-cuota" style="font-size:11px;color:var(--stone)"></div></div>
       </div>
-
-      <!-- MODELO C -->
-      <div id="mod-c" class="mod-panel" style="display:none">
-        <div style="display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-bottom:24px">
-          <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:24px">
-            <div style="position:absolute;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:-36px">MÁXIMA EFICIENCIA</div>
-            <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:12px">Modelo C</div>
-            <div style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:8px">Edificios colindantes</div>
-            <div style="font-size:12px;color:var(--stone);line-height:1.7;margin-bottom:16px">Socios en edificios contiguos o enfrente. El próximo socio baja y cruza la calle. El Poblado, Torres del Río, Park 85, edificios Av. El Poblado.</div>
-            <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Distancia entre socios</div>
-            <div style="font-size:13px;color:var(--cream);margin-bottom:16px">&lt;2 min — cruzar la calle</div>
-            <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Logística nocturna</div>
-            <div style="font-size:13px;color:rgba(120,200,120,.7)">Cero — el carro ya<br>está al frente</div>
-          </div>
-          <div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(184,147,90,.2);margin-bottom:16px">
-              <div style="background:#0d0d0b;padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Entrada 1/5</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--cream)">$29.980.000</div>
-                <div style="font-size:10px;color:rgba(120,200,120,.6);margin-top:4px">Recuperas $23.3M año 3</div>
-              </div>
-              <div style="background:#0d0d0b;padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Cuota mensual</div>
-                <div style="font-family:var(--serif);font-size:24px;font-weight:300;color:var(--gold)">$340.917</div>
-                <div style="font-size:10px;color:var(--stone);margin-top:4px">52 días/año con 5 socios</div>
-              </div>
-              <div style="background:#111009;border:1px solid rgba(184,147,90,.25);padding:20px 20px">
-                <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:8px">Costo real/día</div>
-                <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--gold)">$124.796</div>
-                <div style="font-size:10px;color:rgba(120,200,120,.5);margin-top:4px">más barato que Uber diario</div>
-              </div>
-            </div>
-            <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:14px 18px;margin-bottom:12px">
-              <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Desglose cuota mensual</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px 24px;font-size:11px">
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Conductor</span><span style="color:rgba(120,200,120,.6)">$0 — sin conductor</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Seguro (2.2%/año)</span><span style="color:var(--cream)">$54.963</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Lavada 1×/sem $25k</span><span style="color:var(--cream)">$20.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Impuesto HEV (2.8%)</span><span style="color:var(--cream)">$69.953</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Parqueadero</span><span style="color:rgba(120,200,120,.6)">$0 — parqueo del edificio</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">Combustible + manto</span><span style="color:var(--cream)">$86.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(122,116,104,.07)"><span style="color:rgba(122,116,104,.6)">SOAT + contingencias</span><span style="color:var(--cream)">$70.000</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:rgba(122,116,104,.6)">Fee Fractal</span><span style="color:var(--cream)">$40.000</span></div>
-              </div>
-            </div>
-            <div style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.65;padding:10px 14px;border-left:2px solid rgba(184,147,90,.3)">
-              La microflota más eficiente posible. El próximo socio baja de su edificio, cruza la calle o camina 30 metros, y recoge el carro. Cero logística, cero coordinación nocturna, cero costo adicional. El argumento de venta: convierte tu edificio en una microflota. Solo necesitas que tus vecinos quieran participar.
-            </div>
-          </div>
-        </div>
+      <div id="comp-b" class="comp-row" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid rgba(122,116,104,.1);border-bottom:none;cursor:pointer" onclick="selModById('B')">
+        <div><div style="font-size:11px;color:var(--stone)">B · Barrio plano · sin conductor · &lt;10 min caminando</div><div style="font-size:10px;color:rgba(122,116,104,.4)">Laureles, Ciudad del Río, Manila — terreno plano, edificios concentrados</div></div>
+        <div style="text-align:right"><div id="comp-b-cd" style="font-size:16px;font-weight:500;color:var(--gold)"></div><div id="comp-b-cuota" style="font-size:11px;color:var(--stone)"></div></div>
       </div>
-
-    </div><!-- /mod-content -->
-
-    <!-- COMPARATIVA -->
-    <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:20px 24px;margin-top:8px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:14px">Comparativa los 3 modelos — Toyota Corolla Cross HEV SEG · 5 socios</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1)">
-        <div style="background:#09090a;padding:14px 18px;cursor:pointer" onclick="setModeloById('a')">
-          <div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:4px">A · Ciudad dispersa</div>
-          <div style="font-size:18px;font-weight:500;color:var(--cream);margin-bottom:2px">$231.089/día</div>
-          <div style="font-size:11px;color:var(--stone)">$801.517/mes · con conductor</div>
-        </div>
-        <div style="background:#09090a;padding:14px 18px;cursor:pointer" onclick="setModeloById('b')">
-          <div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:4px">B · Barrio plano</div>
-          <div style="font-size:18px;font-weight:500;color:var(--gold);margin-bottom:2px">$138.642/día</div>
-          <div style="font-size:11px;color:var(--stone)">$400.917/mes · sin conductor</div>
-        </div>
-        <div style="background:#111009;border:1px solid rgba(184,147,90,.15);padding:14px 18px;cursor:pointer" onclick="setModeloById('c')">
-          <div style="font-size:10px;color:rgba(184,147,90,.5);margin-bottom:4px">C · Edificios colindantes</div>
-          <div style="font-size:20px;font-weight:500;color:var(--gold);margin-bottom:2px">$124.796/día</div>
-          <div style="font-size:11px;color:rgba(184,147,90,.5)">$340.917/mes · máxima eficiencia</div>
-        </div>
+      <div id="comp-c" class="comp-row" style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid rgba(122,116,104,.1);cursor:pointer" onclick="selModById('C')">
+        <div><div style="font-size:11px;color:var(--cream)">C · Edificios colindantes · máxima eficiencia</div><div style="font-size:10px;color:rgba(122,116,104,.4)">El Poblado, Torres del Río, Park 85 — cruzar la calle</div></div>
+        <div style="text-align:right"><div id="comp-c-cd" style="font-size:18px;font-weight:500;color:var(--gold)"></div><div id="comp-c-cuota" style="font-size:11px;color:var(--stone)"></div></div>
       </div>
-      <div style="font-size:11px;color:rgba(122,116,104,.4);margin-top:12px;line-height:1.6">
-        La misma entrada ($29.980.000), el mismo carro, el mismo número de días. La diferencia la hace únicamente la distancia entre socios.
-      </div>
+      <div style="font-size:11px;color:rgba(122,116,104,.35);margin-top:8px;line-height:1.6">La misma entrada ($29.980.000 con 5 socios), el mismo Toyota Corolla Cross HEV SEG, los mismos días disponibles. Solo cambia la distancia entre socios — y eso cambia todo.</div>
     </div>
 
   </div>
 </div>
 
-vo mismo trayecto: <strong style="color:rgba(200,80,80,.7)">$50.000–$120.000/viaje</strong></div>
-            <div style="font-size:12px;color:rgba(245,240,232,.6);margin-top:4px">Alquiler vehículo de lujo por día: <strong style="color:rgba(200,80,80,.7)">$500.000–$2.000.000</strong></div>
-          </div>
-        </div>
-      </div>
-
-      
-<!-- CALCULADORA P&P -->
-<div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:48px">
-  <div class="sec-inner">
-    <div class="sec-tag">Calcula tu modelo</div>
-    <h2 class="sec-h2">¿Cuántos socios quieren participar?</h2>
-    <p class="sec-p" style="max-width:600px;margin-bottom:28px">Menos socios = más días disponibles, cuota más alta. Más socios = menos días, cuota más baja. Elige y ve cómo cambian todos los números en tiempo real.</p>
-
-    <div style="display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap">
-      <button class="pyp-nsoc active" data-n="5" onclick="setPypN(this)">5 socios</button>
-      <button class="pyp-nsoc" data-n="4" onclick="setPypN(this)">4 socios</button>
-      <button class="pyp-nsoc" data-n="3" onclick="setPypN(this)">3 socios</button>
-      <button class="pyp-nsoc" data-n="2" onclick="setPypN(this)">2 socios</button>
-    </div>
-
-    <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px">Distribución de días por socio</div>
-    <div id="pyp-asig-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-bottom:12px"></div>
-    <div id="pyp-asig-nota" style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.65;padding:10px 14px;background:#0a0a08;border-left:2px solid rgba(184,147,90,.2);margin-bottom:28px"></div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.12);margin-bottom:16px">
-      <div style="background:#09090a;padding:20px 22px">
-        <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">① Capital entrada</div>
-        <div id="pyp-r-entrada" style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream)">—</div>
-        <div id="pyp-r-recupera" style="font-size:11px;color:rgba(120,200,120,.65);margin-top:5px">—</div>
-      </div>
-      <div style="background:#09090a;padding:20px 22px">
-        <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">② Cuota mensual</div>
-        <div id="pyp-r-cuota" style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--gold)">—</div>
-        <div id="pyp-r-dias" style="font-size:11px;color:var(--stone);margin-top:5px">—</div>
-      </div>
-      <div style="background:#111009;border:1px solid rgba(184,147,90,.15);padding:20px 22px">
-        <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(184,147,90,.4);margin-bottom:8px">Costo real por día</div>
-        <div id="pyp-r-cdia" style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--gold)">—</div>
-        <div id="pyp-r-vs" style="font-size:10px;color:rgba(122,116,104,.4);margin-top:5px;line-height:1.5">—</div>
-      </div>
-    </div>
-
-    <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:16px 20px;margin-bottom:12px">
-      <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Desglose de la cuota mensual</div>
-      <div id="pyp-desglose" style="display:grid;grid-template-columns:1fr 1fr;gap:2px 28px"></div>
-    </div>
-    <div id="pyp-nota-cond" style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.6;padding:10px 14px;border-left:2px solid rgba(122,116,104,.12)"></div>
-  </div>
-</div>
-
-<!-- PORTAFOLIO P&P — EL VEHÍCULO -->
+<!-- EL VEHÍCULO -->
 <div class="sec" style="background:#0a0a08;padding-top:48px;padding-bottom:56px">
   <div class="sec-inner">
-    <div class="sec-tag">El vehículo</div>
-    <h2 class="sec-h2">Toyota Corolla Cross HEV</h2>
-    <p class="sec-p" style="max-width:640px;margin-bottom:24px">El carro más vendido de Colombia. Híbrido puro — se recarga solo mientras frena, funciona con gasolina normal, nunca necesita enchufarse. Garantía Toyota 5 años cubre todo el horizonte del modelo.</p>
-
+    <div class="sec-tag">El vehículo del modelo</div>
+    <h2 class="sec-h2">Toyota Corolla Cross HEV — nunca se enchufa</h2>
+    <p class="sec-p" style="max-width:640px;margin-bottom:24px">Híbrido puro autorrecargable. Se recarga solo mientras frena, gasolina normal, sin cables. El carro más vendido de Colombia. Garantía Toyota 5 años cubre todo el horizonte del modelo. Sí tiene pico y placa.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
       <div style="background:#09090a;border:1px solid rgba(122,116,104,.12);padding:22px">
         <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">XEI HEV 1.8 E-CVT</div>
@@ -566,180 +416,173 @@ vo mismo trayecto: <strong style="color:rgba(200,80,80,.7)">$50.000–$120.000/v
         <div style="font-size:11px;color:var(--stone);line-height:1.8">Todo XEI + sunroof · rines 18" · aire bizona · tablero 12.3" · cargador inalámbrico · baúl eléctrico</div>
       </div>
     </div>
-
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1)">
       <div style="background:#09090a;padding:12px 16px"><div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:3px">Motor</div><div style="font-size:13px;color:var(--cream)">1.8L HEV · 126hp</div></div>
       <div style="background:#09090a;padding:12px 16px"><div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:3px">Consumo ciudad</div><div style="font-size:13px;color:var(--cream)">~20 km/L</div></div>
-      <div style="background:#09090a;padding:12px 16px"><div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:3px">Garantía</div><div style="font-size:13px;color:var(--cream)">5 años Toyota</div></div>
+      <div style="background:#09090a;padding:12px 16px"><div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:3px">Garantía</div><div style="font-size:13px;color:var(--cream)">5 años · Toyota CO</div></div>
       <div style="background:#09090a;padding:12px 16px"><div style="font-size:10px;color:rgba(122,116,104,.5);margin-bottom:3px">Impuesto HEV</div><div style="font-size:13px;color:rgba(120,200,120,.7)">2.8%/año (−20%)</div></div>
     </div>
-
-    <div style="padding:14px 18px;background:#09090a;border-left:2px solid rgba(184,147,90,.25)">
-      <div style="font-size:11px;color:var(--stone);line-height:1.75"><strong style="color:var(--cream)">¿Por qué HEV y no eléctrico ni PHEV?</strong> Los eléctricos puros (Tesla, BYD) están exentos de pico y placa en Medellín y Bogotá — sin restricción el modelo no tiene razón de existir. Los PHEV enchufables necesitan carga cada noche en casa de un socio diferente, imposible de operar. El HEV puro se recarga solo al frenar, gasolina normal, y sí tiene restricción de pico y placa.</div>
+    <div style="margin-top:14px;padding:12px 16px;background:#09090a;border-left:2px solid rgba(184,147,90,.25)">
+      <div style="font-size:11px;color:var(--stone);line-height:1.75"><strong style="color:var(--cream)">¿Por qué HEV y no eléctrico?</strong> Los eléctricos puros (Tesla, BYD) están exentos de pico y placa en Medellín y Bogotá — sin restricción el modelo no existe. Los PHEV enchufables requieren carga cada noche en casa de un socio diferente, inoperable. El HEV se recarga solo al frenar, gasolina normal, y sí tiene restricción.</div>
     </div>
   </div>
 </div>
-<!-- TABLA P&P INTERACTIVA -->
-  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:56px">
-    <div class="sec-inner">
-      <div class="sec-tag">Consulta tu restricción</div>
-      <h2 class="sec-h2">¿Cuándo tienes pico y placa?</h2>
-      <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:32px;margin-top:24px">
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
-          <button class="pyp-btn active" data-dia="lunes" onclick="setPyp(this)">Lunes</button>
-          <button class="pyp-btn" data-dia="martes" onclick="setPyp(this)">Martes</button>
-          <button class="pyp-btn" data-dia="miercoles" onclick="setPyp(this)">Miércoles</button>
-          <button class="pyp-btn" data-dia="jueves" onclick="setPyp(this)">Jueves</button>
-          <button class="pyp-btn" data-dia="viernes" onclick="setPyp(this)">Viernes</button>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
-          <div>
-            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:8px">Placas restringidas ese día</div>
-            <div id="pyp-placas" style="font-family:var(--serif);font-size:56px;font-weight:300;color:var(--gold);letter-spacing:.1em">1 · 2</div>
-            <div id="pyp-horario" style="font-size:12px;color:var(--stone);margin-top:10px;line-height:1.8"></div>
-          </div>
-          <div style="background:#0d0d0b;padding:20px 24px;border:1px solid rgba(184,147,90,.12)">
-            <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Con Fractal P&P ese día</div>
-            <div style="display:flex;flex-direction:column;gap:8px">
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El carro ya está en tu puerta desde la noche anterior</div>
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>El chofer te lleva a tus reuniones y espera</div>
-              <div style="font-size:13px;color:rgba(245,240,232,.7);display:flex;gap:10px"><span style="color:var(--gold)">—</span>Al terminar el chofer va en Uber al próximo socio</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA -->
-  <div class="sec" style="padding-top:0;padding-bottom:72px">
-    <div class="sec-inner">
-      <div class="vert-cta">
-        <div>
-          <div class="vc-title">¿Cuál es tu día de pico y placa<br>y qué vehículo quieres?</div>
-          <div class="vc-sub">Máximo 5 socios por vehículo — las placas no pueden repetirse. Regístrate con tu placa, ciudad y vehículo preferido para asegurar tu cupo.</div>
-        </div>
-        <a href="index.html#contacto" class="vc-btn">Registrar para P&amp;P →</a>
-      </div>
-    </div>
-  </div>
-
 
 
 <script>
 
+var PYP_MODELS = {"A5": {"n": 5, "dias": 52, "conductor": 986000, "lavada": 216667, "parqueo": 200000, "seguro": 274817, "impuesto": 349767, "combus": 300000, "manto": 280000, "soat": 250000, "conting": 200000, "fee": 300000, "op_total": 3357251, "op_socio": 671450, "dep_socio": 199867, "entrada": 29980000, "recupera": 23345066, "costo_dia": 201073}, "B5": {"n": 5, "dias": 52, "conductor": 0, "lavada": 108333, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 1762917, "op_socio": 352583, "dep_socio": 199867, "entrada": 29980000, "recupera": 23345066, "costo_dia": 127488}, "C5": {"n": 5, "dias": 52, "conductor": 0, "lavada": 54167, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 1708751, "op_socio": 341750, "dep_socio": 199867, "entrada": 29980000, "recupera": 23345066, "costo_dia": 124989}, "A4": {"n": 4, "dias": 65, "conductor": 986000, "lavada": 270833, "parqueo": 200000, "seguro": 274817, "impuesto": 349767, "combus": 300000, "manto": 280000, "soat": 250000, "conting": 200000, "fee": 300000, "op_total": 3411417, "op_socio": 852854, "dep_socio": 249833, "entrada": 37475000, "recupera": 29181333, "costo_dia": 203573}, "B4": {"n": 4, "dias": 65, "conductor": 0, "lavada": 135417, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 1790001, "op_socio": 447500, "dep_socio": 249833, "entrada": 37475000, "recupera": 29181333, "costo_dia": 128738}, "C4": {"n": 4, "dias": 65, "conductor": 0, "lavada": 67708, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 1722292, "op_socio": 430573, "dep_socio": 249833, "entrada": 37475000, "recupera": 29181333, "costo_dia": 125613}, "A3": {"n": 3, "dias": 122, "conductor": 986000, "lavada": 508333, "parqueo": 200000, "seguro": 274817, "impuesto": 349767, "combus": 300000, "manto": 280000, "soat": 250000, "conting": 200000, "fee": 300000, "op_total": 3648917, "op_socio": 1216306, "dep_socio": 333111, "entrada": 49966667, "recupera": 38908444, "costo_dia": 152402}, "B3": {"n": 3, "dias": 122, "conductor": 0, "lavada": 254167, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 1908751, "op_socio": 636250, "dep_socio": 333111, "entrada": 49966667, "recupera": 38908444, "costo_dia": 95347}, "C3": {"n": 3, "dias": 122, "conductor": 0, "lavada": 127083, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 1781667, "op_socio": 593889, "dep_socio": 333111, "entrada": 49966667, "recupera": 38908444, "costo_dia": 91180}, "A2": {"n": 2, "dias": 182, "conductor": 986000, "lavada": 758333, "parqueo": 200000, "seguro": 274817, "impuesto": 349767, "combus": 300000, "manto": 280000, "soat": 250000, "conting": 200000, "fee": 300000, "op_total": 3898917, "op_socio": 1949458, "dep_socio": 499667, "entrada": 74950000, "recupera": 58362666, "costo_dia": 161481}, "B2": {"n": 2, "dias": 182, "conductor": 0, "lavada": 379167, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 2033751, "op_socio": 1016876, "dep_socio": 499667, "entrada": 74950000, "recupera": 58362666, "costo_dia": 99992}, "C2": {"n": 2, "dias": 182, "conductor": 0, "lavada": 189583, "parqueo": 0, "seguro": 274817, "impuesto": 349767, "combus": 200000, "manto": 280000, "soat": 250000, "conting": 100000, "fee": 200000, "op_total": 1844167, "op_socio": 922084, "dep_socio": 499667, "entrada": 74950000, "recupera": 58362666, "costo_dia": 93742}};
 
-function setModelo(btn) {
-  document.querySelectorAll('.pyp-mod').forEach(function(b){ b.classList.remove('active'); });
+var PYP_ASIG = {
+  "5": [["Socio 1", "Lunes", "placa \u00b7\u00b7\u00b71/2", "52 d\u00edas/a\u00f1o"], ["Socio 2", "Martes", "placa \u00b7\u00b7\u00b73/4", "52 d\u00edas/a\u00f1o"], ["Socio 3", "Mi\u00e9rcoles", "placa \u00b7\u00b7\u00b75/6", "52 d\u00edas/a\u00f1o"], ["Socio 4", "Jueves", "placa \u00b7\u00b7\u00b77/8", "52 d\u00edas/a\u00f1o"], ["Socio 5", "Viernes", "placa \u00b7\u00b7\u00b79/0", "52 d\u00edas/a\u00f1o"]],
+  "4": [["Socio 1", "Lunes + s\u00e1b c/4 sem", "placa \u00b7\u00b7\u00b71/2", "65 d\u00edas/a\u00f1o"], ["Socio 2", "Martes + s\u00e1b c/4 sem", "placa \u00b7\u00b7\u00b73/4", "65 d\u00edas/a\u00f1o"], ["Socio 3", "Mi\u00e9rcoles + s\u00e1b c/4 sem", "placa \u00b7\u00b7\u00b75/6", "65 d\u00edas/a\u00f1o"], ["Socio 4", "Jueves + s\u00e1b c/4 sem", "placa \u00b7\u00b7\u00b77/8", "65 d\u00edas/a\u00f1o"]],
+  "3": [["Socio 1", "Lunes \u00b7 Martes + FDS rot.", "cualquier placa", "~122 d\u00edas/a\u00f1o"], ["Socio 2", "Mi\u00e9rcoles \u00b7 Jueves + FDS rot.", "cualquier placa", "~122 d\u00edas/a\u00f1o"], ["Socio 3", "Viernes + FDS rot.", "cualquier placa", "~121 d\u00edas/a\u00f1o"]],
+  "2": [["Socio 1", "L\u00b7M\u00b7X + FDS semanas pares", "placa par", "~182 d\u00edas/a\u00f1o"], ["Socio 2", "J\u00b7V + FDS semanas impares", "placa impar", "~183 d\u00edas/a\u00f1o"]]
+};
+
+var PYP_NOTAS = {"5": "Modelo cl\u00e1sico P&P: 1 d\u00eda/semana por placa. El veh\u00edculo Fractal tiene placa diferente a todos los socios.", "4": "Quedan libres los viernes. Los s\u00e1bados rotan entre los 4 socios \u2014 cada uno tiene ~13 s\u00e1bados/a\u00f1o adicionales.", "3": "Dos d\u00edas fijos entre semana por socio. Los fines de semana completos rotan \u2014 1 de cada 3 semanas por socio.", "2": "Pr\u00e1cticamente medio a\u00f1o cada uno. Entre semana d\u00edas alternos; fines de semana en semanas alternadas."};
+
+var curMod = 'A';
+var curN   = 5;
+
+function selMod(btn) {
+  document.querySelectorAll('.pyp-mod-btn').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
-  document.querySelectorAll('.mod-panel').forEach(function(p){ p.style.display='none'; });
-  document.getElementById('mod-' + btn.dataset.m).style.display = 'block';
-}
-function setModeloById(m) {
-  var btn = document.querySelector('.pyp-mod[data-m="'+m+'"]');
-  if(btn) setModelo(btn);
+  curMod = btn.dataset.mod;
+  renderPyp();
 }
 
-function setPypN(btn) {
-  document.querySelectorAll('.pyp-nsoc').forEach(function(b){ b.classList.remove('active'); });
+function selN(btn) {
+  document.querySelectorAll('.pyp-n-btn').forEach(function(b){ b.classList.remove('active'); });
   btn.classList.add('active');
-  renderPypCalc(parseInt(btn.dataset.n));
+  curN = parseInt(btn.dataset.n);
+  renderPyp();
 }
 
-function fmtCopPyp(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
+function fmtCOP(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
 
-function renderPypCalc(n) {
-  var precio    = 149900000;
-  var diasMap   = {5:52, 4:65, 3:122, 2:182};
-  var diasAno   = diasMap[n];
-  var conductor = (n >= 4) ? 986000 : 1800000;
-  var lavada    = Math.round((diasAno / 12) * 50000);
-  var seguro    = Math.round(precio * 0.022 / 12);
-  var impuesto  = Math.round(precio * 0.028 / 12);
-  var parqueo   = 200000;
-  var combus    = 300000;
-  var soat      = 250000;
-  var manto     = 280000;
-  var conting   = 200000;
-  var fee       = 300000;
-  var depAno    = precio * 0.08;
-  var opTotal   = conductor + lavada + seguro + impuesto + parqueo + combus + soat + manto + conting + fee;
-  var opSocio   = Math.round(opTotal / n);
-  var depSocio  = Math.round((depAno / 12) / n);
-  var entrada   = Math.round(precio / n);
-  var recupera  = Math.round(precio * Math.pow(0.92, 3) / n);
-  var costoDia  = Math.round((opSocio + depSocio) * 12 / diasAno);
+function renderPyp() {
+  var key = curMod + curN;
+  var d = PYP_MODELS[key];
+  if (!d) return;
 
+  // Resultados
   var s = function(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; };
-  s('pyp-r-entrada', fmtCopPyp(entrada));
-  s('pyp-r-recupera', '→ Recuperas ' + fmtCopPyp(recupera) + ' al vender año 3');
-  s('pyp-r-cuota',   fmtCopPyp(opSocio) + '/mes');
-  s('pyp-r-dias',    diasAno + ' días disponibles/año');
-  s('pyp-r-cdia',    fmtCopPyp(costoDia));
-  s('pyp-r-vs',      'vs alquiler carro/día $150k–$300k · conductor particular $150k–$250k');
+  s('pyp-r-entrada',  fmtCOP(d.entrada));
+  s('pyp-r-recupera', '→ recuperas ' + fmtCOP(d.recupera) + ' al vender año 3');
+  s('pyp-r-cuota',    fmtCOP(d.op_socio) + '/mes');
+  s('pyp-r-dias',     d.dias + ' días disponibles/año');
+  s('pyp-r-dep',      fmtCOP(d.dep_socio) + '/mes');
+  s('pyp-r-cdia',     fmtCOP(d.costo_dia));
+  s('pyp-r-total-mes',fmtCOP(d.op_socio + d.dep_socio) + '/mes total real');
 
-  var desgloseItems = [
-    ['Conductor nocturno (÷socios)', fmtCopPyp(Math.round(conductor/n))],
-    ['Seguro todo riesgo (2.2%/año)', fmtCopPyp(Math.round(seguro/n))],
-    ['Lavada (solo días de uso)', fmtCopPyp(Math.round(lavada/n))],
-    ['Impuesto rodamiento HEV (2.8%)', fmtCopPyp(Math.round(impuesto/n))],
-    ['Combustible (HEV ~20km/L)', fmtCopPyp(Math.round(combus/n))],
-    ['Parqueadero cubierto', fmtCopPyp(Math.round(parqueo/n))],
-    ['Mantenimiento Toyota', fmtCopPyp(Math.round(manto/n))],
-    ['SOAT + contingencias', fmtCopPyp(Math.round((soat+conting)/n))],
-    ['Fee operativo Fractal', fmtCopPyp(Math.round(fee/n))],
+  // Desglose
+  var items = [
+    {l:'Conductor nocturno', v:d.conductor, z:(d.conductor===0)},
+    {l:'Seguro (2.2%/año ÷ socios)', v:Math.round(d.seguro/d.n), z:false},
+    {l:'Lavada (' + d.dias + ' días ÷ 12)', v:Math.round(d.lavada/d.n), z:false},
+    {l:'Impuesto HEV (2.8% ÷ socios)', v:Math.round(d.impuesto/d.n), z:false},
+    {l:'Parqueadero', v:Math.round(d.parqueo/d.n), z:(d.parqueo===0)},
+    {l:'Combustible ÷ socios', v:Math.round(d.combus/d.n), z:false},
+    {l:'Mantenimiento Toyota ÷ socios', v:Math.round(d.manto/d.n), z:false},
+    {l:'SOAT + contingencias ÷ socios', v:Math.round((d.soat+d.conting)/d.n), z:false},
+    {l:'Fee operativo Fractal ÷ socios', v:Math.round(d.fee/d.n), z:false},
   ];
   var dEl = document.getElementById('pyp-desglose');
-  if(dEl) dEl.innerHTML = desgloseItems.map(function(it){
-    return '<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(122,116,104,.07)">'
-      + '<span style="color:rgba(122,116,104,.6)">' + it[0] + '</span>'
-      + '<span style="color:var(--cream)">' + it[1] + '</span></div>';
+  if (dEl) dEl.innerHTML = items.map(function(it){
+    return '<div class="desglose-row"><span class="desglose-lbl">' + it.l + '</span>'
+      + '<span class="desglose-val' + (it.z ? ' zero' : '') + '">'
+      + (it.z ? '$0 — no aplica' : fmtCOP(it.v)) + '</span></div>';
   }).join('');
 
-  var asignaciones = {
-    5:{items:[
-      {s:'Socio 1 · placa ···1/2', d:'Lunes', t:'52 días/año'},
-      {s:'Socio 2 · placa ···3/4', d:'Martes', t:'52 días/año'},
-      {s:'Socio 3 · placa ···5/6', d:'Miércoles', t:'52 días/año'},
-      {s:'Socio 4 · placa ···7/8', d:'Jueves', t:'52 días/año'},
-      {s:'Socio 5 · placa ···9/0', d:'Viernes', t:'52 días/año'},
-    ], nota:'Cada socio tiene 1 día fijo según su placa. El vehículo Fractal tiene placa diferente a la de todos los socios. Sin viernes libre — máxima eficiencia del conductor.'},
-    4:{items:[
-      {s:'Socio 1 · placa ···1/2', d:'Lunes + sábado c/4 semanas', t:'65 días/año'},
-      {s:'Socio 2 · placa ···3/4', d:'Martes + sábado c/4 semanas', t:'65 días/año'},
-      {s:'Socio 3 · placa ···5/6', d:'Miércoles + sábado c/4 semanas', t:'65 días/año'},
-      {s:'Socio 4 · placa ···7/8', d:'Jueves + sábado c/4 semanas', t:'65 días/año'},
-    ], nota:'Quedan libres los viernes y los sábados. Los sábados rotan: cada socio tiene ~13 sábados al año (1 de cada 4 semanas). Los viernes quedan disponibles para asignación futura o se pueden ofrecer a precio spot.'},
-    3:{items:[
-      {s:'Socio 1', d:'Lunes · Martes + FDS alterno 1c/3 sem', t:'~122 días/año'},
-      {s:'Socio 2', d:'Miércoles · Jueves + FDS alterno 1c/3 sem', t:'~122 días/año'},
-      {s:'Socio 3', d:'Viernes + FDS alterno 1c/3 sem', t:'~121 días/año'},
-    ], nota:'Cada socio tiene 2 días fijos entre semana (el del viernes tiene 1). Los fines de semana completos (sábado+domingo) rotan entre los 3 — cada uno tiene ~1 fin de semana de cada 3.'},
-    2:{items:[
-      {s:'Socio 1 · placa par', d:'Lunes · Miércoles · Viernes + FDS semanas pares', t:'~182 días/año'},
-      {s:'Socio 2 · placa impar', d:'Martes · Jueves + FDS semanas impares', t:'~183 días/año'},
-    ], nota:'Prácticamente medio año cada socio. Entre semana se divide L·X·V vs M·J. Los fines de semana se alternan semana a semana. Con solo 2 socios la cuota sube pero los días disponibles son excepcionales.'},
-  };
-
-  var cfg = asignaciones[n];
-  var grid = document.getElementById('pyp-asig-grid');
-  if(grid) grid.innerHTML = cfg.items.map(function(it){
+  // Asignación
+  var asig = PYP_ASIG[String(curN)] || [];
+  var nota = PYP_NOTAS[String(curN)] || '';
+  var gEl  = document.getElementById('pyp-asig-grid');
+  if (gEl) gEl.innerHTML = asig.map(function(a){
     return '<div class="pyp-asig-card">'
-      + '<div style="font-size:11px;font-weight:500;color:var(--cream);margin-bottom:5px">' + it.s + '</div>'
-      + '<div style="font-size:13px;color:var(--gold);font-family:var(--serif);font-weight:300;margin-bottom:3px">' + it.d + '</div>'
-      + '<div style="font-size:10px;color:rgba(122,116,104,.5)">' + it.t + '</div>'
+      + '<div style="font-size:11px;font-weight:500;color:var(--cream);margin-bottom:5px">' + a[0] + '</div>'
+      + '<div style="font-size:14px;color:var(--gold);font-family:var(--serif);font-weight:300;margin-bottom:3px">' + a[1] + '</div>'
+      + '<div style="font-size:10px;color:rgba(122,116,104,.5)">' + a[2] + ' · ' + a[3] + '</div>'
       + '</div>';
   }).join('');
+  var nEl = document.getElementById('pyp-asig-nota');
+  if (nEl) nEl.textContent = nota;
 
-  var notaEl = document.getElementById('pyp-asig-nota');
-  if(notaEl) notaEl.textContent = cfg.nota;
+  // Nota conductor
+  var cEl = document.getElementById('pyp-nota-cond');
+  if (cEl) {
+    if (curMod === 'A') {
+      cEl.textContent = 'Modelo con conductor: el conductor trabaja en nómina compartida entre los 4 carros mínimo de la flota Fractal P&P. Costo por carro: ' + fmtCOP(d.conductor) + '/mes. Ruta en cadena cada noche (9pm–1am) — recoge cada carro y lo lleva al siguiente socio. Aproximadamente 2 horas de trabajo nocturno.';
+      cEl.style.borderLeftColor = 'rgba(184,147,90,.25)';
+    } else if (curMod === 'B') {
+      cEl.textContent = 'Sin conductor: el socio del día siguiente baja de su edificio, camina menos de 10 minutos en terreno plano y recoge el carro. El carro duerme en el parqueo del edificio del socio actual. Sin logística nocturna, sin costo adicional.';
+      cEl.style.borderLeftColor = 'rgba(120,200,120,.3)';
+    } else {
+      cEl.textContent = 'Máxima eficiencia: el próximo socio baja y cruza la calle o camina 30 metros. Cero logística. Cero coordinación. El carro ya está en el parqueo de su edificio o del edificio de enfrente. Solo necesitas que tus vecinos quieran participar.';
+      cEl.style.borderLeftColor = 'rgba(120,200,120,.5)';
+    }
+  }
 
-  var condEl = document.getElementById('pyp-nota-cond');
-  if(condEl) condEl.textContent = n >= 4
-    ? 'Con ' + n + ' socios el conductor trabaja en nómina compartida entre 4 vehículos de flota — costo por carro: ' + fmtCopPyp(conductor) + '/mes. Ruta en cadena cada noche (9pm–1am): recoge cada carro, lo lleva al siguiente socio. ~2 horas de trabajo nocturno.'
-    : 'Con ' + n + ' socios se contrata conductor freelance nocturno — tarifa por servicio, sin nómina ni prestaciones. 20 noches/mes × $70.000 + reembolso desplazamientos = ' + fmtCopPyp(conductor) + '/mes.';
+  // Update comparativa highlight
+  document.querySelectorAll('.comp-row').forEach(function(r){ r.style.background=''; r.style.borderColor='rgba(122,116,104,.1)'; });
+  var activeRow = document.getElementById('comp-' + curMod.toLowerCase());
+  if (activeRow) { activeRow.style.background='rgba(184,147,90,.04)'; activeRow.style.borderColor='rgba(184,147,90,.2)'; }
 }
 
+function selModById(m) {
+  var btn = document.querySelector('.pyp-mod-btn[data-mod="' + m + '"]');
+  if (btn) selMod(btn);
+}
+
+var MOD_DESCS = {
+  A: {logistica: 'Conductor en nómina', logisticaSub: 'ruta en cadena 9pm–1am · 4 carros mínimo', dist: 'Cualquier zona de la ciudad', distSub: 'Envigado, Bello, Sabaneta, distintos sectores'},
+  B: {logistica: 'Sin conductor', logisticaSub: 'el próximo socio camina <10 min', dist: '<10 min caminando en plano', distSub: 'Laureles, Ciudad del Río, Manila, Suramericana'},
+  C: {logistica: 'Cero logística', logisticaSub: 'el próximo socio cruza la calle', dist: 'Edificios contiguos o enfrente', distSub: 'El Poblado, Torres del Río, Park 85'}
+};
+
+var _origSelMod = selMod;
+selMod = function(btn) {
+  _origSelMod(btn);
+  var desc = MOD_DESCS[btn.dataset.mod];
+  if (desc) {
+    var lv = document.getElementById('logistica-val');
+    var ls = document.getElementById('logistica-sub');
+    var dv = document.getElementById('dist-val');
+    var ds = document.getElementById('dist-sub');
+    if(lv) lv.textContent = desc.logistica;
+    if(ls) ls.textContent = desc.logisticaSub;
+    if(dv) dv.textContent = desc.dist;
+    if(ds) ds.textContent = desc.distSub;
+  }
+  updateComparativa();
+};
+
+function updateComparativa() {
+  ['A','B','C'].forEach(function(m){
+    var key = m + curN;
+    var d = PYP_MODELS[key];
+    if (!d) return;
+    var cdEl = document.getElementById('comp-' + m.toLowerCase() + '-cd');
+    var cuEl = document.getElementById('comp-' + m.toLowerCase() + '-cuota');
+    if(cdEl) cdEl.textContent = fmtCOP(d.costo_dia) + '/día';
+    if(cuEl) cuEl.textContent = fmtCOP(d.op_socio) + '/mes · ' + d.dias + ' días/año';
+    var row = document.getElementById('comp-' + m.toLowerCase());
+    if(row) {
+      row.style.background = (m === curMod) ? 'rgba(184,147,90,.04)' : '';
+      row.style.borderColor = (m === curMod) ? 'rgba(184,147,90,.2)' : 'rgba(122,116,104,.1)';
+    }
+  });
+  var badge = document.getElementById('pyp-dias-badge');
+  var d = PYP_MODELS[curMod + curN];
+  if(badge && d) badge.textContent = '→ ' + d.dias + ' días disponibles/año';
+}
+
+var _origSelN = selN;
+selN = function(btn) {
+  _origSelN(btn);
+  updateComparativa();
+};
 
 function setPyp(btn) {
   document.querySelectorAll('.pyp-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -1030,8 +873,10 @@ function calcPyp() {
 })();
 
 
-// Init P&P calculator on load
-window.addEventListener('load', function(){ renderPypCalc(5); });
+window.addEventListener('load', function(){
+  renderPyp();
+  updateComparativa();
+});
 </script>
 </body>
 </html>
