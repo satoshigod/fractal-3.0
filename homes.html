@@ -591,19 +591,19 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 .sec-acc-header.open{background:rgba(122,116,104,.025)}
 .sec-acc-left{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start}
 .sec-acc-tag{
-  font-size:clamp(28px,4vw,58px);
+  font-size:clamp(11px,1.2vw,14px);
   letter-spacing:.18em;
   text-transform:uppercase;
   color:var(--gold);
-  margin-bottom:10px;
+  margin-bottom:8px;
   display:flex;
   align-items:center;
-  gap:18px;
-  font-weight:700;
+  gap:12px;
+  font-weight:500;
   line-height:1;
   font-family:var(--sans);
 }
-.sec-acc-tag::before{content:'';width:32px;height:2px;background:var(--gold);flex-shrink:0}
+.sec-acc-tag::before{content:'';width:20px;height:1px;background:var(--gold);flex-shrink:0}
 .sec-acc-title{
   font-family:var(--serif);
   font-size:clamp(16px,1.6vw,22px);
@@ -670,6 +670,19 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 .acd-trigger-tri{font-size:13px;color:rgba(122,116,104,.5);transition:transform .2s;flex-shrink:0}
 .acd-trigger-lbl{font-size:14px;color:rgba(245,240,232,.65);flex:1}
 .acd-trigger-hint{font-size:11px;color:rgba(122,116,104,.4)}
+.acd-content .sec-h2,.acd-content h2{font-size:clamp(18px,2vw,26px) !important;margin-bottom:12px !important}
+.acd-content .section-h2,.acd-content h3{font-size:clamp(16px,1.8vw,22px) !important}
+.acd-content .accord-tag,.acd-content .section-tag,.acd-content .sec-tag{font-size:9px !important}
+.acd-content .page-hero{padding:32px 56px !important}
+.acd-content section{padding-top:32px !important;padding-bottom:32px !important}
+.acd-content .hero h1{font-size:clamp(24px,3vw,36px) !important}
+.acd-content .manifesto-inner h2{font-size:clamp(20px,2.5vw,30px) !important}
+.acd-content .how-text h2{font-size:clamp(20px,2.5vw,28px) !important}
+.acd-content .fracs-header h2{font-size:clamp(20px,2.5vw,28px) !important}
+.acd-content .section-h{font-size:clamp(18px,2vw,24px) !important}
+.acd-content .calc-top h2{font-size:clamp(20px,2.5vw,28px) !important}
+.acd-content .acc-title{font-size:clamp(18px,2vw,24px) !important}
+.acd-content .sec-acc-title{font-size:clamp(14px,1.4vw,18px) !important}
 .acd-content{display:none}
 </style>
 </head>
@@ -686,7 +699,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
     <li><a href="#mercado">Mercado</a></li>
     <li><a href="#calendario">Calendario</a></li>
     <li><a href="#calculadora">Calculadora</a></li>
-    <li><a href="#verticales">Verticales</a></li>
+    
     <li><a href="exchange.html">Exchange</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
@@ -705,7 +718,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
   </div>
 </div>
 
-<div class="back-bar"><a href="index.html">← Fractal</a><a href="verticales.html">Invest · Náutico · Cars · P&P</a><a href="exchange.html">Fractal Exchange</a></div>
+<div class="back-bar"><a href="index.html">← Fractal</a><a href="invest.html" class="back-bar-link">Invest</a><a href="nautico.html" class="back-bar-link">Náutico</a><a href="cars.html" class="back-bar-link">Cars</a><a href="pyp.html" class="back-bar-link">P&amp;P</a><a href="exchange.html">Fractal Exchange</a></div>
 <!-- COMPARACION 4 COLUMNAS -->
 <section id="comparacion" class="sec-accordion" style="background:#09090a">
   <div class="sec-acc-header" onclick="toggleAcc(this)">
