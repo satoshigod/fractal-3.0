@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fractal Náutico — Fractal</title>
+<title>Fractal Náutico — Copropiedad de embarcaciones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -169,23 +169,26 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 .cv-socios{font-size:11px;padding:8px 16px}
 .pyp-btn{font-size:11px;padding:8px 16px}
 .pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
-.back-bar{background:#09090a;border-bottom:1px solid rgba(122,116,104,.12);padding:10px 56px;display:flex;align-items:center;gap:24px}
-.back-bar-link{font-size:11px;color:rgba(184,147,90,.6);text-decoration:none;letter-spacing:.06em}
-.back-bar-link:hover{color:var(--gold)}
-.back-bar-home{font-size:11px;color:rgba(122,116,104,.5);text-decoration:none;margin-right:8px}
-.back-bar-home:hover{color:var(--stone)}
-.page-standalone{background:#09090a;min-height:100vh}
+.back-bar{background:#09090a;border-bottom:1px solid rgba(122,116,104,.15);padding:12px 56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.back-bar a{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .15s}
+.back-bar a:hover{color:var(--gold)}
+.back-bar .home-link{color:rgba(184,147,90,.6)}
 </style>
 </head>
-<body>
-<div class="page-standalone">
-<div class="back-bar">
-  <a href="index.html" class="back-bar-home">← Fractal</a>
-  <a href="exchange.html" class="back-bar-link" style="color:rgba(184,147,90,.5)">⇄ Exchange</a>
-  <a href="invest.html" class="back-bar-link">Invest</a><a href="cars.html" class="back-bar-link">Premium Cars</a><a href="pyp.html" class="back-bar-link">P&P</a>
-</div>
-<!-- FRACTAL NÁUTICO -->
-<div id="panel-nautico" class="vert-content" style="display:none">
+<body style="background:#09090a">
+
+<nav style="position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
+  <a href="index.html" style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);text-decoration:none;letter-spacing:.04em">Fractal</a>
+  <div style="display:flex;gap:24px;align-items:center">
+    <a href="homes.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Homes</a>
+    <a href="invest.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Invest</a><a href="cars.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Cars</a><a href="pyp.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">P&P</a>
+    <a href="exchange.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(184,147,90,.6);text-decoration:none">⇄ Exchange</a>
+  </div>
+</nav>
+
+
+
+
 
   <!-- INTRO -->
   <div class="sec" style="background:#09090a;padding-bottom:0">
@@ -472,10 +475,8 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
     </div>
   </div>
 
-</div>
 
-<!-- /FRACTAL NÁUTICO -->
-</div>
+
 <script>
 
 function setPyp(btn) {
@@ -767,17 +768,6 @@ function calcPyp() {
 })();
 
 
-// Init page-specific calculators
-(function(){
-  var d = document.querySelector('.pyp-pre[data-v="250000000"]');
-  if (d) { d.classList.add('active'); }
-  var inp = document.getElementById('pyp-precio-inp');
-  if (inp) inp.value = (250000000).toLocaleString('es-CO');
-  if(typeof calcPyp === 'function') calcPyp();
-  if(typeof calcVehiculo === 'function') calcVehiculo();
-  var first = document.querySelector('.pyp-btn.active');
-  if (first && typeof setPyp === 'function') setPyp(first);
-})();
 </script>
 </body>
 </html>
