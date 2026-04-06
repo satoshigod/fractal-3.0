@@ -561,37 +561,116 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 
 <section class="ejemplo" id="ejemplo">
   <div class="ejemplo-inner">
-    <div class="section-tag">Ejemplo ilustrativo</div>
     <h2>¿Cómo se ven los números?</h2>
-    <p>Casa en el Eje Cafetero · 280 m² · 4 habitaciones · Estado regular · Deuda: $8.000.000</p>
-    <table class="ejemplo-table">
-      <thead><tr><th>Concepto</th><th>Detalle</th><th>Valor</th></tr></thead>
-      <tbody>
-        <tr><td>Valor comercial estimado</td><td>Avalúo de referencia</td><td class="val">$900.000.000</td></tr>
-        <tr><td>Remodelación Fractal</td><td>Se descuenta de la liquidación</td><td class="red">– $50.400.000</td></tr>
-        <tr><td>Deuda asumida</td><td>Administración + mayordomía</td><td class="red">– $8.000.000</td></tr>
-        <tr><td>Honorarios Fractal (12% sobre 7 fracciones)</td><td>7 × $112.500.000 × 12%</td><td class="red">– $94.500.000</td></tr>
-        <tr><td>Tu fracción 1/8 que conservas</td><td>Escriturada a tu nombre</td><td class="gold">$112.500.000</td></tr>
-        <tr class="total-row"><td><strong>Liquidación neta en efectivo</strong></td><td>Después de todos los descuentos</td><td class="gold"><strong>$634.600.000</strong></td></tr>
-      </tbody>
-    </table>
-    <p style="margin-top:28px;font-family:var(--serif);font-size:15px;color:var(--stone)">Costos mensuales estimados por cada fraccionario de esta propiedad:</p>
-    <table class="ejemplo-table" style="margin-top:12px">
-      <thead><tr><th>Ítem</th><th>Detalle</th><th>$/mes por fracción</th></tr></thead>
-      <tbody>
-        <tr><td>Mayordomo / administración in situ</td><td>1/8 del costo total</td><td class="val">$206.250</td></tr>
-        <tr><td>Servicios públicos</td><td>Agua, luz, gas, internet</td><td class="val">$168.750</td></tr>
-        <tr><td>Limpieza y lavandería</td><td>Entre estadías</td><td class="val">$93.750</td></tr>
-        <tr><td>Mantenimiento preventivo</td><td>Preventivo + correctivo</td><td class="val">$131.250</td></tr>
-        <tr><td>Seguros</td><td>Incendio + responsabilidad civil</td><td class="val">$75.000</td></tr>
-        <tr><td>Fee administración Fractal</td><td>Plataforma + gestión</td><td class="val">$187.500</td></tr>
-        <tr><td>Reserva de reposición</td><td>Mantenimiento mayor futuro</td><td class="val">$56.250</td></tr>
-        <tr><td>Predial proporcional</td><td>1/8 del predial anual</td><td class="val">$14.063</td></tr>
-        <tr><td>Administración condominio/unidad</td><td>Cuota copropiedad</td><td class="val">$35.000</td></tr>
-        <tr class="total-row"><td><strong>Total mensual por fraccionario</strong></td><td></td><td class="gold"><strong>$967.813</strong></td></tr>
-      </tbody>
-    </table>
-    <p class="ejemplo-nota">* Valores ilustrativos. El cotizador calcula los costos exactos según el valor real de tu propiedad.</p>
+    <p>Casa en el Eje Cafetero · 280 m² · 4 habitaciones · Estado regular · Deuda: $8.000.000 · Propietario conserva fracción WD</p>
+
+    <!-- PASO 1: VALOR FRACTALIZADO -->
+    <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.12);padding:18px 24px;margin-bottom:8px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:12px">Paso 1 — Cuánto vale el activo fractalizado</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(122,116,104,.1)">
+        <div style="background:#09090a;padding:14px 18px">
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Avalúo propiedad</div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">$849.600.000</div>
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Lo que dice el propietario</div>
+        </div>
+        <div style="background:#09090a;padding:14px 18px;border-left:1px solid rgba(122,116,104,.1)">
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">+ Remodelación Fractal</div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">$50.400.000</div>
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Fractal lo financia</div>
+        </div>
+        <div style="background:#111009;padding:14px 18px;border-left:1px solid rgba(184,147,90,.2)">
+          <div style="font-size:10px;color:rgba(184,147,90,.5);margin-bottom:4px">= Activo fractalizado total</div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--gold)">$900.000.000</div>
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Sobre este valor se calculan las fracciones</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2: PRECIO DE FRACCIONES -->
+    <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px">Paso 2 — Precio de cada fracción (mismo modelo Fractal Homes)</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.1)">
+        <div style="background:#09090a;padding:12px 16px">
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción A · 15.65%</div>
+          <div style="font-family:var(--serif);font-size:16px;color:var(--cream)">$140.850.000</div>
+          <div style="font-size:10px;color:rgba(122,116,104,.4)">× 2 unidades</div>
+        </div>
+        <div style="background:#09090a;padding:12px 16px">
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción B · 15.65%</div>
+          <div style="font-family:var(--serif);font-size:16px;color:var(--cream)">$140.850.000</div>
+          <div style="font-size:10px;color:rgba(122,116,104,.4)">× 2 unidades</div>
+        </div>
+        <div style="background:#09090a;padding:12px 16px">
+          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción WD · 9.35%</div>
+          <div style="font-family:var(--serif);font-size:16px;color:var(--cream)">$84.150.000</div>
+          <div style="font-size:10px;color:rgba(122,116,104,.4)">× 4 unidades</div>
+        </div>
+        <div style="background:#111009;padding:12px 16px;border-left:1px solid rgba(184,147,90,.15)">
+          <div style="font-size:10px;color:rgba(184,147,90,.4);margin-bottom:3px">Total 8 fracciones</div>
+          <div style="font-family:var(--serif);font-size:16px;color:var(--gold)">$900.000.000</div>
+          <div style="font-size:10px;color:rgba(122,116,104,.4)">= activo fractalizado</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:rgba(122,116,104,.4);margin-top:10px;line-height:1.6">
+        Precio de mercado completo — exactamente igual que cualquier fracción Fractal Homes. Los compradores pagan el valor lleno.
+      </div>
+    </div>
+
+    <!-- PASO 3: BOLSA Y DEDUCCIONES -->
+    <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px">Paso 3 — Propietario conserva 1 WD · vende 2A + 2B + 3WD</div>
+      <table class="ejemplo-table">
+        <thead>
+          <tr><th>CONCEPTO</th><th>DETALLE</th><th>VALOR</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bolsa total de ventas</td>
+            <td>2A + 2B + 3WD · precio lleno de mercado</td>
+            <td class="val" style="color:var(--cream)">$815.850.000</td>
+          </tr>
+          <tr style="background:rgba(122,116,104,.02)">
+            <td colspan="3" style="font-size:11px;color:rgba(122,116,104,.5);padding:10px 13px 6px">
+              Deducciones — el propietario las asume recibiendo menos de la bolsa, no como pagos adicionales:
+            </td>
+          </tr>
+          <tr>
+            <td>– Remodelación que financió Fractal</td>
+            <td>Se recupera de la bolsa de ventas</td>
+            <td class="val" style="color:rgba(220,80,80,.8)">– $50.400.000</td>
+          </tr>
+          <tr>
+            <td>– Deudas que asumió Fractal</td>
+            <td>Administración + mayordomía</td>
+            <td class="val" style="color:rgba(220,80,80,.8)">– $8.000.000</td>
+          </tr>
+          <tr>
+            <td>– Honorarios Fractal (12%)</td>
+            <td>12% sobre $815.850.000 bolsa vendida</td>
+            <td class="val" style="color:rgba(220,80,80,.8)">– $97.902.000</td>
+          </tr>
+          <tr style="border-top:2px solid rgba(184,147,90,.2);background:rgba(184,147,90,.03)">
+            <td style="color:var(--gold);font-weight:500">Propietario recibe en efectivo</td>
+            <td style="color:var(--stone)">Remanente después de deducciones</td>
+            <td class="gold" style="font-size:20px">$659.548.000</td>
+          </tr>
+          <tr style="background:rgba(184,147,90,.04)">
+            <td style="color:var(--gold)">+ Fracción WD conservada</td>
+            <td style="color:var(--stone)">Escriturada · activo · no es efectivo</td>
+            <td class="gold">$84.150.000</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px;padding:12px 16px;background:#09090a;border-left:2px solid rgba(184,147,90,.3);font-size:12px;color:var(--stone);line-height:1.75">
+        <strong style="color:var(--cream)">Las fracciones se venden al precio lleno.</strong>
+        Nadie compra más barato porque tú tengas gastos. La remodelación, las deudas y los honorarios
+        se descuentan de <em style="color:var(--cream)">lo que recibes tú</em> — no del precio que pagan los compradores.
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:rgba(122,116,104,.4);line-height:1.6">
+        * Valores ilustrativos. Los exactos se confirman en visita técnica gratuita y quedan estipulados en contrato antes de firmar.
+      </div>
+    </div>
+
   </div>
 </section>
 
