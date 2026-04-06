@@ -457,6 +457,10 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 
 /* Origen overrides */
 .hero-o{padding-top:80px}
+
+.frac-sel{background:#09090a;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:12px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;flex:1;text-align:center;line-height:1.5}
+.frac-sel.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
+.frac-sel:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
 </style>
 </head>
 <body>
@@ -652,7 +656,24 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
             </div>
           </div>
           <div style="margin-top:4px;display:flex;justify-content:flex-end">
-            <button class="btn-primary" onclick="step1()">Continuar →</button>
+            
+          <div style="margin-top:24px;margin-bottom:4px">
+            <label style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.5);display:block;margin-bottom:10px">¿Qué fracción quieres conservar?</label>
+            <div style="display:flex;gap:8px">
+              <button class="frac-sel" data-tipo="ab" onclick="selFrac(this)">
+                <div style="font-size:13px;font-weight:500;margin-bottom:3px">A o B</div>
+                <div style="font-size:10px">Fines de semana · 15.65%</div>
+                <div style="font-size:10px;color:rgba(122,116,104,.5)">Más días premium</div>
+              </button>
+              <button class="frac-sel active" data-tipo="wd" onclick="selFrac(this)">
+                <div style="font-size:13px;font-weight:500;margin-bottom:3px">WD</div>
+                <div style="font-size:10px">Entre semana · 9.35%</div>
+                <div style="font-size:10px;color:rgba(122,116,104,.5)">Mayor liquidación</div>
+              </button>
+            </div>
+            <div style="font-size:11px;color:rgba(122,116,104,.4);margin-top:8px;line-height:1.6">La fracción WD maximiza tu liquidación (vendiste más fracciones de mayor valor). La fracción A/B te da acceso a fines de semana.</div>
+          </div>
+          <button class="btn-primary" onclick="step1()">Continuar →</button>
           </div>
         </div>
         <div class="cot-aside">
@@ -905,6 +926,12 @@ function fmtMoney(inp) {
 function parseMoney(s) { return parseInt((s||'').replace(/\D/g,'')) || 0; }
 
 let estado = '';
+
+function selFrac(btn) {
+  document.querySelectorAll('.frac-sel').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
 function selEstado(btn) {
   document.querySelectorAll('.estado-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -992,75 +1019,49 @@ function calcular() {
   const pm2 = {'Eje Cafetero':3800000,'Antioquia':4200000,'Cundinamarca':3200000,'Costa Caribe':4500000,'Valle del Cauca':3000000,'Santander':2800000,'Otro':3000000};
   const valorBase0 = valorIng || Math.round(area * (pm2[municipio]||3200000));
   const valorBase = Math.round(valorBase0 * (1 + amenCnt * 0.04));
-
-  // Remodelación
   const rf = {malo:310000, regular:180000, bueno:65000};
   const remo = Math.round((rf[est]||180000) * area);
-
-  const deudaTotal = deudaA + deudaS;
-  const precioFrac = Math.round(valorBase / 8);
-  const honorarios = Math.round(precioFrac * 7 * 0.12);
-  const liquidacion = Math.max(0, precioFrac*7 - remo - deudaTotal - honorarios);
+  const valorFractal = valorBase + remo;
+  const pctAB = 0.1565;
+  const pctWD = 0.0935;
+  const precioA  = Math.round(valorFractal * pctAB);
+  const precioWD = Math.round(valorFractal * pctWD);
+  const deudaTotal = deudaAdm + deudaServ;
+  const fracBtn = document.querySelector('.frac-sel.active');
+  const tipFrac = fracBtn ? fracBtn.dataset.tipo : 'wd';
+  const precioConservada = tipFrac === 'ab' ? precioA : precioWD;
+  const labelConservada  = tipFrac === 'ab' ? 'Fracción A/B · Fines de semana' : 'Fracción WD · Entre semana';
+  let bolsa = 0, vendidas = '';
+  if (tipFrac === 'ab') { bolsa = precioA*3 + precioWD*4; vendidas = '1A + 2B + 4WD vendidas'; }
+  else                  { bolsa = precioA*4 + precioWD*3; vendidas = '2A + 2B + 3WD vendidas'; }
+  const honorarios  = Math.round(bolsa * 0.12);
+  const liquidacion = bolsa - remo - deudaTotal - honorarios;
   const tiempos = {malo:'6–9 meses', regular:'4–6 meses', bueno:'2–3 meses'};
-  const tipoFrac = hab >= 4 ? 'Tipo WD · Fines de semana' : 'Tipo A o B · Entre semana';
-
-  // Costos mensuales por fraccionario (1/8 del total)
-  const vb = valorBase;
-  const c1 = Math.round(vb*0.00022/8*100)/100;  // mayordomo
-  const c2 = Math.round(vb*0.00018/8*100)/100;  // servicios
-  const c3 = Math.round(vb*0.00010/8*100)/100;  // limpieza
-  const c4 = Math.round(vb*0.00014/8*100)/100;  // mant
-  const c5 = Math.round(vb*0.000080/8*100)/100; // seguros
-  const c6 = Math.round(vb*0.00020/8*100)/100;  // fee fractal
-  const c7 = Math.round(vb*0.000060/8*100)/100; // reserva
-  const c8 = Math.round(vb*0.00010/96);          // predial /8/12
-  const c9 = Math.round(area*1000/8);            // admin condo
-  const cTot = c1+c2+c3+c4+c5+c6+c7+c8+c9;
-
-  // Alquiler
-  const dias = hab >= 4 ? 48 : 43;
-  const tarifa = Math.round(vb * 0.00015);
-  const ing50 = Math.round(dias * 0.5 * tarifa);
-
-  // Render
-  document.getElementById('rTitulo').textContent = `Potencial estimado · ${municipio} · ${area} m² · ${hab} hab.`;
-  document.getElementById('rTipoFrac').textContent = tipoFrac;
-  document.getElementById('rTipoFrac2').textContent = tipoFrac + ' · 1/8 de la propiedad';
-  document.getElementById('rValor').textContent = cop(valorBase);
-  document.getElementById('rRemod').textContent = cop(remo);
-  document.getElementById('rDeuda').textContent = cop(deudaTotal);
-  document.getElementById('rTiempo').textContent = tiempos[est];
-  document.getElementById('rTotal8').textContent = cop(precioFrac*8);
-  document.getElementById('rRemod2').textContent = cop(remo);
-  document.getElementById('rDeuda2').textContent = cop(deudaTotal);
-  document.getElementById('rHon').textContent = cop(honorarios);
-  document.getElementById('rTuFrac').textContent = cop(precioFrac);
-  document.getElementById('rLiq').textContent = cop(liquidacion);
-  document.getElementById('cm1').textContent = cop(c1);
-  document.getElementById('cm2').textContent = cop(c2);
-  document.getElementById('cm3').textContent = cop(c3);
-  document.getElementById('cm4').textContent = cop(c4);
-  document.getElementById('cm5').textContent = cop(c5);
-  document.getElementById('cm6').textContent = cop(c6);
-  document.getElementById('cm7').textContent = cop(c7);
-  document.getElementById('cm8').textContent = cop(c8);
-  document.getElementById('cm9').textContent = cop(c9);
-  document.getElementById('cmTotal').textContent = cop(cTot);
-  document.getElementById('rDias').textContent = dias + ' días';
-  document.getElementById('rTarifa').textContent = cop(tarifa) + '/noche';
-  document.getElementById('rIngreso50').textContent = cop(ing50) + '/año';
-  document.getElementById('rAnual').textContent = cop(ing50) + '/año';
-
+  const tipoFrac = tipFrac === 'ab' ? 'Tipo A/B · Fines de semana' : 'Tipo WD · Entre semana';
+  const vb=valorFractal;
+  const c1=Math.round(vb*0.00022/8),c2=Math.round(vb*0.00018/8),c3=Math.round(vb*0.00010/8);
+  const c4=Math.round(vb*0.00014/8),c5=Math.round(vb*0.000080/8),c6=Math.round(vb*0.00020/8);
+  const c7=Math.round(vb*0.000060/8),c8=Math.round(vb*0.00010/96),c9=Math.round(area*1000/8);
+  const cTot=c1+c2+c3+c4+c5+c6+c7+c8+c9;
+  const dias=tipFrac==='ab'?48:43, tarifa=Math.round(vb*0.00015), ing50=Math.round(dias*0.5*tarifa);
+  const sv=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  sv('rTitulo','Estimación · '+municipio+' · '+area+' m²');
+  sv('rTipoFrac',tipoFrac); sv('rTipoFrac2',tipoFrac+' · conservada escriturada');
+  sv('rValorBase',cop(valorBase)); sv('rValor',cop(valorBase));
+  sv('rRemo',cop(remo)); sv('rValorFractal',cop(valorFractal));
+  sv('rPrecioA',cop(precioA)); sv('rPrecioWD',cop(precioWD)); sv('rTotal8',cop(valorFractal));
+  sv('rVendidas',vendidas); sv('rBolsa',cop(bolsa));
+  sv('rRemod',cop(remo)); sv('rRemod2',cop(remo));
+  sv('rDeuda',cop(deudaTotal)); sv('rDeuda2',cop(deudaTotal));
+  sv('rHon',cop(honorarios));
+  sv('rLiq',cop(Math.max(0,liquidacion)));
+  sv('rTuFrac',cop(precioConservada)); sv('rLabelFrac',labelConservada);
+  sv('rTiempo',tiempos[est]||'4–6 meses');
+  sv('cm1',cop(c1));sv('cm2',cop(c2));sv('cm3',cop(c3));sv('cm4',cop(c4));sv('cm5',cop(c5));
+  sv('cm6',cop(c6));sv('cm7',cop(c7));sv('cm8',cop(c8));sv('cm9',cop(c9));sv('cmTotal',cop(cTot));
+  sv('rDias',dias+' días'); sv('rTarifa',cop(tarifa)+'/noche');
+  sv('rIngreso50',cop(ing50)+'/año'); sv('rAnual',cop(ing50)+'/año');
   goStep(4);
-}
-
-function agendar(btn) {
-  btn.textContent = 'Agendando...';
-  setTimeout(function() {
-    btn.textContent = 'Solicitud enviada ✓';
-    btn.style.opacity = '0.7';
-  }, 1200);
-}
-</script>
+}</script>
 </body>
 </html>
