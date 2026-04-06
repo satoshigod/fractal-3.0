@@ -676,7 +676,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 .home-prods-section{padding:80px 56px;border-bottom:1px solid rgba(122,116,104,.1)}
 .home-prods-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,116,104,.5);margin-bottom:8px}
 .home-prods-h{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:48px}
-.prods5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(122,116,104,.12)}
+.prods5{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(122,116,104,.12)}
 .prod5{background:#09090a;padding:32px 20px;text-align:center;cursor:pointer;transition:background .2s;text-decoration:none;display:block}
 .prod5:hover{background:#111009}
 .prod5-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);margin-bottom:12px;line-height:1}
@@ -716,27 +716,71 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 
   <!-- NAV -->
   <nav class="home-nav">
-    <span class="home-logo">Fractal</span>
+    <a href="index.html" style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream);text-decoration:none;letter-spacing:.04em;margin-right:8px">Fractal</a>
     <a href="homes.html" class="home-navlink">Homes</a>
     <a href="invest.html" class="home-navlink">Invest</a>
     <a href="nautico.html" class="home-navlink">Náutico</a>
     <a href="cars.html" class="home-navlink">Cars</a>
     <a href="pyp.html" class="home-navlink">P&amp;P</a>
     <a href="exchange.html" class="home-navlink">Exchange</a>
+    <a href="origen.html" class="home-navlink">Origen</a>
     <a href="#contacto" class="home-navlink">Contacto</a>
+    <a href="origen.html" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;transition:all .2s;margin-left:8px" onmouseover="this.style.background='rgba(184,147,90,.1)'" onmouseout="this.style.background='transparent'">Tengo una casa →</a>
   </nav>
 
-  <!-- HERO -->
-  <div class="home-hero">
-    <div class="home-hero-tag">Fractal · Colombia · 2026</div>
-    <h1 class="home-hero-h">Accede a activos premium.<br><em>Sin pagar el 100%.</em></h1>
-    <p class="home-hero-sub">Copropiedad real e inteligente de propiedades, embarcaciones y vehículos de lujo. Fraccionado, estructurado, transparente. Solo en Colombia.</p>
-    <a href="homes.html" class="home-hero-cta">Conocer Fractal Homes →</a>
+  <!-- ORIGEN HERO — punta de lanza -->
+  <div style="background:#09090a;border-bottom:1px solid rgba(122,116,104,.15);padding:80px 56px 72px">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div>
+        <div style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(184,147,90,.6);margin-bottom:20px">Fractal · Colombia · 2026</div>
+        <h1 style="font-family:var(--serif);font-size:clamp(40px,5.5vw,72px);font-weight:300;color:var(--cream);line-height:1.08;margin-bottom:24px">
+          Tienes una casa<br>que no estás<br><em style="color:var(--gold);font-style:normal">disfrutando.</em>
+        </h1>
+        <p style="font-size:15px;color:var(--stone);line-height:1.8;margin-bottom:12px;max-width:460px">
+          Deudas con el mayordomo. Instalaciones deterioradas. Un activo que vale — pero que no genera nada.
+        </p>
+        <p style="font-size:14px;color:rgba(122,116,104,.6);line-height:1.75;margin-bottom:36px;max-width:460px">
+          Fractal la activa, la recupera y te devuelve lo que siempre debió ser: tu segundo hogar. Sin venderla. Sin pagar hoy.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <a href="origen.html" style="display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);text-decoration:none;font-weight:500;transition:opacity .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Cotiza tu propiedad gratis →</a>
+          <a href="origen.html" style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(184,147,90,.6);text-decoration:none;border-bottom:1px solid rgba(184,147,90,.3);padding-bottom:2px">Ver cómo funciona</a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(122,116,104,.15)">
+        <div style="background:#09090a;padding:24px 22px">
+          <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Lo que Fractal asume</div>
+          <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--cream);margin-bottom:6px">Deudas</div>
+          <div style="font-size:11px;color:var(--stone);line-height:1.6">Administración, mayordomía y servicios. Sin pago inicial tuyo.</div>
+        </div>
+        <div style="background:#09090a;padding:24px 22px">
+          <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Lo que Fractal hace</div>
+          <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--cream);margin-bottom:6px">Remodela</div>
+          <div style="font-size:11px;color:var(--stone);line-height:1.6">Hasta estándar Fractal. Se descuenta de la comercialización.</div>
+        </div>
+        <div style="background:#09090a;padding:24px 22px">
+          <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Lo que conservas</div>
+          <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--gold);margin-bottom:6px">1/8</div>
+          <div style="font-size:11px;color:var(--stone);line-height:1.6">Tu fracción escriturada. Sigues siendo propietario y disfrutas tu casa.</div>
+        </div>
+        <div style="background:#111009;border:1px solid rgba(184,147,90,.2);padding:24px 22px">
+          <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.4);margin-bottom:10px">Lo que recibes</div>
+          <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--gold);margin-bottom:6px">Liquidez</div>
+          <div style="font-size:11px;color:var(--stone);line-height:1.6">La venta de las 7 fracciones libera el capital enterrado en tu propiedad.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Separador hacia los 5 productos -->
+    <div style="max-width:1100px;margin:56px auto 0;display:flex;align-items:center;gap:20px">
+      <div style="flex:1;height:1px;background:rgba(122,116,104,.1)"></div>
+      <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.35)">O accede a un activo que ya está en el ecosistema</div>
+      <div style="flex:1;height:1px;background:rgba(122,116,104,.1)"></div>
+    </div>
   </div>
 
-  <!-- 5 PRODUCTOS -->
+  <!-- 5 PRODUCTOS DE ACCESO -->
   <div class="home-prods-section">
-    <div class="home-prods-tag">Los 5 productos</div>
+    <div class="home-prods-tag">Los 5 productos de acceso</div>
     <div class="home-prods-h">Elige tu forma de participar.</div>
     <div class="prods5">
       <a href="homes.html" class="prod5">
@@ -766,13 +810,13 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
       <a href="pyp.html" class="prod5">
         <div class="prod5-num">05</div>
         <div class="prod5-name">Optimización P&amp;P</div>
-        <div class="prod5-tag">Pico y placa resuelto · 5 socios · L a V · exclusivo Colombia</div>
+        <div class="prod5-tag">Copropiedad vehículo híbrido · 2 a 5 socios</div>
         <div class="prod5-arrow">Ver modelo →</div>
       </a>
     </div>
   </div>
 
-  <!-- CONTACTO -->
+  <!-- CONTACTO -->  <!-- CONTACTO -->
   <div class="home-contact" id="contacto">
     <div class="home-contact-tag">El siguiente paso</div>
     <h2 class="home-contact-h">¿Por cuál producto empezamos?</h2>
