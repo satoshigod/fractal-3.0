@@ -278,40 +278,6 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 .footer-bottom{border-top:1px solid rgba(122,116,104,.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-size:11px;color:rgba(122,116,104,.45);letter-spacing:.06em}
 
-/* ── FRACTAL ORIGEN ── */
-.origen{background:#08080d;padding:0;position:relative;overflow:hidden}
-.origen-bg-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(184,147,90,.03) 0px,rgba(184,147,90,.03) 1px,transparent 1px,transparent 80px);pointer-events:none}
-.origen-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;z-index:1}
-.origen-left{padding:100px 64px 100px 48px;border-right:1px solid rgba(184,147,90,.1)}
-.origen-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(184,147,90,.08);border:1px solid rgba(184,147,90,.2);padding:8px 16px;margin-bottom:36px}
-.origen-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-gold 2s infinite}
-@keyframes pulse-gold{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-.origen-badge span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.origen-left h2{font-family:var(--serif);font-size:clamp(38px,4.5vw,62px);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:24px}
-.origen-left h2 em{font-style:italic;color:var(--gold-light)}
-.origen-left p{font-size:16px;color:rgba(245,240,232,.6);line-height:1.8;margin-bottom:40px;max-width:480px}
-.origen-cta-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.origen-link{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.45);text-decoration:none;transition:color .2s}
-.origen-link:hover{color:var(--gold)}
-.origen-right{padding:80px 48px 80px 64px;display:flex;flex-direction:column;gap:0}
-.origen-pains{display:flex;flex-direction:column;gap:0;margin-bottom:40px}
-.op{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid rgba(122,116,104,.1)}
-.op:last-child{border-bottom:none}
-.op-icon{font-size:18px;line-height:1;padding-top:2px}
-.op-text strong{display:block;font-size:13px;font-weight:500;color:rgba(245,240,232,.85);margin-bottom:4px}
-.op-text span{font-size:12px;color:var(--stone);line-height:1.55}
-.origen-proof{background:rgba(184,147,90,.05);border:1px solid rgba(184,147,90,.15);padding:28px 32px;margin-top:8px}
-.op-proof-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.op-proof-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,147,90,.1)}
-.op-stat{background:rgba(184,147,90,.04);padding:18px 14px;text-align:center}
-.op-stat-n{font-family:var(--serif);font-size:30px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:4px}
-.op-stat-l{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);line-height:1.4}
-@media(max-width:900px){
-  .origen-inner{grid-template-columns:1fr}
-  .origen-left{padding:72px 24px 52px;border-right:none;border-bottom:1px solid rgba(184,147,90,.1)}
-  .origen-right{padding:48px 24px 72px}
-}
-
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp .9s ease forwards;opacity:0}
@@ -501,6 +467,19 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 .cal-dow span{font-size:8px;text-align:center;color:rgba(122,116,104,.5);letter-spacing:.06em;text-transform:uppercase}
 .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
 .cal-day{aspect-ratio:1;border-radius:2px;cursor:pointer;transition:transform .1s,opacity .2s;position:relative;display:flex;align-items:center;justify-content:center}
+/* Calendar colors via attribute selector — no inline styles needed */
+.cal-day[data-o="A1"]{background:#c8511a}
+.cal-day[data-o="A2"]{background:#e07840}
+.cal-day[data-o="B1"]{background:#2a5c8a}
+.cal-day[data-o="B2"]{background:#4a8cbf}
+.cal-day[data-o="WD1"]{background:#7a6820}
+.cal-day[data-o="WD2"]{background:#9a8830}
+.cal-day[data-o="WD3"]{background:#b8a848}
+.cal-day[data-o="WD4"]{background:#d4c060}
+/* Filter states */
+.cal-day.cal-dimmed{opacity:0.05!important;filter:grayscale(1) brightness(0.3);transform:scale(0.8);transition:opacity .2s,transform .2s,filter .2s}
+.cal-day.cal-active{opacity:1!important;filter:none;transform:none;transition:opacity .2s,transform .2s}
+
 .cal-day:hover{transform:scale(1.15);z-index:2}
 .cal-day.empty{background:transparent;cursor:default}
 .cal-day.empty:hover{transform:none}
@@ -527,1291 +506,355 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 #v-habilitar:hover{border-color:var(--gold);color:var(--gold)}
 #v-remod-wrap.enabled{border-color:rgba(122,116,104,.25)}
 #v-remod-wrap.enabled input{opacity:1}
+/* ── LOTE TAB ── */
+.lote-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:48px}
+.lote-h{font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream);margin-bottom:12px;line-height:1.2}
+.lote-p{font-size:13px;color:var(--stone);line-height:1.75;margin-bottom:28px}
+.lote-modos{display:flex;flex-direction:column;gap:10px}
+.lote-modo{padding:18px 22px;border:1px solid rgba(122,116,104,.15);cursor:pointer;transition:all .2s}
+.lote-modo:hover{border-color:rgba(184,147,90,.3)}
+.lote-modo.active{border-color:var(--gold);background:rgba(184,147,90,.05)}
+.lote-modo-n{font-family:var(--serif);font-size:26px;font-weight:300;color:rgba(184,147,90,.2);margin-bottom:6px}
+.lote-modo.active .lote-modo-n{color:var(--gold)}
+.lote-modo-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:5px}
+.lote-modo-desc{font-size:11px;color:var(--stone);line-height:1.6}
+.lote-calc{background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:28px}
+.lote-calc-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:10px}
+.lote-input-row{display:flex;align-items:center;border:1px solid rgba(122,116,104,.25);margin-bottom:10px}
+.lote-presets-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px}
+.lote-pre{font-size:10px;padding:5px 10px;border:1px solid rgba(122,116,104,.18);color:var(--stone);background:#0a0a08;cursor:pointer;font-family:var(--sans);transition:all .15s;-webkit-appearance:none;outline:none}
+.lote-pre:hover,.lote-pre.active{border-color:var(--gold);color:var(--gold)}
+.lote-modo-badge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-bottom:12px;border-bottom:1px solid rgba(184,147,90,.12);margin-bottom:14px}
+.lote-filas{display:flex;flex-direction:column;margin-bottom:14px}
+.lote-fila{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid rgba(122,116,104,.07);gap:8px;font-size:12px}
+.lote-fila:last-child{border-bottom:none}
+.lote-fila span{color:rgba(245,240,232,.5);flex:1}
+.lote-fila strong{font-family:var(--serif);font-size:15px;font-weight:300;color:var(--cream);text-align:right;white-space:nowrap}
+.lote-hi{background:rgba(184,147,90,.05);padding:7px 8px;margin:0 -8px}
+.lote-hi span{color:rgba(184,147,90,.7)}
+.lote-hi strong{color:var(--gold)}
+.lote-resultado{background:rgba(184,147,90,.06);border:1px solid rgba(184,147,90,.18);padding:18px;margin-bottom:14px}
+.lote-res-tag{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.lote-res-num{font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream);margin-bottom:4px}
+.lote-res-desc{font-size:11px;color:var(--stone);line-height:1.6}
+.lote-aviso{font-size:11px;color:rgba(122,116,104,.4);line-height:1.65;border-top:1px solid rgba(122,116,104,.1);padding-top:12px}
+@media(max-width:900px){.lote-wrap{grid-template-columns:1fr;padding:24px;gap:32px}}
+
+/* ══ 4-COLUMN COMPARISON ══ */
+.cmp4-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12)}
+.cmp4-col{background:#0d0d0b;padding:36px 28px;position:relative}
+.cmp4-bad{background:#0b0b09}
+.cmp4-neutral{background:#0e0e0c}
+.cmp4-fractal{background:#111009;border-top:3px solid var(--gold)}
+.cmp4-best-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:4px 14px;font-weight:500;white-space:nowrap}
+.cmp4-tag{font-family:var(--serif);font-size:22px;font-weight:300;color:rgba(245,240,232,.7);margin-bottom:20px;line-height:1}
+.cmp4-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;min-height:200px}
+.cmp4-list li{font-size:12px;color:rgba(245,240,232,.55);display:flex;align-items:flex-start;gap:9px;line-height:1.5}
+.cmp4-list li span{font-size:11px;flex-shrink:0;width:14px;margin-top:1px}
+.cmp4-list li strong{color:var(--cream);font-weight:500}
+.cmp4-list li.bad{color:rgba(200,80,80,.7)}
+.cmp4-list li.bad span{color:rgba(200,80,80,.8)}
+.cmp4-list li.good{color:rgba(184,147,90,.75)}
+.cmp4-list li.good span{color:var(--gold)}
+.cmp4-kpis{display:flex;flex-direction:column;gap:1px;border-top:1px solid rgba(122,116,104,.12);padding-top:16px}
+.cmp4-kpi{display:flex;justify-content:space-between;padding:6px 0;font-size:11px}
+.cmp4-kpi span{color:rgba(122,116,104,.6)}
+.cmp4-kpi strong{color:var(--cream);font-weight:400;font-family:var(--serif);font-size:14px}
+.bad-v{color:rgba(200,80,80,.85)!important}
+.good-v{color:var(--gold)!important}
+.cmp4-savings{background:rgba(184,147,90,.04);border-top:1px solid rgba(184,147,90,.12);padding:32px 48px}
+.cmp4-sav-title{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.cmp4-sav-title::before{content:'';width:18px;height:1px;background:var(--gold)}
+.cmp4-sav-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(122,116,104,.1)}
+.cmp4-sav-item{background:#0e0d0b;padding:16px 14px;text-align:center}
+.cmp4-sav-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;line-height:1.4}
+.cmp4-sav-num{font-family:var(--serif);font-size:clamp(13px,1.5vw,20px);font-weight:300;color:var(--cream);line-height:1;margin-bottom:3px}
+.cmp4-sav-sub{font-size:9px;color:rgba(122,116,104,.4)}
+/* ══ ACCORDION FULL WIDTH ══ */
+.sec-accordion{border-top:1px solid rgba(122,116,104,.1)}
+.sec-accordion > div{padding:0!important;max-width:none!important;width:100%!important}
+.sec-acc-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:44px 64px;
+  cursor:pointer;
+  transition:background .2s;
+  user-select:none;
+  width:100%;
+  box-sizing:border-box;
+  background:transparent;
+  border:none;
+  gap:48px;
+}
+.sec-acc-header:hover{background:rgba(122,116,104,.04)}
+.sec-acc-header.open{background:rgba(122,116,104,.025)}
+.sec-acc-left{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+.sec-acc-tag{
+  font-size:clamp(28px,4vw,58px);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-weight:700;
+  line-height:1;
+  font-family:var(--sans);
+}
+.sec-acc-tag::before{content:'';width:32px;height:2px;background:var(--gold);flex-shrink:0}
+.sec-acc-title{
+  font-family:var(--serif);
+  font-size:clamp(16px,1.6vw,22px);
+  font-weight:300;
+  color:rgba(245,240,232,.65);
+  line-height:1.4;
+  margin-bottom:8px;
+  letter-spacing:.01em;
+}
+.sec-acc-summary{
+  font-size:13px;
+  color:rgba(122,116,104,.7);
+  line-height:1.65;
+  max-width:580px;
+}
+.sec-acc-right{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.sec-acc-pills{display:flex;gap:10px;flex-wrap:nowrap}
+.sec-acc-pill{font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:16px 24px;border:1px solid rgba(184,147,90,.3);color:var(--stone);text-align:center;min-width:110px;background:rgba(184,147,90,.04)}
+.sec-acc-pill span{display:block;font-family:var(--serif);font-size:24px;font-weight:400;color:var(--cream);margin-top:6px;letter-spacing:0;text-transform:none}
+.sec-acc-icon{width:48px;height:48px;border:1px solid rgba(184,147,90,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);transition:all .3s;flex-shrink:0;background:rgba(184,147,90,.04)}
+.sec-acc-header.open .sec-acc-icon{width:48px;height:48px;border:1px solid rgba(184,147,90,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);transition:all .3s;flex-shrink:0;background:rgba(184,147,90,.04)}
+.sec-acc-header.open .sec-acc-icon svg{transform:rotate(180deg)}
+.sec-acc-icon svg{transition:transform .35s}
+.sec-acc-body{display:none;border-top:1px solid rgba(122,116,104,.08)}
+.sec-acc-body.open{display:block}
+@media(max-width:900px){
+  .cmp4-grid{grid-template-columns:1fr 1fr}
+  .cmp4-sav-grid{grid-template-columns:repeat(2,1fr)}
+  .cmp4-savings{padding:24px 20px}
+  .sec-acc-header{padding:28px 20px;flex-wrap:wrap;gap:16px}
+  .sec-acc-right{display:none}
+  .vsu-presets{display:flex;flex-wrap:wrap;gap:6px}
+}
+/* preset buttons */
+.vsu-presets{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+
+
+/* ── ACCORDION INNER OVERRIDE — kills grid/max-width that constrain header ── */
+.sec-accordion > .puntos-inner,
+.sec-accordion > .costos-inner,
+.sec-accordion > .admin-inner,
+.sec-accordion > .reventa-inner,
+.sec-accordion > .mercado-inner {
+  display:block !important;
+  max-width:none !important;
+  grid-template-columns:none !important;
+  padding:0 !important;
+  width:100% !important;
+  margin:0 !important;
+}
+/* ── STRONG SECTION DIVIDERS ── */
+.strong-divider{display:flex;align-items:center;gap:0;padding:0;width:100%;overflow:hidden}
+.sd-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,147,90,.35) 20%,rgba(184,147,90,.35) 80%,transparent)}
+.sd-dots{display:flex;gap:12px;padding:0 28px;flex-shrink:0}
+.sd-dots span{width:4px;height:4px;border-radius:50%;background:rgba(184,147,90,.5)}
+.sd-dots span:nth-child(2){background:var(--gold);width:6px;height:6px}
+
+.home-wrap{min-height:100vh;background:#09090a}
+.home-nav{height:60px;border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;padding:0 56px;gap:32px;position:sticky;top:0;background:#09090a;z-index:100}
+.home-logo{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);letter-spacing:.04em;margin-right:auto}
+.home-navlink{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .15s}
+.home-navlink:hover{color:var(--cream)}
+.home-hero{padding:96px 56px 80px;text-align:center;border-bottom:1px solid rgba(122,116,104,.1)}
+.home-hero-tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(184,147,90,.6);margin-bottom:20px}
+.home-hero-h{font-family:var(--serif);font-size:clamp(36px,5vw,64px);font-weight:300;color:var(--cream);line-height:1.15;margin-bottom:20px}
+.home-hero-h em{color:var(--gold);font-style:normal}
+.home-hero-sub{font-size:15px;color:var(--stone);line-height:1.75;max-width:520px;margin:0 auto 36px}
+.home-hero-cta{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:14px 32px;border:1px solid rgba(184,147,90,.4);color:var(--gold);text-decoration:none;transition:all .2s}
+.home-hero-cta:hover{background:rgba(184,147,90,.08)}
+.home-prods-section{padding:80px 56px;border-bottom:1px solid rgba(122,116,104,.1)}
+.home-prods-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,116,104,.5);margin-bottom:8px}
+.home-prods-h{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:48px}
+.prods5{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(122,116,104,.12)}
+.prod5{background:#09090a;padding:32px 20px;text-align:center;cursor:pointer;transition:background .2s;text-decoration:none;display:block}
+.prod5:hover{background:#111009}
+.prod5-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);margin-bottom:12px;line-height:1}
+.prod5:hover .prod5-num{color:var(--gold)}
+.prod5-name{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
+.prod5-tag{font-size:11px;color:var(--stone);line-height:1.5;margin-bottom:16px}
+.prod5-arrow{font-size:11px;color:rgba(184,147,90,.4);transition:color .2s}
+.prod5:hover .prod5-arrow{color:var(--gold)}
+.home-footer-s{padding:40px 56px;display:flex;align-items:center;justify-content:space-between}
+.home-foot-logo{font-family:var(--serif);font-size:18px;font-weight:300;color:rgba(245,240,232,.3)}
+.home-foot-links{display:flex;gap:24px}
+.home-foot-link{font-size:11px;color:rgba(122,116,104,.5);text-decoration:none}
+.home-foot-link:hover{color:var(--stone)}
+.home-contact{background:#0d0d0b;border-top:1px solid rgba(122,116,104,.1);padding:64px 56px;text-align:center}
+.home-contact-tag{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px}
+.home-contact-h{font-family:var(--serif);font-size:28px;font-weight:300;color:var(--cream);margin-bottom:8px}
+.home-contact-sub{font-size:13px;color:var(--stone);margin-bottom:28px}
+.home-contact-btn{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:14px 36px;background:rgba(184,147,90,.08);border:1px solid rgba(184,147,90,.3);color:var(--gold);text-decoration:none;transition:all .2s}
+.home-contact-btn:hover{background:rgba(184,147,90,.15)}
+@media(max-width:768px){
+  .home-nav{padding:0 20px;gap:16px}
+  .home-hero{padding:64px 20px 48px}
+  .home-prods-section{padding:48px 20px}
+  .prods5{grid-template-columns:1fr 1fr}
+  .home-footer-s{flex-direction:column;gap:16px;padding:32px 20px}
+  .home-contact{padding:48px 20px}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="mainNav">
-  <a href="#" class="nav-logo">Fra<span>c</span>tal</a>
-  <ul class="nav-links">
-    <li><a href="#como-funciona">Modelo</a></li>
-    <li><a href="#destinos">Destinos</a></li>
-    <li><a href="#fracciones">Fracciones</a></li>
-    <li><a href="#costos">Costos</a></li>
-    <li><a href="#" id="nav-mercado" onclick="openMercado(event)">Mercado</a></li>
-    <li><a href="#calendario">Calendario</a></li>
-    <li><a href="#calculadora">Calculadora</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="fractal-origen.html" style="color:var(--gold);opacity:1!important">Origen ✦</a></li>
-  </ul>
-  <a href="#contacto" class="nav-cta" id="nav-cta-main">Hablar con un asesor</a>
-</nav><div id="main-content">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow fade-up">Copropiedad inteligente · Colombia</div>
-    <h1 class="fade-up d1">Tu segundo hogar<br><em>ya existe.</em></h1>
-    <p class="hero-sub fade-up d2">Fractal adquiere propiedades premium en los destinos más deseados de Colombia y las estructura en fracciones de copropiedad real. Tú compras, usas tus días y nosotros gestionamos todo.</p>
-    <div class="hero-actions fade-up d3">
-      <a href="#destinos" class="btn-primary">Ver propiedades</a>
-      <a href="#como-funciona" class="btn-ghost">
-        Cómo funciona
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+
+
+
+<div class="home-wrap">
+
+  <!-- NAV -->
+  <nav class="home-nav">
+    <span class="home-logo">Fractal</span>
+    <a href="homes.html" class="home-navlink">Homes</a>
+    <a href="invest.html" class="home-navlink">Invest</a>
+    <a href="nautico.html" class="home-navlink">Náutico</a>
+    <a href="cars.html" class="home-navlink">Cars</a>
+    <a href="pyp.html" class="home-navlink">P&amp;P</a>
+    <a href="exchange.html" class="home-navlink">Exchange</a>
+    <a href="#contacto" class="home-navlink">Contacto</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="home-hero">
+    <div class="home-hero-tag">Fractal · Colombia · 2026</div>
+    <h1 class="home-hero-h">Accede a activos premium.<br><em>Sin pagar el 100%.</em></h1>
+    <p class="home-hero-sub">Copropiedad real e inteligente de propiedades, embarcaciones y vehículos de lujo. Fraccionado, estructurado, transparente. Solo en Colombia.</p>
+    <a href="homes.html" class="home-hero-cta">Conocer Fractal Homes →</a>
+  </div>
+
+  <!-- 5 PRODUCTOS -->
+  <div class="home-prods-section">
+    <div class="home-prods-tag">Los 5 productos</div>
+    <div class="home-prods-h">Elige tu forma de participar.</div>
+    <div class="prods5">
+      <a href="homes.html" class="prod5">
+        <div class="prod5-num">01</div>
+        <div class="prod5-name">Fractal Homes</div>
+        <div class="prod5-tag">Segunda vivienda compartida · 8 socios · 44+ días/año</div>
+        <div class="prod5-arrow">Ver modelo completo →</div>
+      </a>
+      <a href="invest.html" class="prod5">
+        <div class="prod5-num">02</div>
+        <div class="prod5-name">Fractal Invest</div>
+        <div class="prod5-tag">100% renta · TIR 13–15% · distribución mensual</div>
+        <div class="prod5-arrow">Ver modelo financiero →</div>
+      </a>
+      <a href="nautico.html" class="prod5">
+        <div class="prod5-num">03</div>
+        <div class="prod5-name">Fractal Náutico</div>
+        <div class="prod5-tag">Embarcaciones · 8 socios · capitán DIMAR asignado</div>
+        <div class="prod5-arrow">Ver experiencia →</div>
+      </a>
+      <a href="cars.html" class="prod5">
+        <div class="prod5-num">04</div>
+        <div class="prod5-name">Premium Cars</div>
+        <div class="prod5-tag">Supercars compartidos · 8 socios · chofer y lavada incluidos</div>
+        <div class="prod5-arrow">Ver calculadora →</div>
+      </a>
+      <a href="pyp.html" class="prod5">
+        <div class="prod5-num">05</div>
+        <div class="prod5-name">Optimización P&amp;P</div>
+        <div class="prod5-tag">Pico y placa resuelto · 5 socios · L a V · exclusivo Colombia</div>
+        <div class="prod5-arrow">Ver modelo →</div>
       </a>
     </div>
   </div>
-</section>
 
-<!-- MANIFIESTO -->
-<div class="manifesto">
-  <div class="manifesto-inner">
-    <div class="section-tag centered">Por qué Fractal</div>
-    <h2>No tiene sentido ser dueño del 100%<br>de una casa que usas el <em>10% del año.</em></h2>
-    <p>Fractal existe para que accedas a la propiedad que siempre quisiste, en el lugar que más te gusta, sin los costos ni las complicaciones de ser el único dueño.</p>
-    <div class="manifesto-stats">
-      <div class="stat">
-        <div class="stat-num">8</div>
-        <div class="stat-label">Copropietarios<br>por propiedad</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">43–48</div>
-        <div class="stat-label">Días disponibles<br>por fracción / año</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">23</div>
-        <div class="stat-label">Ítems de costo<br>gestionados por Fractal</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">0.35%</div>
-        <div class="stat-label">Fee anual sobre<br>valor del activo</div>
-      </div>
+  <!-- CONTACTO -->
+  <div class="home-contact" id="contacto">
+    <div class="home-contact-tag">El siguiente paso</div>
+    <h2 class="home-contact-h">¿Por cuál producto empezamos?</h2>
+    <p class="home-contact-sub">Una consulta de 30 minutos. Sin compromiso. Te explicamos el modelo que más se adapta a tu situación.</p>
+    <a href="homes.html#contacto" class="home-contact-btn">Agendar consulta →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="home-footer-s">
+    <span class="home-foot-logo">Fractal</span>
+    <div class="home-foot-links">
+      <a href="homes.html" class="home-foot-link">Homes</a>
+      <a href="invest.html" class="home-foot-link">Invest</a>
+      <a href="exchange.html" class="home-foot-link">Exchange</a>
+      <a href="homes.html#mercado" class="home-foot-link">Mercado</a>
     </div>
   </div>
+
 </div>
 
-<!-- FRACTAL ORIGEN -->
-<section class="origen" id="origen">
-  <div class="origen-bg-lines"></div>
-  <div class="origen-inner">
 
-    <div class="origen-left">
-      <div class="origen-badge">
-        <div class="origen-badge-dot"></div>
-        <span>Fractal Origen · Programa de incorporación</span>
-      </div>
-      <h2>¿Ya tienes una casa<br>de recreo que no <em>estás<br>disfrutando?</em></h2>
-      <p>Deudas con el mayordomo, instalaciones deterioradas, costos que pesan sin recibir nada a cambio. Fractal Origen es el camino más corto al segundo hogar que ya tienes — sin construir nada nuevo.</p>
-      <div class="origen-cta-row">
-        <a href="fractal-origen.html" class="btn-primary">Cotiza tu propiedad →</a>
-        <a href="fractal-origen.html#como" class="origen-link">Ver cómo funciona</a>
-      </div>
-    </div>
+<script>
+// ── TOGGLE ACORDEÓN ──────────────────────────────────────────────────────────
+function toggleAcc(header) {
+  var isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  var body = header.nextElementSibling;
+  if (body && body.classList.contains('sec-acc-body')) {
+    body.classList.toggle('open', !isOpen);
+  }
+}
+
+// ── CALCULADORA COMPARACIÓN ──────────────────────────────────────────────────
+function calcComparacion(val) {
+  if (!val || val < 500000000) return;
+  var cmpCop = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
+  var safe   = function(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; };
+
+  var escrit        = val * 0.02;
+  var invPropia     = val + escrit + 300000000;
+  var mesPropia     = 100000 + (val*0.00052) + 1300000 + 1068750 + 2525000 + 800000;
+  var anioPropia    = mesPropia * 12;
+  var opPropia      = val * 0.08;
+  var totalAnioPropia = anioPropia + opPropia;
+  var costoPropiaDia  = totalAnioPropia / 30;
+
+  var fracAB        = val * 0.1565;
+  var entradaAB     = fracAB * 0.08;
+  var invAB         = fracAB + entradaAB;
+  var mesAB         = 1601056 + (val * 0.005 / 12 / 8);
+  var anioAB        = mesAB * 12;
+  var opAB          = fracAB * 0.08;
+  var totalAnioAB   = anioAB + opAB;
+  var costoABDia    = totalAnioAB / 48;
+
+  var ahorroInv     = invPropia - invAB;
+  var ahorroAnual   = totalAnioPropia - totalAnioAB;
+  var ahorro10      = ahorroInv + ahorroAnual * 10;
+  var ahorroDia     = costoPropiaDia - costoABDia;
+
+  safe('cmp-val-label',    cmpCop(val));
+  safe('cmp-p-inversion2', cmpCop(invPropia));
+  safe('cmp-p-mes2',       cmpCop(mesPropia));
+  safe('cmp-p-op2',        cmpCop(opPropia) + '/año');
+  safe('cmp-p-dia2',       cmpCop(costoPropiaDia));
+  safe('cmp-p-total2',     cmpCop(totalAnioPropia));
+  safe('cmp-p-dia3',       cmpCop(costoPropiaDia));
+  safe('cmp-f-inversion2', cmpCop(invAB));
+  safe('cmp-f-mes2',       cmpCop(mesAB));
+  safe('cmp-f-dia2',       cmpCop(costoABDia));
+  safe('cmp-f-total2',     cmpCop(totalAnioAB));
+  safe('cmp-f-dia3',       cmpCop(costoABDia));
+  safe('cmp-ahorro-inv',   cmpCop(ahorroInv));
+  safe('cmp-ahorro-anual', cmpCop(ahorroAnual));
+  safe('cmp-ahorro-10',    cmpCop(ahorro10));
+  safe('cmp-dia-propia',   cmpCop(costoPropiaDia));
+  safe('cmp-dia-fractal',  cmpCop(costoABDia));
+  safe('cmp-ahorro-dia',   cmpCop(ahorroDia));
+}
 
-    <div class="origen-right">
-      <div class="origen-pains">
-        <div class="op">
-          <div class="op-icon">🔴</div>
-          <div class="op-text">
-            <strong>Deuda con administración o mayordomía</strong>
-            <span>Fractal la asume desde el día uno. Sin pago inicial de tu parte — se descuenta de la comercialización.</span>
-          </div>
-        </div>
-        <div class="op">
-          <div class="op-icon">🏚️</div>
-          <div class="op-text">
-            <strong>Instalaciones en mal estado</strong>
-            <span>Fractal financia la remodelación completa para dejarla en estándares premium. Tú no pones un peso hoy.</span>
-          </div>
-        </div>
-        <div class="op">
-          <div class="op-icon">💰</div>
-          <div class="op-text">
-            <strong>Capital enterrado sin liquidez</strong>
-            <span>Comercializamos las 7 fracciones restantes. Ese flujo libera tu patrimonio — tú conservas 1/8 escriturado.</span>
-          </div>
-        </div>
-      </div>
-      <div class="origen-proof">
-        <div class="op-proof-tag">Por qué es la punta de lanza</div>
-        <div class="op-proof-stats">
-          <div class="op-stat">
-            <div class="op-stat-n">0</div>
-            <div class="op-stat-l">Inversión<br>inicial</div>
-          </div>
-          <div class="op-stat">
-            <div class="op-stat-n">1/8</div>
-            <div class="op-stat-l">Fracción que<br>conservas</div>
-          </div>
-          <div class="op-stat">
-            <div class="op-stat-n">7×</div>
-            <div class="op-stat-l">Fracciones que<br>generan liquidez</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-  </div>
-</section>
 
-<!-- VS TIMESHARE -->
-<div class="vs">
-  <div class="vs-inner">
-    <div class="vs-col bad">
-      <h3>Tiempo compartido</h3>
-      <ul class="vs-list">
-        <li><span class="icon">✗</span>Derecho de uso, no propiedad real</li>
-        <li><span class="icon">✗</span>Cientos o miles de "socios" anónimos</li>
-        <li><span class="icon">✗</span>Fechas fijas sin flexibilidad</li>
-        <li><span class="icon">✗</span>No se valoriza, no se vende libremente</li>
-        <li><span class="icon">✗</span>Cuotas de mantenimiento opacas</li>
-        <li><span class="icon">✗</span>Propiedad estándar y genérica</li>
-      </ul>
-    </div>
-    <div class="vs-col good">
-      <h3>Copropiedad Fractal</h3>
-      <ul class="vs-list">
-        <li><span class="icon">—</span>Escritura real. Título a tu nombre.</li>
-        <li><span class="icon">—</span>Solo 8 copropietarios por propiedad</li>
-        <li><span class="icon">—</span>Sistema de puntos flexible, intercambiable</li>
-        <li><span class="icon">—</span>Activo inmobiliario real que se valoriza</li>
-        <li><span class="icon">—</span>23 ítems de costo detallados y auditables</li>
-        <li><span class="icon">—</span>Propiedades premium curadas por Fractal</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- HOW -->
-<section class="how" id="como-funciona">
-  <div class="how-inner">
-    <div class="how-text">
-      <div class="section-tag">El modelo</div>
-      <h2>Así de simple es tener tu segundo hogar</h2>
-      <div>
-        <div class="step">
-          <div class="step-num">01</div>
-          <div>
-            <h4>Fractal encuentra y adquiere la propiedad</h4>
-            <p>Seleccionamos propiedades premium en destinos con alta demanda y potencial de valorización. Due diligence completo, titulación limpia, diseño turnkey antes de la entrega.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div>
-            <h4>Eliges tu fracción y formalizas</h4>
-            <p>Fracción A o B para viernes, fines de semana y fechas especiales; Weekday para lunes a jueves. Escritura notarial, título registrado a tu nombre. Copropiedad real, no un esquema de membresía.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div>
-            <h4>Reservas con el sistema de puntos</h4>
-            <p>El calendario se asigna semestralmente. Los puntos te permiten reservar, intercambiar o transferir días. Cada fecha especial del año tiene garantía de acceso para tu fracción.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <div>
-            <h4>Llegas y es tu casa</h4>
-            <p>Limpia, equipada y lista como un hotel boutique. Fractal gestiona cada detalle operativo. Tú solo disfrutas.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">05</div>
-          <div>
-            <h4>Los días que no uses generan ingresos</h4>
-            <p>Cede los días que no necesites al operador para alquiler. El ingreso es tuyo directamente — no entra a ninguna bolsa común.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="how-img"></div>
-  </div>
-</section>
-
-<!-- FRACCIONES -->
-<section class="fracs" id="fracciones">
-  <div class="fracs-header">
-    <div class="section-tag centered">Tipos de fracción</div>
-    <h2>Elige el acceso que se adapta a tu vida</h2>
-    <p>Cada fracción es un porcentaje real del activo. Los porcentajes reflejan el valor de cada tipo de día en el mercado del destino.</p>
-  </div>
-  <div class="fracs-grid">
-
-    <!-- A -->
-    <div class="frac-card">
-      <div class="frac-type">Fracción A</div>
-      <div class="frac-name">Weekend</div>
-      <div class="frac-when">
-        Viernes, sábados y domingos todo el año · festivos nacionales · Semana Santa · vacaciones de enero, mitad y fin de año · puentes y fechas de alta demanda
-      </div>
-      <div class="frac-pct">15.65%</div>
-      <div class="frac-pct-label">Del valor del activo</div>
-      <ul class="frac-features">
-        <li>~48 días disponibles por año</li>
-        <li>Acceso garantizado a todas las fechas premium del calendario</li>
-        <li>Sistema de puntos para reservar, intercambiar o ceder</li>
-        <li>Ingresos directos por días cedidos al operador</li>
-        <li>Mercado interno de intercambio A ↔ B</li>
-      </ul>
-      <div class="frac-cost">
-        <div class="frac-cost-label">Costo mensual</div>
-        <div class="frac-cost-val">$1.776.056</div>
-        <div class="frac-cost-sub">Operación + fee de gestión · incluye los 23 ítems</div>
-      </div>
-    </div>
-
-    <!-- B -->
-    <div class="frac-card">
-      <div class="frac-type">Fracción B</div>
-      <div class="frac-name">Weekend</div>
-      <div class="frac-when">
-        Exactamente los mismos derechos de acceso que Fracción A · viernes, sábados y domingos · mismo calendario, mismo universo de días disponibles
-      </div>
-      <div class="frac-pct">15.65%</div>
-      <div class="frac-pct-label">Del valor del activo</div>
-      <ul class="frac-features">
-        <li>~48 días disponibles por año</li>
-        <li>Idéntica participación en el activo que Fracción A</li>
-        <li>Acceso a las mismas fechas especiales del año</li>
-        <li>Opción de intercambio directo con Fracción A</li>
-        <li>Mismos derechos sobre la propiedad</li>
-      </ul>
-      <div class="frac-cost">
-        <div class="frac-cost-label">Costo mensual</div>
-        <div class="frac-cost-val">$1.776.056</div>
-        <div class="frac-cost-sub">Operación + fee de gestión · incluye los 23 ítems</div>
-      </div>
-    </div>
-
-    <!-- WD -->
-    <div class="frac-card">
-      <div class="frac-highlight"></div>
-      <div class="frac-type" style="color:var(--gold-light)">Fracción Weekday</div>
-      <div class="frac-name">Entre semana</div>
-      <div class="frac-when">
-        Lunes a jueves durante todo el año · excluyendo festivos, puentes y fechas especiales del calendario A/B
-      </div>
-      <div class="frac-pct">9.35%</div>
-      <div class="frac-pct-label">Del valor del activo</div>
-      <ul class="frac-features">
-        <li>~43 días disponibles por año</li>
-        <li>Ideal para trabajo remoto, retiros y escapadas de pareja</li>
-        <li>Cauca Viejo a 2 horas de Medellín entre semana</li>
-        <li>Alta demanda de alquiler en días cedidos</li>
-        <li>Menor costo de entrada con mismo acceso operativo</li>
-      </ul>
-      <div class="frac-cost">
-        <div class="frac-cost-label">Costo mensual</div>
-        <div class="frac-cost-val">$1.493.840</div>
-        <div class="frac-cost-sub">Operación + fee de gestión · incluye los 23 ítems</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- DESTINOS -->
-<section class="destinos" id="destinos">
-  <div class="destinos-header">
-    <div>
-      <div class="section-tag">Dónde vivir</div>
-      <h2>Destinos premium en Colombia</h2>
-    </div>
-    <p>Propiedades seleccionadas en los lugares más deseados del país, con alta demanda y potencial de valorización.</p>
-  </div>
-  <div class="dest-grid">
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800&q=80" alt="Cauca Viejo">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Suroeste Antioqueño</div><div class="dest-name">Cauca Viejo</div></div>
-      <div class="dest-badge">Disponible</div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Cartagena">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Caribe colombiano</div><div class="dest-name">Cartagena</div></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&q=80" alt="San Andrés">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Caribe insular</div><div class="dest-name">San Andrés</div></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=700&q=80" alt="Eje Cafetero">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Eje Cafetero</div><div class="dest-name">Salento · Filandia</div></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&q=80" alt="Santa Fe de Antioquia">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Occidente Antioqueño</div><div class="dest-name">Santa Fe de Antioquia</div></div>
-      <div class="dest-badge" style="background:rgba(184,147,90,.3);color:var(--gold)">Próximamente</div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=700&q=80" alt="Guatapé">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Oriente Antioqueño</div><div class="dest-name">Guatapé</div></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1543332164-6e82f355badc?w=800&q=80" alt="Medellín">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Valle de Aburrá</div><div class="dest-name">Medellín</div></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="Manizales">
-      <div class="dest-overlay"></div>
-      <div class="dest-info"><div class="dest-region">Eje Cafetero Central</div><div class="dest-name">Manizales</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PUNTOS -->
-<section class="puntos">
-  <div class="puntos-inner">
-    <div class="puntos-text">
-      <div class="section-tag">Sistema de puntos</div>
-      <h2>Flexibilidad que se adapta a tu ritmo de vida</h2>
-      <p>El calendario se asigna semestralmente. Los puntos te permiten reservar con anticipación, intercambiar fechas con otros copropietarios, o ceder días al operador cuando no los vayas a usar.</p>
-      <p>Un día de fin de semana y un día entre semana no valen lo mismo. El sistema refleja esa diferencia con honestidad, usando el ratio real del mercado del destino.</p>
-      <div class="ratio-visual">
-        <div class="rv-row">
-          <div><div class="rv-label">1 noche de fin de semana o fecha especial</div><div class="rv-sub">Viernes · sábado · domingo · festivo · Semana Santa · temporada alta</div></div>
-          <div class="rv-pts">1.68 pts</div>
-        </div>
-        <div class="rv-row">
-          <div><div class="rv-label">1 noche entre semana</div><div class="rv-sub">Lunes a jueves · fuera de fechas especiales</div></div>
-          <div class="rv-pts">1.00 pt</div>
-        </div>
-      </div>
-    </div>
-    <div class="puntos-dist">
-      <div class="pd-title">Participación en el activo — 100% total</div>
-      <div class="pd-item">
-        <div class="pd-left"><span class="pd-name">Fracción A</span><span class="pd-days">48 días · viernes, weekends y fechas especiales</span></div>
-        <div class="pd-bar-wrap"><div class="pd-bar" style="width:100%"></div></div>
-        <div class="pd-pct">15.65%</div>
-      </div>
-      <div class="pd-item">
-        <div class="pd-left"><span class="pd-name">Fracción B</span><span class="pd-days">48 días · viernes, weekends y fechas especiales</span></div>
-        <div class="pd-bar-wrap"><div class="pd-bar" style="width:100%"></div></div>
-        <div class="pd-pct">15.65%</div>
-      </div>
-      <div class="pd-item">
-        <div class="pd-left"><span class="pd-name">Weekday 1</span><span class="pd-days">43 días · lunes a jueves</span></div>
-        <div class="pd-bar-wrap"><div class="pd-bar" style="width:59.7%"></div></div>
-        <div class="pd-pct">9.35%</div>
-      </div>
-      <div class="pd-item">
-        <div class="pd-left"><span class="pd-name">Weekday 2</span><span class="pd-days">43 días · lunes a jueves</span></div>
-        <div class="pd-bar-wrap"><div class="pd-bar" style="width:59.7%"></div></div>
-        <div class="pd-pct">9.35%</div>
-      </div>
-      <div class="pd-item">
-        <div class="pd-left"><span class="pd-name">Weekday 3</span><span class="pd-days">43 días · lunes a jueves</span></div>
-        <div class="pd-bar-wrap"><div class="pd-bar" style="width:59.7%"></div></div>
-        <div class="pd-pct">9.35%</div>
-      </div>
-      <div class="pd-item">
-        <div class="pd-left"><span class="pd-name">Weekday 4</span><span class="pd-days">43 días · lunes a jueves</span></div>
-        <div class="pd-bar-wrap"><div class="pd-bar" style="width:59.7%"></div></div>
-        <div class="pd-pct">9.35%</div>
-      </div>
-      <div class="pd-total">
-        <span class="pd-total-label">Sistema completo</span>
-        <span class="pd-total-val">100.00%</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MERCADO INTERNO -->
-<section class="mercado" id="mercado">
-  <div class="mercado-inner">
-    <div class="mercado-header">
-      <div>
-        <div class="section-tag">Mercado interno</div>
-        <h2>Extiende tu estadía hacia el día contiguo</h2>
-        <p class="mercado-intro">Los propietarios pueden comprarle días al propietario del día inmediatamente anterior o siguiente a su bloque. Solo se puede extender hacia un día contiguo — nunca comprar días sueltos en el medio de la semana de otro. Cada compra extiende el bloque, habilitando el siguiente.</p>
-      </div>
-    </div>
-
-    <!-- REGLA DE CONTINUIDAD VISUAL -->
-    <div class="mi-continuidad">
-      <div class="mc-title">La regla de continuidad</div>
-      <div class="mc-grid">
-        <div class="mc-check si">
-          <div class="mc-tag si">✓ Permitido</div>
-          <div class="mc-label">A1 extiende al lunes</div>
-          <div class="mc-week">
-            <div class="mc-day wd2">JU<span>WD2</span></div>
-            <div class="mc-day a1">VI<span>A1</span></div>
-            <div class="mc-day a1">SÁ<span>A1</span></div>
-            <div class="mc-day a1">DO<span>A1</span></div>
-            <div class="mc-day a1 comprado">LU<span>A1★</span></div>
-            <div class="mc-day wd2">MA<span>WD2</span></div>
-          </div>
-          <p>El lunes es contiguo al domingo de A1. Puede comprárselo a WD2.</p>
-        </div>
-        <div class="mc-check si">
-          <div class="mc-tag si">✓ Permitido</div>
-          <div class="mc-label">WD3 llega el viernes anterior</div>
-          <div class="mc-week">
-            <div class="mc-day wd3">JU<span>WD3</span></div>
-            <div class="mc-day wd3 comprado">VI<span>WD3★</span></div>
-            <div class="mc-day b2">SÁ<span>B2</span></div>
-            <div class="mc-day b2">DO<span>B2</span></div>
-            <div class="mc-day wd3">LU<span>WD3</span></div>
-            <div class="mc-day wd3">MA<span>WD3</span></div>
-          </div>
-          <p>El viernes es contiguo al lunes de WD3. Puede comprárselo a B2.</p>
-        </div>
-        <div class="mc-check si">
-          <div class="mc-tag si">✓ Permitido</div>
-          <div class="mc-label">WD3 sigue comprando el sábado</div>
-          <div class="mc-week">
-            <div class="mc-day wd3 comprado">VI<span>WD3★</span></div>
-            <div class="mc-day wd3 comprado">SÁ<span>WD3★</span></div>
-            <div class="mc-day b2">DO<span>B2</span></div>
-            <div class="mc-day wd3">LU<span>WD3</span></div>
-            <div class="mc-day wd3">MA<span>WD3</span></div>
-            <div class="mc-day wd3">MI<span>WD3</span></div>
-          </div>
-          <p>Al tener el viernes, el sábado ya es contiguo a su bloque. Puede comprarlo también.</p>
-        </div>
-        <div class="mc-check no">
-          <div class="mc-tag no">✗ No permitido</div>
-          <div class="mc-label">WD1 compra día suelto de otra semana</div>
-          <div class="mc-week">
-            <div class="mc-day wd1">LU<span>WD1</span></div>
-            <div class="mc-day wd1">JU<span>WD1</span></div>
-            <div class="mc-day a2">VI<span>A2</span></div>
-            <div class="mc-day a2">DO<span>A2</span></div>
-            <div class="mc-day wd2">LU<span>WD2</span></div>
-            <div class="mc-day wd2 bloqueado">MI<span>WD2✗</span></div>
-          </div>
-          <p>El miércoles de la semana siguiente no es contiguo. Hay 6 días de por medio.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SIMULADOR -->
-    <div class="mi-sim">
-      <div class="mi-sim-header">
-        <div class="section-tag">Simulador de extensión</div>
-        <p style="font-size:14px;color:var(--stone)">¿Cuántos días quieres añadir a tu bloque? Elige el tipo de día que vas a comprar y cuántos puntos tienes disponibles.</p>
-      </div>
-
-      <div class="mi-sim-body">
-        <div class="mi-left">
-
-          <div class="mi-field">
-            <label class="mi-label">¿Qué tipo de día quieres comprar?</label>
-            <div class="mi-toggle">
-              <button class="mi-tog active" data-tipo="fds">
-                Fin de semana / festivo
-                <span>1.68 pts · $2.184.000/noche</span>
-              </button>
-              <button class="mi-tog" data-tipo="wd">
-                Entre semana (lun–jue)
-                <span>1.00 pt · $1.300.000/noche</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="mi-field">
-            <label class="mi-label">¿Cuántas noches contiguas?</label>
-            <div class="mi-stepper">
-              <button class="mi-step-btn" id="stepDown">−</button>
-              <span id="stepVal">1</span>
-              <button class="mi-step-btn" id="stepUp">+</button>
-            </div>
-            <div style="font-size:11px;color:var(--gold);margin-top:10px;min-height:18px" id="mi-combo-hint"></div>
-          </div>
-
-          <div class="mi-field">
-            <label class="mi-label">Tus puntos disponibles este semestre</label>
-            <div class="mi-slider-wrap">
-              <input type="range" class="calc-slider" id="mi-pts" min="0" max="48" step="0.5" value="20">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
-                <span style="font-size:10px;color:rgba(122,116,104,.4)">0 pts</span>
-                <span id="mi-pts-val" style="color:var(--gold);font-size:16px;font-family:var(--serif)">20.0 pts</span>
-                <span style="font-size:10px;color:rgba(122,116,104,.4)">48 pts</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="background:rgba(122,116,104,.06);border:1px solid rgba(122,116,104,.1);padding:16px 20px;font-size:12px;color:rgba(245,240,232,.5);line-height:1.7">
-            <strong style="color:var(--cream);display:block;margin-bottom:6px">Recuerda</strong>
-            Solo puedes comprar el día inmediatamente contiguo a tu bloque actual. Cada noche que compras extiende tu bloque, habilitando el día siguiente.
-          </div>
-
-        </div>
-
-        <div class="mi-right">
-          <div class="mi-result-tag">Tu extensión</div>
-          <div class="mi-result-big" id="mi-modo-label">Pago mixto</div>
-          <div class="mi-result-sub" id="mi-modo-desc">Puntos + efectivo</div>
-
-          <div class="mi-breakdown">
-            <div class="mi-brow">
-              <span class="mi-blabel">Noches a comprar</span>
-              <span class="mi-bval" id="mi-r-noches">1 noche · fin de semana</span>
-            </div>
-            <div class="mi-brow">
-              <span class="mi-blabel">Costo total en puntos</span>
-              <span class="mi-bval" id="mi-r-total-pts">1.68 pts</span>
-            </div>
-            <div class="mi-brow">
-              <span class="mi-blabel">Tus puntos disponibles</span>
-              <span class="mi-bval" id="mi-r-tus-pts">20.00 pts</span>
-            </div>
-            <div class="mi-brow highlight">
-              <span class="mi-blabel">Puntos que usas</span>
-              <span class="mi-bval" id="mi-r-pts-usados">1.68 pts</span>
-            </div>
-            <div class="mi-brow highlight">
-              <span class="mi-blabel">Efectivo adicional</span>
-              <span class="mi-bval" id="mi-r-efectivo">$0</span>
-            </div>
-            <div class="mi-brow total">
-              <span class="mi-blabel">Valor total de la transacción</span>
-              <span class="mi-bval" id="mi-r-total-cop">$2.184.000</span>
-            </div>
-            <div class="mi-brow">
-              <span class="mi-blabel">Puntos que te sobran</span>
-              <span class="mi-bval" id="mi-r-sobra" style="color:var(--gold-light)">18.32 pts</span>
-            </div>
-          </div>
-
-          <div class="mi-vendedor-box">
-            <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">El propietario del día recibe</div>
-            <div id="mi-vendedor-recibe" style="font-size:13px;color:rgba(245,240,232,.7);line-height:1.75"></div>
-          </div>
-        </div>
-      </div>
-
-      </div>
-
-      <!-- TODOS LOS TIPOS DE INTERCAMBIO -->
-
-      <!-- GRUPO 1: Extensiones contiguas -->
-      <div class="mi-grupo">
-        <div class="mi-grupo-header">
-          <div class="mi-grupo-tag">Tipo 1 · Extensión contigua</div>
-          <div class="mi-grupo-title">Extender tu bloque hacia el día inmediato anterior o siguiente</div>
-          <div class="mi-grupo-desc">Solo puedes comprar el día que toca directamente a tu bloque. Cada compra extiende el bloque, habilitando el siguiente.</div>
-        </div>
-        <div class="mi-ejemplos">
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">A1 se queda el lunes</div>
-            <div class="mi-ej-title">Extiende vie+sáb+dom → lunes de WD</div>
-            <p>El lunes es contiguo al domingo de A1. Le paga 1.00 pt a WD2. Si también quiere el martes, lo compra en una segunda transacción — el martes ya es contiguo al lunes recién adquirido.</p>
-            <div class="mi-ej-nums">
-              <div><span>1 noche lunes</span><strong>1.00 pt</strong></div>
-              <div><span>En efectivo</span><strong>$1.300.000</strong></div>
-              <div><span>+martes también</span><strong>$1.300.000</strong></div>
-              <div><span>Estadía final</span><strong>5 noches</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">WD llega el viernes</div>
-            <div class="mi-ej-title">Extiende lun–jue → viernes anterior de A/B</div>
-            <p>El viernes de B2 es el día anterior al lunes de WD3. Le paga 1.68 pts. Con el viernes en su bloque, el sábado ya es contiguo — puede comprarlo también en otra transacción.</p>
-            <div class="mi-ej-nums">
-              <div><span>1 noche viernes</span><strong>1.68 pts</strong></div>
-              <div><span>En efectivo</span><strong>$2.184.000</strong></div>
-              <div><span>+sábado (contiguo)</span><strong>$2.184.000</strong></div>
-              <div><span>Estadía final</span><strong>6 noches</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">Pago mixto — contiguo</div>
-            <div class="mi-ej-title">WD2 extiende al viernes, solo tiene 1.5 pts</div>
-            <p>WD2 quiere el viernes contiguo a su semana. Cuesta 1.68 pts. Solo tiene 1.50 pts. Paga sus puntos y cubre los 0.18 pts restantes en efectivo. A1 recibe ambas formas.</p>
-            <div class="mi-ej-nums">
-              <div><span>Costo</span><strong>1.68 pts</strong></div>
-              <div><span>Puntos usados</span><strong>1.50 pts</strong></div>
-              <div><span>Efectivo</span><strong>$234.000</strong></div>
-              <div><span>Valor total</span><strong>$2.184.000</strong></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GRUPO 2: Compra de bloque completo -->
-      <div class="mi-grupo">
-        <div class="mi-grupo-header">
-          <div class="mi-grupo-tag">Tipo 2 · Compra de bloque completo</div>
-          <div class="mi-grupo-title">Comprar el bloque entero de otro propietario — sin importar si es contiguo</div>
-          <div class="mi-grupo-desc">Un bloque completo puede comprarse aunque no esté conectado a tus días habituales. Se compra como unidad.</div>
-        </div>
-        <div class="mi-ejemplos">
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">WD compra bloque FDS completo</div>
-            <div class="mi-ej-title">WD1 compra vie+sáb+dom de A2 — tiene puntos</div>
-            <p>WD1 quiere ese fin de semana completo. No necesita que sea contiguo — compra el bloque entero. 3 noches × 1.68 pts = 5.04 pts. Tiene 22 puntos. Le alcanzan.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque (3 noches)</span><strong>5.04 pts</strong></div>
-              <div><span>Valor total</span><strong>$6.552.000</strong></div>
-              <div><span>Paga en puntos</span><strong>5.04 pts</strong></div>
-              <div><span>Le sobran</span><strong>16.96 pts</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">WD compra bloque FDS — pago mixto</div>
-            <div class="mi-ej-title">WD3 compra vie+sáb+dom de B1, solo tiene 2 pts</div>
-            <p>WD3 quiere el bloque completo de B1. Cuesta 5.04 pts. Solo tiene 2.00 pts. Paga sus puntos y cubre los 3.04 pts restantes en efectivo. B1 recibe ambas formas de pago.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque (3 noches)</span><strong>5.04 pts</strong></div>
-              <div><span>Puntos WD3</span><strong>2.00 pts</strong></div>
-              <div><span>Efectivo diferencia</span><strong>$3.952.000</strong></div>
-              <div><span>Valor total</span><strong>$6.552.000</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">A/B compra bloque WD completo</div>
-            <div class="mi-ej-title">B2 compra semana lun–jue de WD4</div>
-            <p>B2 quiere trabajar remotamente esa semana en la casa. Le compra el bloque completo a WD4. 4 noches × 1.00 pt = 4.00 pts. Tiene 8 puntos. Le sobran 4.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque (4 noches WD)</span><strong>4.00 pts</strong></div>
-              <div><span>Valor total</span><strong>$5.200.000</strong></div>
-              <div><span>Paga en puntos</span><strong>4.00 pts</strong></div>
-              <div><span>Le sobran</span><strong>4.00 pts</strong></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GRUPO 3: Intercambio A↔B -->
-      <div class="mi-grupo">
-        <div class="mi-grupo-header">
-          <div class="mi-grupo-tag">Tipo 3 · Intercambio A ↔ B</div>
-          <div class="mi-grupo-title">Swap de bloques entre propietarios del mismo tipo de fracción</div>
-          <div class="mi-grupo-desc">A1, A2, B1 y B2 pueden intercambiar bloques de fin de semana entre sí. Si los bloques son del mismo valor, es swap directo. Si hay diferencia, el que recibe más paga la diferencia en puntos o efectivo.</div>
-        </div>
-        <div class="mi-ejemplos">
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">Swap exacto — sin diferencia</div>
-            <div class="mi-ej-title">A1 y B2 intercambian bloques del mismo valor</div>
-            <p>A1 tiene vie 14-16 ago (3 noches = 5.04 pts). B2 tiene vie 21-23 ago (también 5.04 pts). Ambos prefieren el bloque del otro. Al ser del mismo valor hacen swap directo — nadie paga nada extra. Fractal lo registra en la APP.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque A1</span><strong>5.04 pts</strong></div>
-              <div><span>Bloque B2</span><strong>5.04 pts</strong></div>
-              <div><span>Diferencia</span><strong>$0</strong></div>
-              <div><span>Resultado</span><strong>Swap directo</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">Swap con diferencia en puntos</div>
-            <div class="mi-ej-title">A1 da 3 noches, B2 da 2 noches</div>
-            <p>A1 tiene vie+sáb+dom (5.04 pts). B2 solo tiene sáb+dom disponibles (3.36 pts). Hacen swap pero B2 debe compensar a A1 la diferencia de 1.68 pts — puede pagarla en puntos o en efectivo.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque A1 (3 noches)</span><strong>5.04 pts</strong></div>
-              <div><span>Bloque B2 (2 noches)</span><strong>3.36 pts</strong></div>
-              <div><span>Diferencia</span><strong>1.68 pts</strong></div>
-              <div><span>B2 paga a A1</span><strong>$2.184.000</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">Swap con diferencia en efectivo</div>
-            <div class="mi-ej-title">A2 y B1 intercambian — B1 no tiene puntos</div>
-            <p>A2 da 3 noches (5.04 pts). B1 da 2 noches (3.36 pts). B1 no tiene puntos disponibles. Paga la diferencia de 1.68 pts directamente en efectivo: $2.184.000. A2 recibe plata y puede comprar otros días con ella.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque A2 (3 noches)</span><strong>5.04 pts</strong></div>
-              <div><span>Bloque B1 (2 noches)</span><strong>3.36 pts</strong></div>
-              <div><span>Diferencia</span><strong>1.68 pts</strong></div>
-              <div><span>B1 paga</span><strong>$2.184.000</strong></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GRUPO 4: Intercambio WD↔WD -->
-      <div class="mi-grupo" style="border-bottom:none">
-        <div class="mi-grupo-header">
-          <div class="mi-grupo-tag">Tipo 4 · Intercambio WD ↔ WD</div>
-          <div class="mi-grupo-title">Swap de semanas completas entre propietarios Weekday</div>
-          <div class="mi-grupo-desc">Los cuatro propietarios Weekday pueden intercambiar sus semanas entre sí. Mismo mecanismo: swap directo si el valor es igual, o compensación en puntos o efectivo si hay diferencia.</div>
-        </div>
-        <div class="mi-ejemplos" style="border-bottom:none">
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">Swap exacto — mismo valor</div>
-            <div class="mi-ej-title">WD1 y WD3 intercambian semanas completas</div>
-            <p>WD1 tiene la semana de Semana Santa (lun–jue = 4.00 pts). WD3 tiene semana de octubre (también 4.00 pts). WD1 prefiere octubre, WD3 prefiere Semana Santa. Swap directo, sin pago adicional. Fractal registra el cambio.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque WD1</span><strong>4.00 pts</strong></div>
-              <div><span>Bloque WD3</span><strong>4.00 pts</strong></div>
-              <div><span>Diferencia</span><strong>$0</strong></div>
-              <div><span>Resultado</span><strong>Swap directo</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">Swap con diferencia</div>
-            <div class="mi-ej-title">WD2 da 4 noches, WD4 da 3 noches</div>
-            <p>WD2 tiene semana completa lun–jue (4.00 pts). WD4 solo tiene 3 noches ese período — un día fue absorbido como festivo por A/B. Hacen swap pero WD4 paga la diferencia de 1.00 pt en efectivo a WD2.</p>
-            <div class="mi-ej-nums">
-              <div><span>Bloque WD2 (4 noches)</span><strong>4.00 pts</strong></div>
-              <div><span>Bloque WD4 (3 noches)</span><strong>3.00 pts</strong></div>
-              <div><span>Diferencia</span><strong>1.00 pt</strong></div>
-              <div><span>WD4 paga</span><strong>$1.300.000</strong></div>
-            </div>
-          </div>
-          <div class="mi-ejemplo">
-            <div class="mi-ej-tag">Resumen de reglas</div>
-            <div class="mi-ej-title">Principios del mercado interno Fractal</div>
-            <p>En todos los intercambios: el precio lo fija el sistema de puntos (1.68 pts/noche FDS · 1.00 pt/noche WD · 1 pt = $1.300.000). Se puede pagar en puntos, efectivo o combinado. Fractal valida y registra cada transacción. Los puntos no se acumulan entre años.</p>
-            <div class="mi-ej-nums">
-              <div><span>1 noche FDS</span><strong>1.68 pts</strong></div>
-              <div><span>1 noche WD</span><strong>1.00 pt</strong></div>
-              <div><span>Valor 1 punto</span><strong>$1.300.000</strong></div>
-              <div><span>Validación</span><strong>APP Fractal</strong></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- COSTOS -->
-<section class="costos" id="costos">
-  <div class="costos-inner">
-    <div class="costos-intro">
-      <div>
-        <div class="section-tag">Transparencia total</div>
-        <h2>Cada peso tiene nombre y apellido</h2>
-      </div>
-      <p>Estos son todos los costos mensuales de operar la propiedad. Sin sorpresas, sin letra pequeña. Lo que ves es lo que se divide entre los 8 copropietarios según el tipo de uso de cada concepto.</p>
-    </div>
-
-    <table class="cost-table">
-      <thead>
-        <tr>
-          <th style="width:42%">Concepto</th>
-          <th>Tipo</th>
-          <th style="text-align:right">Mensual</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="cost-cat-row"><td colspan="3">Gestión y administración</td></tr>
-        <tr><td>Administración Fractal</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$800.000</td></tr>
-        <tr><td>Property Manager</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$1.500.000</td></tr>
-        <tr><td>Plataforma de reservas (APP)</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$200.000</td></tr>
-        <tr><td>Contabilidad y reportes</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$290.000</td></tr>
-        <tr><td>Software de gestión hotelera (PMS)</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$200.000</td></tr>
-        <tr><td>Publicidad y canales digitales</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$300.000</td></tr>
-        <tr><td>Compliance y RNT</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$100.000</td></tr>
-        <tr><td>Costos financieros y pasarela de pagos</td><td style="font-size:11px;color:var(--stone)">Variable</td><td class="amt">$100.000</td></tr>
-
-        <tr class="cost-cat-row"><td colspan="3">Personal</td></tr>
-        <tr><td>Servicio doméstico</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$2.025.000</td></tr>
-        <tr><td>Mayordomo / caretaker</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$500.000</td></tr>
-
-        <tr class="cost-cat-row"><td colspan="3">Mantenimiento</td></tr>
-        <tr><td>Mantenimiento preventivo (piscina, equipos)</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$562.500</td></tr>
-        <tr><td>Jardinería y zonas verdes</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$506.250</td></tr>
-        <tr><td>Insumos y herramientas</td><td style="font-size:11px;color:var(--stone)">Variable</td><td class="amt">$250.000</td></tr>
-        <tr><td>Lavandería externa de lencería</td><td style="font-size:11px;color:var(--stone)">Variable</td><td class="amt">$150.000</td></tr>
-
-        <tr class="cost-cat-row"><td colspan="3">Servicios y suministros</td></tr>
-        <tr><td>Servicios públicos (agua, energía, internet)</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$1.300.000</td></tr>
-        <tr><td>Amenidades para huéspedes</td><td style="font-size:11px;color:var(--stone)">Variable</td><td class="amt">$250.000</td></tr>
-        <tr><td>Comisiones OTAs — sobre días alquilados</td><td style="font-size:11px;color:var(--stone)">Solo si alquila</td><td class="amt" style="color:var(--stone)">Variable</td></tr>
-
-        <tr class="cost-cat-row"><td colspan="3">Legal, fiscal y fondos</td></tr>
-        <tr><td>Seguros de la propiedad</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$208.333</td></tr>
-        <tr><td>Impuesto predial (prorrateado)</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$100.000</td></tr>
-        <tr><td>Fondo de reposición del activo</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$800.000</td></tr>
-        <tr><td>Fondo de contingencia</td><td style="font-size:11px;color:var(--stone)">Fijo</td><td class="amt">$300.000</td></tr>
-        <tr><td>ICA e impuestos de actividad</td><td style="font-size:11px;color:var(--stone)">Variable</td><td class="amt">$200.000</td></tr>
-        <tr><td>Aporte parafiscal de turismo</td><td style="font-size:11px;color:var(--stone)">Variable</td><td class="amt">$100.000</td></tr>
-
-        <tr class="cost-cat-row"><td colspan="3">Fee de gestión Fractal</td></tr>
-        <tr style="background:rgba(184,147,90,.04)">
-          <td style="color:var(--gold)">Fee Fractal · 0.35% del activo anual ÷ 12</td>
-          <td style="font-size:11px;color:var(--stone)">Fijo · IPC anual</td>
-          <td class="amt" style="color:var(--gold)">$1.400.000</td>
-        </tr>
-        <tr style="background:rgba(184,147,90,.02)">
-          <td style="font-size:12px;color:rgba(122,116,104,.6);padding-left:28px">↳ Por fracción (÷ 8, partes iguales)</td>
-          <td style="font-size:11px;color:var(--stone)"></td>
-          <td style="font-family:var(--serif);font-size:14px;color:var(--stone);text-align:right">$175.000</td>
-        </tr>
-      </tbody>
-    </table>
-
-      <div class="cost-total-block">
-        <div class="ctb">
-          <div class="ctb-label">Costos de operación</div>
-          <div class="ctb-val">$9.742.083</div>
-          <div class="ctb-sub">23 ítems · personal, servicios,<br>mantenimiento, legal y fondos</div>
-        </div>
-        <div class="ctb" style="border-left:2px solid rgba(184,147,90,.3)">
-          <div class="ctb-label">+ Fee de gestión Fractal</div>
-          <div class="ctb-val" style="color:var(--gold)">$1.400.000</div>
-          <div class="ctb-sub">0.35% del activo anual ÷ 12<br>$175.000 por fracción · partes iguales</div>
-        </div>
-        <div class="ctb">
-          <div class="ctb-label">Total mensual propiedad completa</div>
-          <div class="ctb-val">$11.142.083</div>
-          <div class="ctb-sub">Fracción A/B: <strong style="color:var(--cream)">$1.776.056</strong><br>Fracción WD: <strong style="color:var(--cream)">$1.493.840</strong></div>
-        </div>
-      </div>
-
-    <p style="font-size:11px;color:rgba(122,116,104,.5);margin-top:16px;line-height:1.65">
-      Las comisiones de OTAs (~15% del ingreso por noche) aplican únicamente sobre los días que el propietario decide ceder al operador para alquiler. No son un costo fijo mensual. Si no hay alquiler, no hay comisión.
-    </p>
-  </div>
-</section>
-
-<!-- FEE ADMIN -->
-<section class="admin">
-  <div class="admin-inner">
-    <div class="admin-text">
-      <div class="section-tag">Fee de gestión</div>
-      <h2>Un fee calculado sobre el activo. No sobre lo que renta.</h2>
-      <p>Fractal gestiona tu segunda vivienda, no un hotel. Por eso el fee se calcula sobre el valor del activo — igual que la administración de un club campestre o un condominio de segunda vivienda.</p>
-      <p>Escalamos con el IPC cada año. Sin sorpresas, sin renegociaciones.</p>
-      <div class="admin-models">
-        <div class="am">
-          <div class="am-n">M1</div>
-          <div class="am-text"><strong>1% anual sobre el activo</strong><span>Estándar property mgmt Colombia</span></div>
-          <div class="am-val">$4.000.000/mes</div>
-        </div>
-        <div class="am">
-          <div class="am-n">M2</div>
-          <div class="am-text"><strong>Costo real de gestión</strong><span>Coordinador + overhead 30%</span></div>
-          <div class="am-val">$1.274.000/mes</div>
-        </div>
-        <div class="am">
-          <div class="am-n">M3</div>
-          <div class="am-text"><strong>Mercado segunda vivienda</strong><span>Parcelaciones y condominios Colombia</span></div>
-          <div class="am-val">$3.750.000/mes</div>
-        </div>
-        <div class="am">
-          <div class="am-n">M4</div>
-          <div class="am-text"><strong>Fee sostenible mínimo</strong><span>Viable desde el año 1</span></div>
-          <div class="am-val">$1.200.000/mes</div>
-        </div>
-      </div>
-    </div>
-    <div class="admin-result">
-      <div class="ar-tag">Fee elegido · 0.35% del activo anual</div>
-      <div class="ar-num">$1.400.000</div>
-      <div class="ar-sub">por mes · propiedad completa<br>$175.000 por fracción · igual para todas</div>
-      <div class="ipc-rows">
-        <div class="ipc-row"><span class="ipc-year">2026 — año base</span><span class="ipc-val">$175.000 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2027 — IPC +5.5%</span><span class="ipc-val">$184.625 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2028 — IPC +5.5%</span><span class="ipc-val">$194.779 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2029 — IPC +5.5%</span><span class="ipc-val">$205.492 / frac</span></div>
-        <div class="ipc-row"><span class="ipc-year">2030 — IPC +5.5%</span><span class="ipc-val">$216.794 / frac</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVENTA Y COMUNIDAD -->
-<section class="reventa">
-  <div class="reventa-inner">
-    <div class="reventa-text">
-      <div class="section-tag">Liquidez y comunidad</div>
-      <h2>Tu fracción se puede vender. Y los copropietarios son como tú.</h2>
-      <p>No estás atrapado. Puedes vender tu fracción en cualquier momento — Fractal facilita el proceso y tiene un listado activo de compradores interesados.</p>
-      <p>Solo 8 familias por propiedad. Fractal selecciona a los copropietarios para que el grupo sea compatible en estilo de vida y expectativas.</p>
-    </div>
-    <div class="reventa-steps">
-      <div class="rs">
-        <div class="rs-icon">1</div>
-        <div><h4>Propiedad real que se valoriza</h4><p>Un activo inmobiliario registrado a tu nombre que sigue los movimientos del mercado del destino.</p></div>
-      </div>
-      <div class="rs">
-        <div class="rs-icon">2</div>
-        <div><h4>Vendes cuando quieras</h4><p>Tú fijas el precio. Fractal aporta análisis de mercado, conecta compradores y agiliza el cierre notarial.</p></div>
-      </div>
-      <div class="rs">
-        <div class="rs-icon">3</div>
-        <div><h4>Lista de espera activa</h4><p>La mayoría de propiedades tienen interesados en lista de espera. Fracciones con historial de uso tienen prima de acceso inmediato.</p></div>
-      </div>
-      <div class="rs">
-        <div class="rs-icon">4</div>
-        <div><h4>Copropietarios afines</h4><p>Fractal cuida que los 8 dueños de cada propiedad compartan valores y expectativas. La experiencia colectiva importa.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CALENDARIO -->
-<section class="calendario" id="calendario">
-  <div class="cal-inner">
-    <div class="cal-header">
-      <div>
-        <div class="section-tag">Ejemplo de uso</div>
-        <h2>Así se ve un año completo</h2>
-        <p class="cal-intro">Distribución real de los 365 días del año entre las 8 fracciones. Cada color es una fracción. Filtra por fracción para ver exactamente qué días le corresponden a cada propietario.</p>
-      </div>
-      <div class="cal-legend">
-        <div class="cl-item"><span class="cl-dot" style="background:#c8511a"></span>Fracción A1</div>
-        <div class="cl-item"><span class="cl-dot" style="background:#e07840"></span>Fracción A2</div>
-        <div class="cl-item"><span class="cl-dot" style="background:#2a5c8a"></span>Fracción B1</div>
-        <div class="cl-item"><span class="cl-dot" style="background:#4a8cbf"></span>Fracción B2</div>
-        <div class="cl-item"><span class="cl-dot" style="background:#7a6820"></span>Weekday 1</div>
-        <div class="cl-item"><span class="cl-dot" style="background:#9a8830"></span>Weekday 2</div>
-        <div class="cl-item"><span class="cl-dot" style="background:#b8a848"></span>Weekday 3</div>
-        <div class="cl-item"><span class="cl-dot" style="background:#d4c060"></span>Weekday 4</div>
-        <div class="cl-item"><span class="cl-dot" style="background:rgba(184,147,90,.25);border:1px solid rgba(184,147,90,.4)"></span>Festivo / Vacaciones</div>
-      </div>
-    </div>
-    <div class="cal-filters">
-      <button class="cf-btn active" data-f="all">Todas</button>
-      <button class="cf-btn" data-f="A1">A1 · Weekend</button>
-      <button class="cf-btn" data-f="A2">A2 · Weekend</button>
-      <button class="cf-btn" data-f="B1">B1 · Weekend</button>
-      <button class="cf-btn" data-f="B2">B2 · Weekend</button>
-      <button class="cf-btn" data-f="WD1">WD1 · Weekday</button>
-      <button class="cf-btn" data-f="WD2">WD2 · Weekday</button>
-      <button class="cf-btn" data-f="WD3">WD3 · Weekday</button>
-      <button class="cf-btn" data-f="WD4">WD4 · Weekday</button>
-    </div>
-    <div class="cal-grid" id="calGrid"></div>
-    <div class="cal-tooltip" id="calTooltip"></div>
-    <div class="cal-summary">
-      <div class="cs-item"><span class="cs-label">Días A/B por año<br>(vie+sáb+dom+festivos)</span><span class="cs-val">192</span></div>
-      <div class="cs-item"><span class="cs-label">Días Weekday por año<br>(lunes a jueves)</span><span class="cs-val">173</span></div>
-      <div class="cs-item"><span class="cs-label">Días por fracción<br>A1 · A2 · B1 · B2</span><span class="cs-val">48</span></div>
-      <div class="cs-item"><span class="cs-label">Días por fracción<br>WD1 · WD2 · WD3 · WD4</span><span class="cs-val">43–44</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- CALCULADORA -->
-<section class="calc" id="calculadora">
-  <div class="calc-inner">
-    <div class="calc-top">
-      <div class="section-tag">Calculadora</div>
-      <h2>Encuentra tu número</h2>
-      <p>Dos herramientas: calcula el valor de tu fracción, o descubre qué pasa si traes tu propiedad al modelo Fractal.</p>
-    </div>
-
-    <!-- TABS -->
-    <div class="calc-tabs">
-      <button class="calc-tab active" onclick="switchTab('compra')">Quiero comprar una fracción</button>
-      <button class="calc-tab" onclick="switchTab('vende')">Tengo una propiedad</button>
-    </div>
-
-    <!-- TAB 1: COMPRAR FRACCIÓN -->
-    <div id="tab-compra" class="calc-tab-content active">
-      <div class="calc-body">
-        <div class="calc-left">
-          <label class="calc-input-label">Valor de la propiedad</label>
-          <div class="calc-input-wrap">
-            <span class="calc-prefix">$</span>
-            <input type="text" id="propVal" placeholder="4.800.000.000" autocomplete="off">
-          </div>
-          <div class="calc-hint">Ingresa el valor en pesos colombianos</div>
-          <div class="calc-presets">
-            <button class="preset-btn" data-val="2000000000">$2.000M</button>
-            <button class="preset-btn" data-val="3000000000">$3.000M</button>
-            <button class="preset-btn active" data-val="4800000000">$4.800M</button>
-            <button class="preset-btn" data-val="6000000000">$6.000M</button>
-            <button class="preset-btn" data-val="8000000000">$8.000M</button>
-            <button class="preset-btn" data-val="12000000000">$12.000M</button>
-          </div>
-          <label class="calc-slider-label">Ajusta con el slider</label>
-          <input type="range" class="calc-slider" id="propSlider" min="1000000000" max="15000000000" step="100000000" value="4800000000">
-          <div class="slider-range"><span>$1.000M</span><span>$15.000M</span></div>
-          <div style="background:rgba(122,116,104,.06);border:1px solid rgba(122,116,104,.12);padding:20px 24px;margin-top:4px">
-            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:12px">Distribución del sistema</div>
-            <div style="font-size:12px;color:rgba(245,240,232,.55);line-height:1.8">
-              2 × Fracción A <span style="color:var(--gold);font-family:var(--serif);font-size:16px">15.65%</span> cada una<br>
-              2 × Fracción B <span style="color:var(--gold);font-family:var(--serif);font-size:16px">15.65%</span> cada una<br>
-              4 × Weekday <span style="color:var(--gold-light);font-family:var(--serif);font-size:16px">9.35%</span> cada una<br>
-              <span style="color:rgba(122,116,104,.4);margin-top:4px;display:block">Suma total: 100.00% ✓</span>
-            </div>
-          </div>
-        </div>
-        <div class="calc-right">
-          <div class="calc-results-title">Valor de cada fracción</div>
-          <div class="frac-result">
-            <div class="fr-info"><span class="fr-name">Fracción A</span><span class="fr-detail">Weekend · 48 días/año · 2 disponibles</span></div>
-            <div class="fr-price"><span class="fr-amount" id="res-a">$751.200.000</span><div class="fr-pct">15.65% del activo</div></div>
-          </div>
-          <div class="frac-result">
-            <div class="fr-info"><span class="fr-name">Fracción B</span><span class="fr-detail">Weekend · 48 días/año · 2 disponibles</span></div>
-            <div class="fr-price"><span class="fr-amount" id="res-b">$751.200.000</span><div class="fr-pct">15.65% del activo</div></div>
-          </div>
-          <div class="frac-result">
-            <div class="fr-info"><span class="fr-name">Fracción Weekday</span><span class="fr-detail">Lun–jue · 43 días/año · 4 disponibles</span></div>
-            <div class="fr-price"><span class="fr-amount" id="res-wd" style="color:var(--gold-light)">$448.800.000</span><div class="fr-pct">9.35% del activo</div></div>
-          </div>
-          <div class="calc-total-row">
-            <span class="calc-total-label">Valor total propiedad</span>
-            <span class="calc-total-val" id="res-total">$4.800.000.000</span>
-          </div>
-          <div class="calc-costo-note">
-            <div class="calc-costo-title">Costo mensual estimado por fracción</div>
-            <div class="calc-costo-rows">
-              <div class="ccr"><span class="ccr-label">Fracción A o B — operación + gestión</span><span class="ccr-val" id="mes-ab">$1.776.056</span></div>
-              <div class="ccr"><span class="ccr-label">Fracción Weekday — operación + gestión</span><span class="ccr-val" id="mes-wd">$1.493.840</span></div>
-              <div class="ccr"><span class="ccr-label">Fee de gestión Fractal (0.35% activo / 8)</span><span class="ccr-val" id="mes-fee">$175.000</span></div>
-            </div>
-            <p style="font-size:10px;color:rgba(122,116,104,.4);margin-top:14px;line-height:1.65">Las comisiones de OTAs aplican solo si el propietario cede días al operador para alquiler.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB 2: TRAE TU PROPIEDAD -->
-    <div id="tab-vende" class="calc-tab-content">
-      <div class="calc-body">
-
-        <!-- INPUTS VENDEDOR -->
-        <div class="calc-left">
-
-          <div style="background:rgba(184,147,90,.07);border:1px solid rgba(184,147,90,.2);padding:18px 22px;margin-bottom:32px">
-            <div style="font-size:11px;font-weight:500;color:var(--gold);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase">¿Cómo funciona?</div>
-            <div style="font-size:12px;color:rgba(245,240,232,.6);line-height:1.75">Trae tu propiedad al modelo Fractal. Nosotros la evaluamos, definimos el costo de remodelación para cumplir el estándar, y tú recibes liquidez inmediata quedando como copropietario con fracción preferente — pagando menos al mes que los demás copropietarios.</div>
-          </div>
-
-          <label class="calc-input-label">¿Cuánto vale tu propiedad hoy?</label>
-          <div class="calc-input-wrap">
-            <span class="calc-prefix">$</span>
-            <input type="text" id="v-precio" placeholder="4.800.000.000" autocomplete="off">
-          </div>
-          <div class="calc-hint">Valor comercial actual de tu propiedad</div>
-
-          <label class="calc-input-label" style="margin-top:28px">Costo estimado de remodelación</label>
-          <div class="calc-input-wrap" id="v-remod-wrap" style="border-color:rgba(122,116,104,.15)">
-            <span class="calc-prefix" style="opacity:.4">$</span>
-            <input type="text" id="v-remod" placeholder="Lo define Fractal tras visita" autocomplete="off" style="opacity:.5" disabled>
-          </div>
-          <div class="calc-hint">Fractal determina este valor después de visitar la propiedad. Puedes simular con un estimado.</div>
-
-          <button id="v-habilitar" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:1px solid rgba(122,116,104,.3);color:var(--stone);background:transparent;cursor:pointer;margin-bottom:28px;font-family:var(--sans);transition:all .2s">
-            Simular con mi estimado
-          </button>
-
-          <label class="calc-slider-label">¿Qué fracción quieres conservar?</label>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px">
-            <button class="v-frac-btn active" data-frac="A">Fracción A (15.65%)</button>
-            <button class="v-frac-btn" data-frac="B">Fracción B (15.65%)</button>
-            <button class="v-frac-btn" data-frac="WD">Weekday (9.35%)</button>
-          </div>
-
-        </div>
-
-        <!-- RESULTADOS VENDEDOR -->
-        <div class="calc-right">
-          <div class="calc-results-title">Tu propuesta Fractal</div>
-
-          <!-- estado vacío -->
-          <div id="v-empty" style="padding:40px 0;text-align:center">
-            <div style="font-family:var(--serif);font-size:48px;font-weight:300;color:rgba(122,116,104,.2);margin-bottom:16px">→</div>
-            <div style="font-size:13px;color:var(--stone);line-height:1.65">Ingresa el valor de tu propiedad<br>para ver tu propuesta personalizada</div>
-          </div>
-
-          <!-- resultados -->
-          <div id="v-results" style="display:none">
-
-            <div class="frac-result">
-              <div class="fr-info"><span class="fr-name">Valor comercial actual</span><span class="fr-detail">Lo que vale tu propiedad hoy</span></div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-precio" style="color:var(--cream)">—</span></div>
-            </div>
-
-            <div class="frac-result">
-              <div class="fr-info"><span class="fr-name">Valor post-remodelación</span><span class="fr-detail">Valor del activo Fractal tras inversión</span></div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-postval">—</span></div>
-            </div>
-
-            <div class="frac-result">
-              <div class="fr-info">
-                <span class="fr-name">Liquidez que recibes</span>
-                <span class="fr-detail" id="v-r-frac-label">Por las fracciones que vende al mercado</span>
-              </div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-liquidez" style="color:var(--gold)">—</span><div class="fr-pct" id="v-r-pct-vende">—</div></div>
-            </div>
-
-            <div class="frac-result">
-              <div class="fr-info">
-                <span class="fr-name">Tu fracción conservada</span>
-                <span class="fr-detail" id="v-r-tu-frac-det">Fracción A · Weekend · 48 días/año</span>
-              </div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-tu-frac" style="color:var(--gold-light)">—</span><div class="fr-pct" id="v-r-tu-pct">—</div></div>
-            </div>
-
-            <div class="calc-total-row">
-              <span class="calc-total-label">Valor total del activo Fractal</span>
-              <span class="calc-total-val" id="v-r-total">—</span>
-            </div>
-
-            <!-- diferencia de costos -->
-            <div class="calc-costo-note">
-              <div class="calc-costo-title">Tu costo mensual vs un copropietario externo</div>
-              <div class="calc-costo-rows">
-                <div class="ccr">
-                  <span class="ccr-label">Copropietario externo paga</span>
-                  <span class="ccr-val" id="v-r-mes-ext">—</span>
-                </div>
-                <div class="ccr" style="background:rgba(184,147,90,.04)">
-                  <span class="ccr-label" style="color:var(--gold)">Tú pagas (propietario original)</span>
-                  <span class="ccr-val" id="v-r-mes-tu" style="color:var(--gold)">—</span>
-                </div>
-                <div class="ccr">
-                  <span class="ccr-label">Ahorro mensual vs externo</span>
-                  <span class="ccr-val" id="v-r-ahorro" style="color:var(--gold-light)">—</span>
-                </div>
-              </div>
-              <p id="v-r-nota" style="font-size:10px;color:rgba(122,116,104,.4);margin-top:14px;line-height:1.65"></p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <p style="font-size:11px;color:rgba(122,116,104,.35);text-align:center;margin-top:24px;line-height:1.7">
-        Esta simulación es orientativa. El valor final del activo, el costo de remodelación y las condiciones de la propuesta se definen tras la visita técnica de Fractal a la propiedad.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- PROCESO -->
-<section class="proceso" id="proceso">
-  <div class="proceso-inner">
-    <div class="section-tag">El camino</div>
-    <h2>De la consulta a las llaves en la mano</h2>
-    <div class="proceso-steps">
-      <div class="ps">
-        <div class="ps-circle">1</div>
-        <h4>Consulta inicial</h4>
-        <p>30 minutos con un asesor. Destino, fracción y expectativas. Sin compromiso.</p>
-      </div>
-      <div class="ps">
-        <div class="ps-circle">2</div>
-        <h4>Due diligence</h4>
-        <p>Revisamos la propiedad juntos: titulación, avalúo, estado y potencial del destino.</p>
-      </div>
-      <div class="ps">
-        <div class="ps-circle">3</div>
-        <h4>Escritura notarial</h4>
-        <p>Copropiedad registrada. Tu porcentaje del activo a tu nombre. Todo legal.</p>
-      </div>
-      <div class="ps">
-        <div class="ps-circle">4</div>
-        <h4>Primer check-in</h4>
-        <p>La propiedad te espera lista. Llegas, disfrutas. Fractal se ocupa del resto.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="faq-inner">
-    <div class="section-tag">Preguntas frecuentes</div>
-    <h2>Todo lo que quieres saber</h2>
-
-    <div class="faq-item">
-      <div class="faq-q"><span>¿Es esto lo mismo que un tiempo compartido?</span><span class="faq-icon">+</span></div>
-      <div class="faq-a"><p>No. En un tiempo compartido compras el derecho a usar una propiedad por periodos fijos, sin ser propietario real. Con Fractal adquieres un porcentaje real del activo inmobiliario — escritura notarial, título registrado a tu nombre, copropiedad legal. Tu fracción se valoriza con el mercado y puedes venderla cuando quieras.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><span>¿Cómo se asignan las fechas?</span><span class="faq-icon">+</span></div>
-      <div class="faq-a"><p>El calendario se abre semestralmente. Cada copropietario reserva sus días a través del sistema de puntos. Las fracciones A y B tienen garantía de acceso a todas las fechas especiales del año: viernes, Semana Santa, vacaciones, festivos y puentes. Weekday puede reservar cualquier lunes a jueves disponible.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><span>¿Qué pasa si no uso todos mis días?</span><span class="faq-icon">+</span></div>
-      <div class="faq-a"><p>Puedes ceder los días que no vayas a usar al operador para alquiler. El ingreso de esos días es tuyo directamente — no entra a ninguna bolsa común entre copropietarios. También puedes intercambiar días con otros propietarios dentro del sistema de puntos.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><span>¿Puedo vender mi fracción?</span><span class="faq-icon">+</span></div>
-      <div class="faq-a"><p>Sí, en cualquier momento. Tú fijas el precio en diálogo con Fractal. Nosotros facilitamos el proceso, aportamos análisis de mercado y conectamos con compradores interesados. Las fracciones de propiedades con historial de uso suelen tener lista de espera activa.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><span>¿Qué incluye el costo mensual?</span><span class="faq-icon">+</span></div>
-      <div class="faq-a"><p>El costo mensual de tu fracción cubre los 23 ítems de operación de la propiedad (personal, mantenimiento, servicios públicos, seguros, impuestos, fondos de reposición y contingencia) más el fee de gestión de Fractal. No incluye las comisiones de OTAs, que solo aplican cuando tú decides ceder días al operador para alquiler.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><span>¿Cuántas familias hay por propiedad?</span><span class="faq-icon">+</span></div>
-      <div class="faq-a"><p>Exactamente 8 familias por propiedad: 2 de Fracción A, 2 de Fracción B y 4 de Weekday. Fractal selecciona a los copropietarios para asegurar compatibilidad en estilo de vida. El grupo pequeño garantiza disponibilidad real y una comunidad de propietarios afines.</p></div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q"><span>¿Qué significa el porcentaje de mi fracción?</span><span class="faq-icon">+</span></div>
-      <div class="faq-a"><p>Tu porcentaje representa tu participación proporcional en el valor del activo. Fracción A y B tienen el 15.65% cada una; Weekday el 9.35% cada una. La suma de las 8 fracciones es exactamente el 100% del valor de la propiedad. Si el activo se valoriza, tu porcentaje vale más.</p></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contacto">
-  <div class="cta-bg"></div>
-  <div class="cta-content">
-    <div class="section-tag centered">Únete</div>
-    <h2>El lugar que siempre quisiste<br><em>ya tiene tu fracción.</em></h2>
-    <p>Las fracciones son limitadas por propiedad. Cuéntanos en qué destino te imaginas y qué tipo de fracción encaja con tu vida.</p>
-    <div class="cta-actions">
-      <a href="/cdn-cgi/l/email-protection#4a2225262b0a2c382b293e2b26642925" class="btn-primary">Hablar con un asesor</a>
-      <a href="#fracciones" class="btn-ghost" style="color:var(--cream)">
-        Ver fracciones
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <span class="logo">Fra<span>c</span>tal</span>
-      <p>Copropiedad inteligente en los mejores destinos de Colombia. Propiedad real, acceso flexible, gestión profesional.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Destinos</h5>
-      <ul>
-        <li><a href="#">Cauca Viejo</a></li>
-        <li><a href="#">Cartagena</a></li>
-        <li><a href="#">San Andrés</a></li>
-        <li><a href="#">Eje Cafetero</a></li>
-        <li><a href="#">Medellín</a></li>
-        <li><a href="#">Guatapé</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Modelo</h5>
-      <ul>
-        <li><a href="#">Cómo funciona</a></li>
-        <li><a href="#">Sistema de puntos</a></li>
-        <li><a href="#">Fracciones</a></li>
-        <li><a href="#">Costos</a></li>
-        <li><a href="#">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Empresa</h5>
-      <ul>
-        <li><a href="#">Nosotros</a></li>
-        <li><a href="#">Términos legales</a></li>
-        <li><a href="#">Política de privacidad</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 Fractal Colombia · Copropiedad estructurada</p>
-    <p>Bogotá · Medellín · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6ded9dad7f6d0c4d7d5c2d7da98d5d9">[email&#160;protected]</a></p>
-  </div>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Nav scroll
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
@@ -1835,12 +878,112 @@ document.querySelectorAll('.stat,.frac-card,.step,.dest-card,.ps,.ctb,.rs,.faq-i
 
 // ── TABS CALCULADORA ─────────────────────────────────────────────────────────
 function switchTab(tab) {
-  document.querySelectorAll('.calc-tab').forEach((t,i) => {
-    t.classList.toggle('active', (i===0 && tab==='compra') || (i===1 && tab==='vende'));
+  document.querySelectorAll('.calc-tab').forEach(function(t,i) {
+    t.classList.toggle('active',
+      (i===0 && tab==='compra') ||
+      (i===1 && tab==='vende')  ||
+      (i===2 && tab==='lote'));
   });
   document.getElementById('tab-compra').classList.toggle('active', tab==='compra');
-  document.getElementById('tab-vende').classList.toggle('active', tab==='vende');
+  document.getElementById('tab-vende').classList.toggle('active',  tab==='vende');
+  var tabLote = document.getElementById('tab-lote');
+  if (tabLote) tabLote.classList.toggle('active', tab==='lote');
 }
+
+// ── TENGO UN LOTE ─────────────────────────────────────────────────────────────
+var _loteModo = 'casa';
+
+function setLoteModo(modo) {
+  _loteModo = modo;
+  document.querySelectorAll('.lote-modo').forEach(function(m) {
+    m.classList.toggle('active', m.dataset.modo === modo);
+  });
+  var badge = document.getElementById('lote-modo-badge');
+  if (badge) badge.textContent = modo === 'casa'
+    ? 'Modalidad: Una casa estilo Fractal'
+    : 'Modalidad: Desarrollo de múltiples unidades';
+  calcLote();
+}
+
+function setLotePreset(btn) {
+  var v = +btn.dataset.lv;
+  var inp = document.getElementById('lote-val');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.lote-pre').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcLote();
+}
+
+function onLoteInput(el) {
+  var raw = parseInt(el.value.replace(/\D/g,'')) || 0;
+  document.querySelectorAll('.lote-pre').forEach(function(b){
+    b.classList.toggle('active', +b.dataset.lv === raw);
+  });
+  calcLote();
+}
+
+function calcLote() {
+  var inp = document.getElementById('lote-val');
+  if (!inp) return;
+  var valLote = parseInt(inp.value.replace(/\D/g,'')) || 0;
+  var lc = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
+  var s  = function(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; };
+
+  if (!valLote || valLote < 50000000) {
+    document.getElementById('lote-resultado').style.display = 'none';
+    return;
+  }
+
+  var construccion, unidades, tipoFrac, diasStr;
+
+  if (_loteModo === 'casa') {
+    construccion = Math.max(900000000, valLote * 1.5);
+    unidades     = 1;
+    tipoFrac     = 'A/B Weekend o Weekday';
+    diasStr      = '43–48 días/año';
+  } else {
+    unidades     = Math.max(2, Math.floor(valLote / 350000000));
+    construccion = unidades * 750000000;
+    tipoFrac     = 'Mix A/B + Weekday por unidad';
+    diasStr      = '43–48 días/año por unidad';
+  }
+
+  var activo    = valLote + construccion;
+  var pctLote   = (valLote / activo * 100).toFixed(1);
+  var fracVal   = activo * 0.1565;          // precio fracción A/B
+  var nFracs    = valLote / fracVal;
+  var fracStr   = nFracs.toFixed(2) + ' fracciones';
+  var mesBase   = 1776056 * (activo / 4800000000);
+  var mes       = mesBase * Math.min(nFracs, 2);   // hasta 2 fracciones
+  var val5      = valLote * Math.pow(1.08, 5);
+
+  s('lr-lote',       lc(valLote));
+  s('lr-label-const', _loteModo === 'casa'
+    ? 'Construcción estimada Fractal'
+    : 'Construcción (' + unidades + ' unidades)');
+  s('lr-const',      lc(construccion));
+  s('lr-activo',     lc(activo));
+  s('lr-pct',        pctLote + '% del activo');
+  s('lr-fracs',      fracStr);
+  s('lr-tipo',       tipoFrac);
+  s('lr-dias',       diasStr);
+  s('lr-mes',        lc(mes) + '/mes');
+  s('lr-val5',       lc(val5));
+
+  var res = document.getElementById('lote-resultado');
+  if (res) res.style.display = 'block';
+  s('lr-resnum',  fracStr + ' valoradas en ' + lc(valLote));
+  s('lr-resdesc', 'Tu lote entra como capital. Fractal construye '
+    + (_loteModo === 'casa' ? 'la casa' : unidades + ' casas')
+    + '. Sin poner un peso más recibes ' + fracStr
+    + ' con ' + diasStr + ' de uso personal.');
+}
+
+// Inicializar lote con preset $600M
+(function(){
+  var inp = document.getElementById('lote-val');
+  if (inp) { inp.value = (600000000).toLocaleString('es-CO'); calcLote(); }
+})();
 
 // ── CALCULADORA VENDEDOR ──────────────────────────────────────────────────────
 const FRACS = {
@@ -2004,7 +1147,7 @@ propInput.addEventListener('input', function(){
   this.value = formatInput(raw);
   if(raw >= 1000000000 && raw <= 15000000000) propSlider.value = raw;
   calcular(raw);
-  document.querySelectorAll('.preset-btn').forEach(b => {
+  document.querySelectorAll('.calc-presets .preset-btn').forEach(b => {
     b.classList.toggle('active', parseInt(b.dataset.val) === raw);
   });
 });
@@ -2013,18 +1156,18 @@ propSlider.addEventListener('input', function(){
   const val = parseInt(this.value);
   propInput.value = formatInput(val);
   calcular(val);
-  document.querySelectorAll('.preset-btn').forEach(b => {
+  document.querySelectorAll('.calc-presets .preset-btn').forEach(b => {
     b.classList.toggle('active', parseInt(b.dataset.val) === val);
   });
 });
 
-document.querySelectorAll('.preset-btn').forEach(btn => {
+document.querySelectorAll('.calc-presets .preset-btn').forEach(function(btn){
   btn.addEventListener('click', function(){
     const val = parseInt(this.dataset.val);
     propInput.value = formatInput(val);
     propSlider.value = val;
     calcular(val);
-    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.calc-presets .preset-btn').forEach(function(b){ b.classList.remove('active'); });
     this.classList.add('active');
   });
 });
@@ -2140,86 +1283,13 @@ let activeFilter = 'all';
 function buildCal() {
   const grid = document.getElementById('calGrid');
   if (!grid) return;
-  grid.innerHTML = '';
-
-  // Group by month
-  const byMonth = {};
-  CAL.forEach(d => {
-    const m = parseInt(d.d.split('-')[1]);
-    if (!byMonth[m]) byMonth[m] = [];
-    byMonth[m].push(d);
+  grid.querySelectorAll('.cal-day:not(.empty)').forEach(function(el) {
+    const o = el.getAttribute('data-o');
+    if (!o) return;
+    const on = activeFilter === 'all' || activeFilter === o;
+    el.classList.toggle('cal-dimmed', !on);
+    el.classList.toggle('cal-active', on);
   });
-
-  for (let m = 1; m <= 12; m++) {
-    const days = byMonth[m] || [];
-    const firstDay = new Date(2026, m-1, 1);
-    const startDow = (firstDay.getDay() + 6) % 7; // Monday=0
-
-    const monthEl = document.createElement('div');
-    monthEl.className = 'cal-month';
-
-    const nameEl = document.createElement('div');
-    nameEl.className = 'cal-month-name';
-    nameEl.textContent = MESES[m-1];
-    monthEl.appendChild(nameEl);
-
-    const dowEl = document.createElement('div');
-    dowEl.className = 'cal-dow';
-    DIAS_SEM.forEach(d => {
-      const s = document.createElement('span');
-      s.textContent = d;
-      dowEl.appendChild(s);
-    });
-    monthEl.appendChild(dowEl);
-
-    const daysEl = document.createElement('div');
-    daysEl.className = 'cal-days';
-
-    // Empty cells before first day
-    for (let i = 0; i < startDow; i++) {
-      const e = document.createElement('div');
-      e.className = 'cal-day empty';
-      daysEl.appendChild(e);
-    }
-
-    days.forEach(d => {
-      const el = document.createElement('div');
-      el.className = 'cal-day';
-      const dayNum = parseInt(d.d.split('-')[2]);
-
-      const isActive = activeFilter === 'all' || activeFilter === d.o;
-      el.style.background = isActive ? COLORS[d.o] : 'rgba(122,116,104,.08)';
-      if (!isActive) el.classList.add('dimmed');
-      if (d.sp) el.classList.add('special-ring');
-
-      const span = document.createElement('span');
-      span.textContent = dayNum;
-      el.appendChild(span);
-
-      // Tooltip
-      el.addEventListener('mouseenter', (e) => {
-        const tt = document.getElementById('calTooltip');
-        const dateStr = new Date(d.d + 'T12:00:00').toLocaleDateString('es-CO', {weekday:'long',day:'numeric',month:'long'});
-        tt.innerHTML = '<strong>' + NAMES[d.o] + '</strong><br>' + dateStr + (d.sp ? '<br><span style="color:#d4b07a;font-size:10px">★ Fecha especial</span>' : '');
-        tt.style.display = 'block';
-        tt.style.left = (e.clientX + 12) + 'px';
-        tt.style.top  = (e.clientY - 10) + 'px';
-      });
-      el.addEventListener('mousemove', (e) => {
-        const tt = document.getElementById('calTooltip');
-        tt.style.left = (e.clientX + 12) + 'px';
-        tt.style.top  = (e.clientY - 10) + 'px';
-      });
-      el.addEventListener('mouseleave', () => {
-        document.getElementById('calTooltip').style.display = 'none';
-      });
-
-      daysEl.appendChild(el);
-    });
-
-    monthEl.appendChild(daysEl);
-    grid.appendChild(monthEl);
-  }
 }
 
 // Filter buttons
@@ -2234,89 +1304,6 @@ document.querySelectorAll('.cf-btn').forEach(btn => {
 
 buildCal();
 
-
-// ── MERCADO VIEW ─────────────────────────────────────────────────────────────
-function openMercado(e) {
-  e.preventDefault();
-  document.getElementById('mercado-view').style.display = 'block';
-  document.getElementById('main-content').style.display = 'none';
-  document.getElementById('nav-mercado').classList.add('inactive');
-  document.getElementById('nav-mercado').style.color = 'var(--gold)';
-  document.getElementById('nav-mercado').style.opacity = '1';
-  window.scrollTo(0,0);
-  // init sim if first time
-  if(!window._mvSimInit) { calcMercadoSim(); window._mvSimInit=true; }
-}
-function closeMercado() {
-  document.getElementById('mercado-view').style.display = 'none';
-  document.getElementById('main-content').style.display = 'block';
-  document.getElementById('nav-mercado').classList.remove('inactive');
-}
-
-// Mercado simulator
-
-const VP=1300000,PF=1.68,PW=1.00;
-const cop=n=>'$'+Math.round(n).toLocaleString('es-CO');
-const fpts=n=>n.toFixed(2)+' pts';
-let tipo='fds',noches=1;
-
-function calcSim(){
-  const pn=tipo==='fds'?PF:PW;
-  const tot=pn*noches;
-  const totCop=tot*VP;
-  const disp=parseFloat(document.getElementById('mv-sPts').value);
-  const usados=Math.min(disp,tot);
-  const falta=Math.max(0,tot-disp);
-  const efec=falta*VP;
-  const sobra=Math.max(0,disp-tot);
-  const tLabel=tipo==='fds'?'fin de semana':'entre semana';
-  const nLabel=noches===1?'1 noche':noches+' noches';
-
-  let modo,msub;
-  if(falta===0){modo='100% en puntos';msub='Tienes puntos suficientes — sin efectivo';}
-  else if(usados===0){modo='100% en efectivo';msub='Sin puntos disponibles — pago completo en plata';}
-  else{modo='Pago mixto';msub='Combinas puntos + efectivo';}
-
-  document.getElementById('mv-sModo').textContent=modo;
-  document.getElementById('mv-sModuSub').textContent=msub;
-  document.getElementById('mv-sRNoches').textContent=nLabel+' · '+tLabel;
-  document.getElementById('mv-sRTotalPts').textContent=fpts(tot);
-  document.getElementById('mv-sRTusPts').textContent=fpts(disp);
-  document.getElementById('mv-sRPtsUsados').textContent=fpts(usados);
-  document.getElementById('mv-sRFectivo').textContent=cop(efec);
-  document.getElementById('mv-sRTotal').textContent=cop(totCop);
-  document.getElementById('mv-sRSobra').textContent=fpts(sobra);
-
-  let rec='';
-  if(falta===0) rec=fpts(usados)+' en puntos (= '+cop(totCop)+')\nPuede usarlos para comprar otros días del sistema.';
-  else if(usados===0) rec=cop(efec)+' en efectivo directo.';
-  else rec=fpts(usados)+' en puntos + '+cop(efec)+' en efectivo.\nTotal equivalente: '+cop(totCop);
-  document.getElementById('mv-sRecibe').innerText=rec;
-
-  let hint='';
-  if(noches===3&&tipo==='fds') hint='= Puente completo Vie+Sáb+Dom';
-  else if(noches===4&&tipo==='wd') hint='= Semana completa Lun–Jue';
-  else if(noches===7) hint='= Semana completa Lun–Dom (bloque mixto)';
-  document.getElementById('mv-sHint').textContent=hint;
-  document.getElementById('mv-sPtsVal').textContent=disp.toFixed(1)+' pts';
-}
-
-document.querySelectorAll('#mercado-view .s-tog').forEach(b=>b.addEventListener('click',function(){
-  document.querySelectorAll('#mercado-view .s-tog').forEach(x=>x.classList.remove('active'));
-  this.classList.add('active');tipo=this.dataset.tipo;calcSim();
-}));
-document.getElementById('mv-sUp').addEventListener('click',()=>{if(noches<10)noches++;document.getElementById('mv-sNochesVal').textContent=noches;calcSim();});
-document.getElementById('mv-sDown').addEventListener('click',()=>{if(noches>1)noches--;document.getElementById('mv-sNochesVal').textContent=noches;calcSim();});
-document.getElementById('mv-sPts').addEventListener('input',calcSim);
-calcSim();
-
-
-
-function calcMercadoSim() {
-  // alias to calcSim used in mercado
-  if(typeof calcSim === 'function') calcSim();
-}
-
 // ── FAQ accordion ──
 document.querySelectorAll('.faq-item').forEach(item => {
   item.querySelector('.faq-q').addEventListener('click', () => {
@@ -2325,705 +1312,39 @@ document.querySelectorAll('.faq-item').forEach(item => {
     if(!isOpen) item.classList.add('open');
   });
 });
+
+// ── CALCULADORA COMPARACIÓN ───────────────────────────────────────────────────
+
+
+
+
+
+// ── ACORDEÓN ──────────────────────────────────────────────────────────────────
+
+
+// ── FILTROS CALENDARIO ────────────────────────────────────────────────────────
+
+// ── CALCULADORA COMPARACIÓN ──────────────────────────────────────────────────
+(function() {
+  var sl = document.getElementById('cmpSlider');
+  function runCmp(v) {
+    calcComparacion(v);
+    document.querySelectorAll('.vsu-presets .preset-btn').forEach(function(b) {
+      b.classList.toggle('active', +b.dataset.cmp === v);
+    });
+  }
+  if (sl) {
+    sl.addEventListener('input', function() { runCmp(+this.value); });
+  }
+  document.querySelectorAll('.vsu-presets .preset-btn[data-cmp]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var v = +this.dataset.cmp;
+      if (sl) sl.value = v;
+      runCmp(v);
+    });
+  });
+  runCmp(4800000000);
+})();
 </script>
-</div>
-
-<div id="mercado-view" style="display:none">
-  <div class="mv-subnav">
-    <div class="mv-subnav-inner">
-      <button onclick="closeMercado()" class="mv-back">← Volver</button>
-      <div class="mv-links">
-        <a href="#mv-principios">Principios</a>
-        <a href="#mv-precios">Precios</a>
-        <a href="#mv-formas-pago">Formas de pago</a>
-        <a href="#mv-tipo-1">Extensión</a>
-        <a href="#mv-tipo-2">Bloque completo</a>
-        <a href="#mv-tipo-3">A ↔ B</a>
-        <a href="#mv-tipo-4">WD ↔ WD</a>
-        <a href="#mv-simulador">Simulador</a>
-        <a href="#mv-resumen">Tabla</a>
-      </div>
-    </div>
-  </div>
-  <div class="mv-body">
-
-
-
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">Mercado interno Fractal</div>
-  <h1>Compra, vende e intercambia<br>días con los demás <em>propietarios.</em></h1>
-  <p class="hero-sub">
-    Tu fracción incluye días asignados. Pero si quieres más días, puedes comprárselos al propietario que los tiene. Y si no vas a usar los tuyos, puedes venderlos o intercambiarlos. Este documento explica exactamente cómo funciona.
-  </p>
-  <div class="hero-pills">
-    <div class="pill">1 punto<span>= $1.300.000</span></div>
-    <div class="pill">Noche FDS<span>= 1.68 pts</span></div>
-    <div class="pill">Noche WD<span>= 1.00 pt</span></div>
-    <div class="pill">4 tipos de intercambio</div>
-    <div class="pill">Puntos · Efectivo · Mixto</div>
-  </div>
-</div>
-
-<!-- PRINCIPIOS -->
-<div class="seccion" id="mv-principios">
-  <div class="sec-tag">Los principios</div>
-  <h2 class="sec-h2">Las reglas que rigen todos los intercambios</h2>
-  <p class="sec-p">Antes de ver los ejemplos, entiende las cuatro reglas que aplican a cualquier transacción dentro del sistema Fractal.</p>
-  <div class="principios">
-    <div class="ppio">
-      <div class="ppio-num">01</div>
-      <span class="tag">Propiedad</span>
-      <h4>Solo el propietario del día puede venderlo</h4>
-      <p>Nadie puede vender o ceder días que no le pertenecen. Si el día aparece asignado a A1 en el calendario, solo A1 puede ofrecerlo al mercado.</p>
-    </div>
-    <div class="ppio">
-      <div class="ppio-num">02</div>
-      <span class="tag">Precio</span>
-      <h4>El precio lo fija el sistema de puntos, no el vendedor</h4>
-      <p>1 noche de fin de semana siempre vale 1.68 pts. 1 noche entre semana siempre vale 1.00 pt. El propietario no puede cobrar más ni menos que el precio del sistema.</p>
-    </div>
-    <div class="ppio">
-      <div class="ppio-num">03</div>
-      <span class="tag">Contigüidad</span>
-      <h4>Solo puedes extender hacia el día inmediatamente contiguo</h4>
-      <p>Si quieres añadir días a tu bloque uno a uno, el día que compras debe tocar directamente tu bloque actual. Cada compra extiende el bloque, habilitando el siguiente. Sin embargo, puedes comprar un bloque completo aunque no sea contiguo.</p>
-    </div>
-    <div class="ppio">
-      <div class="ppio-num">04</div>
-      <span class="tag">Vigencia</span>
-      <h4>Los puntos no se acumulan entre años</h4>
-      <p>Los puntos vencen al finalizar el año calendario. Esto incentiva usarlos, venderlos o intercambiarlos antes de que expiren. Los puntos recibidos en una transacción pueden usarse para comprar otros días.</p>
-    </div>
-  </div>
-</div>
-
-<!-- PRECIOS -->
-<div class="seccion" id="mv-precios">
-  <div class="sec-tag">El precio</div>
-  <h2 class="sec-h2">Cuánto vale cada tipo de noche</h2>
-  <p class="sec-p">El sistema calibra el valor de cada noche según el mercado del destino. Una noche de fin de semana vale más que una entre semana — el ratio refleja la diferencia real de demanda.</p>
-  <div class="precio-tabla">
-    <div class="pt-cell header"><span class="pt-head">Tipo de noche</span></div>
-    <div class="pt-cell header"><span class="pt-head">Valor</span></div>
-    <div class="pt-cell">
-      <span class="pt-label">Fin de semana / Festivo</span>
-      <div class="pt-tipo">Viernes · Sábado · Domingo · Festivos · Semana Santa · Vacaciones</div>
-      <div class="pt-pts">1.68 pts</div>
-      <div class="pt-cop">= $2.184.000 por noche</div>
-    </div>
-    <div class="pt-cell" style="display:flex;flex-direction:column;justify-content:center">
-      <div style="font-family:var(--serif);font-size:52px;font-weight:300;color:rgba(184,147,90,.2);line-height:1">1.68</div>
-      <div style="font-size:11px;color:var(--stone)">puntos por noche</div>
-    </div>
-    <div class="pt-cell">
-      <span class="pt-label">Entre semana</span>
-      <div class="pt-tipo">Lunes · Martes · Miércoles · Jueves · Fuera de fechas especiales</div>
-      <div class="pt-pts" style="color:var(--gold-l)">1.00 pt</div>
-      <div class="pt-cop">= $1.300.000 por noche</div>
-    </div>
-    <div class="pt-cell" style="display:flex;flex-direction:column;justify-content:center">
-      <div style="font-family:var(--serif);font-size:52px;font-weight:300;color:rgba(184,147,90,.12);line-height:1">1.00</div>
-      <div style="font-size:11px;color:var(--stone)">punto por noche</div>
-    </div>
-    <div class="pt-cell" style="grid-column:span 2;background:#0a0a08;display:flex;gap:40px;align-items:center">
-      <div>
-        <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:4px">1 punto equivale a</div>
-        <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--cream)">$1.300.000</div>
-      </div>
-      <div>
-        <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:4px">Ratio FDS / WD</div>
-        <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--cream)">1.68 ×</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FORMAS DE PAGO -->
-<div class="seccion" id="mv-formas-pago">
-  <div class="sec-tag">Las formas de pago</div>
-  <h2 class="sec-h2">Tres maneras de pagar cualquier intercambio</h2>
-  <p class="sec-p">Ya sea que compres un día suelto, un bloque completo, o hagas un swap con diferencia — siempre puedes elegir entre estas tres formas de pago.</p>
-  <div class="pagos">
-    <div class="pago">
-      <div class="pago-num">1</div>
-      <h4>100% en puntos</h4>
-      <p>Tienes puntos suficientes para cubrir el costo completo. El vendedor recibe tus puntos y puede usarlos para comprar otros días del sistema.</p>
-      <div class="pago-formula">
-        <strong>Ejemplo: 1 noche sábado</strong>
-        Costo: 1.68 pts<br>
-        Tienes: 20 pts → le alcanzan<br>
-        Pagas: 1.68 pts · Efectivo: $0<br>
-        Te sobran: 18.32 pts
-      </div>
-    </div>
-    <div class="pago">
-      <div class="pago-num">2</div>
-      <h4>Puntos + efectivo</h4>
-      <p>No tienes suficientes puntos para cubrir el total. Pagas los puntos que tienes y completas la diferencia en efectivo. El vendedor recibe ambas formas.</p>
-      <div class="pago-formula">
-        <strong>Ejemplo: 3 noches FDS</strong>
-        Costo: 5.04 pts = $6.552.000<br>
-        Tienes: 2.00 pts → faltan 3.04 pts<br>
-        Pagas: 2 pts + $3.952.000<br>
-        Vendedor recibe: puntos + efectivo
-      </div>
-    </div>
-    <div class="pago">
-      <div class="pago-num">3</div>
-      <h4>100% en efectivo</h4>
-      <p>Tienes puntos pero prefieres guardarlos para otro intercambio. Pagas el equivalente en pesos directamente al vendedor sin usar ningún punto.</p>
-      <div class="pago-formula">
-        <strong>Ejemplo: 1 noche viernes</strong>
-        Costo: 1.68 pts = $2.184.000<br>
-        Tienes: 15 pts → prefieres guardarlos<br>
-        Pagas: $2.184.000 en efectivo<br>
-        Tus puntos: intactos (15 pts)
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TIPO 1: EXTENSIÓN CONTIGUA -->
-<div class="seccion" id="mv-tipo-1">
-  <div class="sec-tag">Tipo 1 de intercambio</div>
-  <h2 class="sec-h2">Extensión contigua — añadir el día siguiente a tu bloque</h2>
-  <p class="sec-p">La forma más común de intercambio. Compras el día que toca inmediatamente antes o después de tu bloque. Cada compra extiende tu bloque, habilitando el siguiente. No puedes saltar días.</p>
-
-  <div class="tipo-bloque">
-    <div class="casos">
-
-      <div class="caso">
-        <div class="caso-tag">A1 extiende al lunes</div>
-        <h4>Vie+Sáb+Dom → añade el lunes de WD2</h4>
-        <div class="mc-label">Antes:</div>
-        <div class="mini-cal">
-          <div class="mc-d wd2"><span>JU</span><span class="dl">WD2</span></div>
-          <div class="mc-d a1"><span>VI</span><span class="dl">A1</span></div>
-          <div class="mc-d a1"><span>SÁ</span><span class="dl">A1</span></div>
-          <div class="mc-d a1"><span>DO</span><span class="dl">A1</span></div>
-          <div class="mc-d wd2"><span>LU</span><span class="dl">WD2</span></div>
-          <div class="mc-d wd2"><span>MA</span><span class="dl">WD2</span></div>
-        </div>
-        <div class="mc-label">Después (A1 compra el lunes):</div>
-        <div class="mini-cal">
-          <div class="mc-d wd2"><span>JU</span><span class="dl">WD2</span></div>
-          <div class="mc-d a1"><span>VI</span><span class="dl">A1</span></div>
-          <div class="mc-d a1"><span>SÁ</span><span class="dl">A1</span></div>
-          <div class="mc-d a1"><span>DO</span><span class="dl">A1</span></div>
-          <div class="mc-d a1 comprado"><span>LU</span><span class="dl">A1★</span></div>
-          <div class="mc-d wd2"><span>MA</span><span class="dl">WD2</span></div>
-        </div>
-        <p>El lunes es contiguo al domingo de A1. Puede comprarlo. Si quiere el martes, lo compra en otra transacción — el martes ya es contiguo al lunes adquirido.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Costo 1 noche WD</span><strong>1.00 pt</strong></div>
-          <div class="cn"><span>En efectivo</span><strong>$1.300.000</strong></div>
-          <div class="cn"><span>Si añade martes</span><strong>+1.00 pt</strong></div>
-          <div class="cn highlight"><span>Estadía total</span><strong>5 noches</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">WD3 llega el viernes anterior</div>
-        <h4>Lun–Jue → añade el viernes de B2</h4>
-        <div class="mc-label">Antes:</div>
-        <div class="mini-cal">
-          <div class="mc-d b2"><span>VI</span><span class="dl">B2</span></div>
-          <div class="mc-d b2"><span>SÁ</span><span class="dl">B2</span></div>
-          <div class="mc-d b2"><span>DO</span><span class="dl">B2</span></div>
-          <div class="mc-d wd3"><span>LU</span><span class="dl">WD3</span></div>
-          <div class="mc-d wd3"><span>MA</span><span class="dl">WD3</span></div>
-          <div class="mc-d wd3"><span>MI</span><span class="dl">WD3</span></div>
-        </div>
-        <div class="mc-label">Después (WD3 compra el viernes):</div>
-        <div class="mini-cal">
-          <div class="mc-d wd3 comprado"><span>VI</span><span class="dl">WD3★</span></div>
-          <div class="mc-d b2"><span>SÁ</span><span class="dl">B2</span></div>
-          <div class="mc-d b2"><span>DO</span><span class="dl">B2</span></div>
-          <div class="mc-d wd3"><span>LU</span><span class="dl">WD3</span></div>
-          <div class="mc-d wd3"><span>MA</span><span class="dl">WD3</span></div>
-          <div class="mc-d wd3"><span>MI</span><span class="dl">WD3</span></div>
-        </div>
-        <p>El viernes es contiguo al lunes de WD3. Lo compra a B2. Ahora el sábado es contiguo a su viernes — puede comprarlo también en otra transacción.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Costo 1 noche FDS</span><strong>1.68 pts</strong></div>
-          <div class="cn"><span>En efectivo</span><strong>$2.184.000</strong></div>
-          <div class="cn"><span>Si añade sábado</span><strong>+1.68 pts</strong></div>
-          <div class="cn highlight"><span>Estadía posible</span><strong>6 noches</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">❌ No permitido</div>
-        <h4>Comprar un día suelto no contiguo</h4>
-        <div class="mc-label">WD1 quiere el miércoles de otra semana:</div>
-        <div class="mini-cal">
-          <div class="mc-d wd1"><span>LU</span><span class="dl">WD1</span></div>
-          <div class="mc-d wd1"><span>JU</span><span class="dl">WD1</span></div>
-          <div class="mc-d a2"><span>VI</span><span class="dl">A2</span></div>
-          <div class="mc-d a2"><span>DO</span><span class="dl">A2</span></div>
-          <div class="mc-d wd2"><span>LU</span><span class="dl">WD2</span></div>
-          <div class="mc-d wd2 bloqueado"><span>MI</span><span class="dl">✗</span></div>
-        </div>
-        <p>Entre el jueves de WD1 y el miércoles de la semana siguiente hay 6 días de por medio. No son contiguos. Solo puede extenderse al día inmediatamente adyacente a su bloque.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Días de por medio</span><strong>6 días</strong></div>
-          <div class="cn"><span>Estado</span><strong style="color:#c06060">No válido</strong></div>
-          <div class="cn"><span>Alternativa</span><strong>Comprar bloque completo</strong></div>
-          <div class="cn"><span>Ver</span><strong>Tipo 2 →</strong></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- TIPO 2: BLOQUE COMPLETO -->
-<div class="seccion" id="mv-tipo-2">
-  <div class="sec-tag">Tipo 2 de intercambio</div>
-  <h2 class="sec-h2">Compra de bloque completo — sin importar si es contiguo</h2>
-  <p class="sec-p">Un bloque completo (el fin de semana entero de un A/B, o la semana entera de un WD) puede comprarse como unidad aunque no sea contiguo a tus días habituales. Compras todas las noches del bloque en una sola transacción.</p>
-
-  <div class="tipo-bloque">
-    <div class="casos">
-
-      <div class="caso">
-        <div class="caso-tag">WD compra bloque FDS — puntos suficientes</div>
-        <h4>WD1 compra Vie+Sáb+Dom completo de A2</h4>
-        <div class="mini-cal">
-          <div class="mc-d wd1"><span>JU</span><span class="dl">WD1</span></div>
-          <div class="mc-d a2 comprado"><span>VI</span><span class="dl">A2→WD1</span></div>
-          <div class="mc-d a2 comprado"><span>SÁ</span><span class="dl">A2→WD1</span></div>
-          <div class="mc-d a2 comprado"><span>DO</span><span class="dl">A2→WD1</span></div>
-          <div class="mc-d wd2"><span>LU</span><span class="dl">WD2</span></div>
-          <div class="mc-d wd2"><span>MA</span><span class="dl">WD2</span></div>
-        </div>
-        <p>WD1 compra el bloque completo de A2. No necesita que sea contiguo — es una compra de bloque entero. Tiene 22 puntos, le alcanzan.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Bloque (3 noches)</span><strong>5.04 pts</strong></div>
-          <div class="cn"><span>Valor total</span><strong>$6.552.000</strong></div>
-          <div class="cn"><span>Paga en puntos</span><strong>5.04 pts</strong></div>
-          <div class="cn highlight"><span>Le sobran</span><strong>16.96 pts</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">WD compra bloque FDS — pago mixto</div>
-        <h4>WD3 compra Vie+Sáb+Dom de B1, tiene 2 pts</h4>
-        <div class="mini-cal">
-          <div class="mc-d b1 comprado"><span>VI</span><span class="dl">→WD3</span></div>
-          <div class="mc-d b1 comprado"><span>SÁ</span><span class="dl">→WD3</span></div>
-          <div class="mc-d b1 comprado"><span>DO</span><span class="dl">→WD3</span></div>
-          <div class="mc-d wd3"><span>LU</span><span class="dl">WD3</span></div>
-          <div class="mc-d wd3"><span>MA</span><span class="dl">WD3</span></div>
-          <div class="mc-d wd3"><span>MI</span><span class="dl">WD3</span></div>
-        </div>
-        <p>WD3 quiere el bloque completo de B1 (3 noches = 5.04 pts). Solo tiene 2 pts. Paga sus 2 puntos y cubre los 3.04 pts restantes en efectivo. B1 recibe ambas formas.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Costo total</span><strong>5.04 pts</strong></div>
-          <div class="cn"><span>Puntos WD3</span><strong>2.00 pts</strong></div>
-          <div class="cn highlight"><span>Efectivo diferencia</span><strong>$3.952.000</strong></div>
-          <div class="cn"><span>Valor total</span><strong>$6.552.000</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">A/B compra bloque WD completo</div>
-        <h4>B2 compra semana Lun–Jue completa de WD4</h4>
-        <div class="mini-cal">
-          <div class="mc-d b2"><span>DO</span><span class="dl">B2</span></div>
-          <div class="mc-d wd4 comprado"><span>LU</span><span class="dl">→B2</span></div>
-          <div class="mc-d wd4 comprado"><span>MA</span><span class="dl">→B2</span></div>
-          <div class="mc-d wd4 comprado"><span>MI</span><span class="dl">→B2</span></div>
-          <div class="mc-d wd4 comprado"><span>JU</span><span class="dl">→B2</span></div>
-          <div class="mc-d b2"><span>VI</span><span class="dl">B2</span></div>
-        </div>
-        <p>B2 quiere trabajar remotamente esa semana y quedarse en la casa lun–jue también. Compra el bloque completo de WD4. 4 noches × 1 pt = 4 pts. Le sobran 4 pts.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Bloque (4 noches WD)</span><strong>4.00 pts</strong></div>
-          <div class="cn"><span>Valor total</span><strong>$5.200.000</strong></div>
-          <div class="cn"><span>Paga en puntos</span><strong>4.00 pts</strong></div>
-          <div class="cn highlight"><span>Le sobran</span><strong>4.00 pts</strong></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- TIPO 3: A↔B -->
-<div class="seccion" id="mv-tipo-3">
-  <div class="sec-tag">Tipo 3 de intercambio</div>
-  <h2 class="sec-h2">Intercambio A ↔ B — swap de bloques de fin de semana</h2>
-  <p class="sec-p">A1, A2, B1 y B2 tienen el mismo tipo de días. Pueden intercambiar bloques entre sí. Si el valor es igual es swap directo — sin pago. Si hay diferencia de noches o valor, quien recibe más paga la diferencia en puntos o efectivo.</p>
-
-  <div class="tipo-bloque">
-    <div class="casos">
-
-      <div class="caso">
-        <div class="caso-tag">Swap exacto — sin diferencia</div>
-        <h4>A1 y B2 intercambian bloques del mismo valor</h4>
-        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0">
-          <div>
-            <div class="mc-label">Bloque A1 (14-16 ago)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d a1"><span>VI</span><span class="dl">A1</span></div>
-              <div class="mc-d a1"><span>SÁ</span><span class="dl">A1</span></div>
-              <div class="mc-d a1"><span>DO</span><span class="dl">A1</span></div>
-            </div>
-          </div>
-          <div style="font-size:22px;color:var(--gold);text-align:center">⇄</div>
-          <div>
-            <div class="mc-label">Bloque B2 (21-23 ago)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d b2"><span>VI</span><span class="dl">B2</span></div>
-              <div class="mc-d b2"><span>SÁ</span><span class="dl">B2</span></div>
-              <div class="mc-d b2"><span>DO</span><span class="dl">B2</span></div>
-            </div>
-          </div>
-        </div>
-        <p>Ambos bloques son 3 noches (5.04 pts cada uno). A1 prefiere el 21, B2 prefiere el 14. Swap directo — nadie paga nada. Fractal registra el cambio en la APP.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Bloque A1</span><strong>5.04 pts</strong></div>
-          <div class="cn"><span>Bloque B2</span><strong>5.04 pts</strong></div>
-          <div class="cn highlight"><span>Diferencia</span><strong>$0</strong></div>
-          <div class="cn highlight"><span>Tipo</span><strong>Swap directo</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">Swap con diferencia en puntos</div>
-        <h4>A1 da 3 noches · B2 da 2 noches</h4>
-        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0">
-          <div>
-            <div class="mc-label">A1 da (vie+sáb+dom)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d a1"><span>VI</span></div>
-              <div class="mc-d a1"><span>SÁ</span></div>
-              <div class="mc-d a1"><span>DO</span></div>
-            </div>
-          </div>
-          <div style="font-size:22px;color:var(--gold);text-align:center">⇄</div>
-          <div>
-            <div class="mc-label">B2 da (sáb+dom)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d empty"><span>—</span></div>
-              <div class="mc-d b2"><span>SÁ</span></div>
-              <div class="mc-d b2"><span>DO</span></div>
-            </div>
-          </div>
-        </div>
-        <p>A1 da 5.04 pts de valor. B2 solo da 3.36 pts. La diferencia es 1.68 pts. B2 paga esa diferencia a A1 — puede elegir pagarla en puntos o en efectivo.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Bloque A1 (3 noches)</span><strong>5.04 pts</strong></div>
-          <div class="cn"><span>Bloque B2 (2 noches)</span><strong>3.36 pts</strong></div>
-          <div class="cn highlight"><span>Diferencia</span><strong>1.68 pts</strong></div>
-          <div class="cn highlight"><span>B2 paga a A1</span><strong>$2.184.000</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">Swap con diferencia en efectivo</div>
-        <h4>A2 y B1 swap — B1 no tiene puntos disponibles</h4>
-        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0">
-          <div>
-            <div class="mc-label">A2 da (vie+sáb+dom)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d a2"><span>VI</span></div>
-              <div class="mc-d a2"><span>SÁ</span></div>
-              <div class="mc-d a2"><span>DO</span></div>
-            </div>
-          </div>
-          <div style="font-size:22px;color:var(--gold);text-align:center">⇄</div>
-          <div>
-            <div class="mc-label">B1 da (sáb+dom)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d empty"><span>—</span></div>
-              <div class="mc-d b1"><span>SÁ</span></div>
-              <div class="mc-d b1"><span>DO</span></div>
-            </div>
-          </div>
-        </div>
-        <p>B1 no tiene puntos disponibles. La diferencia de 1.68 pts (= $2.184.000) la paga directamente en efectivo a A2. A2 recibe plata y puede usar esa liquidez como prefiera.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Bloque A2 (3 noches)</span><strong>5.04 pts</strong></div>
-          <div class="cn"><span>Bloque B1 (2 noches)</span><strong>3.36 pts</strong></div>
-          <div class="cn highlight"><span>Diferencia</span><strong>1.68 pts</strong></div>
-          <div class="cn highlight"><span>B1 paga</span><strong>$2.184.000</strong></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- TIPO 4: WD↔WD -->
-<div class="seccion" id="mv-tipo-4">
-  <div class="sec-tag">Tipo 4 de intercambio</div>
-  <h2 class="sec-h2">Intercambio WD ↔ WD — swap de semanas entre semana</h2>
-  <p class="sec-p">Los cuatro propietarios Weekday pueden intercambiar sus semanas entre sí. Mismo mecanismo que A↔B: swap directo si el valor es igual, o compensación en puntos o efectivo si hay diferencia.</p>
-
-  <div class="tipo-bloque">
-    <div class="casos">
-
-      <div class="caso">
-        <div class="caso-tag">Swap exacto — misma cantidad de noches</div>
-        <h4>WD1 y WD3 intercambian semanas completas</h4>
-        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0">
-          <div>
-            <div class="mc-label">WD1 · Semana Santa</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d wd1"><span>LU</span></div>
-              <div class="mc-d wd1"><span>MA</span></div>
-              <div class="mc-d wd1"><span>MI</span></div>
-              <div class="mc-d wd1"><span>JU</span></div>
-            </div>
-          </div>
-          <div style="font-size:22px;color:var(--gold);text-align:center">⇄</div>
-          <div>
-            <div class="mc-label">WD3 · Octubre</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d wd3"><span>LU</span></div>
-              <div class="mc-d wd3"><span>MA</span></div>
-              <div class="mc-d wd3"><span>MI</span></div>
-              <div class="mc-d wd3"><span>JU</span></div>
-            </div>
-          </div>
-        </div>
-        <p>WD1 prefiere octubre, WD3 prefiere Semana Santa. Ambas semanas son 4 noches × 1 pt = mismo valor. Swap directo, sin pago adicional. Fractal lo registra en la APP.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Bloque WD1</span><strong>4.00 pts</strong></div>
-          <div class="cn"><span>Bloque WD3</span><strong>4.00 pts</strong></div>
-          <div class="cn highlight"><span>Diferencia</span><strong>$0</strong></div>
-          <div class="cn highlight"><span>Tipo</span><strong>Swap directo</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">Swap con diferencia</div>
-        <h4>WD2 da 4 noches · WD4 da 3 noches</h4>
-        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0">
-          <div>
-            <div class="mc-label">WD2 da (lun–jue)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d wd2"><span>LU</span></div>
-              <div class="mc-d wd2"><span>MA</span></div>
-              <div class="mc-d wd2"><span>MI</span></div>
-              <div class="mc-d wd2"><span>JU</span></div>
-            </div>
-          </div>
-          <div style="font-size:22px;color:var(--gold);text-align:center">⇄</div>
-          <div>
-            <div class="mc-label">WD4 da (3 noches)</div>
-            <div class="mini-cal" style="margin:0">
-              <div class="mc-d wd4"><span>LU</span></div>
-              <div class="mc-d wd4"><span>MA</span></div>
-              <div class="mc-d wd4"><span>MI</span></div>
-              <div class="mc-d empty"><span>—</span></div>
-            </div>
-          </div>
-        </div>
-        <p>WD4 solo tiene 3 noches ese período — un día quedó como festivo absorbido por A/B. WD2 da 4.00 pts, WD4 da 3.00 pts. WD4 paga la diferencia de 1 pt en efectivo a WD2.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>Bloque WD2 (4 noches)</span><strong>4.00 pts</strong></div>
-          <div class="cn"><span>Bloque WD4 (3 noches)</span><strong>3.00 pts</strong></div>
-          <div class="cn highlight"><span>Diferencia</span><strong>1.00 pt</strong></div>
-          <div class="cn highlight"><span>WD4 paga</span><strong>$1.300.000</strong></div>
-        </div>
-      </div>
-
-      <div class="caso">
-        <div class="caso-tag">WD compra bloque suelto de otro WD</div>
-        <h4>WD1 compra 2 noches de WD2 para tener semana más larga</h4>
-        <div class="mini-cal">
-          <div class="mc-d wd1"><span>LU</span><span class="dl">WD1</span></div>
-          <div class="mc-d wd1"><span>MA</span><span class="dl">WD1</span></div>
-          <div class="mc-d wd1"><span>MI</span><span class="dl">WD1</span></div>
-          <div class="mc-d wd1"><span>JU</span><span class="dl">WD1</span></div>
-          <div class="mc-d wd2 comprado"><span>LU</span><span class="dl">→WD1</span></div>
-          <div class="mc-d wd2 comprado"><span>MA</span><span class="dl">→WD1</span></div>
-        </div>
-        <p>WD1 quiere 6 noches seguidas de trabajo remoto. Tiene su semana lun–jue. Le compra lun+mar de la semana siguiente a WD2. 2 noches × 1.00 pt = 2 pts = $2.600.000.</p>
-        <div class="caso-nums">
-          <div class="cn"><span>2 noches WD</span><strong>2.00 pts</strong></div>
-          <div class="cn"><span>Valor</span><strong>$2.600.000</strong></div>
-          <div class="cn highlight"><span>Estadía total</span><strong>6 noches</strong></div>
-          <div class="cn"><span>Tipo de pago</span><strong>Puntos o plata</strong></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- SIMULADOR -->
-<div class="seccion" id="mv-simulador">
-  <div class="sec-tag">Calculadora de intercambio</div>
-  <h2 class="sec-h2">Simula tu transacción antes de hacerla</h2>
-  <p class="sec-p">Selecciona el tipo de noche que vas a comprar, cuántas noches, y cuántos puntos tienes disponibles. La calculadora te muestra exactamente cuánto pagas y qué recibe el vendedor.</p>
-
-  <div class="sim-wrap">
-    <div class="sim-head">
-      <h3>¿Cuánto me cuesta?</h3>
-      <p>Ajusta los parámetros y ve el resultado en tiempo real.</p>
-    </div>
-    <div class="sim-body">
-      <div class="sim-l">
-        <div class="s-field">
-          <label class="s-label">Tipo de noche que vas a comprar</label>
-          <div class="s-toggle">
-            <button class="s-tog active" data-tipo="fds">Fin de semana / festivo <span>1.68 pts · $2.184.000/noche</span></button>
-            <button class="s-tog" data-tipo="wd">Entre semana (lun–jue) <span>1.00 pt · $1.300.000/noche</span></button>
-          </div>
-        </div>
-        <div class="s-field">
-          <label class="s-label">¿Cuántas noches?</label>
-          <div class="s-stepper">
-            <button class="s-step-btn" id="mv-sDown">−</button>
-            <span id="mv-sNochesVal">1</span>
-            <button class="s-step-btn" id="mv-sUp">+</button>
-          </div>
-          <div style="font-size:11px;color:var(--gold);margin-top:10px;min-height:16px" id="mv-sHint"></div>
-        </div>
-        <div class="s-field">
-          <label class="s-label">Tus puntos disponibles</label>
-          <input type="range" class="s-slider" id="mv-sPts" min="0" max="48" step="0.5" value="20">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
-            <span style="font-size:10px;color:rgba(122,116,104,.4)">0</span>
-            <span id="mv-sPtsVal" style="font-family:var(--serif);font-size:18px;color:var(--gold)">20.0 pts</span>
-            <span style="font-size:10px;color:rgba(122,116,104,.4)">48 pts</span>
-          </div>
-        </div>
-      </div>
-      <div class="sim-r">
-        <div class="s-res-tag">Tu transacción</div>
-        <div class="s-modo" id="mv-sModo">100% en puntos</div>
-        <div class="s-modo-sub" id="mv-sModuSub">Tienes puntos suficientes</div>
-        <div class="s-rows">
-          <div class="s-row"><span class="s-row-l">Noches</span><span class="s-row-v" id="mv-sRNoches">1 noche · fin de semana</span></div>
-          <div class="s-row"><span class="s-row-l">Costo total en puntos</span><span class="s-row-v" id="mv-sRTotalPts">1.68 pts</span></div>
-          <div class="s-row"><span class="s-row-l">Tus puntos</span><span class="s-row-v" id="mv-sRTusPts">20.00 pts</span></div>
-          <div class="s-row hl"><span class="s-row-l">Puntos que usas</span><span class="s-row-v" id="mv-sRPtsUsados">1.68 pts</span></div>
-          <div class="s-row hl"><span class="s-row-l">Efectivo adicional</span><span class="s-row-v" id="mv-sRFectivo">$0</span></div>
-          <div class="s-row total"><span class="s-row-l">Valor total transacción</span><span class="s-row-v" id="mv-sRTotal">$2.184.000</span></div>
-          <div class="s-row"><span class="s-row-l" style="color:var(--gold-l)">Puntos que te sobran</span><span class="s-row-v" id="mv-sRSobra" style="color:var(--gold-l)">18.32 pts</span></div>
-        </div>
-        <div class="s-recibe-box">
-          <div class="s-recibe-label">El propietario del día recibe</div>
-          <div class="s-recibe-val" id="mv-sRecibe"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- RESUMEN -->
-<div class="seccion" id="mv-resumen">
-  <div class="sec-tag">Tabla de referencia</div>
-  <h2 class="sec-h2">Resumen de todos los tipos de intercambio</h2>
-  <p class="sec-p">Consulta esta tabla para saber qué tipo de intercambio aplica a tu situación y cuánto cuesta.</p>
-  <table class="resumen-tabla">
-    <thead>
-      <tr>
-        <th>Tipo</th>
-        <th>¿Quién compra?</th>
-        <th>¿Qué compra?</th>
-        <th>Costo unitario</th>
-        <th>Ejemplo · valor total</th>
-        <th>Contigüidad requerida</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="cat"><td colspan="6">Tipo 1 — Extensión contigua</td></tr>
-      <tr><td>A/B añade noche WD</td><td>A1, A2, B1 o B2</td><td>1 noche lun–jue contigua</td><td class="pts">1.00 pt</td><td class="cop">$1.300.000</td><td>Sí — día inmediato</td></tr>
-      <tr><td>WD añade noche FDS</td><td>WD1, WD2, WD3 o WD4</td><td>1 noche vie/sáb/dom contigua</td><td class="pts">1.68 pts</td><td class="cop">$2.184.000</td><td>Sí — día inmediato</td></tr>
-      <tr class="cat"><td colspan="6">Tipo 2 — Compra de bloque completo</td></tr>
-      <tr><td>WD compra FDS completo</td><td>Cualquier WD</td><td>Vie+Sáb+Dom de un A/B</td><td class="pts">5.04 pts</td><td class="cop">$6.552.000</td><td>No requerida</td></tr>
-      <tr><td>WD compra FDS parcial</td><td>Cualquier WD</td><td>Sáb+Dom de un A/B</td><td class="pts">3.36 pts</td><td class="cop">$4.368.000</td><td>No requerida</td></tr>
-      <tr><td>A/B compra WD completo</td><td>A1, A2, B1 o B2</td><td>Lun–Jue de un WD</td><td class="pts">4.00 pts</td><td class="cop">$5.200.000</td><td>No requerida</td></tr>
-      <tr class="cat"><td colspan="6">Tipo 3 — Intercambio A ↔ B</td></tr>
-      <tr><td>Swap exacto</td><td>A1/A2/B1/B2</td><td>Bloque del mismo valor</td><td class="pts">—</td><td class="cop">$0 diferencia</td><td>No aplica</td></tr>
-      <tr><td>Swap con diferencia</td><td>A1/A2/B1/B2</td><td>Bloque de distinto valor</td><td class="pts">Δ pts</td><td class="cop">Δ × $1.300.000</td><td>No aplica</td></tr>
-      <tr class="cat"><td colspan="6">Tipo 4 — Intercambio WD ↔ WD</td></tr>
-      <tr><td>Swap exacto</td><td>WD1/WD2/WD3/WD4</td><td>Semanas del mismo valor</td><td class="pts">—</td><td class="cop">$0 diferencia</td><td>No aplica</td></tr>
-      <tr><td>Swap con diferencia</td><td>WD1/WD2/WD3/WD4</td><td>Semanas de distinto valor</td><td class="pts">Δ pts</td><td class="cop">Δ × $1.300.000</td><td>No aplica</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<footer>
-  <p>© 2026 Fractal Colombia · Mercado interno de días</p>
-  <a href="index.html">← Volver a la página principal</a>
-</footer>
-
-<script>
-const VP=1300000,PF=1.68,PW=1.00;
-const cop=n=>'$'+Math.round(n).toLocaleString('es-CO');
-const fpts=n=>n.toFixed(2)+' pts';
-let tipo='fds',noches=1;
-
-function calcSim(){
-  const pn=tipo==='fds'?PF:PW;
-  const tot=pn*noches;
-  const totCop=tot*VP;
-  const disp=parseFloat(document.getElementById('sPts').value);
-  const usados=Math.min(disp,tot);
-  const falta=Math.max(0,tot-disp);
-  const efec=falta*VP;
-  const sobra=Math.max(0,disp-tot);
-  const tLabel=tipo==='fds'?'fin de semana':'entre semana';
-  const nLabel=noches===1?'1 noche':noches+' noches';
-
-  let modo,msub;
-  if(falta===0){modo='100% en puntos';msub='Tienes puntos suficientes — sin efectivo';}
-  else if(usados===0){modo='100% en efectivo';msub='Sin puntos disponibles — pago completo en plata';}
-  else{modo='Pago mixto';msub='Combinas puntos + efectivo';}
-
-  document.getElementById('sModo').textContent=modo;
-  document.getElementById('sModuSub').textContent=msub;
-  document.getElementById('sRNoches').textContent=nLabel+' · '+tLabel;
-  document.getElementById('sRTotalPts').textContent=fpts(tot);
-  document.getElementById('sRTusPts').textContent=fpts(disp);
-  document.getElementById('sRPtsUsados').textContent=fpts(usados);
-  document.getElementById('sRFectivo').textContent=cop(efec);
-  document.getElementById('sRTotal').textContent=cop(totCop);
-  document.getElementById('sRSobra').textContent=fpts(sobra);
-
-  let rec='';
-  if(falta===0) rec=fpts(usados)+' en puntos (= '+cop(totCop)+')\nPuede usarlos para comprar otros días del sistema.';
-  else if(usados===0) rec=cop(efec)+' en efectivo directo.';
-  else rec=fpts(usados)+' en puntos + '+cop(efec)+' en efectivo.\nTotal equivalente: '+cop(totCop);
-  document.getElementById('sRecibe').innerText=rec;
-
-  let hint='';
-  if(noches===3&&tipo==='fds') hint='= Puente completo Vie+Sáb+Dom';
-  else if(noches===4&&tipo==='wd') hint='= Semana completa Lun–Jue';
-  else if(noches===7) hint='= Semana completa Lun–Dom (bloque mixto)';
-  document.getElementById('sHint').textContent=hint;
-  document.getElementById('sPtsVal').textContent=disp.toFixed(1)+' pts';
-}
-
-document.querySelectorAll('.s-tog').forEach(b=>b.addEventListener('click',function(){
-  document.querySelectorAll('.s-tog').forEach(x=>x.classList.remove('active'));
-  this.classList.add('active');tipo=this.dataset.tipo;calcSim();
-}));
-document.getElementById('sUp').addEventListener('click',()=>{if(noches<10)noches++;document.getElementById('sNochesVal').textContent=noches;calcSim();});
-document.getElementById('sDown').addEventListener('click',()=>{if(noches>1)noches--;document.getElementById('sNochesVal').textContent=noches;calcSim();});
-document.getElementById('sPts').addEventListener('input',calcSim);
-calcSim();
-
-// Nav active on scroll
-const sections=document.querySelectorAll('[id]');
-const navLinks=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
-  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
-});
-</script>
-
-  </div>
-</div>
 </body>
 </html>
