@@ -1460,6 +1460,99 @@ function recalcIngreso() {
   if (tarifaFDS > 0) { sv('rTarifaFDS', cop(tarifaFDS) + '/noche'); sv('rIngAB',  cop(Math.round(48*0.5*tarifaFDS)) + '/año'); }
   if (tarifaSEM > 0) { sv('rTarifaSEM', cop(tarifaSEM) + '/noche'); sv('rIngWD',  cop(Math.round(43*0.5*tarifaSEM)) + '/año'); }
 }
+// ── CALCULADORA EJEMPLO ──
+let ejTipFrac = 'none';
+
+function ejFrac(tipo) {
+  ejTipFrac = tipo;
+  ['none','wd','ab'].forEach(t => {
+    const el = document.getElementById('ej-opt-' + t);
+    if (!el) return;
+    el.style.border = '1px solid rgba(122,116,104,.2)';
+    el.style.background = '#09090a';
+    el.style.color = 'var(--stone)';
+  });
+  const sel = document.getElementById('ej-opt-' + tipo);
+  if (sel) {
+    sel.style.border = '2px solid var(--gold)';
+    sel.style.background = 'rgba(184,147,90,.05)';
+    sel.style.color = 'var(--gold)';
+  }
+  calcEjemplo();
+}
+
+function calcEjemplo() {
+  const slValor = document.getElementById('sl-valor');
+  const slRemo  = document.getElementById('sl-remo');
+  const slDeuda = document.getElementById('sl-deuda');
+  if (!slValor) return;
+  const valor = parseInt(slValor.value);
+  const remo  = parseInt(slRemo.value);
+  const deuda = parseInt(slDeuda.value);
+  const fractalizado = valor + remo;
+  const pA  = Math.round(fractalizado * 0.1565);
+  const pWD = Math.round(fractalizado * 0.0935);
+  const bolsaTotal = pA * 4 + pWD * 4;
+  const hon = Math.round(bolsaTotal * 0.12);
+  const pasivos = remo + deuda + hon;
+  const fracConservada = ejTipFrac === 'wd' ? pWD : ejTipFrac === 'ab' ? pA : 0;
+  const liq = bolsaTotal - pasivos - fracConservada;
+  const sv = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  // Sliders labels
+  sv('lbl-valor', cop(valor));
+  sv('lbl-remo',  cop(remo));
+  sv('lbl-deuda', cop(deuda));
+  // Paso 1
+  sv('ej-valor',       cop(valor));
+  sv('ej-remo',        cop(remo));
+  sv('ej-fractalizado',cop(fractalizado));
+  // Paso 2
+  sv('ej-pA',    cop(pA));
+  sv('ej-pB',    cop(pA));
+  sv('ej-pWD',   cop(pWD));
+  sv('ej-total8',cop(fractalizado));
+  // Paso 3
+  const lblPaso3 = ejTipFrac === 'none'
+    ? 'Paso 3 — Propietario vende las 8 fracciones (máxima liquidez)'
+    : ejTipFrac === 'wd'
+      ? 'Paso 3 — Propietario vende 8 fracciones · descuenta 1 WD que conserva'
+      : 'Paso 3 — Propietario vende 8 fracciones · descuenta 1 A/B que conserva';
+  sv('ej-paso3-label', lblPaso3);
+  sv('ej-bolsa-det', '2A + 2B + 4WD · precio lleno de mercado');
+  sv('ej-bolsa',   cop(bolsaTotal));
+  sv('ej-d-remo',  '– ' + cop(remo));
+  sv('ej-d-deuda', '– ' + cop(deuda));
+  sv('ej-d-hon',   '– ' + cop(hon));
+  sv('ej-total-pasivos', '– ' + cop(pasivos));
+  // Fracción conservada
+  const fracRow = document.getElementById('ej-frac-row');
+  if (fracRow) fracRow.style.display = ejTipFrac === 'none' ? 'none' : '';
+  if (ejTipFrac !== 'none') {
+    sv('ej-frac-label', '– Fracción ' + (ejTipFrac === 'wd' ? 'WD' : 'A/B') + ' que conservas');
+    sv('ej-frac-val', '– ' + cop(fracConservada));
+    const fv = document.getElementById('ej-frac-val');
+    if (fv) fv.style.color = 'rgba(220,80,80,.8)';
+  }
+  // Liquidación
+  const liqEl = document.getElementById('ej-liq');
+  if (liqEl) {
+    liqEl.textContent = liq >= 0 ? cop(liq) : '– ' + cop(Math.abs(liq));
+    liqEl.style.color = liq >= 0 ? 'var(--gold)' : 'rgba(220,80,80,.9)';
+  }
+  const aviso = document.getElementById('ej-aviso');
+  if (aviso) aviso.style.display = liq < 0 ? 'block' : 'none';
+}
+
+document.addEventListener('DOMContentLoaded', calcEjemplo);
+
+function togFaq(el) {
+  const item = el.closest('.faq-item');
+  if (!item) return;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
 
 </script>
 
