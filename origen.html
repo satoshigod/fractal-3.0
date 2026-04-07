@@ -1099,7 +1099,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
       <input type="tel" placeholder="WhatsApp / Celular">
       <button class="btn-primary" onclick="agendar(this)">Agendar →</button>
     </div>
-    <p class="agenda-nota">También puedes escribirnos a <span style="color:var(--gold)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d0bfa2b9b7b5be90b6a2b1b3a4b1bcb3bfbcbfbdb2b9b1feb3bfbd">[email&#160;protected]</a></span> · Respondemos en menos de 24 horas.</p>
+    <p class="agenda-nota">También puedes escribirnos a <a href="mailto:info@vivefractal.com" style="color:var(--gold);text-decoration:none">info@vivefractal.com</a> · Respondemos en menos de 24 horas.</p>
   </div>
 </section>
 
@@ -1136,7 +1136,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
     <div class="footer-brand"><span class="logo">Fra<span>c</span>tal</span><p>Fractal Origen — incorporación de propiedades existentes al ecosistema Fractal Colombia.</p></div>
     <div class="footer-col"><h5>Programa</h5><ul><li><a href="#dolor">El problema</a></li><li><a href="#como">Cómo funciona</a></li><li><a href="#recibe">Qué recibes</a></li><li><a href="#cotizador">Cotizador</a></li></ul></div>
     <div class="footer-col"><h5>Fractal</h5><ul><li><a href="index.html">Página principal</a></li><li><a href="index.html#fracciones">Fracciones</a></li><li><a href="index.html#destinos">Destinos</a></li><li><a href="index.html#mercado">Mercado interno</a></li></ul></div>
-    <div class="footer-col"><h5>Contacto</h5><ul><li><a href="/cdn-cgi/l/email-protection#9ff0edf6f8faf1dff9edfefcebfef3fcf0f3f0f2fdf6feb1fcf0f2"><span class="__cf_email__" data-cfemail="640b160d03010a2402160507100508070b080b09060d054a070b09">[email&#160;protected]</span></a></li><li><a href="#">WhatsApp</a></li></ul></div>
+    <div class="footer-col"><h5>Contacto</h5><ul><li><a href="mailto:info@vivefractal.com">info@vivefractal.com</a></li><li><a href="#">WhatsApp</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <p>© 2026 Fractal Colombia · Fractal Origen</p>
@@ -1544,6 +1544,25 @@ function calcEjemplo() {
 }
 
 document.addEventListener('DOMContentLoaded', calcEjemplo);
+
+function agendar(btn) {
+  var form = btn.closest('.agenda-form');
+  var nombre = form.querySelector('input[type="text"]').value.trim();
+  var tel = form.querySelector('input[type="tel"]').value.trim();
+  if (!nombre) { alert('Por favor ingresa tu nombre completo.'); return; }
+  if (!tel) { alert('Por favor ingresa tu número de WhatsApp / celular.'); return; }
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+  // Simulación de envío — reemplazar por integración real
+  setTimeout(function() {
+    form.innerHTML = '<div style="padding:24px 0;text-align:center">'
+      + '<div style="font-size:22px;margin-bottom:12px">✓</div>'
+      + '<div style="font-size:14px;color:var(--cream);margin-bottom:8px">¡Listo, ' + nombre + '!</div>'
+      + '<div style="font-size:13px;color:var(--stone);line-height:1.7">Nos comunicaremos contigo en menos de 24 horas para confirmar la visita técnica.<br>'
+      + 'También puedes escribirnos directo a <a href="mailto:info@vivefractal.com" style="color:var(--gold);text-decoration:none">info@vivefractal.com</a>.</div>'
+      + '</div>';
+  }, 900);
+}
 
 function togFaq(el) {
   const item = el.closest('.faq-item');
