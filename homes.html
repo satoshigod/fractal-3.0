@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fractal — Segundo hogar en Colombia</title>
+<title>Fractal Homes — Copropiedad de Segunda Vivienda en Antioquia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -684,7 +684,111 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
 .acd-content .acc-title{font-size:clamp(18px,2vw,24px) !important}
 .acd-content .sec-acc-title{font-size:clamp(14px,1.4vw,18px) !important}
 .acd-content{display:none}
+
+/* ── WhatsApp Floating Button ────────────────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+}
+.wa-label {
+  background: #25D366;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  padding: 7px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity .25s, transform .25s;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(37,211,102,.35);
+}
+.wa-btn {
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(37,211,102,.45);
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  position: relative;
+}
+.wa-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 28px rgba(37,211,102,.6);
+}
+.wa-float:hover .wa-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+.wa-btn svg { width: 30px; height: 30px; fill: #fff; }
+.wa-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(37,211,102,.4);
+  animation: waPulse 2.2s ease-out infinite;
+}
+@keyframes waPulse {
+  0%   { transform: scale(1);   opacity: .6; }
+  70%  { transform: scale(1.55); opacity: 0; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+@media (max-width: 600px) {
+  .wa-float { bottom: 18px; right: 18px; }
+  .wa-btn   { width: 52px; height: 52px; }
+}
 </style>
+
+<!-- ✅ SEO — homes.html -->
+<meta name="description" content="Accede a tu segunda vivienda en las mejores fincas de Antioquia con Fractal Homes. Modelo de copropiedad 1/8, 44+ días al año. Invierte en finca desde $150M COP.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Fractal Colombia">
+<link rel="canonical" href="https://vivefractal.com/homes.html">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vivefractal.com/homes.html">
+<meta property="og:title" content="Fractal Homes — Copropiedad de Segunda Vivienda en Antioquia">
+<meta property="og:description" content="Accede a tu segunda vivienda en las mejores fincas de Antioquia con Fractal Homes. Modelo de copropiedad 1/8, 44+ días al año. Invierte en finca desde $150M COP.">
+<meta property="og:image" content="https://vivefractal.com/og-image.jpg">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fractal Homes — Copropiedad de Segunda Vivienda en Antioquia">
+<meta name="twitter:description" content="Accede a tu segunda vivienda en las mejores fincas de Antioquia con Fractal Homes. Modelo de copropiedad 1/8, 44+ días al año. Invierte en finca desde $150M COP.">
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Fractal Homes",
+  "url": "https://vivefractal.com/homes.html",
+  "telephone": "+573005485019",
+  "email": "info@vivefractal.com",
+  "address": {"@type": "PostalAddress", "addressRegion": "Antioquia", "addressCountry": "CO"},
+  "sameAs": ["https://wa.me/573005485019", "https://vivefractal.com"]
+}
+</script>
+
+<!-- ✅ Google Analytics 4 — vivefractal.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FNYVWMH7V7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-FNYVWMH7V7', { send_page_view: true });
+</script>
 </head>
 <body>
 
@@ -698,7 +802,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
     <a href="cars.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Cars</a>
     <a href="pyp.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">P&amp;P</a>
     <a href="exchange.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Exchange</a>
-    <a href="mailto:info@vivefractal.com" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:9px 22px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;transition:background .2s,color .2s" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Contactar</a>
+    <a href="/cdn-cgi/l/email-protection#670e09010827110e11020115060413060b4904080a" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:9px 22px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;transition:background .2s,color .2s" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Contactar</a>
   </div>
 </nav>
 
@@ -1095,7 +1199,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
         <div class="ps-circle">1</div>
         <h4>Consulta inicial</h4>
         <p>30 minutos con un asesor. Destino, fracción y expectativas. Sin compromiso.</p>
-        <a href="mailto:info@vivefractal.com" style="display:inline-block;margin-top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;opacity:.8">info@vivefractal.com</a>
+        <a href="/cdn-cgi/l/email-protection#d3babdb5bc93a5baa5b6b5a1b2b0a7b2bffdb0bcbe" style="display:inline-block;margin-top:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;opacity:.8"><span class="__cf_email__" data-cfemail="8ae3e4ece5cafce3fcefecf8ebe9feebe6a4e9e5e7">[email&#160;protected]</span></a>
       </div>
       <div class="ps">
         <div class="ps-circle">2</div>
@@ -2251,7 +2355,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
     <h2>El lugar que siempre quisiste<br><em>ya tiene tu fracción.</em></h2>
     <p>Las fracciones son limitadas por propiedad. Cuéntanos en qué destino te imaginas y qué tipo de fracción encaja con tu vida.</p>
     <div class="cta-actions">
-      <a href="mailto:info@vivefractal.com" class="btn-primary">Hablar con un asesor</a>
+      <a href="/cdn-cgi/l/email-protection#177e79717857617e61727165767463767b3974787a" class="btn-primary">Hablar con un asesor</a>
       <a href="#fracciones" class="btn-ghost" style="color:var(--cream)">
         Ver fracciones
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -2266,7 +2370,7 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
     <div class="footer-brand">
       <span class="logo">Fra<span>c</span>tal</span>
       <p>Copropiedad inteligente en los mejores destinos de Colombia. Propiedad real, acceso flexible, gestión profesional.</p>
-      <a href="mailto:info@vivefractal.com" style="display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.1em;color:var(--gold);text-decoration:none;opacity:.85">info@vivefractal.com</a>
+      <a href="/cdn-cgi/l/email-protection#ec85828a83ac9a859a898a9e8d8f988d80c28f8381" style="display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.1em;color:var(--gold);text-decoration:none;opacity:.85"><span class="__cf_email__" data-cfemail="4e272028210e3827382b283c2f2d3a2f22602d2123">[email&#160;protected]</span></a>
     </div>
     <div class="footer-col">
       <h5>Destinos</h5>
@@ -2295,18 +2399,18 @@ footer{border-top:1px solid rgba(122,116,104,.12);padding:64px 48px 40px;backgro
         <li><a href="#">Nosotros</a></li>
         <li><a href="#">Términos legales</a></li>
         <li><a href="#">Política de privacidad</a></li>
-        <li><a href="mailto:info@vivefractal.com">Contacto</a></li>
-        <li><a href="mailto:info@vivefractal.com" style="color:var(--gold);opacity:1">info@vivefractal.com</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#462f28202906302f30232034272532272a6825292b">Contacto</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#84edeae2ebc4f2edf2e1e2f6e5e7f0e5e8aae7ebe9" style="color:var(--gold);opacity:1"><span class="__cf_email__" data-cfemail="e68f888089a6908f90838094878592878ac885898b">[email&#160;protected]</span></a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p>© 2026 Fractal Colombia · Copropiedad estructurada</p>
-    <p>Bogotá · Medellín · <a href="mailto:info@vivefractal.com" style="color:var(--stone);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--stone)'">info@vivefractal.com</a></p>
+    <p>Bogotá · Medellín · <a href="/cdn-cgi/l/email-protection#8be2e5ede4cbfde2fdeeedf9eae8ffeae7a5e8e4e6" style="color:var(--stone);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--stone)'"><span class="__cf_email__" data-cfemail="056c6b636a45736c7360637764667164692b666a68">[email&#160;protected]</span></a></p>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── TOGGLE ACORDEÓN ──────────────────────────────────────────────────────────
 function toggleAcc(header) {
   var isOpen = header.classList.contains('open');
@@ -2842,31 +2946,98 @@ document.querySelectorAll('.faq-item').forEach(item => {
   function runCmp(v) {
     calcComparacion(v);
     document.querySelectorAll('.vsu-presets .preset-btn').forEach(function(b) {
-      b.classList.toggle('active', +b.dataset.cmp === v);
-    });
-  }
-  if (sl) {
-    sl.addEventListener('input', function() { runCmp(+this.value); });
-  }
-  document.querySelectorAll('.vsu-presets .preset-btn[data-cmp]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var v = +this.dataset.cmp;
-      if (sl) sl.value = v;
-      runCmp(v);
+      b.classLi
+
+<!-- ── WhatsApp Floating Button ──────────────────────────────────────────── -->
+<div class="wa-float">
+  <span class="wa-label">Evaluar mi propiedad</span>
+  <a class="wa-btn"
+     href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20propiedad%20con%20Fractal"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Escríbenos por WhatsApp para evaluar tu propiedad"
+     onclick="if(typeof gtag!=='undefined'){gtag('event','click_whatsapp',{event_category:'contacto',event_label:'floating_button'});}">
+    <span class="wa-pulse"></span>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15
+               -.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075
+               -.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059
+               -.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52
+               .149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52
+               -.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51
+               -.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372
+               -.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074
+               .149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625
+               .712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413
+               .248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617
+               a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24
+               c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894
+               a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648
+               -.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107
+               S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- ── Google Analytics — Eventos personalizados ─────────────────────────── -->
+<script>
+(function(){
+  // 1. click_whatsapp — ya manejado en el botón flotante inline.
+  //    Por si acaso también se captura cualquier otro enlace de WA en la página:
+  document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if(typeof gtag !== 'undefined'){
+        gtag('event', 'click_whatsapp', {
+          event_category: 'contacto',
+          event_label: el.getAttribute('href') || 'whatsapp_link'
+        });
+      }
     });
   });
-  runCmp(4800000000);
+
+  // 2. click_cta — "Evaluar mi finca / propiedad" y CTAs principales
+  document.querySelectorAll(
+    'a[href*="origen"], .btn-primary, .home-contact-btn, [class*="cta"]'
+  ).forEach(function(el){
+    el.addEventListener('click', function(){
+      if(typeof gtag !== 'undefined'){
+        gtag('event', 'click_cta', {
+          event_category: 'engagement',
+          event_label: (el.textContent || '').trim().slice(0,60)
+        });
+      }
+    });
+  });
+
+  // 3. scroll_50 — cuando el usuario llega al 50 % de la página
+  var scroll50Fired = false;
+  window.addEventListener('scroll', function(){
+    if(scroll50Fired) return;
+    var scrolled  = window.scrollY + window.innerHeight;
+    var total     = document.documentElement.scrollHeight;
+    if(scrolled / total >= 0.5){
+      scroll50Fired = true;
+      if(typeof gtag !== 'undefined'){
+        gtag('event', 'scroll_50', {
+          event_category: 'engagement',
+          event_label: window.location.pathname
+        });
+      }
+    }
+  }, { passive: true });
+
+  // 4. tiempo_en_pagina — dispara a los 30 s, 60 s y 120 s
+  [30, 60, 120].forEach(function(seg){
+    setTimeout(function(){
+      if(typeof gtag !== 'undefined'){
+        gtag('event', 'tiempo_en_pagina', {
+          event_category: 'engagement',
+          event_label: seg + 's',
+          value: seg
+        });
+      }
+    }, seg * 1000);
+  });
 })();
 </script>
-<script>
-function togAcd(id){
-  var c = document.getElementById('acd-'+id);
-  var t = document.getElementById('tri-'+id);
-  if(!c) return;
-  var open = c.style.display !== 'block';
-  c.style.display = open ? 'block' : 'none';
-  if(t){ t.style.transform = open ? 'rotate(90deg)' : ''; t.style.color = open ? 'var(--gold)' : 'rgba(122,116,104,.5)'; }
-}
-</script>
-</body>
-</html>
