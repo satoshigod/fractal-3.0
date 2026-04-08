@@ -1,13 +1,3 @@
-# robots.txt — vivefractal.com
-# Generado: 2026-04-07
-
 User-agent: *
 Allow: /
-
-# Bloquear recursos que no deben indexarse
-Disallow: /cdn-cgi/
-Disallow: /admin/
-Disallow: /private/
-
-# Sitemap
 Sitemap: https://vivefractal.com/sitemap.xml
