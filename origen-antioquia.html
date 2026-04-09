@@ -538,12 +538,20 @@ function enviar(e){
   var w=document.getElementById('f-wa').value;
   var z=document.getElementById('f-zona').value;
   var v=document.getElementById('f-valor').value;
-  gtag('event','lead_form',{event_category:'conversion',event_label:z+' · '+v});
-  var msg=encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi WhatsApp es '+w+'. Quiero evaluarla con Fractal.');
-  window.open('https://wa.me/573005485019?text='+msg,'_blank');
+
+  // Mostrar gracias PRIMERO — antes de abrir WA
   document.getElementById('lf').style.display='none';
   document.querySelector('.alt-wa').style.display='none';
   document.getElementById('gracias').style.display='block';
+
+  // GA event
+  if(typeof gtag!=='undefined') gtag('event','lead_form',{event_category:'conversion',event_label:z+' · '+v});
+
+  // Abrir WA con delay para que el navegador no bloquee el popup
+  var msg=encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi WhatsApp es '+w+'. Quiero evaluarla con Fractal.');
+  setTimeout(function(){
+    window.open('https://wa.me/573005485019?text='+msg,'_blank');
+  }, 400);
 }
 var s50=false;
 window.addEventListener('scroll',function(){
