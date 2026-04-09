@@ -303,26 +303,15 @@ footer{
 <section class="hero">
   <div class="hero-inner">
     <div class="eyebrow">Fractal Origen · Antioquia</div>
-    <h1><em>"Deja de perder<br>dinero con tu finca."</em></h1>
-    <p class="hero-sub">Tienes plata atrapada en una propiedad en Antioquia que no estás disfrutando — y encima te está costando.</p>
+    <h1><em>"Deja de perder<br>dinero con<br>tu finca."</em></h1>
+    <p class="hero-sub">Tienes plata atrapada en una finca en Antioquia que no estás disfrutando — y encima te está costando cada mes.</p>
     <p class="hero-sub" style="margin-top:-16px">Te ayudamos a convertirla en ingresos, quedándote con una parte tuya y sin tener que operarla.</p>
+    <p style="font-size:11px;letter-spacing:.08em;color:rgba(184,147,90,.55);margin-bottom:28px">Solo trabajamos con fincas en Oriente, Suroeste y Occidente de Antioquia</p>
     <div class="ctas">
-      <a href="#formulario" class="btn-gold"
-         onclick="gtag('event','click_cta',{event_category:'hero',event_label:'hero_form'})">
-        Evaluar mi finca gratis
-      </a>
+      <a href="#formulario" class="btn-gold" onclick="gtag('event','click_cta',{event_category:'hero',event_label:'hero_form'})">Evaluar mi finca gratis</a>
       <a href="#como" class="btn-ghost">¿Cómo funciona? →</a>
     </div>
-    <p style="margin-top:14px;font-size:11px;color:rgba(122,116,104,.35)">Respuesta en menos de 24 horas · Sin compromiso · Evaluación personalizada según tu finca</p>
-    <p style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:20px">Solo trabajamos con fincas en Oriente, Suroeste y Occidente de Antioquia</p>
-    <div class="zonas">
-      <span class="zonas-label">Operamos en</span>
-      <span class="zona">Oriente Antioqueño</span>
-      <span class="zona">Suroeste</span>
-      <span class="zona">Santa Fe · Sopetrán</span>
-      <span class="zona">Guatapé · El Retiro</span>
-      <span class="zona">Llanogrande</span>
-    </div>
+    <p style="margin-top:16px;font-size:11px;color:rgba(122,116,104,.45)">Respuesta en menos de 24 horas · Sin compromiso · Evaluación personalizada según tu finca</p>
   </div>
 </section>
 
@@ -450,7 +439,14 @@ footer{
             </div>
             <div class="fg">
               <label>WhatsApp</label>
-              <input type="tel" id="f-wa" placeholder="+57 300 000 0000" required>
+              <div style="display:flex;align-items:center;background:#0a0a08;border:1px solid rgba(122,116,104,.18);transition:border-color .2s" id="wa-wrap">
+                <span style="padding:12px 10px 12px 14px;font-size:14px;color:rgba(122,116,104,.6);white-space:nowrap;flex-shrink:0">+57</span>
+                <input type="tel" id="f-wa" placeholder="300 000 0000" required
+                  style="border:none;background:transparent;flex:1;padding:12px 14px 12px 0;font-size:14px;color:var(--cream);outline:none"
+                  oninput="this.value=this.value.replace(/[^0-9\s]/g,'')"
+                  onfocus="document.getElementById('wa-wrap').style.borderColor='rgba(184,147,90,.38)'"
+                  onblur="document.getElementById('wa-wrap').style.borderColor='rgba(122,116,104,.18)'">
+              </div>
             </div>
             <div class="fg">
               <label>Municipio o zona</label>
@@ -482,6 +478,7 @@ footer{
             ¿Prefieres hablar ya? &nbsp;<a href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal" target="_blank" onclick="gtag('event','click_whatsapp',{event_category:'form',event_label:'form_wa'})">Escríbenos por WhatsApp</a>
           </div>
           <div class="gracias" id="gracias">
+            <a id="wa-lead-link" href="#" target="_blank" style="display:none"></a>
             <h3>Recibido. Gracias.</h3>
             <p>Te contactamos en menos de 24 horas con los números de tu finca.</p>
             <a href="https://wa.me/573005485019?text=Hola%2C%20acabo%20de%20llenar%20el%20formulario%20de%20Fractal%20Origen" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#25D366;font-size:13px">
@@ -503,7 +500,7 @@ footer{
      target="_blank" rel="noopener" class="btn-wa"
      onclick="gtag('event','click_whatsapp',{event_category:'final',event_label:'final_wa'})">
     <svg width="15" height="15" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
-    Evaluar mi finca gratis
+    Evaluar mi finca — gratis
   </a>
   <p class="zonas-text">Oriente · Suroeste · Santa Fe · Sopetrán · Guatapé · El Retiro · Llanogrande</p>
 </div>
@@ -513,7 +510,7 @@ footer{
   <span class="foot-logo">Fractal</span>
   <div class="foot-links">
     <a href="https://vivefractal.com">vivefractal.com</a>
-    <a href="/cdn-cgi/l/email-protection#eb82858d84ab9d829d8e8d998a889f8a87c5888486"><span class="__cf_email__" data-cfemail="a7cec9c1c8e7d1ced1c2c1d5c6c4d3c6cb89c4c8ca">[email&#160;protected]</span></a>
+    <a href="/cdn-cgi/l/email-protection#aac3c4ccc5eadcc3dccfccd8cbc9decbc684c9c5c7"><span class="__cf_email__" data-cfemail="21484f474e61574857444753404255404d0f424e4c">[email&#160;protected]</span></a>
     <a href="https://wa.me/573005485019">+57 300 548 5019</a>
     <a href="https://www.instagram.com/vive_fractal" target="_blank">@vive_fractal</a>
   </div>
@@ -534,24 +531,31 @@ footer{
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function enviar(e){
   e.preventDefault();
-  var n=document.getElementById('f-nombre').value;
-  var w=document.getElementById('f-wa').value;
-  var z=document.getElementById('f-zona').value;
-  var v=document.getElementById('f-valor').value;
+  var n = document.getElementById('f-nombre').value.trim();
+  var w = '+57 ' + document.getElementById('f-wa').value.trim();
+  var z = document.getElementById('f-zona').value;
+  var v = document.getElementById('f-valor').value;
 
-  // Mostrar gracias PRIMERO — antes de abrir WA
+  // GA
+  if(typeof gtag!=='undefined') gtag('event','lead_form',{event_category:'conversion',event_label:z+' · '+v});
+
+  // Email via Formspree (background, no reload)
+  fetch('https://formspree.io/f/xlgoyekn',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({nombre:n,whatsapp:w,zona:z,valor:v,_subject:'Lead Fractal Origen — '+z})
+  }).catch(function(){});
+
+  // Mostrar gracias
   document.getElementById('lf').style.display='none';
   document.querySelector('.alt-wa').style.display='none';
   document.getElementById('gracias').style.display='block';
 
-  // GA event
-  if(typeof gtag!=='undefined') gtag('event','lead_form',{event_category:'conversion',event_label:z+' · '+v});
-
-  // Abrir WA con delay para que el navegador no bloquee el popup
-  var msg=encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi WhatsApp es '+w+'. Quiero evaluarla con Fractal.');
-  setTimeout(function(){
-    window.open('https://wa.me/573005485019?text='+msg,'_blank');
-  }, 400);
+  // Abrir WhatsApp — link click evita bloqueo de popup
+  var msg=encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi número es '+w+'. Quiero evaluarla con Fractal.');
+  var link=document.getElementById('wa-lead-link');
+  link.href='https://wa.me/573005485019?text='+msg;
+  link.click();
 }
 var s50=false;
 window.addEventListener('scroll',function(){
