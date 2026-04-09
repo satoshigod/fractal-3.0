@@ -443,7 +443,7 @@ footer{
                 <span style="padding:12px 10px 12px 14px;font-size:14px;color:rgba(122,116,104,.6);white-space:nowrap;flex-shrink:0">+57</span>
                 <input type="tel" id="f-wa" placeholder="300 000 0000" required
                   style="border:none;background:transparent;flex:1;padding:12px 14px 12px 0;font-size:14px;color:var(--cream);outline:none"
-                  oninput="this.value=this.value.replace(/[^0-9\s]/g,'')"
+                  oninput="this.value=this.value.replace(/[^0-9]/g,'')"
                   onfocus="document.getElementById('wa-wrap').style.borderColor='rgba(184,147,90,.38)'"
                   onblur="document.getElementById('wa-wrap').style.borderColor='rgba(122,116,104,.18)'">
               </div>
@@ -477,15 +477,7 @@ footer{
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
             ¿Prefieres hablar ya? &nbsp;<a href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal" target="_blank" onclick="gtag('event','click_whatsapp',{event_category:'form',event_label:'form_wa'})">Escríbenos por WhatsApp</a>
           </div>
-          <div class="gracias" id="gracias">
-            <a id="wa-lead-link" href="#" target="_blank" style="display:none"></a>
-            <h3>Recibido. Gracias.</h3>
-            <p>Te contactamos en menos de 24 horas con los números de tu finca.</p>
-            <a href="https://wa.me/573005485019?text=Hola%2C%20acabo%20de%20llenar%20el%20formulario%20de%20Fractal%20Origen" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#25D366;font-size:13px">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
-              Escríbenos también por WhatsApp
-            </a>
-          </div>
+          <div id="gracias" style="display:none"></div>
         </div>
       </div>
     </div>
@@ -510,7 +502,7 @@ footer{
   <span class="foot-logo">Fractal</span>
   <div class="foot-links">
     <a href="https://vivefractal.com">vivefractal.com</a>
-    <a href="/cdn-cgi/l/email-protection#aac3c4ccc5eadcc3dccfccd8cbc9decbc684c9c5c7"><span class="__cf_email__" data-cfemail="21484f474e61574857444753404255404d0f424e4c">[email&#160;protected]</span></a>
+    <a href="mailto:info@vivefractal.com">info@vivefractal.com</a>
     <a href="https://wa.me/573005485019">+57 300 548 5019</a>
     <a href="https://www.instagram.com/vive_fractal" target="_blank">@vive_fractal</a>
   </div>
@@ -528,37 +520,85 @@ footer{
   </a>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function enviar(e){
   e.preventDefault();
   var n = document.getElementById('f-nombre').value.trim();
-  var w = '+57 ' + document.getElementById('f-wa').value.trim();
+  var w = '+57' + document.getElementById('f-wa').value.trim();
   var z = document.getElementById('f-zona').value;
   var v = document.getElementById('f-valor').value;
 
-  // GA
+  // 1. Deshabilitar botón para evitar doble envío
+  var btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  // 2. GA
   if(typeof gtag!=='undefined') gtag('event','lead_form',{event_category:'conversion',event_label:z+' · '+v});
 
-  // Email via Formspree (background, no reload)
+  // 3. Email via Formspree
   fetch('https://formspree.io/f/xlgoyekn',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({nombre:n,whatsapp:w,zona:z,valor:v,_subject:'Lead Fractal Origen — '+z})
-  }).catch(function(){});
-
-  // Mostrar gracias
-  document.getElementById('lf').style.display='none';
-  document.querySelector('.alt-wa').style.display='none';
-  document.getElementById('gracias').style.display='block';
-
-  // Abrir WhatsApp — link click evita bloqueo de popup
-  var msg=encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi número es '+w+'. Quiero evaluarla con Fractal.');
-  var link=document.getElementById('wa-lead-link');
-  link.href='https://wa.me/573005485019?text='+msg;
-  link.click();
+    body:JSON.stringify({
+      nombre:n, whatsapp:w, zona:z, valor:v,
+      _subject:'Lead Fractal Origen — '+z
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    // 4. Mostrar modal con link WA listo
+    var msg = encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi número es '+w+'. Quiero evaluarla con Fractal.');
+    document.getElementById('wa-modal-btn').href = 'https://wa.me/573005485019?text='+msg;
+    var modal = document.getElementById('modal');
+    modal.style.display = 'flex';
+    // Ocultar formulario
+    document.getElementById('lf').style.display='none';
+    document.querySelector('.alt-wa').style.display='none';
+    // Abrir WhatsApp automáticamente
+    window.open('https://wa.me/573005485019?text='+msg, '_blank');
+  })
+  .catch(function(){
+    // Aunque falle el email, mostrar modal y WA igualmente
+    var msg = encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi número es '+w+'. Quiero evaluarla con Fractal.');
+    document.getElementById('wa-modal-btn').href = 'https://wa.me/573005485019?text='+msg;
+    document.getElementById('modal').style.display = 'flex';
+    document.getElementById('lf').style.display='none';
+    document.querySelector('.alt-wa').style.display='none';
+    // Abrir WhatsApp automáticamente
+    window.open('https://wa.me/573005485019?text='+msg, '_blank');
+  });
 }
 var s50=false;
 window.addEventListener('scroll',function(){
   if(s50)return;
   if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>=0.5){
-    s50=true;
+    s50=true;gtag('event','scroll_50',{event_category:'engagement'});
+  }
+},{passive:true});
+[30,60,120].forEach(function(s){setTimeout(function(){gtag('event','tiempo',{event_category:'engagement',event_label:s+'s'});},s*1000);});
+</script>
+
+<!-- MODAL CONFIRMACIÓN -->
+<div id="modal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:24px">
+  <div style="background:#0d0d0b;border:1px solid rgba(184,147,90,.25);max-width:440px;width:100%;padding:48px 40px;text-align:center;position:relative">
+    <div style="font-size:32px;margin-bottom:16px">✓</div>
+    <h3 style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream);margin-bottom:10px">¡Listo, recibido!</h3>
+    <p style="font-size:13px;color:var(--stone);line-height:1.7;margin-bottom:28px">Te contactamos en menos de 24 horas con la evaluación de tu finca.<br>También te abrimos WhatsApp para que puedas escribirnos directo.</p>
+    <a id="wa-modal-btn"
+       href="#"
+       target="_blank"
+       style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:14px 28px;text-decoration:none;margin-bottom:16px">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
+      Abrir WhatsApp
+    </a>
+    <br>
+    <button onclick="document.getElementById('modal').style.display='none'"
+      style="background:none;border:none;color:rgba(122,116,104,.5);font-size:11px;cursor:pointer;letter-spacing:.1em;text-transform:uppercase">
+      Cerrar
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
