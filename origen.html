@@ -186,7 +186,7 @@ nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
 
 /* HERO */
 .hero-o{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;padding:0 48px 88px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,11,.18) 0%,rgba(13,13,11,.05) 30%,rgba(13,13,11,.82) 72%,var(--ink) 100%),url('https://images.unsplash.com/photo-1598908314732-07113901949e?w=1800&q=85') center/cover no-repeat}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,11,.18) 0%,rgba(13,13,11,.05) 30%,rgba(13,13,11,.82) 72%,var(--ink) 100%),url('https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=1800&q=85') center/cover no-repeat}
 .hero-content{position:relative;max-width:820px}
 .hero-eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;display:flex;align-items:center;gap:14px}
 .hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--gold)}
@@ -416,7 +416,7 @@ select.form-input option{background:#1a1a16;color:var(--cream)}
 
 /* CTA */
 .cta-final{position:relative;min-height:400px;display:flex;align-items:center;justify-content:center;text-align:center;padding:88px 48px;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(13,13,11,.68),rgba(13,13,11,.86)),url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&q=80') center/cover}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(13,13,11,.68),rgba(13,13,11,.86)),url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1600&q=80') center/cover}
 .cta-content{position:relative;max-width:560px}
 .cta-content h2{font-family:var(--serif);font-size:clamp(36px,5vw,66px);font-weight:300;color:var(--white);line-height:1.04;margin-bottom:16px}
 .cta-content h2 em{font-style:italic;color:var(--gold-light)}
@@ -465,15 +465,15 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 .frac-opt:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
 .frac-radio:checked + .frac-opt{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .frac-radio{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
-.wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}.wa-label{background:#25D366;color:#fff;font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;white-space:nowrap;opacity:0;transform:translateX(10px);transition:opacity .25s,transform .25s;pointer-events:none;box-shadow:0 4px 16px rgba(37,211,102,.3)}.wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s;position:relative}.wa-btn:hover{transform:scale(1.08)}.wa-float:hover .wa-label{opacity:1;transform:translateX(0)}.wa-btn svg{width:30px;height:30px;fill:#fff}.wa-pulse{position:absolute;inset:0;border-radius:50%;background:rgba(37,211,102,.4);animation:waPulse 2.2s ease-out infinite}@keyframes waPulse{0%{transform:scale(1);opacity:.6}70%{transform:scale(1.55);opacity:0}100%{transform:scale(1.55);opacity:0}}@media(max-width:600px){.wa-float{bottom:18px;right:18px}.wa-btn{width:52px;height:52px}}
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}.wa-label{background:#25D366;color:#fff;font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;white-space:nowrap;opacity:0;transform:translateX(10px);transition:opacity .25s,transform .25s;pointer-events:none}.wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s;position:relative}.wa-btn:hover{transform:scale(1.08)}.wa-float:hover .wa-label{opacity:1;transform:translateX(0)}.wa-btn svg{width:30px;height:30px;fill:#fff}.wa-pulse{position:absolute;inset:0;border-radius:50%;background:rgba(37,211,102,.4);animation:waPulse 2.2s ease-out infinite}@keyframes waPulse{0%{transform:scale(1);opacity:.6}70%{transform:scale(1.55);opacity:0}100%{transform:scale(1.55);opacity:0}}@media(max-width:600px){.wa-float{bottom:18px;right:18px}.wa-btn{width:52px;height:52px}}
 </style>
-<!-- Google Analytics 4 -->
+<!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNYVWMH7V7"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-FNYVWMH7V7');
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-FNYVWMH7V7');
 </script>
 </head>
 <body>
@@ -1112,6 +1112,43 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
   </div>
 </section>
 
+
+<section style="padding:80px 48px;background:#0b0b09">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(122,116,104,.45);display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:18px;height:1px;background:rgba(122,116,104,.4);display:inline-block"></span>Zonas donde operamos</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--cream);margin-bottom:48px;line-height:1.2">Fincas en <em style="font-style:italic;color:var(--gold-l)">Antioquia</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+      <div style="position:relative;overflow:hidden;height:280px">
+        <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=700&q=85" alt="Suroeste Antioqueño — Cauca Viejo" style="width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,10,.92) 0%,rgba(9,9,10,.2) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:24px;left:24px">
+          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Suroeste Antioqueño</div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">Cauca Viejo · Jardín</div>
+          <div style="font-size:11px;color:rgba(245,240,232,.5);margin-top:4px">Támesis · Andes · Jericó</div>
+        </div>
+      </div>
+      <div style="position:relative;overflow:hidden;height:280px">
+        <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=700&q=85" alt="Oriente Antioqueño — Guatapé" style="width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,10,.92) 0%,rgba(9,9,10,.2) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:24px;left:24px">
+          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Oriente Antioqueño</div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">Guatapé · El Retiro</div>
+          <div style="font-size:11px;color:rgba(245,240,232,.5);margin-top:4px">Llanogrande · El Peñol</div>
+        </div>
+      </div>
+      <div style="position:relative;overflow:hidden;height:280px">
+        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=700&q=85" alt="Occidente Antioqueño — Santa Fe" style="width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,10,.92) 0%,rgba(9,9,10,.2) 55%,transparent 100%)"></div>
+        <div style="position:absolute;bottom:24px;left:24px">
+          <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Occidente Antioqueño</div>
+          <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">Santa Fe · Sopetrán</div>
+          <div style="font-size:11px;color:rgba(245,240,232,.5);margin-top:4px">San Jerónimo · Olaya</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:12px;color:rgba(122,116,104,.4);font-style:italic">Con planes de expansión al Eje Cafetero, Cundinamarca y Costa Caribe.</p>
+  </div>
+</section>
 <section class="faq" id="faq">
   <div class="faq-inner">
     <div class="section-tag">Preguntas frecuentes</div>
@@ -1585,6 +1622,6 @@ function togFaq(el) {
 </script>
 
 <div class="wa-float"><span class="wa-label">Evaluar mi finca</span><a class="wa-btn" href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal" target="_blank" rel="noopener noreferrer" onclick="if(typeof gtag!=='undefined'){gtag('event','click_whatsapp',{event_category:'contacto',event_label:'floating_button'});}"><span class="wa-pulse"></span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg></a></div>
-<script>(function(){var s50=false;window.addEventListener('scroll',function(){if(s50)return;if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>=0.5){s50=true;if(typeof gtag!=='undefined')gtag('event','scroll_50',{event_category:'engagement',event_label:window.location.pathname});}},{passive:true});[30,60,120].forEach(function(s){setTimeout(function(){if(typeof gtag!=='undefined')gtag('event','tiempo_en_pagina',{event_category:'engagement',event_label:s+'s',value:s});},s*1000);});document.querySelectorAll('a[href*="wa.me"]').forEach(function(el){el.addEventListener('click',function(){if(typeof gtag!=='undefined')gtag('event','click_whatsapp',{event_category:'contacto',event_label:'wa_link'});});});})();</script>
+<script>(function(){var s50=false;window.addEventListener('scroll',function(){if(s50)return;if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>=0.5){s50=true;if(typeof gtag!=='undefined')gtag('event','scroll_50',{event_category:'engagement',event_label:window.location.pathname});}},{passive:true});[30,60,120].forEach(function(s){setTimeout(function(){if(typeof gtag!=='undefined')gtag('event','tiempo_en_pagina',{event_category:'engagement',event_label:s+'s',value:s});},s*1000);});})();</script>
 </body>
 </html>
