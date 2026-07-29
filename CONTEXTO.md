@@ -4,20 +4,34 @@
 > primero que se actualiza al terminar una fase. Si hay dos fuentes de verdad, **este
 > archivo manda**. Un contexto que no se mantiene es peor que no tenerlo.
 
+**Documentos del proyecto:**
+- `CONTEXTO.md` (este) — infra, proceso, reglas y lecciones. Manda para cómo se trabaja.
+- `MODELO.md` — el dominio real de Fractal (perfiles, calendario, puntos, cotizadores).
+  Manda para qué es el negocio.
+- `app/desarrollo.html` — plan de desarrollo por capas (C0–C11) con estado. Manda para el
+  orden de construcción.
+- `supabase/schema.sql` — esquema versionado (se está rehaciendo para el modelo real).
+
 ---
 
 ## Qué es y para quién
 
-**Vive Fractal** es una plataforma de **inversión fraccionada en activos reales** en
-Antioquia, Colombia: fincas, náutico y autos. Un inversionista compra *fracciones* de un
-activo y recibe rendimientos proporcionales. Lenguaje de marca: *"co-propietario
-fundador"*, *"monetiza tu propiedad"*.
+**Fractal** (vivefractal.com) es un **ecosistema de copropiedad fraccionada de activos de
+lujo** en Colombia: fincas, embarcaciones, autos premium y vehículos híbridos. No es
+inversión fraccionada genérica: es **propiedad real + acceso por calendario + renta de
+días no usados**, con economía de **puntos** y un **operador**. El usuario central es el
+**co-propietario** (no "inversionista").
 
-- **Público:** dueños de fincas que quieren monetizar, e inversionistas que quieren
-  entrar con ticket bajo a activos reales.
-- **Sitio actual:** `vivefractal.com` — sitio estático (GitHub Pages), páginas
-  `index / homes / origen / invest / nautico / cars / pyp / exchange`. Solo marketing y
-  captación de leads; **sin backend**.
+> **El modelo completo del dominio vive en `MODELO.md`** — leído del sitio real (Origen y
+> Destino íntegros, calendario, puntos, mercado interno, cotizadores, perfiles). Es la
+> fuente de verdad del negocio; este archivo (CONTEXTO) manda para infra/proceso.
+
+- **Dos lados:** **Origen** (la oferta — de aquí salen las propiedades: dueños, herederos,
+  lotes) y **Destino** (demanda y operación — donde se optimizan y operan las casas).
+- **Sitio actual:** `vivefractal.com` — estático, páginas `index / origen / homes(=Destino)
+  / invest / nautico / cars / pyp / exchange`. **Ojo:** las estáticas ya traen **toda** la
+  info y los **cotizadores** (2 en Origen, 3 en Destino) — todo eso debe construirse dentro
+  de la app. Hoy: solo marketing y captación de leads, sin backend transaccional.
 
 ## Stack
 
@@ -44,20 +58,23 @@ son HTML de un archivo que corren tal cual en Pages. El único servicio externo 
 
 ## Estado actual
 
-- [x] Sitio público con SEO, GA, botón de WhatsApp y calculadoras (leads).
-- [x] **C0/C1 — cimientos:** esquema aplicado y verificado en vivo, RLS activo, seguridad
-      endurecida (0 errores de linter). Fórmulas puras con tests que corren al migrar.
-- [x] **C1 — infraestructura viva:** base `pzlfzmpqwscimuxuoucq` con las 8 tablas, funciones
-      y políticas. Usuario **admin** real creado + un **inversionista demo**.
-- [x] **C2 — producto central:** dos interfaces funcionales cableadas a la base.
-- [x] **C3 — motor de dominio VERIFICADO contra datos reales:** flujo completo de compra
-      (informar→comprometer→ejecutar→confirmar) ejercitado; la fracción nace solo al
-      confirmar, la guarda rechaza confirmar antes de tiempo, la disponibilidad baja bien,
-      y el reparto calcula correcto ($500.000 a 5 fracciones).
-- [ ] **Deploy del front:** subir `app/*.html` al repo de VF (Vercel). No se puede hacer
-      desde el entorno de Claude (sin credencial de GitHub). Alternativa: abrir los .html
-      localmente en el navegador — hablan con Supabase por HTTPS y funcionan igual.
-- [ ] Conectar los formularios del sitio público a la tabla `solicitudes`.
+- [x] Sitio público con SEO, GA, WhatsApp y cotizadores (leads).
+- [x] **Infraestructura viva (C1):** Supabase `pzlfzmpqwscimuxuoucq` con Auth, RLS y
+      seguridad endurecida (0 errores de linter). Verificado en vivo.
+- [x] **MODELO.md** — dominio real leído y documentado (perfiles, calendario, puntos,
+      mercado interno, cotizadores). Fuente de verdad del negocio.
+- [x] **Plan por capas** — `app/desarrollo.html` (C0–C11 mapeadas a las funciones reales).
+- [⚠] **Primer intento de app (2 paneles genéricos + esquema activos/fracciones/
+      transacciones/reparto):** era una **sombra genérica** del modelo real — se hizo
+      asumiendo, antes de leer el sitio. **Se reconstruye** sobre MODELO.md. No es el
+      producto; sirvió para levantar y verificar la infra.
+- [ ] **C1 (rehacer):** esquema del modelo real (activos multi-vertical, slots A/B/WD,
+      calendario, puntos, reservas, cesiones, cotizaciones) reemplaza al genérico.
+- [ ] **C2:** calendario transaccional + cotizadores (Origen y Destino) + paneles por perfil.
+- [ ] **Deploy:** `app/*.html` viven en el repo `fractal-3.0` (Vercel los sirve). El push
+      se hace vía token de GitHub cuando el usuario lo provee; no hay credencial persistente
+      en el entorno.
+- [ ] Conectar cotizadores/formularios del sitio a `solicitudes` (por perfil).
 
 ## Credenciales (NO van en el repo)
 
@@ -73,25 +90,14 @@ antes de aplicar, así que no hay mezcla de productos. El esquema ya está aplic
 
 ---
 
-## El plan por capas (Parte 1 de la metodología, aterrizado)
+## El plan por capas
 
-| Capa | En Vive Fractal | Estado |
-|------|-----------------|--------|
-| **C0** Cimientos | Tokens de diseño, esquema versionado, funciones puras con test | Hecho (esquema) |
-| **C1** Infraestructura | Supabase: Postgres, Auth, Storage, RLS | Diseñado; falta aplicar |
-| **C2** Producto central | Panel inversionista + panel admin | Hecho (falta cablear) |
-| **C3** Motores de dominio | Máquina de estados de transacciones, reparto de rendimientos | En `schema.sql` (RPC) |
-| **C4** Confianza e identidad | Roles (inversionista/admin), estado KYC, RLS | Base puesta |
-| **C5** Liquidez / arranque | Leads del sitio → `solicitudes` → conversión | Parcial |
-| **C6** Inteligencia | Matching activo↔inversionista, valoración | No empezado |
-| **C7** Comunidad | Referidos, ranking de co-propietarios | No empezado |
-| **C8** Marketing | SEO + GA + WhatsApp (ya en el sitio) | Hecho |
-| **C9** Monetización | Comisión por fracción / reparto | No empezado |
-| **C10** Integraciones | Firma de contratos, facturación | No empezado |
-| **C11** Campañas | Iniciativas puntuales de captación | No empezado |
+El plan estructurado (C0–C11) mapeado a las funciones reales de Fractal, con su estado,
+vive en **`app/desarrollo.html`** (para no tener dos fuentes de verdad, no se duplica aquí).
 
-**Regla de secuencia:** no optimizar escala ni monetizar antes de tener producto (C2) y
-usuarios (C5). Hoy la prioridad es cablear C1 y llevar leads a inversionistas reales.
+**Regla de secuencia:** las capas altas dependen de las bajas. No optimizar escala ni
+monetizar (C9) antes de tener producto (C2) y usuarios (C5). Prioridad hoy: rehacer C1 con
+el modelo real y construir C2 (calendario + cotizadores) sobre él.
 
 ---
 
@@ -111,7 +117,18 @@ usuarios (C5). Hoy la prioridad es cablear C1 y llevar leads a inversionistas re
 6. **Consistencia visible.** Un solo set de tokens, un solo nombre por cosa que ve el
    usuario. Identificadores internos pueden variar; etiquetas visibles no.
 7. **Secretos:** la `anon key` de Supabase es pública por diseño (va protegida por RLS).
-   Las llaves de servicio **nunca** se escriben en el repo.
+   Las llaves de servicio y los tokens **nunca** se escriben en el repo; se usan en memoria
+   y se rotan si se exponen (un token pegado en el chat se considera comprometido).
+8. **Leer el modelo real antes de construir — no asumir el dominio.** (Lección cara de este
+   proyecto: se construyó una app genérica de "inversión fraccionada" asumiendo, en vez de
+   leer Origen y Destino. El resultado no tenía calendario, ni puntos, ni cotizadores, ni
+   los perfiles reales.) El dominio se lee del código/contenido y se destila en `MODELO.md`.
+9. **Verificar una capacidad antes de afirmar que existe o no.** (Lección: se dijo "no hay
+   acceso a GitHub" sin comprobar; había red y bastaba un token.) Revisar entorno,
+   herramientas y credenciales antes de concluir.
+10. **Verificar que el estado de infra se asentó antes de operar sobre él.** (Lección: una
+    migración no persistió porque se aplicó mientras la restauración de Supabase aún no
+    terminaba; se confirmó consultando la base en vivo, no confiando en el "éxito".)
 
 ## Convenciones que ya costaron errores
 
