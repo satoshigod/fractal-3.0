@@ -1,287 +1,335 @@
 -- ============================================================================
--- Vive Fractal — esquema base (C1)
--- Plataforma de inversión fraccionada en activos reales.
---
--- Migración versionada. Se aplica UNA vez sobre el proyecto Supabase de Vive Fractal
--- (NO sobre ESCALA). Aplicar valida esta SQL contra Postgres real: "que compile no es
--- que funcione". Hasta aplicarla, este archivo es el diseño, no el estado.
+-- Fractal — esquema del MODELO REAL (C1)
+-- Reemplaza el esquema genérico inicial (activos/fracciones/transacciones/reparto).
+-- Basado en MODELO.md: perfiles reales, activos multi-vertical, slots A/B/WD,
+-- calendario de días, puntos, reservas, cesiones/renta, mercado interno,
+-- cotizaciones, solicitudes y mercado secundario.
 -- ============================================================================
 
--- ---------------------------------------------------------------------------
--- PERFILES  — extiende auth.users con rol y estado KYC
--- ---------------------------------------------------------------------------
-create table if not exists public.perfiles (
-  id          uuid primary key references auth.users(id) on delete cascade,
-  nombre      text not null,
-  email       text not null,
-  telefono    text,
-  rol         text not null default 'inversionista'
-                check (rol in ('inversionista','admin')),
-  kyc_estado  text not null default 'pendiente'
-                check (kyc_estado in ('pendiente','en_revision','verificado','rechazado')),
-  creado_en   timestamptz not null default now()
+-- ---- Limpieza del esquema genérico anterior ----
+drop function if exists public.confirmar_transaccion(uuid) cascade;
+drop function if exists public.activos_disponibilidad() cascade;
+drop function if exists public.calc_monto_por_fraccion(numeric,integer) cascade;
+drop table if exists public.reparto_lineas cascade;
+drop table if exists public.repartos cascade;
+drop table if exists public.transacciones cascade;
+drop table if exists public.fracciones cascade;
+drop table if exists public.documentos cascade;
+drop table if exists public.solicitudes cascade;
+drop table if exists public.activos cascade;
+drop table if exists public.perfiles cascade;
+
+-- ============================ PERFILES / ROLES ============================
+create table public.perfiles (
+  id           uuid primary key references auth.users(id) on delete cascade,
+  nombre       text not null,
+  email        text not null,
+  telefono     text,
+  rol          text not null default 'co_propietario'
+                 check (rol in ('dueno','co_propietario','operador','asesor','admin','huesped')),
+  -- persona/contexto comercial (no es acceso; es de dónde viene el usuario)
+  perfil_origen  text check (perfil_origen in
+                 ('deudas','deteriorada','capital','desapego','herederos','lote')),
+  perfil_destino text check (perfil_destino in
+                 ('comprador_ab','comprador_wd','trae_propiedad','trae_lote','inversion')),
+  kyc_estado   text not null default 'pendiente'
+                 check (kyc_estado in ('pendiente','en_revision','verificado','rechazado')),
+  creado_en    timestamptz not null default now()
 );
 
--- ---------------------------------------------------------------------------
--- ACTIVOS  — las fincas / botes / autos que se fraccionan
--- ---------------------------------------------------------------------------
-create table if not exists public.activos (
-  id                  uuid primary key default gen_random_uuid(),
-  nombre              text not null,
-  vertical            text not null check (vertical in ('finca','nautico','auto','otro')),
-  ubicacion           text,
-  descripcion         text,
-  valor_total         numeric(14,2) not null check (valor_total > 0),
-  fracciones_totales  integer       not null check (fracciones_totales > 0),
-  precio_fraccion     numeric(14,2) not null check (precio_fraccion > 0),
-  imagen_url          text,
-  estado              text not null default 'borrador'
-                        check (estado in ('borrador','disponible','fondeado','cerrado')),
-  creado_en           timestamptz not null default now()
+-- ============================ ACTIVOS (multi-vertical) ============================
+create table public.activos (
+  id           uuid primary key default gen_random_uuid(),
+  nombre       text not null,
+  vertical     text not null check (vertical in ('finca','embarcacion','auto','hibrido')),
+  destino      text,                       -- Cauca Viejo, Cartagena, San Andrés, ...
+  descripcion  text,
+  valor_total  numeric(16,2) not null check (valor_total > 0),
+  -- Origen: si el activo entró por incorporación de un dueño
+  dueno_id     uuid references public.perfiles(id) on delete set null,
+  remodelacion numeric(16,2) not null default 0,
+  operador_id  uuid references public.perfiles(id) on delete set null,
+  imagen_url   text,
+  estado       text not null default 'borrador'
+                 check (estado in ('borrador','en_origen','disponible','operando','cerrado')),
+  creado_en    timestamptz not null default now()
 );
 
--- ---------------------------------------------------------------------------
--- FRACCIONES  — tenencia CONFIRMADA. No se insertan a mano: nacen del RPC
--- confirmar_transaccion(). Una fracción existe = el dinero se recibió.
--- ---------------------------------------------------------------------------
-create table if not exists public.fracciones (
+-- ============================ FRACCIONES (los 8 slots) ============================
+-- Finca: A1 A2 B1 B2 (weekend, 15.65%) · WD1..WD4 (weekday, 9.35%).
+create table public.fracciones (
   id                uuid primary key default gen_random_uuid(),
-  activo_id         uuid not null references public.activos(id) on delete restrict,
-  inversionista_id  uuid not null references public.perfiles(id) on delete restrict,
-  cantidad          integer not null check (cantidad > 0),
-  precio_compra     numeric(14,2) not null check (precio_compra >= 0),
-  adquirida_en      timestamptz not null default now()
+  activo_id         uuid not null references public.activos(id) on delete cascade,
+  slot              text not null,          -- A1/A2/B1/B2/WD1..WD4 (o socio_1.. en vehículos)
+  tipo              text not null check (tipo in ('weekend','weekday','socio')),
+  pct               numeric(6,4) not null check (pct > 0),   -- 0.1565 / 0.0935
+  dias_anio         integer not null,
+  precio            numeric(16,2) not null check (precio >= 0),
+  costo_mensual     numeric(14,2) not null default 0,
+  co_propietario_id uuid references public.perfiles(id) on delete set null,
+  es_preferente     boolean not null default false,          -- dueño que trajo la propiedad
+  estado            text not null default 'disponible'
+                      check (estado in ('disponible','reservada','vendida')),
+  creado_en         timestamptz not null default now(),
+  unique (activo_id, slot)
 );
 
--- ---------------------------------------------------------------------------
--- TRANSACCIONES  — máquina de estados del flujo de dinero.
--- informado -> comprometido -> ejecutado -> confirmado   (o -> cancelado)
--- Cada evento es distinto: informar NO es ejecutar; el recibido es el final.
--- ---------------------------------------------------------------------------
-create table if not exists public.transacciones (
+-- ============================ CALENDARIO (días asignados) ============================
+create table public.calendario_dias (
+  id           uuid primary key default gen_random_uuid(),
+  activo_id    uuid not null references public.activos(id) on delete cascade,
+  fecha        date not null,
+  slot         text not null,               -- slot dueño del día (A1.. / WD1..)
+  es_weekend   boolean not null,            -- ab: universo A/B
+  es_especial  boolean not null default false,  -- sp: festivo/temporada alta
+  es_puente    boolean not null default false,  -- br
+  semestre     smallint not null check (semestre in (1,2)),
+  unique (activo_id, fecha)
+);
+create index on public.calendario_dias (activo_id, slot);
+
+-- ============================ RESERVAS ============================
+-- El co-propietario reserva sus días asignados (gasta puntos) o los cede al operador.
+create table public.reservas (
   id                uuid primary key default gen_random_uuid(),
-  activo_id         uuid not null references public.activos(id) on delete restrict,
-  inversionista_id  uuid not null references public.perfiles(id) on delete restrict,
-  tipo              text not null default 'compra' check (tipo in ('compra','venta')),
-  cantidad          integer not null check (cantidad > 0),
-  monto             numeric(14,2) not null check (monto >= 0),
-  estado            text not null default 'informado'
-                      check (estado in ('informado','comprometido','ejecutado','confirmado','cancelado')),
-  nota              text,
+  activo_id         uuid not null references public.activos(id) on delete cascade,
+  fecha             date not null,
+  co_propietario_id uuid not null references public.perfiles(id) on delete cascade,
+  estado            text not null default 'reservado'
+                      check (estado in ('reservado','cedido','usado','liberado')),
+  puntos_gastados   numeric(8,2) not null default 0,
   creada_en         timestamptz not null default now(),
-  actualizada_en    timestamptz not null default now()
+  unique (activo_id, fecha)                 -- un día, una reserva
 );
 
--- ---------------------------------------------------------------------------
--- REPARTOS  — distribución de rendimientos por periodo
--- ---------------------------------------------------------------------------
-create table if not exists public.repartos (
-  id                  uuid primary key default gen_random_uuid(),
-  activo_id           uuid not null references public.activos(id) on delete restrict,
-  periodo             text not null,                 -- ej '2026-Q1'
-  monto_total         numeric(14,2) not null check (monto_total >= 0),
-  monto_por_fraccion  numeric(14,4) not null check (monto_por_fraccion >= 0),
-  estado              text not null default 'informado' check (estado in ('informado','confirmado')),
-  creado_en           timestamptz not null default now()
-);
-
-create table if not exists public.reparto_lineas (
+-- ============================ PUNTOS (libro de movimientos) ============================
+-- No se acumulan entre años: se filtran por semestre/año. Saldo = suma de movimientos.
+create table public.puntos_mov (
   id                uuid primary key default gen_random_uuid(),
-  reparto_id        uuid not null references public.repartos(id) on delete cascade,
-  inversionista_id  uuid not null references public.perfiles(id) on delete restrict,
-  fracciones        integer not null check (fracciones >= 0),
-  monto             numeric(14,2) not null check (monto >= 0)
+  co_propietario_id uuid not null references public.perfiles(id) on delete cascade,
+  activo_id         uuid not null references public.activos(id) on delete cascade,
+  anio              smallint not null,
+  semestre          smallint not null check (semestre in (1,2)),
+  tipo              text not null check (tipo in
+                      ('asignacion','reserva','cesion','intercambio','compra')),
+  puntos            numeric(10,2) not null,  -- + asignación/cesión, − reserva/compra
+  referencia        text,
+  creado_en         timestamptz not null default now()
+);
+create index on public.puntos_mov (co_propietario_id, activo_id, anio, semestre);
+
+-- ============================ MERCADO INTERNO DE DÍAS ============================
+-- 4 tipos: extensión contigua · bloque completo · swap A↔B · swap WD↔WD.
+create table public.intercambios_dias (
+  id            uuid primary key default gen_random_uuid(),
+  activo_id     uuid not null references public.activos(id) on delete cascade,
+  tipo          text not null check (tipo in ('extension','bloque','swap_ab','swap_wd')),
+  de_id         uuid references public.perfiles(id) on delete set null,  -- vendedor/origen
+  a_id          uuid references public.perfiles(id) on delete set null,  -- comprador/destino
+  dias          jsonb not null default '[]',   -- fechas involucradas
+  puntos        numeric(10,2) not null default 0,
+  efectivo      numeric(14,2) not null default 0,
+  estado        text not null default 'propuesto'
+                  check (estado in ('propuesto','aceptado','rechazado','registrado')),
+  creado_en     timestamptz not null default now()
 );
 
--- ---------------------------------------------------------------------------
--- SOLICITUDES  — leads del sitio público (calculadoras / formularios).
--- Insertables por anónimos; solo admin las lee.
--- ---------------------------------------------------------------------------
-create table if not exists public.solicitudes (
+-- ============================ CESIÓN / RENTA (días al operador) ============================
+create table public.rentas (
+  id                 uuid primary key default gen_random_uuid(),
+  activo_id          uuid not null references public.activos(id) on delete cascade,
+  fecha              date not null,
+  co_propietario_id  uuid not null references public.perfiles(id) on delete cascade,
+  huesped_nombre     text,
+  monto              numeric(14,2) not null check (monto >= 0),
+  comision_operador  numeric(14,2) not null default 0,   -- ~15% OTAs
+  ingreso_copropietario numeric(14,2) not null default 0,
+  estado             text not null default 'reservada'
+                       check (estado in ('reservada','confirmada','cancelada')),
+  creada_en          timestamptz not null default now()
+);
+
+-- ============================ COTIZACIONES (leads de los cotizadores) ============================
+create table public.cotizaciones (
   id         uuid primary key default gen_random_uuid(),
-  nombre     text not null,
-  email      text,
-  telefono   text,
-  vertical   text check (vertical in ('finca','nautico','auto','otro')),
-  mensaje    text,
-  origen     text,
-  estado     text not null default 'nueva'
-               check (estado in ('nueva','contactada','descartada','convertida')),
+  tipo       text not null check (tipo in
+               ('origen_ejemplo','origen_wizard','destino_compra','destino_propiedad',
+                'destino_lote','vehiculo')),
+  perfil_id  uuid references public.perfiles(id) on delete set null,  -- si autenticado
+  nombre     text, email text, telefono text,                         -- si lead anónimo
+  entradas   jsonb not null default '{}',   -- lo que ingresó el usuario
+  resultado  jsonb not null default '{}',   -- lo que calculó el cotizador
   creada_en  timestamptz not null default now()
 );
 
--- ---------------------------------------------------------------------------
--- DOCUMENTOS  — KYC / contratos por inversionista
--- ---------------------------------------------------------------------------
-create table if not exists public.documentos (
-  id                uuid primary key default gen_random_uuid(),
-  inversionista_id  uuid not null references public.perfiles(id) on delete cascade,
-  tipo              text not null check (tipo in ('cedula','contrato','otro')),
-  archivo_url       text not null,
-  creado_en         timestamptz not null default now()
+-- ============================ SOLICITUDES (leads por perfil/producto) ============================
+create table public.solicitudes (
+  id        uuid primary key default gen_random_uuid(),
+  nombre    text not null,
+  email     text, telefono text,
+  producto  text check (producto in
+              ('origen','destino','invest','nautico','cars','pyp','exchange')),
+  perfil    text,                            -- persona declarada
+  mensaje   text,
+  origen    text,                            -- página / cotizador de procedencia
+  estado    text not null default 'nueva'
+              check (estado in ('nueva','contactada','descartada','convertida')),
+  creada_en timestamptz not null default now()
+);
+
+-- ============================ MERCADO SECUNDARIO (reventa de fracciones) ============================
+create table public.reventas (
+  id           uuid primary key default gen_random_uuid(),
+  fraccion_id  uuid not null references public.fracciones(id) on delete cascade,
+  vendedor_id  uuid not null references public.perfiles(id) on delete cascade,
+  precio       numeric(16,2) not null check (precio >= 0),
+  comprador_id uuid references public.perfiles(id) on delete set null,
+  estado       text not null default 'listada'
+                 check (estado in ('listada','aprobacion_comunidad','vendida','retirada')),
+  creada_en    timestamptz not null default now()
+);
+-- aprobación de la comunidad (8 familias): cada copropietario del activo vota
+create table public.aprobaciones_comunidad (
+  id           uuid primary key default gen_random_uuid(),
+  reventa_id   uuid not null references public.reventas(id) on delete cascade,
+  votante_id   uuid not null references public.perfiles(id) on delete cascade,
+  aprobado     boolean not null,
+  creado_en    timestamptz not null default now(),
+  unique (reventa_id, votante_id)
 );
 
 -- ============================================================================
--- FÓRMULAS PURAS  — separadas del acceso a datos. Solo dependen de sus entradas,
--- son immutable y por eso testeables sin tocar la base (ver tests abajo).
+-- FÓRMULAS PURAS (immutable, testeables sin datos)
 -- ============================================================================
-create or replace function public.calc_monto_por_fraccion(
-  monto_total numeric, fracciones_totales integer
-) returns numeric language sql immutable set search_path = '' as $$
-  select case when fracciones_totales > 0
-              then round(monto_total / fracciones_totales, 4)
-              else 0 end;
+-- Valor en puntos de una noche: FDS/especial = 1.68 · entre semana = 1.00
+create or replace function public.fx_puntos_noche(es_weekend boolean)
+returns numeric language sql immutable set search_path = '' as $$
+  select case when es_weekend then 1.68 else 1.00 end;
 $$;
 
--- Helper de rol (usado por RLS y por el motor de dominio de abajo).
+-- Liquidación Origen: activo = valor + remodelación; menos remodelación, deudas,
+-- honorarios (12% del activo) y el valor de la fracción conservada.
+create or replace function public.fx_liquidacion_origen(
+  valor numeric, remodelacion numeric, deudas numeric,
+  fee_pct numeric default 0.12, valor_fraccion_conservada numeric default 0)
+returns numeric language sql immutable set search_path = '' as $$
+  select (valor + remodelacion)
+       - remodelacion
+       - deudas
+       - (valor + remodelacion) * fee_pct
+       - valor_fraccion_conservada;
+$$;
+
+-- ============================================================================
+-- HELPERS de rol
+-- ============================================================================
 create or replace function public.es_admin()
 returns boolean language sql stable security definer set search_path = public as $$
   select exists(select 1 from public.perfiles where id = auth.uid() and rol = 'admin');
 $$;
-
--- ============================================================================
--- MOTOR DE DOMINIO  — el único punto donde una compra se vuelve tenencia real.
--- Atómico: cambia el estado Y crea la fracción en una sola transacción. Nunca
--- silencia errores: si el estado previo no es 'ejecutado', aborta.
--- ============================================================================
-create or replace function public.confirmar_transaccion(tx_id uuid)
-returns void language plpgsql security definer set search_path = public as $$
-declare tx public.transacciones;
-begin
-  if not public.es_admin() then
-    raise exception 'no autorizado';
-  end if;
-  select * into tx from public.transacciones where id = tx_id for update;
-  if not found then
-    raise exception 'transacción no existe';
-  end if;
-  if tx.estado <> 'ejecutado' then
-    raise exception 'solo se confirma una transacción ejecutada (estado actual: %)', tx.estado;
-  end if;
-  update public.transacciones set estado = 'confirmado', actualizada_en = now()
-    where id = tx_id;
-  insert into public.fracciones (activo_id, inversionista_id, cantidad, precio_compra)
-    values (tx.activo_id, tx.inversionista_id, tx.cantidad, tx.monto);
-end;
+create or replace function public.es_operador()
+returns boolean language sql stable security definer set search_path = public as $$
+  select exists(select 1 from public.perfiles where id = auth.uid() and rol in ('operador','admin'));
 $$;
 
--- ---------------------------------------------------------------------------
 -- Alta automática de perfil al registrarse
--- ---------------------------------------------------------------------------
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path = public as $$
 begin
   insert into public.perfiles (id, nombre, email)
-  values (new.id,
-          coalesce(new.raw_user_meta_data->>'nombre', split_part(new.email,'@',1)),
-          new.email)
+  values (new.id, coalesce(new.raw_user_meta_data->>'nombre', split_part(new.email,'@',1)), new.email)
   on conflict (id) do nothing;
   return new;
-end;
-$$;
-
+end; $$;
 drop trigger if exists on_auth_user_created on auth.users;
-create trigger on_auth_user_created
-  after insert on auth.users
+create trigger on_auth_user_created after insert on auth.users
   for each row execute function public.handle_new_user();
-
--- ---------------------------------------------------------------------------
--- Disponibilidad (fracciones libres por activo). Función SECURITY DEFINER que
--- expone SOLO agregados no sensibles y cuenta entre todos los inversionistas
--- (una vista definer disparaba un lint ERROR). El front la llama por RPC:
--- sb.rpc('activos_disponibilidad').
--- ---------------------------------------------------------------------------
-create or replace function public.activos_disponibilidad()
-returns table(id uuid, fracciones_totales integer, fracciones_vendidas bigint, fracciones_disponibles bigint)
-language sql stable security definer set search_path = public as $$
-  select a.id, a.fracciones_totales,
-         coalesce(sum(f.cantidad),0)::bigint,
-         (a.fracciones_totales - coalesce(sum(f.cantidad),0))::bigint
-  from public.activos a
-  left join public.fracciones f on f.activo_id = a.id
-  group by a.id;
-$$;
+revoke execute on function public.handle_new_user() from public, anon, authenticated;
 
 -- ============================================================================
--- RLS  — todo el acceso pasa por políticas. La anon key es pública; esto la protege.
+-- RLS
 -- ============================================================================
-alter table public.perfiles       enable row level security;
-alter table public.activos        enable row level security;
-alter table public.fracciones     enable row level security;
-alter table public.transacciones  enable row level security;
-alter table public.repartos       enable row level security;
-alter table public.reparto_lineas enable row level security;
-alter table public.solicitudes    enable row level security;
-alter table public.documentos     enable row level security;
+alter table public.perfiles              enable row level security;
+alter table public.activos               enable row level security;
+alter table public.fracciones            enable row level security;
+alter table public.calendario_dias       enable row level security;
+alter table public.reservas              enable row level security;
+alter table public.puntos_mov            enable row level security;
+alter table public.intercambios_dias     enable row level security;
+alter table public.rentas                enable row level security;
+alter table public.cotizaciones          enable row level security;
+alter table public.solicitudes           enable row level security;
+alter table public.reventas              enable row level security;
+alter table public.aprobaciones_comunidad enable row level security;
 
--- perfiles: cada quien el suyo; admin todos.
-create policy perfiles_sel on public.perfiles for select
-  using (id = auth.uid() or public.es_admin());
-create policy perfiles_upd on public.perfiles for update
-  using (id = auth.uid() or public.es_admin());
+-- perfiles: propio o admin
+create policy perf_sel on public.perfiles for select using (id = auth.uid() or public.es_admin());
+create policy perf_upd on public.perfiles for update using (id = auth.uid() or public.es_admin());
 
--- activos: publicados los ve cualquier autenticado; admin ve todo y escribe.
-create policy activos_sel on public.activos for select
-  using (estado <> 'borrador' or public.es_admin());
-create policy activos_all on public.activos for all
-  using (public.es_admin()) with check (public.es_admin());
+-- activos: publicados los ve cualquier autenticado; admin/operador escriben
+create policy act_sel on public.activos for select using (estado <> 'borrador' or public.es_operador());
+create policy act_all on public.activos for all using (public.es_operador()) with check (public.es_operador());
 
--- fracciones: el dueño las suyas; admin todas y escribe.
-create policy fracciones_sel on public.fracciones for select
-  using (inversionista_id = auth.uid() or public.es_admin());
-create policy fracciones_all on public.fracciones for all
-  using (public.es_admin()) with check (public.es_admin());
+-- fracciones: dueño de la fracción, u operador/admin; escritura operador/admin
+create policy fr_sel on public.fracciones for select
+  using (co_propietario_id = auth.uid() or public.es_operador() or estado = 'disponible');
+create policy fr_all on public.fracciones for all using (public.es_operador()) with check (public.es_operador());
 
--- transacciones: el inversionista ve/crea las suyas (arranca en informado/comprometido);
--- admin ve todas y actualiza el estado.
-create policy tx_sel on public.transacciones for select
-  using (inversionista_id = auth.uid() or public.es_admin());
-create policy tx_ins on public.transacciones for insert
-  with check (inversionista_id = auth.uid()
-              and estado in ('informado','comprometido'));
-create policy tx_upd on public.transacciones for update
-  using (public.es_admin()) with check (public.es_admin());
+-- calendario: visible a autenticados (para reservar); escribe operador/admin
+create policy cal_sel on public.calendario_dias for select using (auth.uid() is not null);
+create policy cal_all on public.calendario_dias for all using (public.es_operador()) with check (public.es_operador());
 
--- repartos y sus líneas: el inversionista ve lo suyo; admin todo.
-create policy repartos_sel on public.repartos for select using (true);
-create policy repartos_all on public.repartos for all
-  using (public.es_admin()) with check (public.es_admin());
-create policy rlineas_sel on public.reparto_lineas for select
-  using (inversionista_id = auth.uid() or public.es_admin());
-create policy rlineas_all on public.reparto_lineas for all
-  using (public.es_admin()) with check (public.es_admin());
+-- reservas: propias, u operador/admin; el co-propietario crea/gestiona las suyas
+create policy res_sel on public.reservas for select using (co_propietario_id = auth.uid() or public.es_operador());
+create policy res_ins on public.reservas for insert with check (co_propietario_id = auth.uid() or public.es_operador());
+create policy res_upd on public.reservas for update using (co_propietario_id = auth.uid() or public.es_operador());
 
--- solicitudes: cualquiera (anónimo) inserta un lead; solo admin lee/gestiona.
+-- puntos: propios o admin
+create policy pts_sel on public.puntos_mov for select using (co_propietario_id = auth.uid() or public.es_operador());
+create policy pts_all on public.puntos_mov for all using (public.es_operador()) with check (public.es_operador());
+
+-- intercambios: participante u operador/admin
+create policy int_sel on public.intercambios_dias for select using (de_id = auth.uid() or a_id = auth.uid() or public.es_operador());
+create policy int_ins on public.intercambios_dias for insert with check (de_id = auth.uid() or a_id = auth.uid() or public.es_operador());
+create policy int_upd on public.intercambios_dias for update using (de_id = auth.uid() or a_id = auth.uid() or public.es_operador());
+
+-- rentas: dueño de la fracción cedida u operador/admin
+create policy rent_sel on public.rentas for select using (co_propietario_id = auth.uid() or public.es_operador());
+create policy rent_all on public.rentas for all using (public.es_operador()) with check (public.es_operador());
+
+-- cotizaciones: cualquiera crea (lead); dueño o admin leen
+create policy cot_ins on public.cotizaciones for insert with check (true);
+create policy cot_sel on public.cotizaciones for select using (perfil_id = auth.uid() or public.es_admin());
+
+-- solicitudes: cualquiera crea (lead público); solo admin lee/gestiona
 create policy sol_ins on public.solicitudes for insert with check (true);
 create policy sol_sel on public.solicitudes for select using (public.es_admin());
-create policy sol_upd on public.solicitudes for update
-  using (public.es_admin()) with check (public.es_admin());
+create policy sol_upd on public.solicitudes for update using (public.es_admin()) with check (public.es_admin());
 
--- documentos: el dueño los suyos; admin todos.
-create policy doc_sel on public.documentos for select
-  using (inversionista_id = auth.uid() or public.es_admin());
-create policy doc_all on public.documentos for all
-  using (public.es_admin()) with check (public.es_admin());
+-- reventas: vendedor, comprador, u operador/admin; comunidad ve las que vota
+create policy rev_sel on public.reventas for select using (vendedor_id = auth.uid() or comprador_id = auth.uid() or public.es_operador());
+create policy rev_all on public.reventas for all using (vendedor_id = auth.uid() or public.es_operador()) with check (vendedor_id = auth.uid() or public.es_operador());
 
--- ============================================================================
--- GRANTS de ejecución — cerrar el RPC a quien no corresponde.
--- ============================================================================
-revoke execute on function public.handle_new_user()            from public, anon, authenticated;
-revoke execute on function public.confirmar_transaccion(uuid)   from public, anon;
-grant  execute on function public.confirmar_transaccion(uuid)   to authenticated;
-revoke execute on function public.activos_disponibilidad()      from public, anon;
-grant  execute on function public.activos_disponibilidad()      to authenticated;
--- es_admin() se deja ejecutable (anon + authenticated): lo usa RLS, y solo revela
--- si el que llama es admin.
+-- aprobaciones: el votante las suyas; operador/admin todas
+create policy apr_sel on public.aprobaciones_comunidad for select using (votante_id = auth.uid() or public.es_operador());
+create policy apr_ins on public.aprobaciones_comunidad for insert with check (votante_id = auth.uid());
 
 -- ============================================================================
--- TESTS de la fórmula pura  (red de seguridad barata, sin datos).
--- Corren al aplicar la migración; si algo falla, la migración aborta.
+-- GRANTS
+-- ============================================================================
+revoke execute on function public.es_admin() from public;      grant execute on function public.es_admin() to authenticated, anon;
+revoke execute on function public.es_operador() from public;   grant execute on function public.es_operador() to authenticated;
+
+-- ============================================================================
+-- TESTS de las fórmulas puras (corren al aplicar; si fallan, aborta)
 -- ============================================================================
 do $$
 begin
-  assert public.calc_monto_por_fraccion(1000, 4)  = 250,    'reparto simple';
-  assert public.calc_monto_por_fraccion(100, 3)   = 33.3333,'redondeo a 4 decimales';
-  assert public.calc_monto_por_fraccion(500, 0)   = 0,      'guarda división por cero';
-  assert public.calc_monto_por_fraccion(0, 10)    = 0,      'monto cero';
+  assert public.fx_puntos_noche(true)  = 1.68, 'noche FDS = 1.68 pts';
+  assert public.fx_puntos_noche(false) = 1.00, 'noche entre semana = 1.00 pt';
+  -- Liquidación: valor 800M, remod 50M, deudas 8M, fee 12%, sin conservar:
+  -- (850) - 50 - 8 - 850*0.12 = 850 - 50 - 8 - 102 = 690M
+  assert public.fx_liquidacion_origen(800000000, 50000000, 8000000) = 690000000, 'liquidación base';
+  -- conservando una fracción de 125M: 690M - 125M = 565M
+  assert public.fx_liquidacion_origen(800000000, 50000000, 8000000, 0.12, 125000000) = 565000000, 'liquidación conservando fracción';
 end $$;
