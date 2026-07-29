@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vive Fractal · Administración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0d0b; --panel:#15130f; --panel-2:#1b1813; --line:#2a2620;
+    --gold:#b8935a; --gold-l:#d4b07a; --cream:#f5f0e8; --stone:#7a7468;
+    --ok:#5a8a6a; --warn:#c9a24a; --err:#b56a5a;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .hidden{display:none!important}
+  a{color:var(--gold-l);text-decoration:none;cursor:pointer}
+
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(13,13,11,.92);backdrop-filter:blur(8px);z-index:10}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-family:var(--serif);font-size:21px;letter-spacing:.22em;color:var(--cream)}
+  .brand b{color:var(--gold);font-weight:500}
+  .brand .adm{font-family:var(--sans);font-size:10px;letter-spacing:.24em;color:var(--stone);margin-left:12px;vertical-align:middle}
+  .who{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--stone)}
+
+  .btn{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.03em;cursor:pointer;border:1px solid var(--line);
+       background:transparent;color:var(--cream);padding:8px 14px;border-radius:2px;transition:border-color .2s,color .2s}
+  .btn:hover{border-color:var(--gold);color:var(--gold-l)}
+  .btn.primary{background:var(--gold);border-color:var(--gold);color:#1a1509;font-weight:500}
+  .btn.primary:hover{background:var(--gold-l);border-color:var(--gold-l)}
+  .btn.ghost{border-color:transparent;color:var(--stone)}.btn.ghost:hover{color:var(--cream)}
+  .btn.sm{font-size:12px;padding:5px 10px}
+  .btn.danger:hover{border-color:var(--err);color:#e0b3aa}
+  .btn:disabled{opacity:.45;cursor:default}
+
+  .login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:4px}
+  .login .card{width:100%;max-width:390px;padding:38px 32px;text-align:center}
+  .login .brand{display:block;margin-bottom:4px;font-size:25px}
+  .login .sub{color:var(--stone);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:26px}
+  label{display:block;font-size:12px;letter-spacing:.05em;color:var(--stone);margin:14px 0 6px;text-align:left}
+  input,select,textarea{width:100%;background:var(--panel-2);border:1px solid var(--line);color:var(--cream);
+       font-family:var(--sans);font-size:14px;padding:10px 12px;border-radius:2px;outline:none}
+  input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+  textarea{resize:vertical;min-height:70px}
+  .login .btn{width:100%;margin-top:20px;padding:11px}
+  .msg{font-size:13px;padding:10px 12px;border-radius:2px;margin-top:14px;display:none;text-align:left}
+  .msg.err{display:block;background:rgba(181,106,90,.12);border:1px solid var(--err);color:#e0b3aa}
+  .msg.ok{display:block;background:rgba(90,138,106,.12);border:1px solid var(--ok);color:#a9d0b6}
+
+  /* Tabs */
+  nav.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:26px 0 8px;flex-wrap:wrap}
+  .tab{font-size:13px;letter-spacing:.04em;color:var(--stone);padding:11px 16px;cursor:pointer;border-bottom:2px solid transparent}
+  .tab:hover{color:var(--cream)}
+  .tab.active{color:var(--gold-l);border-bottom-color:var(--gold)}
+  .badge{background:var(--panel-2);border:1px solid var(--line);color:var(--gold-l);font-size:10px;border-radius:20px;padding:1px 7px;margin-left:6px}
+
+  main{padding:14px 0 80px}
+  h2{font-family:var(--serif);font-weight:500;font-size:24px;margin:14px 0 2px;color:var(--cream)}
+  .hint{color:var(--stone);font-size:13px;margin:0 0 18px}
+  .panelbox{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:20px 22px;margin-bottom:18px}
+  .panelbox h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:0 0 14px}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-weight:400;color:var(--stone);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:10px 12px;border-bottom:1px solid var(--line)}
+  td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  .pill{font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--line);white-space:nowrap}
+  .pill.informado,.pill.nueva,.pill.pendiente{color:var(--stone)}
+  .pill.comprometido,.pill.contactada,.pill.en_revision{color:var(--gold-l);border-color:var(--gold)}
+  .pill.ejecutado{color:var(--warn);border-color:var(--warn)}
+  .pill.confirmado,.pill.convertida,.pill.verificado,.pill.disponible{color:var(--ok);border-color:var(--ok)}
+  .pill.cancelado,.pill.descartada,.pill.rechazado{color:var(--err);border-color:var(--err)}
+  .pill.borrador,.pill.fondeado,.pill.cerrado{color:var(--stone)}
+  .actions{display:flex;gap:6px;flex-wrap:wrap}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .empty{color:var(--stone);font-size:14px;text-align:center;padding:22px}
+  .banner{background:rgba(201,162,74,.1);border:1px solid var(--warn);color:#e6cf95;padding:14px 18px;border-radius:4px;font-size:13px;margin:18px 0}
+  code{font-family:ui-monospace,monospace;background:var(--panel-2);padding:1px 6px;border-radius:2px;color:var(--gold-l)}
+  .deny{max-width:440px;margin:120px auto;text-align:center}
+  .deny h2{font-size:26px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}.who .name{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ CONFIG — mismos datos que el panel del inversionista ============ -->
+<script>
+  const SUPABASE_URL  = "https://pzlfzmpqwscimuxuoucq.supabase.co";
+  const SUPABASE_ANON = "sb_publishable_gHqKk0y8w6AKKZj9h0joqQ_xC0XPRvD";  // llave publishable (pública; la protege RLS)
+</script>
+
+<!-- LOGIN -->
+<div id="login" class="login">
+  <div class="card">
+    <span class="brand">VIVE <b>FRACTAL</b></span>
+    <div class="sub">Administración</div>
+    <label for="email">Correo</label>
+    <input id="email" type="email" placeholder="admin@vivefractal.com" autocomplete="email">
+    <label for="pass">Contraseña</label>
+    <input id="pass" type="password" placeholder="••••••••" autocomplete="current-password">
+    <button class="btn primary" id="authBtn">Entrar</button>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+</div>
+
+<!-- ACCESO DENEGADO (usuario sin rol admin) -->
+<div id="deny" class="hidden"><div class="wrap deny">
+  <h2>Sin acceso</h2>
+  <p class="hint">Esta cuenta no tiene rol de administrador. Pide a un admin que cambie tu rol
+    a <code>admin</code> en la tabla <code>perfiles</code>.</p>
+  <button class="btn" id="denyOut">Salir</button>
+</div></div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+  <header><div class="wrap bar">
+    <span class="brand">VIVE <b>FRACTAL</b><span class="adm">ADMIN</span></span>
+    <div class="who"><span class="name" id="hiName"></span><button class="btn ghost" id="logout">Salir</button></div>
+  </div></header>
+
+  <main class="wrap">
+    <div id="cfgBanner" class="banner hidden">
+      Falta conectar la base. Pon <code>SUPABASE_URL</code> y <code>SUPABASE_ANON</code> arriba en el archivo.
+    </div>
+
+    <nav class="tabs">
+      <div class="tab active" data-t="solicitudes">Solicitudes<span class="badge" id="bSol">0</span></div>
+      <div class="tab" data-t="activos">Activos</div>
+      <div class="tab" data-t="inversionistas">Inversionistas</div>
+      <div class="tab" data-t="transacciones">Transacciones<span class="badge" id="bTx">0</span></div>
+      <div class="tab" data-t="repartos">Repartos</div>
+    </nav>
+
+    <!-- SOLICITUDES -->
+    <section id="v-solicitudes">
+      <h2>Solicitudes</h2><p class="hint">Leads que llegan del sitio público. Márcalos según avancen.</p>
+      <div class="card"><table>
+        <thead><tr><th>Fecha</th><th>Nombre</th><th>Contacto</th><th>Interés</th><th>Origen</th><th>Estado</th><th></th></tr></thead>
+        <tbody id="solBody"></tbody>
+      </table></div>
+    </section>
+
+    <!-- ACTIVOS -->
+    <section id="v-activos" class="hidden">
+      <h2>Activos</h2><p class="hint">Fincas, náutico y autos que se fraccionan.</p>
+      <div class="panelbox">
+        <h3 id="activoFormTitle">Nuevo activo</h3>
+        <div class="grid2">
+          <div><label>Nombre</label><input id="af_nombre" placeholder="Finca La Esperanza"></div>
+          <div><label>Vertical</label>
+            <select id="af_vertical"><option value="finca">Finca</option><option value="nautico">Náutico</option>
+            <option value="auto">Auto</option><option value="otro">Otro</option></select></div>
+          <div><label>Ubicación</label><input id="af_ubicacion" placeholder="Oriente antioqueño"></div>
+          <div><label>Estado</label>
+            <select id="af_estado"><option value="borrador">Borrador</option><option value="disponible">Disponible</option>
+            <option value="fondeado">Fondeado</option><option value="cerrado">Cerrado</option></select></div>
+          <div><label>Valor total (COP)</label><input id="af_valor" type="number" min="0" placeholder="800000000"></div>
+          <div><label>Fracciones totales</label><input id="af_frac" type="number" min="1" placeholder="100"></div>
+          <div><label>Precio por fracción (COP)</label><input id="af_precio" type="number" min="0" placeholder="8000000"></div>
+          <div><label>Imagen (URL)</label><input id="af_imagen" placeholder="https://..."></div>
+        </div>
+        <label>Descripción</label><textarea id="af_desc" placeholder="Qué es, qué renta, por qué."></textarea>
+        <div class="actions" style="margin-top:16px">
+          <button class="btn primary" id="af_save">Guardar activo</button>
+          <button class="btn ghost hidden" id="af_cancel">Cancelar edición</button>
+          <span id="af_msg" style="font-size:13px;color:var(--stone);align-self:center"></span>
+        </div>
+      </div>
+      <div class="card"><table>
+        <thead><tr><th>Activo</th><th>Vertical</th><th>Precio fracción</th><th>Disponibles</th><th>Estado</th><th></th></tr></thead>
+        <tbody id="activosBody"></tbody>
+      </table></div>
+    </section>
+
+    <!-- INVERSIONISTAS -->
+    <section id="v-inversionistas" class="hidden">
+      <h2>Inversionistas</h2><p class="hint">Cuentas registradas, su KYC y su rol.</p>
+      <div class="card"><table>
+        <thead><tr><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>KYC</th><th>Rol</th><th></th></tr></thead>
+        <tbody id="invBody"></tbody>
+      </table></div>
+    </section>
+
+    <!-- TRANSACCIONES -->
+    <section id="v-transacciones" class="hidden">
+      <h2>Transacciones</h2>
+      <p class="hint">Cada paso es distinto: informar → comprometer → ejecutar → confirmar.
+        La fracción solo se crea al <b>confirmar</b> (dinero recibido).</p>
+      <div class="card"><table>
+        <thead><tr><th>Fecha</th><th>Inversionista</th><th>Activo</th><th>Fracc.</th><th>Monto</th><th>Estado</th><th>Siguiente paso</th></tr></thead>
+        <tbody id="txBody"></tbody>
+      </table></div>
+    </section>
+
+    <!-- REPARTOS -->
+    <section id="v-repartos" class="hidden">
+      <h2>Repartos de rendimientos</h2><p class="hint">Reparte un monto entre los co-propietarios confirmados de un activo, a prorrata.</p>
+      <div class="panelbox">
+        <h3>Nuevo reparto</h3>
+        <div class="grid2">
+          <div><label>Activo</label><select id="rp_activo"></select></div>
+          <div><label>Periodo</label><input id="rp_periodo" placeholder="2026-Q1"></div>
+          <div><label>Monto total a repartir (COP)</label><input id="rp_monto" type="number" min="0" placeholder="24000000"></div>
+          <div style="align-self:end"><span id="rp_calc" style="font-size:13px;color:var(--stone)"></span></div>
+        </div>
+        <div class="actions" style="margin-top:16px">
+          <button class="btn primary" id="rp_save">Crear y repartir</button>
+          <span id="rp_msg" style="font-size:13px;color:var(--stone);align-self:center"></span>
+        </div>
+      </div>
+      <div class="card"><table>
+        <thead><tr><th>Periodo</th><th>Activo</th><th>Total</th><th>Por fracción</th><th>Co-propietarios</th></tr></thead>
+        <tbody id="repBody"></tbody>
+      </table></div>
+    </section>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const COP = n => new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);
+const VERT = {finca:'Finca',nautico:'Náutico',auto:'Auto',otro:'Otro'};
+const $ = id => document.getElementById(id);
+const fecha = s => new Date(s).toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'});
+const cap = s => (s||'').charAt(0).toUpperCase()+(s||'').slice(1).replace('_',' ');
+const empty = (c,t) => `<tr><td colspan="${c}" class="empty">${t}</td></tr>`;
+
+const configured = SUPABASE_URL && SUPABASE_ANON;
+let sb = configured ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
+let editActivoId = null;
+
+// ---------- Tabs ----------
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
+  $('v-' + t.dataset.t).classList.remove('hidden');
+});
+
+// ---------- Auth ----------
+function showMsg(el,text,kind){ el.className='msg '+kind; el.textContent=text; }
+$('authBtn').onclick = async () => {
+  const email=$('email').value.trim(), pass=$('pass').value, btn=$('authBtn'), msg=$('loginMsg');
+  if(!configured){ showMsg(msg,'Falta conectar Supabase (ver aviso dentro del panel).','err'); goApp(true); return; }
+  if(!email||!pass){ showMsg(msg,'Escribe correo y contraseña.','err'); return; }
+  btn.disabled=true; btn.textContent='...';
+  try{
+    const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+    if(error) throw error;
+  }catch(e){ showMsg(msg,/Invalid login/i.test(e.message)?'Correo o contraseña incorrectos.':e.message,'err'); }
+  finally{ btn.disabled=false; btn.textContent='Entrar'; }
+};
+$('logout').onclick = $('denyOut').onclick = async () => { if(sb) await sb.auth.signOut(); location.reload(); };
+
+function goApp(cfgMissing){ $('login').classList.add('hidden'); $('app').classList.remove('hidden');
+  if(cfgMissing) $('cfgBanner').classList.remove('hidden'); }
+
+async function boot(){
+  if(!configured){ goApp(true); return; }
+  const { data:{ session } } = await sb.auth.getSession();
+  if(!session) return;
+  const { data: perfil } = await sb.from('perfiles').select('nombre,rol').eq('id', session.user.id).maybeSingle();
+  if(perfil?.rol !== 'admin'){ $('login').classList.add('hidden'); $('deny').classList.remove('hidden'); return; }
+  goApp(false);
+  $('hiName').textContent = perfil.nombre ? perfil.nombre + ' · admin' : session.user.email;
+  cargarTodo();
+}
+if(sb) sb.auth.onAuthStateChange((_e,s)=>{ if(s) boot(); });
+boot();
+
+function cargarTodo(){ cargarSolicitudes(); cargarActivos(); cargarInversionistas(); cargarTransacciones(); cargarRepartos(); }
+
+// ---------- Solicitudes ----------
+const FLUJO_SOL = { nueva:['contactada','descartada'], contactada:['convertida','descartada'],
+                    descartada:['nueva'], convertida:[] };
+async function cargarSolicitudes(){
+  const { data, error } = await sb.from('solicitudes').select('*').order('creada_en',{ascending:false});
+  if(error){ console.error(error); return; }
+  $('bSol').textContent = (data||[]).filter(s=>s.estado==='nueva').length;
+  const b = $('solBody');
+  if(!data||!data.length){ b.innerHTML = empty(7,'Sin solicitudes todavía.'); return; }
+  b.innerHTML=''; data.forEach(s => {
+    const tr=document.createElement('tr');
+    tr.innerHTML = `<td>${fecha(s.creada_en)}</td><td>${s.nombre}</td>
+      <td>${[s.email,s.telefono].filter(Boolean).join('<br>')||'—'}</td>
+      <td>${VERT[s.vertical]||'—'}</td><td>${s.origen||'—'}</td>
+      <td><span class="pill ${s.estado}">${cap(s.estado)}</span></td>`;
+    const td=document.createElement('td'); td.className='actions';
+    (FLUJO_SOL[s.estado]||[]).forEach(next => {
+      const bt=document.createElement('button'); bt.className='btn sm'+(next==='descartada'?' danger':'');
+      bt.textContent=cap(next);
+      bt.onclick=()=>cambiarEstado('solicitudes',s.id,next,bt,cargarSolicitudes);
+      td.appendChild(bt);
+    });
+    tr.appendChild(td); b.appendChild(tr);
+  });
+}
+
+async function cambiarEstado(tabla,id,estado,btn,reload){
+  btn.disabled=true; const prev=btn.textContent; btn.textContent='...';
+  const { error } = await sb.from(tabla).update({estado}).eq('id',id);
+  if(error){ console.error(error); btn.disabled=false; btn.textContent=prev; alert('No se pudo actualizar: '+error.message); return; }
+  reload();
+}
+
+// ---------- Activos ----------
+async function cargarActivos(){
+  const { data } = await sb.from('activos').select('*').order('creado_en',{ascending:false});
+  const { data: disp } = await sb.rpc('activos_disponibilidad');
+  const dmap = Object.fromEntries((disp||[]).map(d=>[d.id,d.fracciones_disponibles]));
+  llenarSelectActivos(data||[]);
+  const b=$('activosBody');
+  if(!data||!data.length){ b.innerHTML=empty(6,'Aún no hay activos. Crea el primero arriba.'); return; }
+  b.innerHTML=''; data.forEach(a=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${a.nombre}</td><td>${VERT[a.vertical]}</td><td>${COP(a.precio_fraccion)}</td>
+      <td>${dmap[a.id] ?? a.fracciones_totales} / ${a.fracciones_totales}</td>
+      <td><span class="pill ${a.estado}">${cap(a.estado)}</span></td>`;
+    const td=document.createElement('td'); td.className='actions';
+    const ed=document.createElement('button'); ed.className='btn sm'; ed.textContent='Editar';
+    ed.onclick=()=>editarActivo(a); td.appendChild(ed);
+    tr.appendChild(td); b.appendChild(tr);
+  });
+}
+function editarActivo(a){
+  editActivoId=a.id;
+  $('activoFormTitle').textContent='Editar activo';
+  $('af_nombre').value=a.nombre; $('af_vertical').value=a.vertical; $('af_ubicacion').value=a.ubicacion||'';
+  $('af_estado').value=a.estado; $('af_valor').value=a.valor_total; $('af_frac').value=a.fracciones_totales;
+  $('af_precio').value=a.precio_fraccion; $('af_imagen').value=a.imagen_url||''; $('af_desc').value=a.descripcion||'';
+  $('af_cancel').classList.remove('hidden'); window.scrollTo({top:200,behavior:'smooth'});
+}
+$('af_cancel').onclick=()=>resetActivoForm();
+function resetActivoForm(){
+  editActivoId=null; $('activoFormTitle').textContent='Nuevo activo'; $('af_cancel').classList.add('hidden');
+  ['af_nombre','af_ubicacion','af_valor','af_frac','af_precio','af_imagen','af_desc'].forEach(i=>$(i).value='');
+  $('af_vertical').value='finca'; $('af_estado').value='borrador'; $('af_msg').textContent='';
+}
+$('af_save').onclick=async()=>{
+  const payload={
+    nombre:$('af_nombre').value.trim(), vertical:$('af_vertical').value, ubicacion:$('af_ubicacion').value.trim()||null,
+    estado:$('af_estado').value, valor_total:Number($('af_valor').value), fracciones_totales:parseInt($('af_frac').value,10),
+    precio_fraccion:Number($('af_precio').value), imagen_url:$('af_imagen').value.trim()||null, descripcion:$('af_desc').value.trim()||null
+  };
+  if(!payload.nombre||!(payload.valor_total>0)||!(payload.fracciones_totales>0)||!(payload.precio_fraccion>0)){
+    $('af_msg').textContent='Faltan datos: nombre, valor, fracciones y precio deben ser mayores a 0.'; return; }
+  const btn=$('af_save'); btn.disabled=true; btn.textContent='Guardando...';
+  const q = editActivoId ? sb.from('activos').update(payload).eq('id',editActivoId) : sb.from('activos').insert(payload);
+  const { error } = await q;
+  btn.disabled=false; btn.textContent='Guardar activo';
+  if(error){ console.error(error); $('af_msg').textContent='Error: '+error.message; return; }
+  resetActivoForm(); cargarActivos();
+};
+
+// ---------- Inversionistas ----------
+async function cargarInversionistas(){
+  const { data } = await sb.from('perfiles').select('*').order('creado_en',{ascending:false});
+  const b=$('invBody');
+  if(!data||!data.length){ b.innerHTML=empty(6,'Sin cuentas registradas.'); return; }
+  b.innerHTML=''; data.forEach(p=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${p.nombre||'—'}</td><td>${p.email}</td><td>${p.telefono||'—'}</td>
+      <td><span class="pill ${p.kyc_estado}">${cap(p.kyc_estado)}</span></td>
+      <td><span class="pill">${cap(p.rol)}</span></td>`;
+    const td=document.createElement('td'); td.className='actions';
+    const kyc=document.createElement('select'); kyc.innerHTML=
+      ['pendiente','en_revision','verificado','rechazado'].map(o=>`<option value="${o}" ${o===p.kyc_estado?'selected':''}>${cap(o)}</option>`).join('');
+    kyc.style.width='auto';
+    kyc.onchange=async()=>{ const {error}=await sb.from('perfiles').update({kyc_estado:kyc.value}).eq('id',p.id);
+      if(error){ alert('No se pudo: '+error.message);} else cargarInversionistas(); };
+    td.appendChild(kyc);
+    tr.appendChild(td); b.appendChild(tr);
+  });
+}
+
+// ---------- Transacciones (máquina de estados) ----------
+const SIGUIENTE = { informado:['comprometido'], comprometido:['ejecutado'], ejecutado:['confirmado'] };
+async function cargarTransacciones(){
+  const { data } = await sb.from('transacciones')
+    .select('*,inv:perfiles(nombre,email),activo:activos(nombre)').order('creada_en',{ascending:false});
+  $('bTx').textContent = (data||[]).filter(t=>['informado','comprometido','ejecutado'].includes(t.estado)).length;
+  const b=$('txBody');
+  if(!data||!data.length){ b.innerHTML=empty(7,'Sin transacciones todavía.'); return; }
+  b.innerHTML=''; data.forEach(t=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${fecha(t.creada_en)}</td><td>${t.inv?.nombre||t.inv?.email||'—'}</td>
+      <td>${t.activo?.nombre||'—'}</td><td>${t.cantidad}</td><td>${COP(t.monto)}</td>
+      <td><span class="pill ${t.estado}">${cap(t.estado)}</span></td>`;
+    const td=document.createElement('td'); td.className='actions';
+    (SIGUIENTE[t.estado]||[]).forEach(next=>{
+      const bt=document.createElement('button'); bt.className='btn sm primary'; bt.textContent=cap(next);
+      bt.onclick=()=> next==='confirmado' ? confirmar(t.id,bt) : cambiarEstado('transacciones',t.id,next,bt,cargarTransacciones);
+      td.appendChild(bt);
+    });
+    if(!['confirmado','cancelado'].includes(t.estado)){
+      const c=document.createElement('button'); c.className='btn sm danger'; c.textContent='Cancelar';
+      c.onclick=()=>cambiarEstado('transacciones',t.id,'cancelado',c,cargarTransacciones); td.appendChild(c);
+    }
+    tr.appendChild(td); b.appendChild(tr);
+  });
+}
+// Confirmar pasa por el RPC atómico: cambia estado Y crea la fracción, o falla entero.
+async function confirmar(id,btn){
+  btn.disabled=true; btn.textContent='...';
+  const { error } = await sb.rpc('confirmar_transaccion',{ tx_id:id });
+  if(error){ console.error(error); btn.disabled=false; btn.textContent='Confirmado';
+    alert('No se pudo confirmar: '+error.message); return; }
+  cargarTransacciones(); cargarActivos();
+}
+
+// ---------- Repartos ----------
+let activosCache=[];
+function llenarSelectActivos(list){
+  activosCache=list;
+  $('rp_activo').innerHTML = list.map(a=>`<option value="${a.id}">${a.nombre} (${a.fracciones_totales} fracc.)</option>`).join('');
+  recalcReparto();
+}
+$('rp_activo').onchange=$('rp_monto').oninput=recalcReparto;
+function recalcReparto(){
+  const a=activosCache.find(x=>x.id===$('rp_activo').value);
+  const monto=Number($('rp_monto').value)||0;
+  if(!a||!monto){ $('rp_calc').textContent=''; return; }
+  const por=Math.round((monto/a.fracciones_totales)*10000)/10000;   // misma fórmula que calc_monto_por_fraccion
+  $('rp_calc').textContent=`≈ ${COP(por)} por fracción`;
+}
+$('rp_save').onclick=async()=>{
+  const a=activosCache.find(x=>x.id===$('rp_activo').value);
+  const periodo=$('rp_periodo').value.trim(), monto=Number($('rp_monto').value);
+  if(!a){ $('rp_msg').textContent='Elige un activo.'; return; }
+  if(!periodo||!(monto>0)){ $('rp_msg').textContent='Indica periodo y un monto mayor a 0.'; return; }
+  const btn=$('rp_save'); btn.disabled=true; btn.textContent='Repartiendo...';
+  const porFrac=Math.round((monto/a.fracciones_totales)*10000)/10000;
+
+  // Tenencia confirmada por inversionista en este activo
+  const { data: fr, error:e1 } = await sb.from('fracciones').select('inversionista_id,cantidad').eq('activo_id',a.id);
+  if(e1){ btn.disabled=false; btn.textContent='Crear y repartir'; $('rp_msg').textContent='Error: '+e1.message; return; }
+  const acum={}; (fr||[]).forEach(f=> acum[f.inversionista_id]=(acum[f.inversionista_id]||0)+f.cantidad);
+
+  const { data: rep, error:e2 } = await sb.from('repartos')
+    .insert({ activo_id:a.id, periodo, monto_total:monto, monto_por_fraccion:porFrac, estado:'confirmado' })
+    .select().single();
+  if(e2){ btn.disabled=false; btn.textContent='Crear y repartir'; $('rp_msg').textContent='Error: '+e2.message; return; }
+
+  const lineas=Object.entries(acum).map(([inv,cant])=>({
+    reparto_id:rep.id, inversionista_id:inv, fracciones:cant, monto:Math.round(cant*porFrac) }));
+  if(lineas.length){
+    const { error:e3 } = await sb.from('reparto_lineas').insert(lineas);
+    if(e3){ btn.disabled=false; btn.textContent='Crear y repartir'; $('rp_msg').textContent='Reparto creado, pero fallaron las líneas: '+e3.message; return; }
+  }
+  btn.disabled=false; btn.textContent='Crear y repartir';
+  $('rp_msg').textContent = lineas.length ? `Repartido entre ${lineas.length} co-propietario(s).`
+                                          : 'Reparto creado. Este activo aún no tiene fracciones confirmadas.';
+  $('rp_periodo').value=''; $('rp_monto').value=''; recalcReparto(); cargarRepartos();
+};
+async function cargarRepartos(){
+  const { data } = await sb.from('repartos').select('*,activo:activos(nombre),reparto_lineas(id)').order('creado_en',{ascending:false});
+  const b=$('repBody');
+  if(!data||!data.length){ b.innerHTML=empty(5,'Sin repartos todavía.'); return; }
+  b.innerHTML = data.map(r=>`<tr><td>${r.periodo}</td><td>${r.activo?.nombre||'—'}</td>
+    <td>${COP(r.monto_total)}</td><td>${COP(r.monto_por_fraccion)}</td>
+    <td>${r.reparto_lineas?.length||0}</td></tr>`).join('');
+}
+</script>
+</body>
+</html>
