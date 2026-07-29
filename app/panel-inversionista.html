@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vive Fractal · Panel del inversionista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0d0b; --panel:#15130f; --panel-2:#1b1813; --line:#2a2620;
+    --gold:#b8935a; --gold-l:#d4b07a; --cream:#f5f0e8; --stone:#7a7468;
+    --ok:#5a8a6a; --warn:#c9a24a; --err:#b56a5a;
+    --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--sans);font-weight:300;
+       -webkit-font-smoothing:antialiased;line-height:1.6}
+  a{color:var(--gold-l);text-decoration:none}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  .hidden{display:none!important}
+
+  /* Header */
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(13,13,11,.9);
+         backdrop-filter:blur(8px);z-index:10}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:var(--serif);font-size:22px;letter-spacing:.24em;color:var(--cream)}
+  .brand b{color:var(--gold);font-weight:500}
+  .who{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--stone)}
+  .btn{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.04em;cursor:pointer;
+       border:1px solid var(--line);background:transparent;color:var(--cream);padding:9px 16px;border-radius:2px;
+       transition:border-color .2s,color .2s}
+  .btn:hover{border-color:var(--gold);color:var(--gold-l)}
+  .btn.primary{background:var(--gold);border-color:var(--gold);color:#1a1509;font-weight:500}
+  .btn.primary:hover{background:var(--gold-l);border-color:var(--gold-l);color:#1a1509}
+  .btn.ghost{border-color:transparent;color:var(--stone)}
+  .btn.ghost:hover{color:var(--cream)}
+  .btn:disabled{opacity:.45;cursor:default}
+
+  /* Login */
+  .login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:4px}
+  .login .card{width:100%;max-width:400px;padding:40px 34px}
+  .login .brand{display:block;text-align:center;margin-bottom:6px;font-size:26px}
+  .login .sub{text-align:center;color:var(--stone);font-size:13px;margin-bottom:28px}
+  label{display:block;font-size:12px;letter-spacing:.06em;color:var(--stone);margin:16px 0 6px}
+  input,select,textarea{width:100%;background:var(--panel-2);border:1px solid var(--line);color:var(--cream);
+       font-family:var(--sans);font-size:14px;padding:11px 12px;border-radius:2px;outline:none}
+  input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+  .login .btn{width:100%;margin-top:22px;padding:12px}
+  .switch{text-align:center;margin-top:16px;font-size:13px;color:var(--stone)}
+  .switch a{cursor:pointer}
+  .msg{font-size:13px;padding:10px 12px;border-radius:2px;margin-top:14px;display:none}
+  .msg.err{display:block;background:rgba(181,106,90,.12);border:1px solid var(--err);color:#e0b3aa}
+  .msg.ok{display:block;background:rgba(90,138,106,.12);border:1px solid var(--ok);color:#a9d0b6}
+
+  /* Sections */
+  main{padding:32px 0 80px}
+  h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:0 0 4px;color:var(--cream)}
+  .lead{color:var(--stone);font-size:14px;margin:0 0 30px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:38px 0 14px;
+           padding-bottom:8px;border-bottom:1px solid var(--line)}
+
+  /* Stat cards */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:18px 20px}
+  .stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+  .stat .v{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--cream);margin-top:8px;line-height:1}
+  .stat .v small{font-size:15px;color:var(--stone)}
+
+  /* Asset / opportunity cards */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .asset{background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;display:flex;flex-direction:column}
+  .asset .ph{height:140px;background:linear-gradient(135deg,#211d16,#15130f);display:flex;align-items:flex-end;
+             padding:14px;background-size:cover;background-position:center}
+  .tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:rgba(13,13,11,.7);color:var(--gold-l);
+       border:1px solid var(--line);padding:4px 9px;border-radius:2px}
+  .asset .body{padding:16px 18px;flex:1;display:flex;flex-direction:column}
+  .asset h3{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 2px;color:var(--cream)}
+  .asset .loc{font-size:12px;color:var(--stone);margin-bottom:12px}
+  .rowline{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-top:1px solid var(--line)}
+  .rowline .stone{color:var(--stone)}
+  .asset .act{margin-top:14px;display:flex;gap:8px;align-items:center}
+  .asset .act input{width:74px;text-align:center}
+
+  /* Table */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;font-weight:400;color:var(--stone);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+     padding:10px 12px;border-bottom:1px solid var(--line)}
+  td{padding:12px;border-bottom:1px solid var(--line);color:var(--cream)}
+  tr:last-child td{border-bottom:none}
+  .pill{font-size:11px;letter-spacing:.04em;padding:3px 9px;border-radius:20px;border:1px solid var(--line);white-space:nowrap}
+  .pill.informado{color:var(--stone)}
+  .pill.comprometido{color:var(--gold-l);border-color:var(--gold)}
+  .pill.ejecutado{color:var(--warn);border-color:var(--warn)}
+  .pill.confirmado{color:var(--ok);border-color:var(--ok)}
+  .pill.cancelado{color:var(--err);border-color:var(--err)}
+
+  .empty{color:var(--stone);font-size:14px;padding:22px;border:1px dashed var(--line);border-radius:4px;text-align:center}
+  .banner{background:rgba(201,162,74,.1);border:1px solid var(--warn);color:#e6cf95;padding:14px 18px;border-radius:4px;
+          font-size:13px;margin:20px 0}
+  code{font-family:ui-monospace,monospace;background:var(--panel-2);padding:1px 6px;border-radius:2px;color:var(--gold-l)}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}
+    .who .name{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ CONFIG — pega aquí los datos del proyecto Supabase de Vive Fractal ============ -->
+<script>
+  const SUPABASE_URL  = "https://pzlfzmpqwscimuxuoucq.supabase.co";
+  const SUPABASE_ANON = "sb_publishable_gHqKk0y8w6AKKZj9h0joqQ_xC0XPRvD";  // llave publishable (pública; la protege RLS)
+</script>
+
+<!-- LOGIN -->
+<div id="login" class="login">
+  <div class="card">
+    <span class="brand">VIVE <b>FRACTAL</b></span>
+    <div class="sub" id="loginSub">Panel del inversionista</div>
+    <div>
+      <label for="nombre" id="lblNombre" class="hidden">Nombre</label>
+      <input id="nombre" class="hidden" placeholder="Tu nombre" autocomplete="name">
+      <label for="email">Correo</label>
+      <input id="email" type="email" placeholder="tu@correo.com" autocomplete="email">
+      <label for="pass">Contraseña</label>
+      <input id="pass" type="password" placeholder="••••••••" autocomplete="current-password">
+      <button class="btn primary" id="authBtn">Entrar</button>
+      <div class="switch" id="switch">¿Nuevo aquí? <a id="switchLink">Crear cuenta</a></div>
+      <div class="msg" id="loginMsg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+  <header><div class="wrap bar">
+    <span class="brand">VIVE <b>FRACTAL</b></span>
+    <div class="who"><span class="name" id="hiName"></span>
+      <button class="btn ghost" id="logout">Salir</button></div>
+  </div></header>
+
+  <main class="wrap">
+    <h1>Tu portafolio</h1>
+    <p class="lead">Tus fracciones, oportunidades abiertas y rendimientos, en un solo lugar.</p>
+
+    <div id="cfgBanner" class="banner hidden">
+      Falta conectar la base. Pon <code>SUPABASE_URL</code> y <code>SUPABASE_ANON</code> arriba en el archivo.
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="k">Valor del portafolio</div><div class="v" id="sValor">—</div></div>
+      <div class="stat"><div class="k">Fracciones</div><div class="v" id="sFrac">—</div></div>
+      <div class="stat"><div class="k">Activos</div><div class="v" id="sActivos">—</div></div>
+      <div class="stat"><div class="k">Rendimientos recibidos</div><div class="v" id="sRend">—</div></div>
+    </div>
+
+    <div class="eyebrow">Mis activos</div>
+    <div id="misActivos" class="grid"></div>
+
+    <div class="eyebrow">Oportunidades abiertas</div>
+    <div id="oportunidades" class="grid"></div>
+
+    <div class="eyebrow">Mis movimientos</div>
+    <div class="card"><table>
+      <thead><tr><th>Fecha</th><th>Activo</th><th>Fracciones</th><th>Monto</th><th>Estado</th></tr></thead>
+      <tbody id="txBody"></tbody>
+    </table></div>
+
+    <div class="eyebrow">Mis rendimientos</div>
+    <div class="card"><table>
+      <thead><tr><th>Periodo</th><th>Activo</th><th>Fracciones</th><th>Recibido</th></tr></thead>
+      <tbody id="rendBody"></tbody>
+    </table></div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const COP = n => new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0);
+const VERT = {finca:'Finca',nautico:'Náutico',auto:'Auto',otro:'Otro'};
+const ESTADO_TX = {informado:'Informado',comprometido:'Comprometido',ejecutado:'Ejecutado',
+                   confirmado:'Confirmado',cancelado:'Cancelado'};
+const $ = id => document.getElementById(id);
+
+// ---- Sin config: se muestra el aviso y no se intenta hablar con una base inexistente ----
+const configured = SUPABASE_URL && SUPABASE_ANON;
+let sb = configured ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
+
+// ---------- Auth UI ----------
+let mode = 'login';
+$('switchLink').onclick = () => {
+  mode = mode === 'login' ? 'signup' : 'login';
+  const s = mode === 'signup';
+  $('lblNombre').classList.toggle('hidden', !s);
+  $('nombre').classList.toggle('hidden', !s);
+  $('authBtn').textContent = s ? 'Crear cuenta' : 'Entrar';
+  $('loginSub').textContent = s ? 'Crea tu cuenta de inversionista' : 'Panel del inversionista';
+  $('switch').innerHTML = s ? '¿Ya tienes cuenta? <a id="switchLink">Entrar</a>'
+                            : '¿Nuevo aquí? <a id="switchLink">Crear cuenta</a>';
+  document.getElementById('switchLink').onclick = $('switchLink').onclick;
+};
+
+function showMsg(el, text, kind){ el.className = 'msg ' + kind; el.textContent = text; }
+
+$('authBtn').onclick = async () => {
+  const email = $('email').value.trim(), pass = $('pass').value;
+  const btn = $('authBtn'); const msg = $('loginMsg');
+  if(!configured){ showMsg(msg,'Falta conectar Supabase (ver el aviso dentro del panel).','err'); showApp(); return; }
+  if(!email || !pass){ showMsg(msg,'Escribe correo y contraseña.','err'); return; }
+  btn.disabled = true; btn.textContent = '...';
+  try{
+    if(mode === 'signup'){
+      const { error } = await sb.auth.signUp({ email, password: pass,
+        options:{ data:{ nombre: $('nombre').value.trim() } } });
+      if(error) throw error;
+      showMsg(msg,'Cuenta creada. Si tu proyecto pide confirmar el correo, revísalo y luego entra.','ok');
+    } else {
+      const { error } = await sb.auth.signInWithPassword({ email, password: pass });
+      if(error) throw error;
+    }
+  }catch(e){ showMsg(msg, traducir(e.message), 'err'); }
+  finally{ btn.disabled = false; btn.textContent = mode==='signup'?'Crear cuenta':'Entrar'; }
+};
+
+function traducir(m){
+  if(/Invalid login/i.test(m)) return 'Correo o contraseña incorrectos.';
+  if(/already registered/i.test(m)) return 'Ese correo ya tiene cuenta. Entra en su lugar.';
+  if(/at least 6/i.test(m)) return 'La contraseña debe tener al menos 6 caracteres.';
+  return m;
+}
+
+$('logout').onclick = async () => { if(sb) await sb.auth.signOut(); location.reload(); };
+
+// ---------- Arranque de sesión ----------
+function showApp(){ $('login').classList.add('hidden'); $('app').classList.remove('hidden'); }
+
+async function boot(){
+  if(!configured){ showApp(); $('cfgBanner').classList.remove('hidden'); return; }
+  const { data:{ session } } = await sb.auth.getSession();
+  if(!session){ return; }               // se queda en login
+  showApp();
+  const { data: perfil } = await sb.from('perfiles').select('nombre,rol').eq('id', session.user.id).maybeSingle();
+  $('hiName').textContent = perfil?.nombre ? 'Hola, ' + perfil.nombre : session.user.email;
+  await cargarTodo(session.user.id);
+}
+if(sb) sb.auth.onAuthStateChange((_e, s) => { if(s) boot(); });
+boot();
+
+// ---------- Carga de datos ----------
+async function cargarTodo(uid){
+  await Promise.all([ cargarPortafolio(uid), cargarOportunidades(uid), cargarMovimientos(uid), cargarRendimientos(uid) ]);
+}
+
+async function cargarPortafolio(uid){
+  const { data: fr, error } = await sb.from('fracciones')
+    .select('cantidad,precio_compra,activo:activos(id,nombre,vertical,ubicacion,precio_fraccion,imagen_url)')
+    .eq('inversionista_id', uid);
+  if(error){ console.error(error); return; }
+
+  const porActivo = {};
+  let totalFrac = 0, valor = 0;
+  (fr||[]).forEach(f => {
+    totalFrac += f.cantidad;
+    valor += f.cantidad * (f.activo?.precio_fraccion || 0);
+    const a = f.activo; if(!a) return;
+    (porActivo[a.id] ||= { a, frac:0 }).frac += f.cantidad;
+  });
+
+  $('sValor').textContent = COP(valor);
+  $('sFrac').textContent  = totalFrac;
+  $('sActivos').textContent = Object.keys(porActivo).length;
+
+  const cont = $('misActivos');
+  const items = Object.values(porActivo);
+  cont.innerHTML = items.length ? '' :
+    '<div class="empty">Aún no tienes fracciones. Explora las oportunidades abiertas abajo.</div>';
+  items.forEach(({a,frac}) => {
+    cont.appendChild(assetCard(a, [
+      ['Mis fracciones', frac],
+      ['Valor a precio actual', COP(frac * a.precio_fraccion)]
+    ]));
+  });
+}
+
+async function cargarOportunidades(uid){
+  const { data: activos } = await sb.from('activos')
+    .select('id,nombre,vertical,ubicacion,descripcion,precio_fraccion,imagen_url,fracciones_totales,estado')
+    .eq('estado','disponible').order('creado_en',{ascending:false});
+  const { data: disp } = await sb.rpc('activos_disponibilidad');
+  const dispMap = Object.fromEntries((disp||[]).map(d => [d.id, d.fracciones_disponibles]));
+
+  const cont = $('oportunidades');
+  cont.innerHTML = (activos&&activos.length) ? '' :
+    '<div class="empty">No hay oportunidades abiertas en este momento.</div>';
+  (activos||[]).forEach(a => {
+    const libres = dispMap[a.id] ?? a.fracciones_totales;
+    const card = assetCard(a, [
+      ['Precio por fracción', COP(a.precio_fraccion)],
+      ['Fracciones disponibles', libres]
+    ]);
+    const act = document.createElement('div'); act.className = 'act';
+    const qty = document.createElement('input'); qty.type='number'; qty.min='1'; qty.max=String(libres); qty.value='1';
+    const b = document.createElement('button'); b.className='btn primary'; b.textContent='Me interesa';
+    b.onclick = () => expresarInteres(a, parseInt(qty.value||'1',10), uid, b);
+    if(libres<=0){ b.disabled=true; b.textContent='Fondeado'; }
+    act.append(qty, b);
+    card.querySelector('.body').appendChild(act);
+    cont.appendChild(card);
+  });
+}
+
+// Primer paso de la máquina de estados: "informar". No mueve dinero ni asigna fracciones.
+async function expresarInteres(a, cant, uid, btn){
+  if(!(cant>0)){ alert('Indica cuántas fracciones te interesan.'); return; }
+  btn.disabled = true; btn.textContent = '...';
+  const { error } = await sb.from('transacciones').insert({
+    activo_id: a.id, inversionista_id: uid, tipo:'compra',
+    cantidad: cant, monto: cant * a.precio_fraccion, estado:'informado',
+    nota:'Interés desde el panel'
+  });
+  if(error){                                   // nunca se da por hecho sin leer la respuesta
+    console.error(error); btn.disabled=false; btn.textContent='Me interesa';
+    alert('No se pudo registrar tu interés: ' + error.message); return;
+  }
+  btn.textContent = 'Registrado ✓';
+  await cargarMovimientos(uid);
+}
+
+async function cargarMovimientos(uid){
+  const { data } = await sb.from('transacciones')
+    .select('creada_en,cantidad,monto,estado,activo:activos(nombre)')
+    .eq('inversionista_id', uid).order('creada_en',{ascending:false});
+  const body = $('txBody');
+  if(!data || !data.length){ body.innerHTML = row(5,'Sin movimientos todavía.'); return; }
+  body.innerHTML = data.map(t => `<tr>
+    <td>${fecha(t.creada_en)}</td>
+    <td>${t.activo?.nombre||'—'}</td>
+    <td>${t.cantidad}</td>
+    <td>${COP(t.monto)}</td>
+    <td><span class="pill ${t.estado}">${ESTADO_TX[t.estado]||t.estado}</span></td>
+  </tr>`).join('');
+}
+
+async function cargarRendimientos(uid){
+  const { data } = await sb.from('reparto_lineas')
+    .select('fracciones,monto,reparto:repartos(periodo,activo:activos(nombre))')
+    .eq('inversionista_id', uid).order('id',{ascending:false});
+  let total = 0; (data||[]).forEach(r => total += Number(r.monto)||0);
+  $('sRend').textContent = COP(total);
+  const body = $('rendBody');
+  if(!data || !data.length){ body.innerHTML = row(4,'Aún no hay rendimientos repartidos.'); return; }
+  body.innerHTML = data.map(r => `<tr>
+    <td>${r.reparto?.periodo||'—'}</td>
+    <td>${r.reparto?.activo?.nombre||'—'}</td>
+    <td>${r.fracciones}</td>
+    <td>${COP(r.monto)}</td>
+  </tr>`).join('');
+}
+
+// ---------- helpers de render ----------
+function assetCard(a, rows){
+  const el = document.createElement('div'); el.className='asset';
+  const ph = document.createElement('div'); ph.className='ph';
+  if(a.imagen_url) ph.style.backgroundImage = `url('${a.imagen_url}')`;
+  const tag = document.createElement('span'); tag.className='tag'; tag.textContent = VERT[a.vertical]||a.vertical;
+  ph.appendChild(tag);
+  const body = document.createElement('div'); body.className='body';
+  body.innerHTML = `<h3>${a.nombre}</h3><div class="loc">${a.ubicacion||''}</div>` +
+    rows.map(([k,v]) => `<div class="rowline"><span class="stone">${k}</span><span>${v}</span></div>`).join('');
+  el.append(ph, body);
+  return el;
+}
+const row = (cols,txt) => `<tr><td colspan="${cols}" style="color:var(--stone);text-align:center;padding:20px">${txt}</td></tr>`;
+const fecha = s => new Date(s).toLocaleDateString('es-CO',{day:'2-digit',month:'short',year:'numeric'});
+</script>
+</body>
+</html>
