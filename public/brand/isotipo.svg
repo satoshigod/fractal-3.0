@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Fractal — un todo dividido en fracciones; una es tuya (oro sólido) -->
+  <g fill="none" stroke="#b8935a" stroke-width="6">
+    <rect x="100" y="100" width="92" height="92"/>
+    <rect x="100" y="208" width="92" height="92"/>
+    <rect x="208" y="208" width="92" height="92"/>
+  </g>
+  <rect x="208" y="100" width="92" height="92" fill="#b8935a"/>
+</svg>

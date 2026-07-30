@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0d0d0b"/>
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#2a2620" stroke-width="2"/>
+  <g fill="none" stroke="#b8935a" stroke-width="7">
+    <rect x="500" y="150" width="70" height="70"/>
+    <rect x="500" y="234" width="70" height="70"/>
+    <rect x="584" y="234" width="70" height="70"/>
+  </g>
+  <rect x="584" y="150" width="70" height="70" fill="#b8935a"/>
+  <text x="600" y="420" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="76" font-weight="500" letter-spacing="10"><tspan fill="#f5f0e8">VIVE </tspan><tspan fill="#b8935a">FRACTAL</tspan></text>
+  <text x="600" y="475" text-anchor="middle" font-family="'DM Sans',system-ui,sans-serif" font-size="26" letter-spacing="2" fill="#7a7468">Copropiedad fraccionada de activos de lujo · Colombia</text>
+</svg>
