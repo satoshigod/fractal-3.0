@@ -38,6 +38,9 @@ input:focus,select:focus{border-color:var(--gold)}
 .login .btn{width:100%;margin-top:22px;padding:12px}
 .msg{font-size:13px;padding:10px 12px;border-radius:2px;margin-top:14px}
 .msg.err{background:rgba(181,106,90,.12);border:1px solid var(--err);color:#e0b3aa}
+.msg.ok{background:rgba(90,138,106,.12);border:1px solid var(--ok);color:#a9d0b6}
+.switch{text-align:center;margin-top:16px;font-size:13px;color:var(--stone)}
+.switch a{cursor:pointer}
 .demo{margin-top:22px;border-top:1px solid var(--line);padding-top:16px;font-size:11.5px;color:var(--stone)}
 .demo b{color:var(--gold-l);font-weight:500}
 .demo .row{display:flex;justify-content:space-between;padding:3px 0;cursor:pointer}
