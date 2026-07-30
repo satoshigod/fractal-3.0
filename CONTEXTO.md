@@ -129,6 +129,12 @@ el modelo real y construir C2 (calendario + cotizadores) sobre él.
 10. **Verificar que el estado de infra se asentó antes de operar sobre él.** (Lección: una
     migración no persistió porque se aplicó mientras la restauración de Supabase aún no
     terminaba; se confirmó consultando la base en vivo, no confiando en el "éxito".)
+11. **Un "proyecto"/"app" es una app en el stack establecido (Next.js), NO archivos HTML
+    sueltos.** (Lección cara de esta sesión: se empezó haciendo paneles HTML de un archivo
+    cuando el entregable real era una app Next.js como ESCALA — se perdió mucho tiempo y ni
+    se sabía qué se había construido hasta que el usuario corrigió.) Antes de construir:
+    entender y confirmar el formato del entregable, leer cómo está hecho el proyecto hermano
+    (ESCALA) y replicar su stack (Next.js App Router + Supabase + Vercel), no inventar HTML.
 
 ## Convenciones que ya costaron errores
 
