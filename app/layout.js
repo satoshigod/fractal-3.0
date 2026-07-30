@@ -1,8 +1,20 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'Vive Fractal · Plataforma',
-  description: 'Copropiedad fraccionada de activos de lujo',
+  title: 'Vive Fractal · Copropiedad',
+  description: 'Copropiedad fraccionada de activos de lujo · Colombia',
+  icons: {
+    icon: [
+      { url: '/brand/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/brand/app-icon.png',
+  },
+  openGraph: {
+    title: 'Vive Fractal · Copropiedad',
+    description: 'Segundo hogar. Activo real. Copropiedad fraccionada en Colombia.',
+    images: ['/brand/og-image.png'],
+  },
 }
 
 export default function RootLayout({ children }) {

@@ -118,3 +118,19 @@ tr:last-child td{border-bottom:none}
 .hnum{color:var(--gold-l);font-size:11px;letter-spacing:.04em;min-width:38px;padding-top:1px}
 .foot{text-align:center;color:var(--stone);font-size:12.5px;margin-top:28px}
 .foot b{color:var(--gold-l);font-weight:500}
+
+/* /desarrollo — tabs, cards, lecciones */
+.dtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dtabs{display:flex;gap:6px}
+.dtabs button{font-family:var(--sans);font-size:13px;letter-spacing:.03em;color:var(--stone);background:transparent;border:1px solid var(--line);padding:7px 16px;border-radius:20px;cursor:pointer}
+.dtabs button.on{color:var(--gold-l);border-color:var(--gold)}
+.dtabs button:hover{color:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0 14px}
+.cards .c{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 14px;text-align:center}
+.cards .cv{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--cream);line-height:1.1}
+.cards .cv.ok{color:var(--ok)} .cards .cv.warn{color:var(--warn)} .cards .cv.info{color:var(--info)}
+.cards .ck{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:8px}
+.lec{display:flex;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:16px 20px;margin-bottom:10px}
+.lnum{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold);min-width:42px}
+.lt{font-size:15px;color:var(--cream)} .ld{font-size:13px;color:var(--stone);margin-top:4px}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.dhead h1{font-size:30px}}
