@@ -2,6 +2,7 @@
 // ROADMAP FRACTAL — Capas permanentes y TRANSVERSALES (mismo formato que ESCALA).
 // Cualquier funcionalidad cabe en una capa; si no cabe, es señal de una capa nueva.
 import { useState } from 'react'
+import { SEGMENTOS_ROLES } from '@/lib/segmentosRoles'
 
 const COP = n => new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(n||0)
 
@@ -16,6 +17,9 @@ const CAPAS = [
       {num:'C0.5', done:true, nombre:'Fórmulas puras separadas del acceso a datos (lib/dominio: puntos, liquidación Origen) con tests unitarios (node --test).'},
       {num:'C0.6', done:false, nombre:'CI que verifique el build en cada push/PR (GitHub Actions), para que un build roto nunca llegue a producción.'},
       {num:'C0.7', done:true, nombre:'Manual de marca + favicons/isotipo de pestaña (public/brand/) en sitio y app.'},
+      {num:'C0.8', done:false, nombre:'Componentes base reutilizables (components/) extraídos del diseño real, con la paleta centralizada.'},
+      {num:'C0.9', done:false, nombre:'Documentación viva en /docs (arquitectura, base de datos, convenciones que ya costaron bugs) con datos medidos del repo.'},
+      {num:'C0.10', done:false, nombre:'Prueba de humo automatizada tras cada deploy: navegador headless que carga las páginas críticas y golpea las APIs con datos reales.'},
     ]},
   { id:'C1', titulo:'Infraestructura', estado:'hecho', valor_total:12000000, valor_hecho:9500000,
     descripcion:'El andamiaje sobre el que corre el producto: base de datos, autenticación, almacenamiento, seguridad.',
@@ -147,12 +151,14 @@ export default function Desarrollo() {
           <div className="dtabs">
             <button className={tab==='roadmap'?'on':''} onClick={()=>setTab('roadmap')}>Roadmap</button>
             <button className={tab==='lecciones'?'on':''} onClick={()=>setTab('lecciones')}>Lecciones</button>
+            <button className={tab==='segmentos'?'on':''} onClick={()=>setTab('segmentos')}>Segmentos</button>
           </div>
         </div>
-        <h1>{tab==='roadmap'?'Roadmap estratégico':'Lecciones'}</h1>
+        <h1>{tab==='roadmap'?'Roadmap estratégico':tab==='lecciones'?'Lecciones':'Segmentos por rol'}</h1>
         <p className="sub">{tab==='roadmap'
           ? 'Capas permanentes y transversales — la guía maestra para cualquier proyecto. Toda funcionalidad pertenece a una capa; lo que no cabe revela una capa nueva.'
-          : 'Cada error que enseñó algo transferible, destilado como regla. Se aplican a Fractal y a cualquier proyecto del ecosistema.'}</p>
+          : tab==='lecciones' ? 'Cada error que enseñó algo transferible, destilado como regla. Se aplican a Fractal y a cualquier proyecto del ecosistema.'
+          : 'El trabajo que cada tipo de usuario realiza en la plataforma, organizado en segmentos y tareas.'}</p>
 
         {tab==='roadmap' && (<>
           <div className="cards">
@@ -191,6 +197,23 @@ export default function Desarrollo() {
               <div className="lcaso"><b>Caso:</b> {l.caso}</div>
               <div className="lregla"><b>Regla:</b> {l.regla}</div>
             </div>
+          </div>
+        ))}
+        {tab==='segmentos' && Object.entries(SEGMENTOS_ROLES).map(([rol,segs])=>(
+          <div className="cap" key={rol}>
+            <div className="caphead" onClick={()=>setAbierta(abierta===rol?null:rol)}>
+              <span className="capid" style={{fontSize:18}}>{rol}</span>
+              <div className="capmeta"><div className="capdesc">{Object.keys(segs).length} segmentos · {Object.values(segs).reduce((a,t)=>a+t.length,0)} tareas</div></div>
+              <span className="tri" style={{transform:abierta===rol?'rotate(90deg)':'none'}}>›</span>
+            </div>
+            {abierta===rol && <div className="segbody">{Object.entries(segs).map(([seg,tareas])=>(
+              <div className="seg" key={seg}>
+                <div className="segname">{seg}</div>
+                <ul className="segtareas">{tareas.map((t,i)=>(
+                  <li key={i}><span className="segt">{t.nombre}</span><span className="segcat">{t.categoria}</span><div className="segd">{t.descripcion}</div></li>
+                ))}</ul>
+              </div>
+            ))}</div>}
           </div>
         ))}
         <p className="foot">Fuente del alcance: <b>MODELO.md</b> · Reglas y lecciones: <b>CONTEXTO.md</b>. Documento vivo — se actualiza al cerrar cada fase.</p>

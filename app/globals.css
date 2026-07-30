@@ -142,3 +142,16 @@ tr:last-child td{border-bottom:none}
 .lcaso{font-size:12.5px;color:var(--stone);margin-top:6px}
 .lregla{font-size:13px;color:var(--cream);margin-top:5px}
 .lcaso b,.lregla b{color:var(--gold-l);font-weight:500}
+
+
+/* /desarrollo — segmentos */
+.segbody{padding:4px 20px 18px 84px;border-top:1px solid var(--line)}
+.seg{margin-top:14px}
+.seg:first-child{margin-top:6px}
+.segname{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.segtareas{list-style:none;margin:0;padding:0}
+.segtareas li{padding:9px 0;border-top:1px solid rgba(42,38,32,.6)}
+.segtareas li:first-child{border-top:none}
+.segt{font-size:14px;color:var(--cream)}
+.segcat{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin-left:10px}
+.segd{font-size:12.5px;color:var(--stone);margin-top:3px}
