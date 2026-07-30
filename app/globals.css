@@ -134,3 +134,11 @@ tr:last-child td{border-bottom:none}
 .lnum{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--gold);min-width:42px}
 .lt{font-size:15px;color:var(--cream)} .ld{font-size:13px;color:var(--stone);margin-top:4px}
 @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.dhead h1{font-size:30px}}
+
+
+.lec .lbody{flex:1}
+.lhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.lcat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:20px;padding:2px 9px;white-space:nowrap}
+.lcaso{font-size:12.5px;color:var(--stone);margin-top:6px}
+.lregla{font-size:13px;color:var(--cream);margin-top:5px}
+.lcaso b,.lregla b{color:var(--gold-l);font-weight:500}

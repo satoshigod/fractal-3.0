@@ -96,17 +96,30 @@ const CAPAS = [
 ]
 
 const LECCIONES = [
-  {n:'L1',  t:'Verificar antes de guardar, siempre por separado', d:'Construir → ver que pasa → recién ahí guardar. Nunca encadenar construir-guardar-publicar en un solo paso: si algo falla en medio, se despliega roto.'},
-  {n:'L2',  t:'Consultar el esquema, nunca asumirlo', d:'Antes de leer o escribir una tabla, mirar sus columnas y restricciones reales. El código y la migración son un solo cambio, no dos.'},
-  {n:'L3',  t:'Dinero: separar cada evento', d:'informado → comprometido → ejecutado → confirmado. El "recibido" (la fracción asignada) solo ocurre al confirmar, no cuando alguien lo anuncia.'},
-  {n:'L4',  t:'Nunca silenciar errores en operaciones sensibles', d:'Leer la respuesta y verificar el resultado antes de dar algo por hecho. Un catch vacío en algo que mueve dinero convierte un fallo en un silencio.'},
-  {n:'L5',  t:'No romper lo que ya funciona', d:'Al tocar una página, verificar que sus controles y correos sigan vivos, y partir siempre del archivo bueno. (Lección cara: se dañaron calculadoras y se borraron correos.)'},
-  {n:'L6',  t:'Consistencia visible', d:'Un solo set de tokens y un solo nombre por cosa que ve el usuario. Los identificadores internos pueden variar; las etiquetas visibles no.'},
-  {n:'L7',  t:'Secretos fuera del repo', d:'La clave pública va protegida por RLS; las llaves de servicio y los tokens nunca se versionan, se usan en memoria y se rotan si se exponen.'},
-  {n:'L8',  t:'Leer el modelo real antes de construir', d:'No asumir el dominio. Se construyó una app genérica asumiendo, sin leer Origen y Destino; el resultado no tenía calendario, puntos ni los perfiles reales.'},
-  {n:'L9',  t:'Verificar una capacidad antes de afirmarla', d:'Se dijo "no hay acceso a GitHub" sin comprobar; había red y bastaba un token. Revisar entorno, herramientas y credenciales antes de concluir.'},
-  {n:'L10', t:'Verificar que la infra se asentó antes de operar', d:'Una migración no persistió porque se aplicó mientras Supabase aún restauraba; se confirmó consultando la base en vivo, no confiando en el "éxito".'},
-  {n:'L11', t:'Un "proyecto" es una app en el stack establecido, no HTML suelto', d:'Se empezó con paneles HTML de un archivo cuando el entregable real era una app Next.js como ESCALA. Leer cómo está hecho el proyecto hermano y replicar su stack antes de escribir nada.'},
+  {n:'L1', cat:'Verificación', t:'Subir sin verificar que compile', caso:'En Fractal se corre `npm run build` antes de cada push; valida el esquema y compila las rutas.', regla:'Verificar el build primero y mostrar el resultado. Commitear solo si pasó. Nunca encadenar build-commit-push.'},
+  {n:'L2', cat:'Producto', t:'Construir la pantalla y no el camino a ella', caso:'Se hicieron el login y los seis paneles, pero el sitio no tenía cómo llegar a ellos; se agregó el botón "Ingresar" → /plataforma.', regla:'Una pantalla no está lista hasta que se pueda llegar navegando. La ruta de entrada es parte de la tarea.'},
+  {n:'L3', cat:'Datos', t:'Asumir el esquema en vez de consultarlo', caso:'Antes de cada operación se consultan las columnas y constraints reales de la base (perfiles, activos, fracciones).', regla:'Antes de un insert/update, consultar columnas y constraints reales. Nunca catch vacío en operaciones de dinero.'},
+  {n:'L4', cat:'Datos', t:'Cambiar el código sin migrar la base que lo valida', caso:'Los estados (enums/CHECK) viven en la base y como valores exactos en el front; cambian en el mismo commit.', regla:'Al cambiar un valor que la base valida (enum, CHECK), migrar también la base. Código y datos son un solo cambio.'},
+  {n:'L5', cat:'Lenguaje', t:'Unificar un nombre y dejar duplicados visibles', caso:'Al renombrar homes→destino se actualizaron todos los enlaces y se dejó una redirección 301, sin duplicados visibles.', regla:'Al unificar nombres, verificar que no queden dos entradas con la misma etiqueta visible.'},
+  {n:'L6', cat:'Producto', t:'Editar una página sin verificar que sus botones funcionen', caso:'El botón de WhatsApp y los CTA del sitio deben apuntar a algo real (wa.me/573005485019), no a un número de relleno.', regla:'Al tocar una página, verificar que sus enlaces y botones lleven a algo real. Reportar los rotos o de prueba.'},
+  {n:'L7', cat:'Modelo', t:'Confundir informar con pagar', caso:'El flujo de compra separa informado → comprometido → ejecutado → confirmado; la fracción nace solo al confirmar (RPC atómico).', regla:'Al modelar dinero, separar cada evento: informar, comprometerse, pagar y confirmar son cosas distintas.'},
+  {n:'L8', cat:'Duplicación', t:'El mismo arreglo no llega a todas las copias', caso:'El cliente Supabase del servidor y la autorización de rol se centralizaron (lib/supabase-admin.js, lib/auth.js) en vez de repetirse por ruta.', regla:'Cuando un patrón se repite más de 3 veces, extraerlo. La duplicación cuesta que los arreglos no se propaguen.'},
+  {n:'L9', cat:'Proceso', t:'Trabajar sin ver la base de datos', caso:'Fractal se construyó con el conector de Supabase activo desde el inicio; el esquema y los datos se verifican en vivo.', regla:'Dar acceso a la base desde el día 1. Lo que no se puede verificar se asume, y las suposiciones se pagan caro.'},
+  {n:'L10', cat:'Ritmo', t:'Velocidad que se paga después', caso:'Cada avance sin verificación produce corrección al día siguiente.', regla:'Decir explícitamente si se prefiere velocidad o verificación. "Sigue" se interpreta como avanzar sin verificar.'},
+  {n:'L11', cat:'Arquitectura', t:'No definir los cimientos antes de construir encima', caso:'Se hizo primero el esquema del modelo real (C1) y los tokens/dominio antes de las pantallas (C2).', regla:'Definir componentes base, tokens y esquema al inicio. Retrofitearlos después cuesta multiplicado por pantalla.'},
+  {n:'L12', cat:'Refactor', t:'Migrar por detección superficial produce falsos positivos', caso:'El criterio de reemplazo es qué ES el elemento, no que comparta un valor de estilo.', regla:'En un refactor, migrar por semántica, no por coincidencia. Revisar cada candidato; no migrar de más.'},
+  {n:'L13', cat:'Método', t:'Un archivo maestro de contexto que sobreviva a la sesión', caso:'CONTEXTO.md concentra qué es, stack, IDs, estado y reglas; MODELO.md el dominio. Se leen al empezar cada sesión.', regla:'Todo proyecto arranca con un archivo maestro versionado. Si hay dos fuentes de verdad, declarar cuál manda.'},
+  {n:'L14', cat:'Método', t:'Conectar las herramientas reales desde el día 1', caso:'Repo (GitHub), base (Supabase) y deploy (Vercel) conectados; los tokens se usan en memoria y se rotan si se exponen.', regla:'Conectar repo + base + deploy desde el inicio. Los secretos nunca se versionan y se rotan si se exponen.'},
+  {n:'L15', cat:'Método', t:'Un plan de desarrollo estructurado, no una lista de tareas', caso:'El desarrollo se organiza en capas C0–C11 (esta misma página), transversales a cualquier proyecto.', regla:'El trabajo se organiza en capas de propósito. Lo que no cabe en ninguna revela una capa faltante.'},
+  {n:'L16', cat:'Verificación', t:'Que compile no significa que funcione', caso:'El esquema se aplicó y se ejercitó contra la base real (crear compra, confirmar, ver la fracción nacer); no bastó con que compilara.', regla:'Compilar es necesario, no suficiente. La verificación de ejecución debe estar automatizada, no depender de acordarse.'},
+  {n:'L17', cat:'Refactor', t:'Un refactor se mide por su objetivo, no por dejar cero coincidencias', caso:'El sitio de marketing y la app son familias distintas: no comparten componentes, cada una tiene los suyos.', regla:'Un refactor está completo cuando cumple su objetivo, no cuando no queda ni una coincidencia textual.'},
+  {n:'L18', cat:'Verificación', t:'Para testear lógica acoplada a la base, separar la fórmula del acceso', caso:'lib/dominio (puntos, liquidación Origen) son funciones puras con tests (node --test) que corren sin Supabase.', regla:'La fórmula (cálculo) se separa del acceso a datos y se cubre con tests rápidos sin depender de la base.'},
+  {n:'L19', cat:'Arquitectura', t:'Centralizar no es lo mismo que migrar', caso:'Los tokens de diseño y los clientes/helpers son el lugar único; el código nuevo los adopta desde el día uno.', regla:'Crear el mecanismo central entrega la mayor parte del valor; la migración del código viejo es incremental.'},
+  {n:'L20', cat:'Método', t:'Leer el modelo real antes de construir — no asumir el dominio', caso:'Se construyó una app genérica de inversión asumiendo, sin leer Origen y Destino: no tenía calendario, puntos ni los perfiles reales. Hubo que rehacerla sobre MODELO.md.', regla:'El dominio se lee del código/contenido y se destila en un documento, antes de construir. No inventar el modelo.'},
+  {n:'L21', cat:'Proceso', t:'Verificar una capacidad antes de afirmar que existe o no', caso:'Se dijo "no hay acceso a GitHub" sin comprobar; había red y bastaba un token.', regla:'Revisar entorno, herramientas y credenciales antes de concluir que algo no se puede.'},
+  {n:'L22', cat:'Datos', t:'Verificar que la infra se asentó antes de operar', caso:'Una migración no persistió porque se aplicó mientras Supabase aún restauraba; se confirmó consultando la base en vivo.', regla:'Confirmar que el estado de infraestructura se asentó consultándolo en vivo, no confiando en el "éxito".'},
+  {n:'L23', cat:'Seguridad', t:'Nunca exponer credenciales al público', caso:'Las cuentas demo, con contraseña, quedaron visibles en la página de login pública; se quitaron y se rotaron todas las contraseñas.', regla:'Ninguna credencial va en una página pública ni en el repo. Si se expone, se rota de inmediato.'},
+  {n:'L24', cat:'Método', t:'Un "proyecto" es una app en el stack establecido, no HTML suelto', caso:'Se empezó con paneles HTML de un archivo cuando el entregable real era una app Next.js como ESCALA.', regla:'Al pedir un proyecto/app, leer cómo está hecho el proyecto hermano y replicar su stack (Next.js) antes de escribir nada.'},
 ]
 
 const EST = { hecho:['Hecho','ok'], progreso:['En progreso','prog'], pendiente:['Pendiente','todo'] }
@@ -171,8 +184,13 @@ export default function Desarrollo() {
             </div>
           )
         }) : LECCIONES.map(l=>(
-          <div className="lec" key={l.n}><span className="lnum">{l.n}</span>
-            <div><div className="lt">{l.t}</div><div className="ld">{l.d}</div></div>
+          <div className="lec" key={l.n}>
+            <span className="lnum">{l.n}</span>
+            <div className="lbody">
+              <div className="lhead"><span className="lt">{l.t}</span><span className="lcat">{l.cat}</span></div>
+              <div className="lcaso"><b>Caso:</b> {l.caso}</div>
+              <div className="lregla"><b>Regla:</b> {l.regla}</div>
+            </div>
           </div>
         ))}
         <p className="foot">Fuente del alcance: <b>MODELO.md</b> · Reglas y lecciones: <b>CONTEXTO.md</b>. Documento vivo — se actualiza al cerrar cada fase.</p>
