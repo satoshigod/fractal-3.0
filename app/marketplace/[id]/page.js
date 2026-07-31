@@ -37,6 +37,7 @@ export default function Ficha() {
   const imgs = a.imagenes?.length ? a.imagenes : ['/images/finca-hero.jpg']
   const tarifa = t => t === 'weekend' ? 1200000 : 800000
   const ingreso = f => Math.round(f.dias_anio * 0.5 * tarifa(f.tipo))
+  const semanas = dias => Math.round(dias / 7 * 10) / 10
 
   return (<>
     <Nav perfil={perfil} />
@@ -48,16 +49,21 @@ export default function Ficha() {
       {imgs.length > 1 && <div className="thumbs">{imgs.map((im, i) => <div key={i} className={'thumb' + (i === img ? ' on' : '')} style={{ backgroundImage: `url(${im})` }} onClick={() => setImg(i)} />)}</div>}
 
       <h1 style={{ marginTop: 18 }}>{a.nombre}</h1>
-      <p className="lead" style={{ marginBottom: 8 }}>{a.destino}</p>
-      <p style={{ color: 'var(--cream)', fontSize: 14, marginBottom: 22 }}>{a.descripcion}</p>
+      <p className="lead" style={{ marginBottom: 12 }}>{a.destino}{a.capacidad ? ` · para hasta ${a.capacidad} personas` : ''}</p>
+      <p style={{ color: 'var(--cream)', fontSize: 14.5, lineHeight: 1.7, marginBottom: 22 }}>{a.narrativa || a.descripcion}</p>
 
       <div className="facts">
         <div className="fact"><div className="fv">{a.m2}</div><div className="fk">m²</div></div>
         <div className="fact"><div className="fv">{a.habitaciones}</div><div className="fk">Habitaciones</div></div>
         <div className="fact"><div className="fv">{a.banos}</div><div className="fk">Baños</div></div>
-        <div className="fact"><div className="fv">{a.parqueaderos}</div><div className="fk">Parqueaderos</div></div>
+        <div className="fact"><div className="fv">{a.capacidad || a.parqueaderos}</div><div className="fk">{a.capacidad ? 'Personas' : 'Parqueaderos'}</div></div>
         <div className="fact"><div className="fv" style={{ color: 'var(--ok)' }}>{a.apreciacion_anual}%</div><div className="fk">Valorización/año</div></div>
       </div>
+
+      {a.destacados?.length > 0 && <>
+        <div className="eyebrow">Lo más destacado</div>
+        <div className="destacados">{a.destacados.map((x, i) => <div key={i} className="dest"><span className="dcheck">✓</span>{x}</div>)}</div>
+      </>}
 
       <div className="props">
         <div className="prop"><b>Usa y renta.</b> Reservas tus días con puntos y cedes los que no uses — el operador los renta y te paga.</div>
@@ -70,21 +76,41 @@ export default function Ficha() {
         <div className="amen">{a.amenidades.map((x, i) => <span key={i} className="amenpill">{x}</span>)}</div>
       </>}
 
+      {a.ficha_tecnica && Object.keys(a.ficha_tecnica).length > 0 && <>
+        <div className="eyebrow">Ficha técnica</div>
+        <div className="specgrid">{Object.entries(a.ficha_tecnica).map(([grupo, campos]) => (
+          <div className="spec" key={grupo}>
+            <div className="spech">{grupo}</div>
+            {Object.entries(campos).map(([k, v]) => (
+              <div className="specrow" key={k}><span className="s">{k}</span><span>{v}</span></div>
+            ))}
+          </div>
+        ))}</div>
+      </>}
+
+      {a.distancias?.length > 0 && <>
+        <div className="eyebrow">Ubicación y accesibilidad</div>
+        <div className="card" style={{ padding: '8px 20px' }}>
+          {a.distancias.map((x, i) => (
+            <div className="rowl" key={i}><span className="s">{x.lugar}</span><span>{x.tiempo}</span></div>
+          ))}
+        </div>
+        <p style={{ fontSize: 12, color: 'var(--stone)', marginTop: 8 }}>Mapa interactivo de la zona: próximamente.</p>
+      </>}
+
       <div className="eyebrow">Fracciones — desde {fmtCOP(desde)}</div>
       <div className="card"><table>
-        <thead><tr><th>Fracción</th><th>Tipo</th><th>Días/año</th><th>Precio</th><th>Cuota/mes</th><th>Ingreso pot./año</th><th></th></tr></thead>
+        <thead><tr><th>Fracción</th><th>Tipo</th><th>Acceso/año</th><th>Precio</th><th>Cuota/mes</th><th>Ingreso pot./año</th><th></th></tr></thead>
         <tbody>{fr.map(f => (
           <tr key={f.id} style={{ opacity: f.estado === 'disponible' ? 1 : 0.45 }}>
-            <td>{f.slot}</td><td>{cap(f.tipo)}</td><td>{f.dias_anio}</td><td>{fmtCOP(f.precio)}</td><td>{fmtCOP(f.costo_mensual)}</td>
+            <td>{f.slot}</td><td>{cap(f.tipo)}</td><td>{f.dias_anio} noches · ~{semanas(f.dias_anio)} sem</td><td>{fmtCOP(f.precio)}</td><td>{fmtCOP(f.costo_mensual)}</td>
             <td style={{ color: 'var(--ok)' }}>~{fmtCOP(ingreso(f))}</td>
             <td>{f.estado === 'disponible'
               ? <button className="btn sm primary" disabled={comprando === f.id} onClick={() => invertir(f)}>{comprando === f.id ? '...' : 'Invertir'}</button>
               : <span className="pill">Vendida</span>}</td></tr>
         ))}</tbody>
       </table></div>
-
-      <div className="eyebrow" style={{ marginTop: 24 }}>Financiación</div>
-      <p style={{ fontSize: 13.5, color: 'var(--cream)' }}>Compra ahora, paga después: <b style={{ color: 'var(--gold-l)' }}>entrada del 8%</b> y el saldo con plan de pago. Ejemplo (fracción desde {fmtCOP(desde)}): entrada <b>{fmtCOP(desde * 0.08)}</b> + saldo <b>{fmtCOP(desde * 0.92)}</b>.</p>
+      {a.incluye?.length > 0 && <p style={{ fontSize: 12.5, color: 'var(--stone)', marginTop: 10 }}><b style={{ color: 'var(--gold-l)' }}>El precio de la fracción incluye:</b> {a.incluye.join(' · ')}.</p>}
 
       <div className="eyebrow" style={{ marginTop: 24 }}>Costos y transparencia</div>
       <div className="card" style={{ padding: '16px 20px' }}>
@@ -110,6 +136,9 @@ export default function Ficha() {
         <div className="prop"><b>Propiedad escriturada.</b> Tu fracción queda a tu nombre y puedes revenderla.</div>
         <div className="prop"><b>Comunidad curada.</b> Máximo 8 familias por propiedad, con reglas justas de calendario.</div>
       </div>
+
+      <div className="eyebrow" style={{ marginTop: 24 }}>Financiación</div>
+      <p style={{ fontSize: 13.5, color: 'var(--cream)' }}>Compra ahora, paga después: <b style={{ color: 'var(--gold-l)' }}>entrada del 8%</b> y el saldo con plan de pago. Ejemplo (fracción desde {fmtCOP(desde)}): entrada <b>{fmtCOP(desde * 0.08)}</b> + saldo <b>{fmtCOP(desde * 0.92)}</b>.</p>
 
       <div style={{ marginTop: 22, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
         <a className="btn primary" href={`https://wa.me/573005485019?text=${encodeURIComponent('Hola, quiero agendar una visita a ' + a.nombre)}`} target="_blank" rel="noreferrer">Agendar visita</a>
