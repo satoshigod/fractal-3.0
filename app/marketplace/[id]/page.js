@@ -86,9 +86,38 @@ export default function Ficha() {
       <div className="eyebrow" style={{ marginTop: 24 }}>Financiación</div>
       <p style={{ fontSize: 13.5, color: 'var(--cream)' }}>Compra ahora, paga después: <b style={{ color: 'var(--gold-l)' }}>entrada del 8%</b> y el saldo con plan de pago. Ejemplo (fracción desde {fmtCOP(desde)}): entrada <b>{fmtCOP(desde * 0.08)}</b> + saldo <b>{fmtCOP(desde * 0.92)}</b>.</p>
 
+      <div className="eyebrow" style={{ marginTop: 24 }}>Costos y transparencia</div>
+      <div className="card" style={{ padding: '16px 20px' }}>
+        <p style={{ fontSize: 13, color: 'var(--stone)', marginTop: 0 }}>Como copropietario pagas <b style={{ color: 'var(--gold-l)' }}>solo tu parte</b>, pro-rata y sin sobreprecio. La cuota mensual de una fracción de fin de semana se compone así:</p>
+        <div className="rowl"><span className="s">Operación (mayordomo, servicios, mantenimiento, seguros, impuestos)</span><span>~{fmtCOP(1463556)}</span></div>
+        <div className="rowl"><span className="s">Fondos (reposición + contingencia)</span><span>~{fmtCOP(137500)}</span></div>
+        <div className="rowl"><span className="s">Gestión Fractal (0.35%/año)</span><span>{fmtCOP(175000)}</span></div>
+        <div className="rowl"><span className="s" style={{ color: 'var(--cream)' }}>Total cuota fracción A/B</span><span style={{ color: 'var(--cream)' }}>{fmtCOP(1776056)}</span></div>
+        <p style={{ fontSize: 12, color: 'var(--stone)', marginTop: 10, marginBottom: 0 }}>Costos únicos al comprar: escrituración e impuestos de registro. Entrada del 8% + saldo con plan de pago.</p>
+      </div>
+
+      <div className="eyebrow" style={{ marginTop: 24 }}>Cómo funciona la compra</div>
+      <div className="pasos">
+        <div className="paso"><span className="pn">1</span><div><b>Explora y agenda</b><br />Mira la ficha y agenda una visita presencial u online.</div></div>
+        <div className="paso"><span className="pn">2</span><div><b>Reserva tu fracción</b><br />Eliges el slot (A/B o WD) y pagas la entrada del 8%.</div></div>
+        <div className="paso"><span className="pn">3</span><div><b>Firma y escritura</b><br />Formalizas la copropiedad ante notaría; el saldo con plan de pago.</div></div>
+        <div className="paso"><span className="pn">4</span><div><b>Usa y renta</b><br />Entras a tu calendario, reservas días y cedes los que no uses.</div></div>
+      </div>
+
+      <div className="eyebrow" style={{ marginTop: 24 }}>Respaldo</div>
+      <div className="props">
+        <div className="prop"><b>Gestión profesional.</b> Un operador se encarga de todo; tú solo disfrutas o rentas.</div>
+        <div className="prop"><b>Propiedad escriturada.</b> Tu fracción queda a tu nombre y puedes revenderla.</div>
+        <div className="prop"><b>Comunidad curada.</b> Máximo 8 familias por propiedad, con reglas justas de calendario.</div>
+      </div>
+
       <div style={{ marginTop: 22, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
         <a className="btn primary" href={`https://wa.me/573005485019?text=${encodeURIComponent('Hola, quiero agendar una visita a ' + a.nombre)}`} target="_blank" rel="noreferrer">Agendar visita</a>
         <a className="btn" href="/marketplace">Ver otras propiedades</a>
+      </div>
+
+      <div style={{ marginTop: 28, padding: '14px 16px', border: '1px solid var(--line)', borderRadius: 6, fontSize: 11.5, color: 'var(--stone)', lineHeight: 1.6 }}>
+        <b style={{ color: 'var(--stone)' }}>Aviso legal.</b> Vive Fractal es un modelo de <b>copropiedad con propiedad real escriturada</b>, no un timeshare ni un producto de inversión regulado. Esta información es ilustrativa y no vinculante; precios, imágenes y proyecciones pueden variar. No constituye asesoría financiera ni una oferta de valores. La copropiedad implica riesgos, incluida la <b>iliquidez</b>: revender tu fracción puede tomar tiempo. El ingreso por días cedidos depende de la ocupación y no está garantizado. Consulta los términos completos antes de comprar.
       </div>
     </main>
   </>)
