@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Nav from '@/components/Nav'
 import { api, requerirSesion, RUTA_ROL } from '@/lib/cliente'
+import { supabase } from '@/lib/supabase'
 import { fmtCOP, cap, ROL_LABEL } from '@/lib/format'
 
 export default function Admin() {
@@ -11,6 +12,12 @@ export default function Admin() {
     if (s.perfil?.rol !== 'admin') { window.location.href = RUTA_ROL[s.perfil?.rol] || '/plataforma'; return }
     setPerfil(s.perfil); setD(await api('/api/admin')); setLoading(false)
   })() }, [])
+  async function cambiarRol(id, rol){
+    const { error } = await supabase.from('perfiles').update({ rol }).eq('id', id)
+    if(error){ alert('No se pudo cambiar el rol: '+error.message); return }
+    setD(prev => ({ ...prev, perfiles: prev.perfiles.map(p => p.id===id ? { ...p, rol } : p) }))
+  }
+
   if (loading) return <div className="center">Cargando…</div>
   const { activos = [], fracciones = [], perfiles = [], solicitudes = [], cotizaciones = [] } = d
   return (<>
@@ -31,7 +38,7 @@ export default function Admin() {
         <tbody>{fracciones.map(f => <tr key={f.id}><td>{f.activo?.nombre || '—'}</td><td>{f.slot}</td><td>{cap(f.tipo)}</td><td>{(f.pct * 100).toFixed(2)}%</td><td>{fmtCOP(f.precio)}</td><td><span className={'pill ' + (f.estado === 'vendida' ? 'ok' : '')}>{cap(f.estado)}</span></td></tr>)}</tbody></table></div>
       <div className="eyebrow">Usuarios</div>
       <div className="card"><table><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>KYC</th></tr></thead>
-        <tbody>{perfiles.map(p => <tr key={p.id}><td>{p.nombre}</td><td>{p.email}</td><td><span className="pill gold">{ROL_LABEL[p.rol] || p.rol}</span></td><td>{cap(p.kyc_estado)}</td></tr>)}</tbody></table></div>
+        <tbody>{perfiles.map(p => <tr key={p.id}><td>{p.nombre}</td><td>{p.email}</td><td><select value={p.rol} onChange={e=>cambiarRol(p.id, e.target.value)} style={{width:'auto',fontSize:'12px',padding:'5px 8px'}}>{['co_propietario','dueno','operador','asesor','inversionista','huesped','admin'].map(r=><option key={r} value={r}>{ROL_LABEL[r]||r}</option>)}</select></td><td>{cap(p.kyc_estado)}</td></tr>)}</tbody></table></div>
       <div className="eyebrow">Solicitudes</div>
       <div className="card"><table><thead><tr><th>Nombre</th><th>Producto</th><th>Perfil</th><th>Estado</th></tr></thead>
         <tbody>{solicitudes.length ? solicitudes.map(s => <tr key={s.id}><td>{s.nombre}</td><td>{cap(s.producto || '—')}</td><td>{cap(s.perfil || '—')}</td><td><span className="pill">{cap(s.estado)}</span></td></tr>) : <tr><td colSpan={4} className="empty">Sin leads.</td></tr>}</tbody></table></div>
