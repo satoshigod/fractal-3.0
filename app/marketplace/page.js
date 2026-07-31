@@ -1,63 +1,45 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Nav from '@/components/Nav'
-import { supabase } from '@/lib/supabase'
 import { api, requerirSesion } from '@/lib/cliente'
-import { fmtCOP, cap } from '@/lib/format'
+import { fmtCOP } from '@/lib/format'
 
 export default function Marketplace() {
   const [perfil, setPerfil] = useState(null)
   const [props, setProps] = useState([])
   const [loading, setLoading] = useState(true)
-  const [abierta, setAbierta] = useState(null)
-  const [comprando, setComprando] = useState(null)
-
-  async function cargar() { const d = await api('/api/marketplace'); setProps(d.propiedades || []) }
+  const [q, setQ] = useState('')
   useEffect(() => { (async () => {
     const s = await requerirSesion(); if (!s) return
-    setPerfil(s.perfil); await cargar(); setLoading(false)
+    setPerfil(s.perfil); const d = await api('/api/marketplace'); setProps(d.propiedades || []); setLoading(false)
   })() }, [])
-
-  async function invertir(fr, nombre) {
-    if (!confirm(`¿Invertir en la fracción ${fr.slot} de ${nombre} por ${fmtCOP(fr.precio)}?`)) return
-    setComprando(fr.id)
-    const { error } = await supabase.rpc('comprar_fraccion', { p_fraccion: fr.id })
-    setComprando(null)
-    if (error) { alert('No se pudo completar: ' + error.message); return }
-    alert('¡Listo! Tu fracción quedó registrada. La verás en "Mi copropiedad".')
-    window.location.href = '/co-propietario'
-  }
-
   if (loading) return <div className="center">Cargando…</div>
+  const filtradas = props.filter(p => !q || (p.nombre + ' ' + p.destino).toLowerCase().includes(q.toLowerCase()))
   return (<>
     <Nav perfil={perfil} />
     <main className="wrap">
       <h1>Marketplace</h1>
-      <p className="lead">Propiedades disponibles para invertir. Compra una fracción y conviértete en co-propietario.</p>
-      <div className="grid">
-        {props.map(p => {
-          const open = abierta === p.id
-          return (
-            <div className="tile" key={p.id} style={{ gridColumn: open ? '1 / -1' : 'auto' }}>
-              <h3>{p.nombre}</h3>
-              <div className="rowl" style={{ borderTop: 'none' }}><span className="s">Destino</span><span>{p.destino}</span></div>
-              <div className="rowl"><span className="s">Valor total</span><span>{fmtCOP(p.valor_total)}</span></div>
-              <div className="rowl"><span className="s">Fracciones libres</span><span>{p.fracciones.length} de 8</span></div>
-              <div className="rowl"><span className="s">Desde</span><span>{fmtCOP(p.desde)}</span></div>
-              <div style={{ marginTop: 12 }}>
-                <button className="btn sm" onClick={() => setAbierta(open ? null : p.id)}>{open ? 'Ocultar fracciones' : 'Ver fracciones e invertir'}</button>
-              </div>
-              {open && <div style={{ marginTop: 14 }}><table>
-                <thead><tr><th>Fracción</th><th>Tipo</th><th>Días/año</th><th>Precio</th><th>Cuota/mes</th><th></th></tr></thead>
-                <tbody>{p.fracciones.map(f => (
-                  <tr key={f.id}><td>{f.slot}</td><td>{cap(f.tipo)}</td><td>{f.dias_anio}</td><td>{fmtCOP(f.precio)}</td><td>{fmtCOP(f.costo_mensual)}</td>
-                    <td><button className="btn sm primary" disabled={comprando === f.id} onClick={() => invertir(f, p.nombre)}>{comprando === f.id ? '...' : 'Invertir'}</button></td></tr>
-                ))}</tbody></table></div>}
+      <p className="lead">Propiedades premium en copropiedad. Compra una fracción, úsala y renta los días que no uses.</p>
+      <input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar por destino…" style={{ maxWidth: 320, marginBottom: 22 }} />
+      <div className="mkgrid">
+        {filtradas.map(p => (
+          <a className="mkcard" key={p.id} href={`/marketplace/${p.id}`}>
+            <div className="mkimg" style={{ backgroundImage: `url(${p.imagenes?.[0] || '/images/finca-hero.jpg'})` }}>
+              {p.apreciacion_anual && <span className="mkbadge">▲ {p.apreciacion_anual}%/año</span>}
             </div>
-          )
-        })}
+            <div className="mkbody">
+              <div className="mkname">{p.nombre}</div>
+              <div className="mkdest">{p.destino}</div>
+              <div className="mkfacts">{p.m2} m² · {p.habitaciones} hab · {p.banos} baños</div>
+              <div className="mkfoot">
+                <div><div className="mkdesde">Desde</div><div className="mkprice">{fmtCOP(p.desde)}</div></div>
+                <div className="mklibres">{p.libres}/8 libres</div>
+              </div>
+            </div>
+          </a>
+        ))}
       </div>
-      {!props.length && <div className="empty">No hay propiedades disponibles por ahora.</div>}
+      {!filtradas.length && <div className="empty">No hay propiedades que coincidan.</div>}
     </main>
   </>)
 }

@@ -155,3 +155,33 @@ tr:last-child td{border-bottom:none}
 .segt{font-size:14px;color:var(--cream)}
 .segcat{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin-left:10px}
 .segd{font-size:12.5px;color:var(--stone);margin-top:3px}
+
+/* Marketplace — tarjetas y ficha */
+.mkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.mkcard{display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;text-decoration:none;color:var(--cream);transition:border-color .2s,transform .2s}
+.mkcard:hover{border-color:var(--gold);transform:translateY(-2px)}
+.mkimg{height:170px;background-size:cover;background-position:center;position:relative}
+.mkbadge{position:absolute;top:12px;left:12px;background:rgba(13,13,11,.82);border:1px solid var(--ok);color:#a9d0b6;font-size:11px;padding:4px 10px;border-radius:20px;backdrop-filter:blur(4px)}
+.mkbody{padding:14px 16px}
+.mkname{font-family:var(--serif);font-size:19px}
+.mkdest{font-size:12px;color:var(--stone);margin-top:2px}
+.mkfacts{font-size:12px;color:var(--gold-l);margin-top:8px}
+.mkfoot{display:flex;align-items:flex-end;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.mkdesde{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone)}
+.mkprice{font-family:var(--serif);font-size:19px;color:var(--cream)}
+.mklibres{font-size:11px;color:var(--stone)}
+
+.fichahero{height:340px;background-size:cover;background-position:center;border-radius:10px;margin-top:14px;position:relative;border:1px solid var(--line)}
+.thumbs{display:flex;gap:8px;margin-top:10px}
+.thumb{width:70px;height:52px;background-size:cover;background-position:center;border-radius:5px;border:1px solid var(--line);cursor:pointer;opacity:.6}
+.thumb.on{border-color:var(--gold);opacity:1}
+.facts{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px}
+.fact{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;text-align:center}
+.fact .fv{font-family:var(--serif);font-size:24px;color:var(--cream)}
+.fact .fk{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);margin-top:4px}
+.props{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:8px}
+.prop{background:rgba(184,147,90,.06);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--stone)}
+.prop b{color:var(--gold-l);font-weight:500}
+.amen{display:flex;flex-wrap:wrap;gap:8px}
+.amenpill{font-size:12px;color:var(--cream);border:1px solid var(--line);border-radius:20px;padding:6px 14px}
+@media(max-width:760px){.facts{grid-template-columns:repeat(3,1fr)}.fichahero{height:220px}}
