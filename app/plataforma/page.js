@@ -46,8 +46,10 @@ export default function Plataforma() {
         if (error) throw error
         if (data.session) { await irAPanel(data.user.id) }
         else {
-          setMsg({ tipo: 'ok', texto: 'Cuenta creada. Revisa tu correo para confirmarla y luego inicia sesión.' })
-          setModo('login')
+          // usuarios auto-confirmados: iniciar sesión directo
+          const { data: d2, error: e2 } = await supabase.auth.signInWithPassword({ email, password: pass })
+          if (!e2 && d2 && d2.session) { await irAPanel(d2.user.id) }
+          else { setMsg({ tipo: 'ok', texto: 'Cuenta creada. Inicia sesión con tu correo y contraseña.' }); setModo('login') }
         }
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({ email, password: pass })
