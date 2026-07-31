@@ -12,7 +12,9 @@ export default function Plataforma() {
   const [busy, setBusy] = useState(false)
 
   useEffect(() => {
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => { if (session) irAPanel(session.user.id) })
     supabase.auth.getSession().then(({ data: { session } }) => { if (session) irAPanel(session.user.id) })
+    return () => sub.subscription.unsubscribe()
   }, [])
 
   async function irAPanel(uid) {
@@ -34,7 +36,13 @@ export default function Plataforma() {
     setBusy(true); setMsg(null)
     try {
       if (modo === 'registro') {
-        const { data, error } = await supabase.auth.signUp({ email, password: pass, options: { data: { nombre } } })
+        const { data, error } = await supabase.auth.signUp({
+          email, password: pass,
+          options: {
+            data: { nombre },
+            emailRedirectTo: typeof window !== 'undefined' ? window.location.origin + '/plataforma' : undefined,
+          },
+        })
         if (error) throw error
         if (data.session) { await irAPanel(data.user.id) }
         else {
