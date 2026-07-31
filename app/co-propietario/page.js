@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Nav from '@/components/Nav'
 import { api, requerirSesion, RUTA_ROL } from '@/lib/cliente'
+import { supabase } from '@/lib/supabase'
 import { fmtCOP, fecha, cap } from '@/lib/format'
 import { puntosNoche } from '@/lib/dominio/puntos'
 
@@ -47,6 +48,12 @@ export default function CoPropietario() {
     cargar()
   }
 
+  async function pagarCuota(id){
+    const { error } = await supabase.rpc('pagar_cargo', { p_cargo: id })
+    if(error){ alert('No se pudo pagar: '+error.message); return }
+    cargar()
+  }
+
   return (<>
     <Nav perfil={perfil} />
     <main className="wrap">
@@ -58,6 +65,31 @@ export default function CoPropietario() {
         <div className="stat"><div className="k">Costo mensual</div><div className="v"><small>{fmtCOP(costoMes)}</small></div></div>
         <div className="stat"><div className="k">Ingreso cedido</div><div className="v"><small>{fmtCOP(ingreso)}</small></div></div>
       </div>
+
+      <div className="eyebrow">Estado de cuenta</div>
+      <div className="card" style={{padding:'14px 20px',marginBottom:14}}>
+        <div className="rowl" style={{borderTop:'none'}}><span className="s">Saldo con la copropiedad</span>
+          <span style={{color:(d.saldo||0)<0?'var(--err)':'var(--ok)',fontFamily:'var(--serif)',fontSize:'18px'}}>{fmtCOP(d.saldo)}</span></div>
+        <div style={{fontSize:'12px',color:'var(--stone)',marginTop:'4px'}}>Negativo = has aportado más de lo cobrado; positivo = tienes saldo a favor.</div>
+      </div>
+      <div className="card"><table>
+        <thead><tr><th>Periodo</th><th>Concepto</th><th>Monto</th><th>Estado</th><th></th></tr></thead>
+        <tbody>{(d.cargos||[]).length ? d.cargos.map(c=>(
+          <tr key={c.id}><td>{c.periodo}</td><td>{cap(c.concepto)}</td><td>{fmtCOP(c.monto)}</td>
+            <td><span className={'pill '+(c.estado==='pagado'?'ok':'warn')}>{cap(c.estado)}</span></td>
+            <td>{c.estado==='pendiente' && <button className="btn sm primary" onClick={()=>pagarCuota(c.id)}>Pagar</button>}</td></tr>
+        )) : <tr><td colSpan={5} className="empty">Sin cuotas emitidas.</td></tr>}</tbody>
+      </table></div>
+
+      <div className="eyebrow">Movimientos</div>
+      <div className="card"><table>
+        <thead><tr><th>Fecha</th><th>Concepto</th><th>Monto</th></tr></thead>
+        <tbody>{(d.movimientos||[]).length ? d.movimientos.map(m=>(
+          <tr key={m.id}><td>{new Date(m.creado_en).toLocaleDateString('es-CO',{day:'2-digit',month:'short'})}</td>
+            <td>{cap(m.tipo)}{m.periodo?(' · '+m.periodo):''}</td>
+            <td style={{color:m.signo>0?'var(--ok)':'var(--cream)'}}>{m.signo>0?'+ ':'− '}{fmtCOP(m.monto)}</td></tr>
+        )) : <tr><td colSpan={3} className="empty">Sin movimientos.</td></tr>}</tbody>
+      </table></div>
 
       <div className="eyebrow">Mis fracciones</div>
       <div className="grid">
