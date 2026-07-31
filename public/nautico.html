@@ -834,6 +834,7 @@ function calcPyp() {
   });
 })();
 </script>
-<a href="/plataforma" style="position:fixed;top:16px;right:16px;z-index:99999;font-family:'DM Sans',system-ui,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;background:rgba(13,13,11,.88);border:1px solid #b8935a;color:#d4b07a;text-decoration:none;border-radius:2px;backdrop-filter:blur(6px)">Ingresar</a>
+
+<script>(function(){document.querySelectorAll('a[href="/plataforma"]').forEach(function(a){try{if(getComputedStyle(a).position==='fixed')a.remove();}catch(e){}});var nav=document.querySelector('nav');if(!nav)return;if(nav.querySelector('a[href="/plataforma"]'))return;var cont=nav.querySelector('div')||nav;var a=document.createElement('a');a.href='/plataforma';a.textContent='Ingresar';a.style.cssText='font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1a1509;background:#b8935a;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;margin-left:4px';cont.appendChild(a);})();</script>
 </body>
 </html>
