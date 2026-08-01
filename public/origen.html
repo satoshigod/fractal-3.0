@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:400;overflow-x:hidden}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(92,87,73,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
 .nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
 .nav-logo span{color:var(--gold)}
 .nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
@@ -37,7 +37,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .ph-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:640px;margin-bottom:0}
 
 /* VERTICAL TABS */
-.vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
+.vert-tabs{display:flex;gap:1px;background:rgba(92,87,73,.12);border-top:1px solid rgba(92,87,73,.12);margin-top:60px}
 .vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#f4efe4;font-family:var(--sans);text-align:left;position:relative}
 .vert-tab:hover{background:#f4efe4}
 .vert-tab.active{background:#f4efe4;border-top:3px solid var(--gold)}
@@ -47,7 +47,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .vert-tab.active .vt-name{color:var(--gold)}
 .vt-title{font-family:var(--serif);font-size:20px;font-weight:400;color:rgba(245,240,232,.6);line-height:1.2}
 .vert-tab.active .vt-title{color:var(--cream)}
-.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(122,116,104,.2);color:var(--stone)}
+.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(92,87,73,.2);color:var(--stone)}
 .vert-tab.active .vt-tag{border-color:rgba(184,147,90,.3);color:var(--gold)}
 
 /* CONTENT PANELS */
@@ -70,14 +70,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .sec-p{font-size:14px;color:var(--stone);line-height:1.75;max-width:680px}
 
 /* STAT GRID */
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.12);border:1px solid rgba(92,87,73,.12);margin:40px 0}
 .stat-box{background:#f4efe4;padding:28px 24px;text-align:center}
 .stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:400;color:var(--gold);line-height:1;margin-bottom:6px}
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
 
 /* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1)}
 .col-card{background:#f4efe4;padding:32px 28px}
 .col-card h4{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);margin-bottom:10px}
 .col-card p{font-size:13px;color:var(--stone);line-height:1.65}
@@ -85,7 +85,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* ROWS */
 .row-table{display:flex;flex-direction:column;gap:0}
-.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(122,116,104,.08);font-size:13px;gap:16px}
+.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(92,87,73,.08);font-size:13px;gap:16px}
 .rt-row:last-child{border-bottom:none}
 .rt-label{color:rgba(245,240,232,.5);flex:1}
 .rt-val{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--cream)}
@@ -96,30 +96,30 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* PROYECCION TABLE */
 .proy-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
-.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.2);font-weight:400}
+.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(92,87,73,.2);font-weight:400}
 .proy-table th:first-child{text-align:left}
-.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.06)}
+.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(92,87,73,.06)}
 .proy-table td:first-child{text-align:left;color:var(--cream)}
-.proy-table tr:hover td{background:rgba(122,116,104,.04)}
+.proy-table tr:hover td{background:rgba(92,87,73,.04)}
 .proy-table .gold-td{color:var(--gold);font-family:var(--serif);font-size:15px}
 .proy-table .muted{color:var(--stone)}
 .proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
 
 /* LEGAL */
-.legal-box{background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
-.legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
+.legal-box{background:#f4efe4;border:1px solid rgba(92,87,73,.15);padding:20px 24px;margin-top:32px}
+.legal-box p{font-size:11px;color:rgba(74,70,58,.82);line-height:1.65}
 
 /* BENCHMARK */
-.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);margin:32px 0}
 .bench-item{background:#f4efe4;padding:24px 20px;text-align:center}
 .bench-item.highlight{background:#f4efe4;border-top:2px solid var(--gold)}
 .bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
 .bench-num{font-family:var(--serif);font-size:32px;font-weight:400;color:var(--cream);margin-bottom:4px}
-.bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
+.bench-sub{font-size:11px;color:rgba(74,70,58,.82)}
 .bench-item.highlight .bench-num{color:var(--gold)}
 
 /* LEGAL STRUCT */
-.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
+.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1);margin:32px 0}
 .ls-item{background:#f4efe4;padding:24px 20px;position:relative}
 .ls-num{font-family:var(--serif);font-size:40px;font-weight:400;color:rgba(184,147,90,.15);margin-bottom:8px}
 .ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
@@ -128,21 +128,21 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* RISK GRID */
 .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.risk-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-item{background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:20px 22px}
 .risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
-.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
+.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(92,87,73,.1);padding-top:8px}
 
 /* BOATS */
 .boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
-.bf-item{background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-item{background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:24px 22px}
 .bf-icon{font-size:28px;margin-bottom:12px}
 .bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
 
 /* DEST GRID */
 .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-.dest-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-item{background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:20px;text-align:center}
 .dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
 .dest-sub{font-size:11px;color:var(--stone)}
 
@@ -163,7 +163,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
   .risk-grid{grid-template-columns:1fr}
 }
 /* ── BOTONES CALCULADORAS ── */
-.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(92,87,73,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
 .pyp-pre{font-size:10px;padding:5px 11px}
 .cv-preset{font-size:10px;padding:5px 10px}
 .cv-socios{font-size:11px;padding:8px 16px}
@@ -211,7 +211,7 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .dolor-inner h2{font-family:var(--serif);font-size:clamp(36px,4.2vw,62px);font-weight:400;color:var(--cream);line-height:1.08;margin-bottom:18px}
 .dolor-inner h2 em{font-style:italic;color:var(--gold-light)}
 .dolor-inner > p{font-size:16px;color:var(--stone);line-height:1.8;max-width:580px;margin-bottom:60px}
-.dolor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12)}
+.dolor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(92,87,73,.12);border:1px solid rgba(92,87,73,.12)}
 .dolor-card{background:var(--ink);padding:42px 34px;position:relative}
 .dolor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,rgba(192,57,43,.5),rgba(192,57,43,.1))}
 .dolor-num{font-family:var(--serif);font-size:56px;font-weight:400;color:rgba(192,57,43,.09);line-height:1;margin-bottom:16px}
@@ -222,7 +222,7 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .dr-text p{font-size:14px;color:var(--stone);line-height:1.75;margin-bottom:12px}
 .dr-visual{border:1px solid rgba(184,147,90,.18);padding:40px;background:rgba(184,147,90,.02)}
 .dr-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
-.dr-item{display:flex;gap:12px;align-items:flex-start;padding:15px 0;border-bottom:1px solid rgba(122,116,104,.09)}
+.dr-item{display:flex;gap:12px;align-items:flex-start;padding:15px 0;border-bottom:1px solid rgba(92,87,73,.09)}
 .dr-item:last-child{border-bottom:none}
 .dr-icon{width:28px;height:28px;border:1px solid rgba(184,147,90,.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:12px;margin-top:2px}
 .dr-item strong{display:block;font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px}
@@ -247,7 +247,7 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .recibe-header h2{font-family:var(--serif);font-size:clamp(32px,3.8vw,52px);font-weight:400;color:var(--cream);margin-bottom:14px}
 .recibe-header h2 em{font-style:italic;color:var(--gold-light)}
 .recibe-header p{font-size:14px;color:var(--stone);line-height:1.7}
-.recibe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12)}
+.recibe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(92,87,73,.12);border:1px solid rgba(92,87,73,.12)}
 .recibe-card{background:var(--ink);padding:44px 40px;position:relative}
 .rc-accent{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--gold-light))}
 .rc-num{font-family:var(--serif);font-size:64px;font-weight:400;color:rgba(184,147,90,.09);line-height:1;margin-bottom:18px}
@@ -261,18 +261,18 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .ejemplo-inner h2{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:400;color:var(--cream);margin-bottom:8px}
 .ejemplo-inner > p{font-size:13px;color:var(--stone);margin-bottom:36px;line-height:1.6}
 .ejemplo-table{width:100%;border-collapse:collapse}
-.ejemplo-table thead tr{border-bottom:1px solid rgba(122,116,104,.2)}
+.ejemplo-table thead tr{border-bottom:1px solid rgba(92,87,73,.2)}
 .ejemplo-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:11px 13px;text-align:left;font-weight:400}
 .ejemplo-table th:last-child,.ejemplo-table td:last-child{text-align:right}
-.ejemplo-table tbody tr{border-bottom:1px solid rgba(122,116,104,.06);transition:background .15s}
-.ejemplo-table tbody tr:hover{background:rgba(122,116,104,.04)}
+.ejemplo-table tbody tr{border-bottom:1px solid rgba(92,87,73,.06);transition:background .15s}
+.ejemplo-table tbody tr:hover{background:rgba(92,87,73,.04)}
 .ejemplo-table td{padding:12px 13px;font-size:12px;color:rgba(245,240,232,.6);vertical-align:middle}
 .ejemplo-table td:first-child{color:rgba(245,240,232,.8)}
 .ejemplo-table td.val{font-family:var(--serif);font-size:16px;font-weight:400;color:var(--cream)}
 .ejemplo-table td.gold{font-family:var(--serif);font-size:16px;color:var(--gold)}
 .ejemplo-table td.red{font-family:var(--serif);font-size:16px;color:rgba(192,57,43,.7)}
 .ejemplo-table tr.total-row td{border-top:1px solid rgba(184,147,90,.16);padding-top:16px}
-.ejemplo-nota{margin-top:14px;font-size:11px;color:rgba(122,116,104,.42);line-height:1.6;font-style:italic}
+.ejemplo-nota{margin-top:14px;font-size:11px;color:rgba(92,87,73,.42);line-height:1.6;font-style:italic}
 
 /* ═══════════════ COTIZADOR ═══════════════ */
 .cotizador{background:#f4efe4;padding:108px 48px}
@@ -282,8 +282,8 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .cotizador-top h2 em{font-style:italic;color:var(--gold-light)}
 .cotizador-top p{font-size:14px;color:var(--stone);line-height:1.72;max-width:520px}
 
-.cot-steps-nav{display:flex;gap:0;margin-bottom:36px;border:1px solid rgba(122,116,104,.14)}
-.csn-step{flex:1;padding:13px 6px;text-align:center;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);border-right:1px solid rgba(122,116,104,.1);cursor:pointer;transition:all .2s;position:relative;user-select:none}
+.cot-steps-nav{display:flex;gap:0;margin-bottom:36px;border:1px solid rgba(92,87,73,.14)}
+.csn-step{flex:1;padding:13px 6px;text-align:center;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);border-right:1px solid rgba(92,87,73,.1);cursor:pointer;transition:all .2s;position:relative;user-select:none}
 .csn-step:last-child{border-right:none}
 .csn-step.active{color:var(--gold);background:rgba(184,147,90,.05)}
 .csn-step.done{color:rgba(184,147,90,.42)}
@@ -292,16 +292,16 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 
 .cot-panel{display:none}
 .cot-panel.active{display:block}
-.cot-body{display:grid;grid-template-columns:3fr 2fr;gap:2px;background:rgba(122,116,104,.12)}
+.cot-body{display:grid;grid-template-columns:3fr 2fr;gap:2px;background:rgba(92,87,73,.12)}
 .cot-form{background:#f4efe4;padding:44px 40px}
 .cot-aside{background:#f4efe4;padding:44px 32px;display:flex;flex-direction:column}
 
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:18px}
 .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
 .form-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
-.form-input{background:rgba(122,116,104,.07);border:1px solid rgba(122,116,104,.18);padding:12px 15px;color:var(--cream);font-family:var(--sans);font-size:14px;font-weight:400;outline:none;transition:border-color .2s;width:100%}
+.form-input{background:rgba(92,87,73,.07);border:1px solid rgba(92,87,73,.18);padding:12px 15px;color:var(--cream);font-family:var(--sans);font-size:14px;font-weight:400;outline:none;transition:border-color .2s;width:100%}
 .form-input:focus{border-color:var(--gold)}
-.form-input::placeholder{color:rgba(122,116,104,.3)}
+.form-input::placeholder{color:rgba(74,70,58,.7)}
 .form-input.error{border-color:rgba(192,57,43,.45)}
 select.form-input{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7468' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
 select.form-input option{background:#ffffff;color:var(--cream)}
@@ -309,35 +309,35 @@ select.form-input option{background:#ffffff;color:var(--cream)}
 .form-error.show{display:block}
 
 .estado-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.estado-btn{padding:13px 6px;border:1px solid rgba(122,116,104,.18);background:transparent;color:var(--stone);font-family:var(--sans);font-size:12px;cursor:pointer;transition:all .2s;text-align:center;line-height:1.4}
+.estado-btn{padding:13px 6px;border:1px solid rgba(92,87,73,.18);background:transparent;color:var(--stone);font-family:var(--sans);font-size:12px;cursor:pointer;transition:all .2s;text-align:center;line-height:1.4}
 .estado-btn:hover{border-color:var(--gold);color:var(--cream)}
 .estado-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 
 .amenidades-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:3px}
-.amen-check{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid rgba(122,116,104,.13);cursor:pointer;font-size:12px;color:var(--stone);transition:all .2s;user-select:none}
+.amen-check{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid rgba(92,87,73,.13);cursor:pointer;font-size:12px;color:var(--stone);transition:all .2s;user-select:none}
 .amen-check.checked{border-color:rgba(184,147,90,.35);color:var(--cream);background:rgba(184,147,90,.03)}
-.amen-ck{width:12px;height:12px;border:1px solid rgba(122,116,104,.28);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent;transition:all .2s}
+.amen-ck{width:12px;height:12px;border:1px solid rgba(92,87,73,.28);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent;transition:all .2s}
 .amen-check.checked .amen-ck{border-color:var(--gold);background:rgba(184,147,90,.14);color:var(--gold)}
 
-.upload-area{border:1px dashed rgba(122,116,104,.25);padding:32px 18px;text-align:center;cursor:pointer;transition:border-color .2s;background:rgba(122,116,104,.02);position:relative}
+.upload-area{border:1px dashed rgba(92,87,73,.25);padding:32px 18px;text-align:center;cursor:pointer;transition:border-color .2s;background:rgba(92,87,73,.02);position:relative}
 .upload-area:hover{border-color:var(--gold)}
 .upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .upload-icon{font-size:24px;margin-bottom:8px;color:var(--stone)}
 .upload-text{font-size:12px;color:var(--stone);margin-bottom:4px}
-.upload-hint{font-size:10px;color:rgba(122,116,104,.36)}
+.upload-hint{font-size:10px;color:rgba(92,87,73,.36)}
 .fotos-preview{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
-.foto-thumb{width:56px;height:56px;object-fit:cover;border:1px solid rgba(122,116,104,.18)}
+.foto-thumb{width:56px;height:56px;object-fit:cover;border:1px solid rgba(92,87,73,.18)}
 
 .cot-aside-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
 .cot-aside h3{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);margin-bottom:6px;line-height:1.2}
 .cot-aside-sub{font-size:12px;color:var(--stone);line-height:1.58;margin-bottom:24px}
 .progress-items{display:flex;flex-direction:column;gap:0}
-.pi{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(122,116,104,.07)}
+.pi{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(92,87,73,.07)}
 .pi:last-child{border-bottom:none}
 .pi-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px;transition:all .3s}
 .pi-dot.done{background:var(--gold)}
 .pi-dot.active{background:var(--gold-light);box-shadow:0 0 0 3px rgba(184,147,90,.16)}
-.pi-dot.pending{background:rgba(122,116,104,.16)}
+.pi-dot.pending{background:rgba(92,87,73,.16)}
 .pi-text{font-size:12px;color:var(--stone);line-height:1.4}
 .pi-text.active-text{color:var(--cream)}
 .cot-aside-spacer{flex:1;min-height:16px}
@@ -347,11 +347,11 @@ select.form-input option{background:#ffffff;color:var(--cream)}
 
 /* RESULTADO */
 .resultado-wrap{background:#f4efe4;padding:44px 40px}
-.resultado-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(122,116,104,.11);border:1px solid rgba(122,116,104,.11);margin-bottom:24px}
+.resultado-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(92,87,73,.11);border:1px solid rgba(92,87,73,.11);margin-bottom:24px}
 .res-card{background:#f4efe4;padding:28px 24px}
 .res-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:7px}
 .res-val{font-family:var(--serif);font-size:32px;font-weight:400;line-height:1;margin-bottom:4px}
-.res-sub{font-size:11px;color:rgba(122,116,104,.48);line-height:1.42}
+.res-sub{font-size:11px;color:rgba(92,87,73,.48);line-height:1.42}
 .res-val.gold{color:var(--gold)}.res-val.cream{color:var(--cream)}.res-val.red{color:rgba(192,57,43,.72)}
 
 .fraccion-box{background:linear-gradient(135deg,rgba(184,147,90,.07) 0%,rgba(184,147,90,.02) 100%);border:1px solid rgba(184,147,90,.2);padding:32px;text-align:center;margin-bottom:24px}
@@ -360,10 +360,10 @@ select.form-input option{background:#ffffff;color:var(--cream)}
 .fb-sub{font-size:13px;color:var(--stone);line-height:1.58;margin-bottom:10px}
 .fb-tipo{display:inline-block;padding:4px 12px;border:1px solid rgba(184,147,90,.25);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 
-.resultado-breakdown{background:#f4efe4;border:1px solid rgba(122,116,104,.09);padding:28px 32px;margin-bottom:24px}
+.resultado-breakdown{background:#f4efe4;border:1px solid rgba(92,87,73,.09);padding:28px 32px;margin-bottom:24px}
 .rb-title{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:8px}
 .rb-title::before{content:'';width:16px;height:1px;background:var(--gold)}
-.rb-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(122,116,104,.06)}
+.rb-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(92,87,73,.06)}
 .rb-row:last-child{border-bottom:none}
 .rb-row.total-rb{border-top:1px solid rgba(184,147,90,.16);padding-top:14px;margin-top:3px}
 .rb-l{font-size:12px;color:rgba(245,240,232,.52)}
@@ -373,42 +373,42 @@ select.form-input option{background:#ffffff;color:var(--cream)}
 .rb-row.deduct .rb-v{color:rgba(192,57,43,.62)}
 
 /* COSTOS MENSUALES */
-.costos-mensuales{border:1px solid rgba(122,116,104,.11);margin-bottom:24px}
-.cm-header{padding:22px 26px;border-bottom:1px solid rgba(122,116,104,.09);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.costos-mensuales{border:1px solid rgba(92,87,73,.11);margin-bottom:24px}
+.cm-header{padding:22px 26px;border-bottom:1px solid rgba(92,87,73,.09);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
 .cm-header h4{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--cream)}
 .cm-header span{font-size:11px;color:var(--stone)}
 .cm-table{width:100%;border-collapse:collapse}
-.cm-table tr{border-bottom:1px solid rgba(122,116,104,.05);transition:background .14s}
+.cm-table tr{border-bottom:1px solid rgba(92,87,73,.05);transition:background .14s}
 .cm-table tr:last-of-type{border-bottom:none}
-.cm-table tr:hover td{background:rgba(122,116,104,.03)}
+.cm-table tr:hover td{background:rgba(92,87,73,.03)}
 .cm-table td{padding:9px 26px;font-size:12px;color:rgba(245,240,232,.58);vertical-align:middle}
 .cm-table td:first-child{color:rgba(245,240,232,.78)}
 .cm-table td:last-child{text-align:right;font-family:var(--serif);font-size:14px;font-weight:400;color:var(--cream)}
-.cm-table tr.cm-cat td{background:rgba(122,116,104,.05);color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:7px 26px}
+.cm-table tr.cm-cat td{background:rgba(92,87,73,.05);color:var(--gold);font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:7px 26px}
 .cm-table tr.cm-total td{border-top:1px solid rgba(184,147,90,.16);padding:13px 26px;background:rgba(184,147,90,.03)}
 .cm-table tr.cm-total td:first-child{font-weight:500;color:var(--cream);font-size:13px}
 .cm-table tr.cm-total td:last-child{font-size:19px;color:var(--gold)}
-.cm-nota{font-size:10px;color:rgba(122,116,104,.38);padding:12px 26px;line-height:1.58;border-top:1px solid rgba(122,116,104,.05)}
+.cm-nota{font-size:10px;color:rgba(92,87,73,.38);padding:12px 26px;line-height:1.58;border-top:1px solid rgba(92,87,73,.05)}
 
 /* AGENDA */
-.agenda-section{background:#09090800;padding:76px 48px;border-top:1px solid rgba(122,116,104,.09)}
+.agenda-section{background:#09090800;padding:76px 48px;border-top:1px solid rgba(92,87,73,.09)}
 .agenda-inner{max-width:760px;margin:0 auto;text-align:center}
 .agenda-inner h3{font-family:var(--serif);font-size:clamp(26px,3.2vw,42px);font-weight:400;color:var(--cream);margin-bottom:12px}
 .agenda-inner > p{font-size:14px;color:var(--stone);line-height:1.7;margin-bottom:32px;max-width:490px;margin-left:auto;margin-right:auto}
 .agenda-form{display:grid;grid-template-columns:1fr 1fr auto;gap:9px;max-width:640px;margin:0 auto 12px}
-.agenda-form input{padding:12px 15px;background:rgba(122,116,104,.07);border:1px solid rgba(122,116,104,.18);color:var(--cream);font-family:var(--sans);font-size:13px;outline:none;transition:border-color .2s}
+.agenda-form input{padding:12px 15px;background:rgba(92,87,73,.07);border:1px solid rgba(92,87,73,.18);color:var(--cream);font-family:var(--sans);font-size:13px;outline:none;transition:border-color .2s}
 .agenda-form input:focus{border-color:var(--gold)}
-.agenda-form input::placeholder{color:rgba(122,116,104,.3)}
-.agenda-nota{font-size:11px;color:rgba(122,116,104,.36);line-height:1.58}
+.agenda-form input::placeholder{color:rgba(74,70,58,.7)}
+.agenda-nota{font-size:11px;color:rgba(92,87,73,.36);line-height:1.58}
 
 /* FAQ */
 .faq{background:var(--ink);padding:92px 48px}
 .faq-inner{max-width:820px;margin:0 auto}
 .faq-inner h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,44px);font-weight:400;color:var(--cream);margin-bottom:44px}
-.faq-item{border-bottom:1px solid rgba(122,116,104,.11)}
+.faq-item{border-bottom:1px solid rgba(92,87,73,.11)}
 .faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 0;cursor:pointer;gap:18px}
 .faq-q span{font-size:14px;color:var(--cream);font-weight:400;line-height:1.4}
-.faq-icon{width:21px;height:21px;border:1px solid rgba(122,116,104,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:14px;transition:transform .3s,background .2s}
+.faq-icon{width:21px;height:21px;border:1px solid rgba(92,87,73,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:14px;transition:transform .3s,background .2s}
 .faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(184,147,90,.07)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .faq-a p{font-size:13px;color:var(--stone);line-height:1.75;padding-bottom:20px}
@@ -424,7 +424,7 @@ select.form-input option{background:#ffffff;color:var(--cream)}
 .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* FOOTER */
-footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;background:var(--ink)}
+footer{border-top:1px solid rgba(92,87,73,.09);padding:44px 48px 28px;background:var(--ink)}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-bottom:32px;flex-wrap:wrap}
 .footer-brand .logo{font-family:var(--serif);font-size:19px;font-weight:500;letter-spacing:.13em;color:var(--cream);text-transform:uppercase;margin-bottom:9px;display:block}
 .footer-brand .logo span{color:var(--gold)}
@@ -433,8 +433,8 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 .footer-col a{font-size:11px;color:var(--stone);text-decoration:none;transition:color .2s}
 .footer-col a:hover{color:var(--cream)}
-.footer-bottom{border-top:1px solid rgba(122,116,104,.07);padding-top:20px;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px}
-.footer-bottom p{font-size:10px;color:rgba(122,116,104,.36);letter-spacing:.05em}
+.footer-bottom{border-top:1px solid rgba(92,87,73,.07);padding-top:20px;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px}
+.footer-bottom p{font-size:10px;color:rgba(92,87,73,.36);letter-spacing:.05em}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp .9s ease forwards;opacity:0}
@@ -458,10 +458,10 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 /* Origen overrides */
 .hero-o{padding-top:80px}
 
-.frac-sel{background:#f4efe4;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:12px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;flex:1;text-align:center;line-height:1.5}
+.frac-sel{background:#f4efe4;border:1px solid rgba(92,87,73,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:12px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;flex:1;text-align:center;line-height:1.5}
 .frac-sel.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .frac-sel:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
-.frac-opt{flex:1;padding:16px 20px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;line-height:1.5;transition:all .15s;color:var(--stone);user-select:none}
+.frac-opt{flex:1;padding:16px 20px;border:1px solid rgba(92,87,73,.2);background:#f4efe4;cursor:pointer;text-align:center;line-height:1.5;transition:all .15s;color:var(--stone);user-select:none}
 .frac-opt:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
 .frac-radio:checked + .frac-opt{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .frac-radio{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
@@ -482,13 +482,13 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 .hero-sub{font-size:18.5px}
 </style>
 <style id="fractal-contrast-fix">
-[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
+[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;opacity:1!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
 [class*="hero"] h1 em,.hero-o h1 em,.hero h1 em{color:#e7c88c!important}
 </style>
 </head>
 <body>
 
-<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
+<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(92,87,73,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
   <a href="index.html" style="font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);text-decoration:none;letter-spacing:.04em">Fractal</a>
   <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
     <a href="destino.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Destino</a>
@@ -592,18 +592,18 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
     <!-- PROCESO ESCALONADO -->
     <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px"><span style="width:20px;height:1px;background:var(--gold);display:inline-block"></span>El proceso escalonado — tú decides cuándo parar</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1);margin-bottom:16px">
       <div style="background:#f4efe4;padding:28px 22px">
         <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(184,147,90,.2);margin-bottom:8px">0</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Antes de vender</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">La propiedad es 100% tuya. Puedes usar la casa cuando quieras. Los costos de operación son todos tuyos.</div>
       </div>
-      <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(122,116,104,.1)">
+      <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(92,87,73,.1)">
         <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(184,147,90,.2);margin-bottom:8px">1</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Primera fracción vendida</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">Recibes los recursos de esa venta menos los pasivos acumulados. Tienes acceso a 7/8 del tiempo de la casa — excepto la ventana del comprador. Los costos se dividen entre 2.</div>
       </div>
-      <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(122,116,104,.1)">
+      <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(92,87,73,.1)">
         <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(184,147,90,.2);margin-bottom:8px">2–6</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Fracciones adicionales</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">Cada nueva venta te da más liquidez y reduce tu proporción de uso. Tú escoges si seguir o parar. Los costos se reparten entre más personas.</div>
@@ -656,7 +656,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           </div>
           <input type="range" id="sl-valor" min="200000000" max="5000000000" step="50000000" value="800000000"
             style="width:100%;accent-color:var(--gold);cursor:pointer" oninput="calcEjemplo()">
-          <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(122,116,104,.35);margin-top:3px"><span>$200M</span><span>$5.000M</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(74,70,58,.74);margin-top:3px"><span>$200M</span><span>$5.000M</span></div>
         </div>
 
         <div>
@@ -666,7 +666,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           </div>
           <input type="range" id="sl-remo" min="10000000" max="500000000" step="5000000" value="50000000"
             style="width:100%;accent-color:var(--gold);cursor:pointer" oninput="calcEjemplo()">
-          <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(122,116,104,.35);margin-top:3px"><span>$10M</span><span>$500M</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(74,70,58,.74);margin-top:3px"><span>$10M</span><span>$500M</span></div>
         </div>
 
         <div>
@@ -676,26 +676,26 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           </div>
           <input type="range" id="sl-deuda" min="0" max="200000000" step="1000000" value="8000000"
             style="width:100%;accent-color:#c85050;cursor:pointer" oninput="calcEjemplo()">
-          <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(122,116,104,.35);margin-top:3px"><span>$0</span><span>$200M</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(74,70,58,.74);margin-top:3px"><span>$0</span><span>$200M</span></div>
         </div>
 
         <div>
-          <div style="margin-bottom:10px;font-size:11px;color:var(--stone)">¿Quieres conservar alguna fracción? <span style="color:rgba(122,116,104,.4)">(opcional)</span></div>
+          <div style="margin-bottom:10px;font-size:11px;color:var(--stone)">¿Quieres conservar alguna fracción? <span style="color:rgba(74,70,58,.78)">(opcional)</span></div>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
             <div id="ej-opt-none" onclick="ejFrac('none')" style="flex:1;min-width:80px;padding:10px 10px;border:2px solid var(--gold);background:rgba(184,147,90,.05);cursor:pointer;text-align:center;transition:all .15s;color:var(--gold)">
               <div style="font-size:11px;font-weight:500">No conservo</div>
               <div style="font-size:10px">Máxima liquidez</div>
             </div>
-            <div id="ej-opt-wd" onclick="ejFrac('wd')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="ej-opt-wd" onclick="ejFrac('wd')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(92,87,73,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:11px;font-weight:500">WD</div>
               <div style="font-size:10px">Entre semana</div>
             </div>
-            <div id="ej-opt-ab" onclick="ejFrac('ab')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="ej-opt-ab" onclick="ejFrac('ab')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(92,87,73,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:11px;font-weight:500">A o B</div>
               <div style="font-size:10px">Fin de semana</div>
             </div>
           </div>
-          <div style="font-size:10px;color:rgba(122,116,104,.35);margin-top:6px;line-height:1.5">Si conservas una fracción se descuenta de tu liquidación al precio de mercado.</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.74);margin-top:6px;line-height:1.5">Si conservas una fracción se descuenta de tu liquidación al precio de mercado.</div>
         </div>
 
       </div>
@@ -704,55 +704,55 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
     <!-- PASO 1 -->
     <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.12);padding:18px 24px;margin-bottom:8px">
       <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:12px">Paso 1 — Activo fractalizado</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(122,116,104,.1)">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(92,87,73,.1)">
         <div style="background:#f4efe4;padding:14px 18px">
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Avalúo propiedad</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:4px">Avalúo propiedad</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream)" id="ej-valor">—</div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Lo que dice el propietario</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-top:2px">Lo que dice el propietario</div>
         </div>
-        <div style="background:#f4efe4;padding:14px 18px;border-left:1px solid rgba(122,116,104,.1)">
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">+ Remodelación Fractal</div>
+        <div style="background:#f4efe4;padding:14px 18px;border-left:1px solid rgba(92,87,73,.1)">
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:4px">+ Remodelación Fractal</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream)" id="ej-remo">—</div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Fractal lo financia</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-top:2px">Fractal lo financia</div>
         </div>
         <div style="background:#f4efe4;padding:14px 18px;border-left:1px solid rgba(184,147,90,.2)">
           <div style="font-size:10px;color:rgba(184,147,90,.5);margin-bottom:4px">= Activo fractalizado total</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--gold)" id="ej-fractalizado">—</div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Base para las 8 fracciones</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-top:2px">Base para las 8 fracciones</div>
         </div>
       </div>
     </div>
 
     <!-- PASO 2 -->
-    <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px">Paso 2 — Precio de cada fracción</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.1)">
+    <div style="background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:18px 24px;margin-bottom:8px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:12px">Paso 2 — Precio de cada fracción</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(92,87,73,.1)">
         <div style="background:#f4efe4;padding:12px 16px">
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción A · 15.65%</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:3px">Fracción A · 15.65%</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--cream)" id="ej-pA">—</div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4)">× 2 unidades</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78)">× 2 unidades</div>
         </div>
         <div style="background:#f4efe4;padding:12px 16px">
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción B · 15.65%</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:3px">Fracción B · 15.65%</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--cream)" id="ej-pB">—</div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4)">× 2 unidades</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78)">× 2 unidades</div>
         </div>
         <div style="background:#f4efe4;padding:12px 16px">
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción WD · 9.35%</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:3px">Fracción WD · 9.35%</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--cream)" id="ej-pWD">—</div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4)">× 4 unidades</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78)">× 4 unidades</div>
         </div>
         <div style="background:#f4efe4;padding:12px 16px;border-left:1px solid rgba(184,147,90,.15)">
           <div style="font-size:10px;color:rgba(184,147,90,.4);margin-bottom:3px">Total 8 fracciones</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--gold)" id="ej-total8">—</div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4)">= activo fractalizado</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78)">= activo fractalizado</div>
         </div>
       </div>
     </div>
 
     <!-- PASO 3 -->
-    <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px" id="ej-paso3-label">Paso 3 — Propietario conserva 1 WD · vende 2A + 2B + 3WD</div>
+    <div style="background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:18px 24px;margin-bottom:8px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:12px" id="ej-paso3-label">Paso 3 — Propietario conserva 1 WD · vende 2A + 2B + 3WD</div>
       <table class="ejemplo-table">
         <thead><tr><th>CONCEPTO</th><th>DETALLE</th><th>VALOR</th></tr></thead>
         <tbody>
@@ -761,8 +761,8 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
             <td id="ej-bolsa-det">7 fracciones · precio lleno</td>
             <td class="val" style="color:var(--cream)" id="ej-bolsa">—</td>
           </tr>
-          <tr style="background:rgba(122,116,104,.02)">
-            <td colspan="3" style="font-size:11px;color:rgba(122,116,104,.5);padding:10px 13px 6px">
+          <tr style="background:rgba(92,87,73,.02)">
+            <td colspan="3" style="font-size:11px;color:rgba(74,70,58,.82);padding:10px 13px 6px">
               Pasivos — el propietario los asume recibiendo menos de la bolsa:
             </td>
           </tr>
@@ -903,9 +903,9 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
             <span class="form-error" id="err-estado">Selecciona el estado</span>
           </div>
           <div class="form-group">
-            <label class="form-label">¿Tienes un estimado de reparaciones? <span style="color:rgba(122,116,104,.4);font-size:10px">(opcional — si lo sabes, úsalo)</span></label>
+            <label class="form-label">¿Tienes un estimado de reparaciones? <span style="color:rgba(74,70,58,.78);font-size:10px">(opcional — si lo sabes, úsalo)</span></label>
             <input type="text" class="form-input" id="remoManual" placeholder="Ej: 80.000.000 — deja vacío para usar estimado automático" oninput="fmtMoney(this)">
-            <div style="font-size:11px;color:rgba(122,116,104,.4);margin-top:6px;line-height:1.55">Si lo dejas vacío, el cotizador calcula un estimado según el estado y el área. El arquitecto Fractal afinará el número en la visita técnica gratuita.</div>
+            <div style="font-size:11px;color:rgba(74,70,58,.78);margin-top:6px;line-height:1.55">Si lo dejas vacío, el cotizador calcula un estimado según el estado y el área. El arquitecto Fractal afinará el número en la visita técnica gratuita.</div>
           </div>
           <div class="form-row" style="margin-top:4px">
             <div class="form-group">
@@ -923,12 +923,12 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
               <input type="radio" name="embargo" id="emb-r-no" value="no" checked style="position:absolute;opacity:0;width:0;height:0">
               <label for="emb-r-no" id="emb-lbl-no" style="flex:1;padding:13px 6px;border:2px solid var(--gold);background:rgba(184,147,90,.05);cursor:pointer;text-align:center;color:var(--gold);font-family:var(--sans);font-size:12px;transition:all .15s;display:block" onclick="embargoToggle('no')">No</label>
               <input type="radio" name="embargo" id="emb-r-si" value="si" style="position:absolute;opacity:0;width:0;height:0">
-              <label for="emb-r-si" id="emb-lbl-si" style="flex:1;padding:13px 6px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;color:var(--stone);font-family:var(--sans);font-size:12px;transition:all .15s;display:block" onclick="embargoToggle('si')">Sí — hay embargo o deuda legal</label>
+              <label for="emb-r-si" id="emb-lbl-si" style="flex:1;padding:13px 6px;border:1px solid rgba(92,87,73,.2);background:#f4efe4;cursor:pointer;text-align:center;color:var(--stone);font-family:var(--sans);font-size:12px;transition:all .15s;display:block" onclick="embargoToggle('si')">Sí — hay embargo o deuda legal</label>
             </div>
             <div id="emb-detalle" style="display:none;margin-top:4px">
               <p class="form-label" style="margin-bottom:6px">Valor estimado del embargo / deuda legal (COP)</p>
               <input type="text" class="form-input" id="deudaEmbargo" placeholder="Ej: 25.000.000" oninput="fmtMoney(this)">
-              <div style="font-size:11px;color:rgba(122,116,104,.4);margin-top:5px;line-height:1.55">Fractal trabaja con los acreedores para desbloquear la propiedad. El monto se suma a los pasivos y se descuenta de las ventas.</div>
+              <div style="font-size:11px;color:rgba(74,70,58,.78);margin-top:5px;line-height:1.55">Fractal trabaja con los acreedores para desbloquear la propiedad. El monto se suma a los pasivos y se descuenta de las ventas.</div>
             </div>
           </div>
           <div style="display:flex;justify-content:space-between;margin-top:4px">
@@ -1024,18 +1024,18 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
         <!-- SELECTOR FRACCIÓN OPCIONAL -->
         <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.15);padding:24px 28px;margin-bottom:24px">
           <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:6px">¿Quieres conservar alguna fracción?</div>
-          <div style="font-size:12px;color:rgba(122,116,104,.5);margin-bottom:16px;line-height:1.55">Opcional. Si conservas una, su valor se descuenta de tu liquidación. Puedes usar esos días o cederlos al operador.</div>
+          <div style="font-size:12px;color:rgba(74,70,58,.82);margin-bottom:16px;line-height:1.55">Opcional. Si conservas una, su valor se descuenta de tu liquidación. Puedes usar esos días o cederlos al operador.</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <div id="r-opt-none" onclick="rElegirFrac('none')" style="flex:1;min-width:120px;padding:14px 12px;border:2px solid var(--gold);background:rgba(184,147,90,.05);cursor:pointer;text-align:center;transition:all .15s;color:var(--gold)">
               <div style="font-size:12px;font-weight:500">No conservo</div>
               <div style="font-size:10px;margin-top:3px;opacity:.7">Máxima liquidez</div>
             </div>
-            <div id="r-opt-wd" onclick="rElegirFrac('wd')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="r-opt-wd" onclick="rElegirFrac('wd')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(92,87,73,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:12px;font-weight:500">Fracción WD</div>
               <div style="font-size:10px;margin-top:3px">Entre semana · 9.35%</div>
               <div style="font-size:10px;opacity:.5">~43 días/año</div>
             </div>
-            <div id="r-opt-ab" onclick="rElegirFrac('ab')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="r-opt-ab" onclick="rElegirFrac('ab')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(92,87,73,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:12px;font-weight:500">Fracción A o B</div>
               <div style="font-size:10px;margin-top:3px">Fin de semana · 15.65%</div>
               <div style="font-size:10px;opacity:.5">~48 días/año</div>
@@ -1073,7 +1073,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
             <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:10px">Costos mensuales para ti</div>
             <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:var(--gold);margin-bottom:8px">$0</div>
             <div style="font-size:13px;color:var(--stone);line-height:1.7">Si vendes las 8 fracciones, <strong style="color:var(--cream)">no asumes ningún costo mensual</strong>. Los 8 compradores dividen todos los gastos de operación entre ellos en partes iguales. Tú quedas liberado completamente.</div>
-            <div style="margin-top:12px;font-size:11px;color:rgba(122,116,104,.4);line-height:1.6">Referencia: el costo total mensual de operar la propiedad se estima en <span id="cm-total-ref">—</span>, dividido entre 8 fraccionarios.</div>
+            <div style="margin-top:12px;font-size:11px;color:rgba(74,70,58,.78);line-height:1.6">Referencia: el costo total mensual de operar la propiedad se estima en <span id="cm-total-ref">—</span>, dividido entre 8 fraccionarios.</div>
           </div>
         </div>
 
@@ -1084,22 +1084,22 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
             <div>
               <label style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:6px">¿Cuánto cobrarías por noche en fin de semana?</label>
               <input type="text" class="form-input" id="tarifaFDS" placeholder="Ej: 500.000" oninput="fmtMoney(this);recalcIngreso()" style="font-size:13px;padding:10px 12px">
-              <div style="font-size:10px;color:rgba(122,116,104,.35);margin-top:4px">Precio por noche · viernes a domingo</div>
+              <div style="font-size:10px;color:rgba(74,70,58,.74);margin-top:4px">Precio por noche · viernes a domingo</div>
             </div>
             <div>
               <label style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:6px">¿Cuánto cobrarías por noche entre semana?</label>
               <input type="text" class="form-input" id="tarifaSEM" placeholder="Ej: 300.000" oninput="fmtMoney(this);recalcIngreso()" style="font-size:13px;padding:10px 12px">
-              <div style="font-size:10px;color:rgba(122,116,104,.35);margin-top:4px">Precio por noche · lunes a jueves</div>
+              <div style="font-size:10px;color:rgba(74,70,58,.74);margin-top:4px">Precio por noche · lunes a jueves</div>
             </div>
           </div>
           <div class="rb-row"><span class="rb-l">Tarifa fin de semana ingresada</span><span class="rb-v" id="rTarifaFDS">—</span></div>
           <div class="rb-row"><span class="rb-l">Tarifa entre semana ingresada</span><span class="rb-v" id="rTarifaSEM">—</span></div>
           <div class="rb-row"><span class="rb-l">Fracción A/B (~48 días/año) · cediendo 50% al operador</span><span class="rb-v" id="rIngAB">—</span></div>
           <div class="rb-row total-rb"><span class="rb-l">Fracción WD (~43 días/año) · cediendo 50% al operador</span><span class="rb-v" id="rIngWD">—</span></div>
-          <div style="font-size:11px;color:rgba(122,116,104,.35);margin-top:10px;line-height:1.6">* Ingreso bruto potencial. El operador Fractal toma una comisión sobre las noches cedidas. Ajusta las tarifas según el mercado de tu zona.</div>
+          <div style="font-size:11px;color:rgba(74,70,58,.74);margin-top:10px;line-height:1.6">* Ingreso bruto potencial. El operador Fractal toma una comisión sobre las noches cedidas. Ajusta las tarifas según el mercado de tu zona.</div>
         </div>
 
-        <p style="font-size:11px;color:rgba(122,116,104,.38);line-height:1.7;margin-bottom:28px;font-style:italic">* Cotización preliminar. Los valores exactos se confirman en visita técnica gratuita y quedan estipulados en contrato antes de firmar.</p>
+        <p style="font-size:11px;color:rgba(92,87,73,.38);line-height:1.7;margin-bottom:28px;font-style:italic">* Cotización preliminar. Los valores exactos se confirman en visita técnica gratuita y quedan estipulados en contrato antes de firmar.</p>
 
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <button class="btn-primary" onclick="document.getElementById('agendaSection').scrollIntoView({behavior:'smooth'})">Agendar visita técnica gratuita →</button>
@@ -1125,7 +1125,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
 <section style="padding:80px 48px;background:#f4efe4">
   <div style="max-width:1200px;margin:0 auto">
-    <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(122,116,104,.45);display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:18px;height:1px;background:rgba(122,116,104,.4);display:inline-block"></span>Zonas donde operamos</div>
+    <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(74,70,58,.8);display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:18px;height:1px;background:rgba(74,70,58,.78);display:inline-block"></span>Zonas donde operamos</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--cream);margin-bottom:48px;line-height:1.2">Fincas en <em style="font-style:italic;color:var(--gold-l)">Antioquia</em></h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
       <div style="position:relative;overflow:hidden;height:280px">
@@ -1156,7 +1156,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
         </div>
       </div>
     </div>
-    <p style="margin-top:20px;font-size:12px;color:rgba(122,116,104,.4);font-style:italic">Con planes de expansión al Eje Cafetero, Cundinamarca y Costa Caribe.</p>
+    <p style="margin-top:20px;font-size:12px;color:rgba(74,70,58,.78);font-style:italic">Con planes de expansión al Eje Cafetero, Cundinamarca y Costa Caribe.</p>
   </div>
 </section>
 <section class="faq" id="faq">
@@ -1196,7 +1196,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
   </div>
   <div class="footer-bottom">
     <p>© 2026 Fractal Colombia · Fractal Origen</p>
-    <p>Colombia · <a href="https://www.instagram.com/vive_fractal" target="_blank" rel="noopener noreferrer" style="color:rgba(122,116,104,.36);text-decoration:none">@vive_fractal</a></p>
+    <p>Colombia · <a href="https://www.instagram.com/vive_fractal" target="_blank" rel="noopener noreferrer" style="color:rgba(92,87,73,.36);text-decoration:none">@vive_fractal</a></p>
   </div>
 </footer>
 
@@ -1228,14 +1228,14 @@ function elegirFrac(tipo) {
     ab.style.border = '2px solid var(--gold)'; ab.style.background = 'rgba(184,147,90,.05)';
     ab.querySelectorAll('div')[0].style.color = 'var(--gold)';
     ab.querySelectorAll('div')[1].style.color = 'var(--gold)';
-    wd.style.border = '1px solid rgba(122,116,104,.2)'; wd.style.background = '#f4efe4';
+    wd.style.border = '1px solid rgba(92,87,73,.2)'; wd.style.background = '#f4efe4';
     wd.querySelectorAll('div')[0].style.color = 'var(--stone)';
     wd.querySelectorAll('div')[1].style.color = 'var(--stone)';
   } else {
     wd.style.border = '2px solid var(--gold)'; wd.style.background = 'rgba(184,147,90,.05)';
     wd.querySelectorAll('div')[0].style.color = 'var(--gold)';
     wd.querySelectorAll('div')[1].style.color = 'var(--gold)';
-    ab.style.border = '1px solid rgba(122,116,104,.2)'; ab.style.background = '#f4efe4';
+    ab.style.border = '1px solid rgba(92,87,73,.2)'; ab.style.background = '#f4efe4';
     ab.querySelectorAll('div')[0].style.color = 'var(--stone)';
     ab.querySelectorAll('div')[1].style.color = 'var(--stone)';
   }
@@ -1425,7 +1425,7 @@ function calcular() {
     ['none','wd','ab'].forEach(t => {
       const el = document.getElementById('r-opt-' + t);
       if (!el) return;
-      el.style.border = t==='none' ? '2px solid var(--gold)' : '1px solid rgba(122,116,104,.2)';
+      el.style.border = t==='none' ? '2px solid var(--gold)' : '1px solid rgba(92,87,73,.2)';
       el.style.background = t==='none' ? 'rgba(184,147,90,.05)' : '#f4efe4';
       el.style.color = t==='none' ? 'var(--gold)' : 'var(--stone)';
     });
@@ -1447,11 +1447,11 @@ function embargoToggle(tipo) {
   const det   = document.getElementById('emb-detalle');
   if (tipo === 'si') {
     lblSi.style.border = '2px solid var(--gold)'; lblSi.style.background = 'rgba(184,147,90,.05)'; lblSi.style.color = 'var(--gold)';
-    lblNo.style.border = '1px solid rgba(122,116,104,.2)'; lblNo.style.background = '#f4efe4'; lblNo.style.color = 'var(--stone)';
+    lblNo.style.border = '1px solid rgba(92,87,73,.2)'; lblNo.style.background = '#f4efe4'; lblNo.style.color = 'var(--stone)';
     if (det) det.style.display = 'block';
   } else {
     lblNo.style.border = '2px solid var(--gold)'; lblNo.style.background = 'rgba(184,147,90,.05)'; lblNo.style.color = 'var(--gold)';
-    lblSi.style.border = '1px solid rgba(122,116,104,.2)'; lblSi.style.background = '#f4efe4'; lblSi.style.color = 'var(--stone)';
+    lblSi.style.border = '1px solid rgba(92,87,73,.2)'; lblSi.style.background = '#f4efe4'; lblSi.style.color = 'var(--stone)';
     if (det) det.style.display = 'none';
   }
 }
@@ -1461,7 +1461,7 @@ function rElegirFrac(tipo) {
   ['none','wd','ab'].forEach(t => {
     const el = document.getElementById('r-opt-' + t);
     if (!el) return;
-    el.style.border = '1px solid rgba(122,116,104,.2)';
+    el.style.border = '1px solid rgba(92,87,73,.2)';
     el.style.background = '#f4efe4';
     el.style.color = 'var(--stone)';
   });
@@ -1524,7 +1524,7 @@ function ejFrac(tipo) {
   ['none','wd','ab'].forEach(t => {
     const el = document.getElementById('ej-opt-' + t);
     if (!el) return;
-    el.style.border = '1px solid rgba(122,116,104,.2)';
+    el.style.border = '1px solid rgba(92,87,73,.2)';
     el.style.background = '#f4efe4';
     el.style.color = 'var(--stone)';
   });

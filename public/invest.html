@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:400;overflow-x:hidden}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(92,87,73,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
 .nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
 .nav-logo span{color:var(--gold)}
 .nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
@@ -37,7 +37,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .ph-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:640px;margin-bottom:0}
 
 /* VERTICAL TABS */
-.vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
+.vert-tabs{display:flex;gap:1px;background:rgba(92,87,73,.12);border-top:1px solid rgba(92,87,73,.12);margin-top:60px}
 .vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#f4efe4;font-family:var(--sans);text-align:left;position:relative}
 .vert-tab:hover{background:#f4efe4}
 .vert-tab.active{background:#f4efe4;border-top:3px solid var(--gold)}
@@ -47,7 +47,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .vert-tab.active .vt-name{color:var(--gold)}
 .vt-title{font-family:var(--serif);font-size:20px;font-weight:400;color:rgba(245,240,232,.6);line-height:1.2}
 .vert-tab.active .vt-title{color:var(--cream)}
-.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(122,116,104,.2);color:var(--stone)}
+.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(92,87,73,.2);color:var(--stone)}
 .vert-tab.active .vt-tag{border-color:rgba(184,147,90,.3);color:var(--gold)}
 
 /* CONTENT PANELS */
@@ -70,14 +70,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .sec-p{font-size:14px;color:var(--stone);line-height:1.75;max-width:680px}
 
 /* STAT GRID */
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.12);border:1px solid rgba(92,87,73,.12);margin:40px 0}
 .stat-box{background:#f4efe4;padding:28px 24px;text-align:center}
 .stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:400;color:var(--gold);line-height:1;margin-bottom:6px}
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
 
 /* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1)}
 .col-card{background:#f4efe4;padding:32px 28px}
 .col-card h4{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);margin-bottom:10px}
 .col-card p{font-size:13px;color:var(--stone);line-height:1.65}
@@ -85,7 +85,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* ROWS */
 .row-table{display:flex;flex-direction:column;gap:0}
-.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(122,116,104,.08);font-size:13px;gap:16px}
+.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(92,87,73,.08);font-size:13px;gap:16px}
 .rt-row:last-child{border-bottom:none}
 .rt-label{color:rgba(245,240,232,.5);flex:1}
 .rt-val{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--cream)}
@@ -96,30 +96,30 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* PROYECCION TABLE */
 .proy-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
-.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.2);font-weight:400}
+.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(92,87,73,.2);font-weight:400}
 .proy-table th:first-child{text-align:left}
-.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.06)}
+.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(92,87,73,.06)}
 .proy-table td:first-child{text-align:left;color:var(--cream)}
-.proy-table tr:hover td{background:rgba(122,116,104,.04)}
+.proy-table tr:hover td{background:rgba(92,87,73,.04)}
 .proy-table .gold-td{color:var(--gold);font-family:var(--serif);font-size:15px}
 .proy-table .muted{color:var(--stone)}
 .proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
 
 /* LEGAL */
-.legal-box{background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
-.legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
+.legal-box{background:#f4efe4;border:1px solid rgba(92,87,73,.15);padding:20px 24px;margin-top:32px}
+.legal-box p{font-size:11px;color:rgba(74,70,58,.82);line-height:1.65}
 
 /* BENCHMARK */
-.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);margin:32px 0}
 .bench-item{background:#f4efe4;padding:24px 20px;text-align:center}
 .bench-item.highlight{background:#f4efe4;border-top:2px solid var(--gold)}
 .bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
 .bench-num{font-family:var(--serif);font-size:32px;font-weight:400;color:var(--cream);margin-bottom:4px}
-.bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
+.bench-sub{font-size:11px;color:rgba(74,70,58,.82)}
 .bench-item.highlight .bench-num{color:var(--gold)}
 
 /* LEGAL STRUCT */
-.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
+.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1);margin:32px 0}
 .ls-item{background:#f4efe4;padding:24px 20px;position:relative}
 .ls-num{font-family:var(--serif);font-size:40px;font-weight:400;color:rgba(184,147,90,.15);margin-bottom:8px}
 .ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
@@ -128,21 +128,21 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* RISK GRID */
 .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.risk-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-item{background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:20px 22px}
 .risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
-.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
+.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(92,87,73,.1);padding-top:8px}
 
 /* BOATS */
 .boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
-.bf-item{background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-item{background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:24px 22px}
 .bf-icon{font-size:28px;margin-bottom:12px}
 .bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
 
 /* DEST GRID */
 .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-.dest-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-item{background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:20px;text-align:center}
 .dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
 .dest-sub{font-size:11px;color:var(--stone)}
 
@@ -163,13 +163,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
   .risk-grid{grid-template-columns:1fr}
 }
 /* ── BOTONES CALCULADORAS ── */
-.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(92,87,73,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
 .pyp-pre{font-size:10px;padding:5px 11px}
 .cv-preset{font-size:10px;padding:5px 10px}
 .cv-socios{font-size:11px;padding:8px 16px}
 .pyp-btn{font-size:11px;padding:8px 16px}
 .pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
-.back-bar{background:#f4efe4;border-bottom:1px solid rgba(122,116,104,.15);padding:12px 56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.back-bar{background:#f4efe4;border-bottom:1px solid rgba(92,87,73,.15);padding:12px 56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .back-bar a{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .15s}
 .back-bar a:hover{color:var(--gold)}
 .back-bar .home-link{color:rgba(184,147,90,.6)}
@@ -199,13 +199,13 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 .hero-sub{font-size:18.5px}
 </style>
 <style id="fractal-contrast-fix">
-[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
+[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;opacity:1!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
 [class*="hero"] h1 em,.hero-o h1 em,.hero h1 em{color:#e7c88c!important}
 </style>
 </head>
 <body style="background:#f4efe4">
 
-<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
+<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(92,87,73,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
   <a href="index.html" style="font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);text-decoration:none;letter-spacing:.04em">Fractal</a>
   <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
     <a href="destino.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Homes</a>
@@ -214,7 +214,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
   </div>
 </nav>
 
-<div style="background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:16px 24px;margin:32px 56px;display:flex;align-items:center;gap:16px"><span style="font-size:20px;opacity:.4">⇄</span><div><div style="font-size:11px;font-weight:500;color:var(--stone);margin-bottom:2px">Fractal Exchange — no aplica a este producto</div><div style="font-size:11px;color:rgba(122,116,104,.5);line-height:1.6">Fractal Invest genera distribución en efectivo, no días de uso. El Exchange está disponible en <a href="destino.html" style="color:rgba(184,147,90,.6);text-decoration:none">Homes</a>, <a href="nautico.html" style="color:rgba(184,147,90,.6);text-decoration:none">Náutico</a> y <a href="cars.html" style="color:rgba(184,147,90,.6);text-decoration:none">Premium Cars</a>.</div></div></div>
+<div style="background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:16px 24px;margin:32px 56px;display:flex;align-items:center;gap:16px"><span style="font-size:20px;opacity:.4">⇄</span><div><div style="font-size:11px;font-weight:500;color:var(--stone);margin-bottom:2px">Fractal Exchange — no aplica a este producto</div><div style="font-size:11px;color:rgba(74,70,58,.82);line-height:1.6">Fractal Invest genera distribución en efectivo, no días de uso. El Exchange está disponible en <a href="destino.html" style="color:rgba(184,147,90,.6);text-decoration:none">Homes</a>, <a href="nautico.html" style="color:rgba(184,147,90,.6);text-decoration:none">Náutico</a> y <a href="cars.html" style="color:rgba(184,147,90,.6);text-decoration:none">Premium Cars</a>.</div></div></div>
 
 
 
@@ -269,7 +269,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           <div class="bench-sub">TIR a 5 años · Renta + valorización · Activo real turístico</div>
         </div>
       </div>
-      <p style="font-size:12px;color:rgba(122,116,104,.45);margin-top:12px">* Fractal Invest supera el CDT en retorno total a 5 años. La renta en año 1 es inferior al CDT — el valor diferencial es la valorización del activo y el crecimiento de la renta en la medida que madura la operación.</p>
+      <p style="font-size:12px;color:rgba(74,70,58,.8);margin-top:12px">* Fractal Invest supera el CDT en retorno total a 5 años. La renta en año 1 es inferior al CDT — el valor diferencial es la valorización del activo y el crecimiento de la renta en la medida que madura la operación.</p>
     </div>
   </div>
 

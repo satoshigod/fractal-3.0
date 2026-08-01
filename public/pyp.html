@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:400;overflow-x:hidden}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(92,87,73,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
 .nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
 .nav-logo span{color:var(--gold)}
 .nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
@@ -37,7 +37,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .ph-sub{font-size:16px;color:var(--stone);line-height:1.75;max-width:640px;margin-bottom:0}
 
 /* VERTICAL TABS */
-.vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
+.vert-tabs{display:flex;gap:1px;background:rgba(92,87,73,.12);border-top:1px solid rgba(92,87,73,.12);margin-top:60px}
 .vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#f4efe4;font-family:var(--sans);text-align:left;position:relative}
 .vert-tab:hover{background:#f4efe4}
 .vert-tab.active{background:#f4efe4;border-top:3px solid var(--gold)}
@@ -47,7 +47,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .vert-tab.active .vt-name{color:var(--gold)}
 .vt-title{font-family:var(--serif);font-size:20px;font-weight:400;color:rgba(245,240,232,.6);line-height:1.2}
 .vert-tab.active .vt-title{color:var(--cream)}
-.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(122,116,104,.2);color:var(--stone)}
+.vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(92,87,73,.2);color:var(--stone)}
 .vert-tab.active .vt-tag{border-color:rgba(184,147,90,.3);color:var(--gold)}
 
 /* CONTENT PANELS */
@@ -70,14 +70,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .sec-p{font-size:14px;color:var(--stone);line-height:1.75;max-width:680px}
 
 /* STAT GRID */
-.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.12);border:1px solid rgba(92,87,73,.12);margin:40px 0}
 .stat-box{background:#f4efe4;padding:28px 24px;text-align:center}
 .stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:400;color:var(--gold);line-height:1;margin-bottom:6px}
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
 
 /* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1)}
 .col-card{background:#f4efe4;padding:32px 28px}
 .col-card h4{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);margin-bottom:10px}
 .col-card p{font-size:13px;color:var(--stone);line-height:1.65}
@@ -85,7 +85,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* ROWS */
 .row-table{display:flex;flex-direction:column;gap:0}
-.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(122,116,104,.08);font-size:13px;gap:16px}
+.rt-row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(92,87,73,.08);font-size:13px;gap:16px}
 .rt-row:last-child{border-bottom:none}
 .rt-label{color:rgba(245,240,232,.5);flex:1}
 .rt-val{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--cream)}
@@ -96,30 +96,30 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* PROYECCION TABLE */
 .proy-table{width:100%;border-collapse:collapse;margin-top:32px;font-size:13px}
-.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.2);font-weight:400}
+.proy-table th{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);padding:10px 14px;text-align:right;border-bottom:1px solid rgba(92,87,73,.2);font-weight:400}
 .proy-table th:first-child{text-align:left}
-.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(122,116,104,.06)}
+.proy-table td{padding:10px 14px;text-align:right;border-bottom:1px solid rgba(92,87,73,.06)}
 .proy-table td:first-child{text-align:left;color:var(--cream)}
-.proy-table tr:hover td{background:rgba(122,116,104,.04)}
+.proy-table tr:hover td{background:rgba(92,87,73,.04)}
 .proy-table .gold-td{color:var(--gold);font-family:var(--serif);font-size:15px}
 .proy-table .muted{color:var(--stone)}
 .proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
 
 /* LEGAL */
-.legal-box{background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
-.legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
+.legal-box{background:#f4efe4;border:1px solid rgba(92,87,73,.15);padding:20px 24px;margin-top:32px}
+.legal-box p{font-size:11px;color:rgba(74,70,58,.82);line-height:1.65}
 
 /* BENCHMARK */
-.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
+.bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);margin:32px 0}
 .bench-item{background:#f4efe4;padding:24px 20px;text-align:center}
 .bench-item.highlight{background:#f4efe4;border-top:2px solid var(--gold)}
 .bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
 .bench-num{font-family:var(--serif);font-size:32px;font-weight:400;color:var(--cream);margin-bottom:4px}
-.bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
+.bench-sub{font-size:11px;color:rgba(74,70,58,.82)}
 .bench-item.highlight .bench-num{color:var(--gold)}
 
 /* LEGAL STRUCT */
-.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
+.legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1);margin:32px 0}
 .ls-item{background:#f4efe4;padding:24px 20px;position:relative}
 .ls-num{font-family:var(--serif);font-size:40px;font-weight:400;color:rgba(184,147,90,.15);margin-bottom:8px}
 .ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
@@ -128,21 +128,21 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 
 /* RISK GRID */
 .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.risk-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-item{background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:20px 22px}
 .risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
-.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
+.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(92,87,73,.1);padding-top:8px}
 
 /* BOATS */
 .boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
-.bf-item{background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-item{background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:24px 22px}
 .bf-icon{font-size:28px;margin-bottom:12px}
 .bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
 
 /* DEST GRID */
 .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-.dest-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-item{background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:20px;text-align:center}
 .dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
 .dest-sub{font-size:11px;color:var(--stone)}
 
@@ -163,38 +163,38 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
   .risk-grid{grid-template-columns:1fr}
 }
 /* ── BOTONES CALCULADORAS ── */
-.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(92,87,73,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
 .pyp-pre{font-size:10px;padding:5px 11px}
 .cv-preset{font-size:10px;padding:5px 10px}
 .cv-socios{font-size:11px;padding:8px 16px}
 .pyp-btn{font-size:11px;padding:8px 16px}
 .pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
 
-.pyp-mod-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;text-align:center;line-height:1.4}
+.pyp-mod-btn{background:#f4efe4;border:1px solid rgba(92,87,73,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;text-align:center;line-height:1.4}
 .pyp-mod-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
 .pyp-mod-btn:hover{border-color:rgba(184,147,90,.5);color:rgba(184,147,90,.8)}
-.pyp-n-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.18);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:8px 18px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-n-btn{background:#f4efe4;border:1px solid rgba(92,87,73,.18);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:8px 18px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none}
 .pyp-n-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .pyp-n-btn:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
-.veh-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.15);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:10px 14px;letter-spacing:.04em;transition:all .15s;outline:none;-webkit-appearance:none;text-align:left;line-height:1.4;width:100%}
+.veh-btn{background:#f4efe4;border:1px solid rgba(92,87,73,.15);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:11px;padding:10px 14px;letter-spacing:.04em;transition:all .15s;outline:none;-webkit-appearance:none;text-align:left;line-height:1.4;width:100%}
 .veh-btn.active{border-color:var(--gold);background:rgba(184,147,90,.04)}
 .veh-btn:hover{border-color:rgba(184,147,90,.4)}
-.asig-card{background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:14px 16px}
+.asig-card{background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:14px 16px}
 .r-block{background:#f4efe4;padding:20px 22px}
 .r-block.hl{background:#f4efe4;border:1px solid rgba(184,147,90,.15)}
-.r-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px}
+.r-lbl{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:8px}
 .r-num{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--cream)}
 .r-num.gold{color:var(--gold)}
 .r-sub{font-size:10px;color:var(--stone);margin-top:5px;line-height:1.4}
 .r-sub.green{color:rgba(120,200,120,.65)}
-.drow{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(122,116,104,.07);font-size:11px}
+.drow{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(92,87,73,.07);font-size:11px}
 .drow:last-child{border-bottom:none}
-.drow .dl{color:rgba(122,116,104,.6)}
+.drow .dl{color:rgba(74,70,58,.85)}
 .drow .dv{color:var(--cream)}
 .drow .dv.zero{color:rgba(120,200,120,.6)}
-.comp-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid rgba(122,116,104,.1);border-bottom:none;cursor:pointer;transition:all .15s}
-.comp-row:last-child{border-bottom:1px solid rgba(122,116,104,.1)}
-.comp-row:hover{background:rgba(122,116,104,.03)}
+.comp-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid rgba(92,87,73,.1);border-bottom:none;cursor:pointer;transition:all .15s}
+.comp-row:last-child{border-bottom:1px solid rgba(92,87,73,.1)}
+.comp-row:hover{background:rgba(92,87,73,.03)}
 .comp-row.active{background:rgba(184,147,90,.04);border-color:rgba(184,147,90,.2)}
 /* WhatsApp floating button */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
@@ -222,13 +222,13 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 .hero-sub{font-size:18.5px}
 </style>
 <style id="fractal-contrast-fix">
-[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
+[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;opacity:1!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
 [class*="hero"] h1 em,.hero-o h1 em,.hero h1 em{color:#e7c88c!important}
 </style>
 </head>
 <body style="background:#f4efe4">
 
-<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
+<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(92,87,73,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
   <a href="index.html" style="font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);text-decoration:none;letter-spacing:.04em">Fractal</a>
   <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
     <a href="destino.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Homes</a>
@@ -249,28 +249,28 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
       <p style="font-size:14px;color:var(--stone);line-height:1.8;margin-bottom:16px">
         Compras junto a vecinos, amigos o colegas una fracción de un vehículo híbrido. Cada uno tiene días asignados según sus necesidades. Cuanto más cerca viven entre sí, menos coordinación necesitan y menos pagan.
       </p>
-      <p style="font-size:13px;color:rgba(122,116,104,.6);line-height:1.7">
+      <p style="font-size:13px;color:rgba(74,70,58,.85);line-height:1.7">
         El pico y placa es uno de los factores a considerar al elegir el vehículo y coordinar los socios — pero no es el único uso. Es una herramienta de eficiencia para quien no necesita carro todos los días.
       </p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(122,116,104,.12)">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(92,87,73,.12)">
       <div style="background:#f4efe4;padding:20px 22px">
-        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Socios</div>
+        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:8px">Socios</div>
         <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:var(--cream)">2–5</div>
         <div style="font-size:11px;color:var(--stone);margin-top:4px">según tu necesidad</div>
       </div>
       <div style="background:#f4efe4;padding:20px 22px">
-        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Días disponibles</div>
+        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:8px">Días disponibles</div>
         <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:var(--cream)">52–182</div>
         <div style="font-size:11px;color:var(--stone);margin-top:4px">por año por socio</div>
       </div>
       <div style="background:#f4efe4;padding:20px 22px">
-        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Coordinación</div>
+        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:8px">Coordinación</div>
         <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:var(--cream)">$0</div>
         <div style="font-size:11px;color:var(--stone);margin-top:4px">si son vecinos cercanos</div>
       </div>
       <div style="background:#f4efe4;padding:20px 22px">
-        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px">Costo/día mín.</div>
+        <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:8px">Costo/día mín.</div>
         <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:var(--gold)">~$90k</div>
         <div style="font-size:11px;color:var(--stone);margin-top:4px">modelo C · 3 socios</div>
       </div>
@@ -288,7 +288,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
     <!-- STEP 1: VEHÍCULO -->
     <div style="margin-bottom:28px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:12px;display:flex;align-items:center;gap:10px">
         <span style="background:rgba(184,147,90,.15);color:var(--gold);padding:2px 8px;font-size:10px">01</span>
         Elige el vehículo — top 5 híbridos más vendidos Colombia
       </div>
@@ -297,7 +297,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
     <!-- STEP 2: MODELO -->
     <div style="margin-bottom:28px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:12px;display:flex;align-items:center;gap:10px">
         <span style="background:rgba(184,147,90,.15);color:var(--gold);padding:2px 8px;font-size:10px">02</span>
         ¿A qué distancia viven los socios?
       </div>
@@ -312,19 +312,19 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           C · Edificios contiguos<br><span style="font-size:10px;opacity:.7">sin conductor · cruzar la calle</span>
         </button>
       </div>
-      <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:14px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+      <div style="background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:14px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
         <div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Modelo seleccionado</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:3px">Modelo seleccionado</div>
           <div id="mod-title" style="font-size:13px;font-weight:500;color:var(--cream)">Sin conductor · barrio plano</div>
           <div id="mod-sub" style="font-size:11px;color:var(--stone);margin-top:2px">El próximo socio camina a recogerlo</div>
         </div>
         <div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Distancia entre socios</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:3px">Distancia entre socios</div>
           <div id="mod-dist" style="font-size:13px;color:var(--cream)">Menos de 10 min caminando en plano</div>
           <div id="mod-cond" style="font-size:11px;color:rgba(120,200,120,.6);margin-top:2px">Sin conductor — el socio baja y camina</div>
         </div>
         <div>
-          <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Ejemplo de zona</div>
+          <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:3px">Ejemplo de zona</div>
           <div id="mod-ejemplo" style="font-size:12px;color:var(--stone)">Ciudad del Río, Laureles, Manila, El Centro</div>
         </div>
       </div>
@@ -332,7 +332,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
     <!-- STEP 3: SOCIOS -->
     <div style="margin-bottom:28px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px;display:flex;align-items:center;gap:10px">
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:12px;display:flex;align-items:center;gap:10px">
         <span style="background:rgba(184,147,90,.15);color:var(--gold);padding:2px 8px;font-size:10px">03</span>
         ¿Cuántos socios?
       </div>
@@ -346,13 +346,13 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
     <!-- ASIGNACIÓN -->
     <div style="margin-bottom:28px">
-      <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(122,116,104,.35);margin-bottom:10px">Distribución de días</div>
+      <div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,70,58,.74);margin-bottom:10px">Distribución de días</div>
       <div id="asig-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:8px;margin-bottom:8px"></div>
-      <div id="asig-nota" style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.65;padding:10px 14px;background:#f4efe4;border-left:2px solid rgba(184,147,90,.2)"></div>
+      <div id="asig-nota" style="font-size:11px;color:rgba(74,70,58,.78);line-height:1.65;padding:10px 14px;background:#f4efe4;border-left:2px solid rgba(184,147,90,.2)"></div>
     </div>
 
     <!-- RESULTADOS -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.12);margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(92,87,73,.12);margin-bottom:16px">
       <div class="r-block">
         <div class="r-lbl">① Capital entrada</div>
         <div id="r-entrada" class="r-num"></div>
@@ -371,46 +371,46 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
       <div class="r-block hl">
         <div class="r-lbl" style="color:rgba(184,147,90,.5)">Costo real por día</div>
         <div id="r-cdia" class="r-num gold"></div>
-        <div class="r-sub" style="color:rgba(122,116,104,.4)">②+③ ÷ días/año</div>
+        <div class="r-sub" style="color:rgba(74,70,58,.78)">②+③ ÷ días/año</div>
       </div>
     </div>
 
     <!-- DESGLOSE + NOTAS -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
-      <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:16px 18px">
-        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:10px">Desglose cuota mensual (÷ socios)</div>
+      <div style="background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:16px 18px">
+        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:10px">Desglose cuota mensual (÷ socios)</div>
         <div id="desglose"></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:8px">
         <!-- Comparativa 3 modelos -->
-        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.35);margin-bottom:4px">Comparativa — mismo vehículo y socios, distintas distancias</div>
+        <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(74,70,58,.74);margin-bottom:4px">Comparativa — mismo vehículo y socios, distintas distancias</div>
         <div id="comp-row-A" class="comp-row" onclick="selMod(document.querySelector('.pyp-mod-btn[data-mod=A]'))">
           <div>
             <div style="font-size:11px;color:var(--stone)">A · Con conductor · zonas separadas</div>
-            <div id="comp-A-cuota" style="font-size:10px;color:rgba(122,116,104,.4)"></div>
+            <div id="comp-A-cuota" style="font-size:10px;color:rgba(74,70,58,.78)"></div>
           </div>
           <div id="comp-A-cd" style="font-size:14px;font-weight:500;color:var(--cream);text-align:right"></div>
         </div>
         <div id="comp-row-B" class="comp-row active" onclick="selMod(document.querySelector('.pyp-mod-btn[data-mod=B]'))">
           <div>
             <div style="font-size:11px;color:var(--stone)">B · Sin conductor · barrio plano</div>
-            <div id="comp-B-cuota" style="font-size:10px;color:rgba(122,116,104,.4)"></div>
+            <div id="comp-B-cuota" style="font-size:10px;color:rgba(74,70,58,.78)"></div>
           </div>
           <div id="comp-B-cd" style="font-size:14px;font-weight:500;color:var(--gold);text-align:right"></div>
         </div>
         <div id="comp-row-C" class="comp-row" onclick="selMod(document.querySelector('.pyp-mod-btn[data-mod=C]'))">
           <div>
             <div style="font-size:11px;color:var(--cream)">C · Sin conductor · edificios contiguos</div>
-            <div id="comp-C-cuota" style="font-size:10px;color:rgba(122,116,104,.4)"></div>
+            <div id="comp-C-cuota" style="font-size:10px;color:rgba(74,70,58,.78)"></div>
           </div>
           <div id="comp-C-cd" style="font-size:15px;font-weight:500;color:var(--gold);text-align:right"></div>
         </div>
-        <div style="font-size:11px;color:rgba(122,116,104,.35);padding:8px 12px;background:#f4efe4;line-height:1.6">
+        <div style="font-size:11px;color:rgba(74,70,58,.74);padding:8px 12px;background:#f4efe4;line-height:1.6">
           Misma entrada en los 3 modelos. Solo cambia la distancia entre socios.
         </div>
         <!-- Referencias -->
-        <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:12px 14px">
-          <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(122,116,104,.35);margin-bottom:8px">Referencias</div>
+        <div style="background:#f4efe4;border:1px solid rgba(92,87,73,.1);padding:12px 14px">
+          <div style="font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(74,70,58,.74);margin-bottom:8px">Referencias</div>
           <div style="font-size:11px;color:var(--stone);line-height:1.9">
             Uber día completo <span style="float:right;color:rgba(200,80,80,.6)">$80k–$150k</span><br>
             Alquiler/día Hertz <span style="float:right;color:rgba(200,80,80,.6)">$150k–$300k</span><br>
@@ -426,8 +426,8 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 <!-- NOTA CONDUCTOR (modelo A) -->
 <div style="background:#f4efe4;padding:20px 56px 48px">
   <div style="max-width:1200px;margin:0 auto">
-    <div style="padding:14px 18px;background:#f4efe4;border-left:2px solid rgba(122,116,104,.15)">
-      <div style="font-size:11px;color:rgba(122,116,104,.4);line-height:1.75">
+    <div style="padding:14px 18px;background:#f4efe4;border-left:2px solid rgba(92,87,73,.15)">
+      <div style="font-size:11px;color:rgba(74,70,58,.78);line-height:1.75">
         <strong style="color:var(--stone)">Sobre el conductor (modelo A):</strong> cuando los socios viven lejos entre sí, se puede vincular un conductor nocturno que hace la ruta en cadena (9pm–1am) moviendo todos los carros de la flota. El costo de la nómina se divide entre un mínimo de 4 vehículos para ser viable — de ahí el mínimo recomendado para este modelo. No es el centro del producto, es una solución logística para casos específicos.
       </div>
     </div>
@@ -440,7 +440,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
     <div class="sec-tag">Pico y placa — uno de los factores</div>
     <h2 class="sec-h2" style="margin-bottom:12px">Si el pico y placa es tu problema,<br>la solución ya viene incluida.</h2>
     <p class="sec-p" style="max-width:600px;margin-bottom:28px">Si compras junto a alguien cuya placa es distinta a la tuya, el vehículo compartido cubre los días en que cada uno tiene restricción. No es la única razón para participar — pero sí la más práctica.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1)">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(92,87,73,.1)">
       <div style="background:#f4efe4;padding:20px 24px">
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px">Placa diferente entre socios</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.7">Fractal verifica que las placas de los socios sean diferentes. Con 5 socios, se cubren los 5 días de la semana con una placa distinta cada día.</div>
@@ -568,7 +568,7 @@ function renderAll() {
   var asig = ASIG[String(curN)] || [];
   var nota = NOTAS_ASIG[String(curN)] || '';
   shtml('asig-grid', asig.map(function(a){
-    return '<div class="asig-card"><div style="font-size:11px;font-weight:500;color:var(--cream);margin-bottom:4px">' + a[0] + '</div><div style="font-size:14px;color:var(--gold);font-family:var(--serif);font-weight:400;margin-bottom:3px">' + a[1] + '</div><div style="font-size:10px;color:rgba(122,116,104,.5)">' + a[2] + ' · ' + a[3] + '</div></div>';
+    return '<div class="asig-card"><div style="font-size:11px;font-weight:500;color:var(--cream);margin-bottom:4px">' + a[0] + '</div><div style="font-size:14px;color:var(--gold);font-family:var(--serif);font-weight:400;margin-bottom:3px">' + a[1] + '</div><div style="font-size:10px;color:rgba(74,70,58,.82)">' + a[2] + ' · ' + a[3] + '</div></div>';
   }).join(''));
   stxt('asig-nota', nota);
 
@@ -591,7 +591,7 @@ function initVehButtons() {
     return '<button class="veh-btn' + (v.id===curVeh?' active':'') + '" data-vid="' + v.id + '" onclick="selVeh(this.dataset.vid)">'
       + '<div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:2px">' + v.nombre + '</div>'
       + '<div style="font-size:10px;color:var(--stone);margin-bottom:1px">' + v.version + '</div>'
-      + '<div style="font-size:10px;color:rgba(122,116,104,.5)">' + f(v.precio) + '</div>'
+      + '<div style="font-size:10px;color:rgba(74,70,58,.82)">' + f(v.precio) + '</div>'
       + '</button>';
   }).join('');
 }
