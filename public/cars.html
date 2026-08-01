@@ -9,8 +9,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0d0d0b;--cream:#f5f0e8;--gold:#b8935a;--gold-l:#d4b07a;
-  --stone:#7a7468;--w:#fff;--red:rgba(200,80,80,.85);
+  --ink:#f4efe4;--cream:#26303c;--gold:#b0894f;--gold-l:#9a7a41;
+  --stone:#8a8377;--w:#fff;--red:rgba(200,80,80,.85);
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',sans-serif;
 }
@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
 .nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
 .nav-logo span{color:var(--gold)}
 .nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
@@ -38,9 +38,9 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* VERTICAL TABS */
 .vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
-.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#0a0a08;font-family:var(--sans);text-align:left;position:relative}
-.vert-tab:hover{background:#0f0f0d}
-.vert-tab.active{background:#111009;border-top:3px solid var(--gold)}
+.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#f4efe4;font-family:var(--sans);text-align:left;position:relative}
+.vert-tab:hover{background:#f4efe4}
+.vert-tab.active{background:#f4efe4;border-top:3px solid var(--gold)}
 .vt-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);line-height:1;margin-bottom:8px}
 .vert-tab.active .vt-num{color:var(--gold)}
 .vt-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500}
@@ -71,14 +71,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* STAT GRID */
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
-.stat-box{background:#0d0d0b;padding:28px 24px;text-align:center}
+.stat-box{background:#f4efe4;padding:28px 24px;text-align:center}
 .stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
 
 /* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
-.col-card{background:#0d0d0b;padding:32px 28px}
+.col-card{background:#f4efe4;padding:32px 28px}
 .col-card h4{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:10px}
 .col-card p{font-size:13px;color:var(--stone);line-height:1.65}
 .col-num{font-family:var(--serif);font-size:44px;font-weight:300;color:rgba(184,147,90,.18);line-height:1;margin-bottom:8px}
@@ -106,13 +106,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 .proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
 
 /* LEGAL */
-.legal-box{background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
+.legal-box{background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
 .legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
 
 /* BENCHMARK */
 .bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
-.bench-item{background:#0d0d0b;padding:24px 20px;text-align:center}
-.bench-item.highlight{background:#111009;border-top:2px solid var(--gold)}
+.bench-item{background:#f4efe4;padding:24px 20px;text-align:center}
+.bench-item.highlight{background:#f4efe4;border-top:2px solid var(--gold)}
 .bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
 .bench-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:4px}
 .bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
@@ -120,7 +120,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* LEGAL STRUCT */
 .legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
-.ls-item{background:#0d0d0b;padding:24px 20px;position:relative}
+.ls-item{background:#f4efe4;padding:24px 20px;position:relative}
 .ls-num{font-family:var(--serif);font-size:40px;font-weight:300;color:rgba(184,147,90,.15);margin-bottom:8px}
 .ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .ls-desc{font-size:12px;color:var(--stone);line-height:1.6}
@@ -128,26 +128,26 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* RISK GRID */
 .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.risk-item{background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
 .risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
 .risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
 
 /* BOATS */
 .boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
-.bf-item{background:#0d0d0b;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-item{background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
 .bf-icon{font-size:28px;margin-bottom:12px}
 .bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
 
 /* DEST GRID */
 .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-.dest-item{background:#111009;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
 .dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
 .dest-sub{font-size:11px;color:var(--stone)}
 
 /* CTA */
-.vert-cta{background:#111009;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
+.vert-cta{background:#f4efe4;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
 .vc-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--cream);margin-bottom:8px}
 .vc-sub{font-size:14px;color:var(--stone)}
 .vc-btn{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:var(--sans);font-weight:500;text-decoration:none;white-space:nowrap;transition:all .2s}
@@ -163,13 +163,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   .risk-grid{grid-template-columns:1fr}
 }
 /* ── BOTONES CALCULADORAS ── */
-.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#0a0a08;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
 .pyp-pre{font-size:10px;padding:5px 11px}
 .cv-preset{font-size:10px;padding:5px 10px}
 .cv-socios{font-size:11px;padding:8px 16px}
 .pyp-btn{font-size:11px;padding:8px 16px}
 .pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
-.back-bar{background:#09090a;border-bottom:1px solid rgba(122,116,104,.15);padding:12px 56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.back-bar{background:#f4efe4;border-bottom:1px solid rgba(122,116,104,.15);padding:12px 56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .back-bar a{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .15s}
 .back-bar a:hover{color:var(--gold)}
 .back-bar .home-link{color:rgba(184,147,90,.6)}
@@ -194,11 +194,11 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 </script>
 <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/brand/app-icon.png">
 </head>
-<body style="background:#09090a">
+<body style="background:#f4efe4">
 
-<nav style="position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
+<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
   <a href="index.html" style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);text-decoration:none;letter-spacing:.04em">Fractal</a>
-  <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1a1509;background:#b8935a;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
+  <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
     <a href="destino.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Homes</a>
     <a href="invest.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Invest</a><a href="nautico.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Náutico</a><a href="pyp.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">P&P</a>
     <a href="exchange.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(184,147,90,.6);text-decoration:none">⇄ Exchange</a>
@@ -210,7 +210,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 
   <!-- INTRO -->
-  <div class="sec" style="background:#09090a;padding-bottom:0">
+  <div class="sec" style="background:#f4efe4;padding-bottom:0">
     <div class="sec-inner">
       <div class="two-col">
         <div>
@@ -218,7 +218,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
           <h2 class="sec-h2">El supercar de tus sueños.<br><em>A un octavo del precio.</em></h2>
           <p class="sec-p">Un Ferrari Roma cuesta $1.200M. Un Porsche 911 GT3 $850M. Y lo usas, en promedio, 20 días al año. El 94% del tiempo está en el garaje depreciándose mientras pagas seguro, mantenimiento y parqueadero.</p>
           <p class="sec-p" style="margin-top:16px">Con Fractal Premium Cars 8 co-propietarios comparten un vehículo de lujo. Cada uno paga 1/8 del precio y 1/8 de los costos. Tienes 44+ días al año. Fractal gestiona absolutamente todo — incluyendo chofer, lavada premium, parqueadero cubierto y logística de entrega.</p>
-          <div style="margin-top:24px;padding:20px 24px;background:#0a0a08;border-left:3px solid var(--gold);font-family:var(--serif);font-size:17px;font-weight:300;color:rgba(245,240,232,.7);line-height:1.6">
+          <div style="margin-top:24px;padding:20px 24px;background:#f4efe4;border-left:3px solid var(--gold);font-family:var(--serif);font-size:17px;font-weight:300;color:rgba(245,240,232,.7);line-height:1.6">
             "No es alquilar un carro. Es ser dueño de uno — sin ninguno de los dolores de cabeza."
           </div>
         </div>
@@ -236,7 +236,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
   
   <!-- VS AUTO PROPIO -->
-  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+  <div class="sec" style="background:#f4efe4;padding-top:48px;padding-bottom:48px">
     <div class="sec-inner">
       <div class="sec-tag">Lo que nadie te dice cuando compras un supercar</div>
       <h2 class="sec-h2">El costo real de un Porsche 911<br>no es lo que vale el carro.</h2>
@@ -269,7 +269,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
           </div>
         </div>
       </div>
-      <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:16px 24px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
+      <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.15);padding:16px 24px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;text-align:center">
         <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Ahorro entrada</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$542.500.000</div><div style="font-size:11px;color:var(--stone)">87% menos capital</div></div>
         <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día auto propio</div><div style="font-family:var(--serif);font-size:26px;color:rgba(200,80,80,.8);font-weight:300">$9.646.000</div><div style="font-size:11px;color:var(--stone)">operativos + deprec ÷ 20 días</div></div>
         <div><div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Costo/día Fractal</div><div style="font-family:var(--serif);font-size:26px;color:var(--gold);font-weight:300">$456.685</div><div style="font-size:11px;color:var(--stone)">21× más eficiente</div></div>
@@ -301,7 +301,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
   <!-- FRACTAL CARS CLUB -->
-  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+  <div class="sec" style="background:#f4efe4;padding-top:56px;padding-bottom:56px">
     <div class="sec-inner">
       <div class="sec-tag">Fractal Cars Club</div>
       <h2 class="sec-h2">Más allá del carro.<br><em>Una comunidad que abre puertas.</em></h2>
@@ -325,14 +325,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
       <h2 class="sec-h2">¿Cuánto costará<br><em>tu vehículo específico?</em></h2>
       <p class="sec-p" style="margin-bottom:32px">Ingresa el precio de cualquier vehículo. La calculadora muestra el capital que pones (y cuánto recuperas al vender), los costos operativos mensuales, la depreciación y el costo real por día de uso.</p>
 
-      <div style="background:#09090a;border:1px solid rgba(122,116,104,.15);padding:40px 48px">
+      <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:40px 48px">
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:28px">
           <div>
             <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Precio del vehículo (COP)</div>
-            <div style="display:flex;align-items:center;border:1px solid rgba(122,116,104,.2);background:#0a0a08;margin-bottom:8px">
+            <div style="display:flex;align-items:center;border:1px solid rgba(122,116,104,.2);background:#f4efe4;margin-bottom:8px">
               <span style="padding:12px 14px;font-size:14px;color:var(--stone);border-right:1px solid rgba(122,116,104,.12)">$</span>
               <input type="text" id="cv-precio" placeholder="620.000.000" autocomplete="off"
-                style="flex:1;background:#0a0a08;border:none;color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
+                style="flex:1;background:#f4efe4;border:none;color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
                 oninput="onCvPrecio(this)" onblur="formatCvPrecio(this)">
             </div>
             <div style="display:flex;gap:6px;flex-wrap:wrap">
@@ -355,7 +355,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
           <div>
             <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:10px">Nombre del vehículo</div>
             <input type="text" id="cv-nombre" placeholder="Porsche 911, Ferrari Roma..." autocomplete="off"
-              style="width:100%;background:#0a0a08;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
+              style="width:100%;background:#f4efe4;border:1px solid rgba(122,116,104,.2);color:var(--cream);padding:12px 14px;font-family:var(--sans);font-size:14px;outline:none"
               oninput="calcVehiculo()">
           </div>
         </div>
@@ -363,19 +363,19 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
         <div id="cv-result" style="display:none">
           <div id="cv-nombre-display" style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream);margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid rgba(122,116,104,.12)"></div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);margin-bottom:8px">
-            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+            <div style="background:#f4efe4;padding:20px 16px;text-align:center">
               <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Capital entrada<br><span style="color:rgba(120,200,120,.6)">lo recuperas al vender</span></div>
               <div id="cv-entrada" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:var(--cream)">—</div>
             </div>
-            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+            <div style="background:#f4efe4;padding:20px 16px;text-align:center">
               <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Cuota operativa/mes<br><span style="color:rgba(200,80,80,.6)">sí se pierde</span></div>
               <div id="cv-cuota" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:var(--cream)">—</div>
             </div>
-            <div style="background:#0d0d0b;padding:20px 16px;text-align:center">
+            <div style="background:#f4efe4;padding:20px 16px;text-align:center">
               <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:6px">Deprec./mes tu parte<br><span style="color:rgba(200,80,80,.6)">pérdida real activo</span></div>
               <div id="cv-dep" style="font-family:var(--serif);font-size:clamp(14px,1.6vw,20px);font-weight:300;color:rgba(245,240,232,.6)">—</div>
             </div>
-            <div style="background:#111009;padding:20px 16px;text-align:center;border:1px solid rgba(184,147,90,.25)">
+            <div style="background:#f4efe4;padding:20px 16px;text-align:center;border:1px solid rgba(184,147,90,.25)">
               <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Costo real/día<br><span style="color:rgba(184,147,90,.6)">operativos+deprec÷días</span></div>
               <div id="cv-dia" style="font-family:var(--serif);font-size:clamp(20px,2.5vw,32px);font-weight:300;color:var(--gold)">—</div>
             </div>
@@ -393,10 +393,10 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
             <div>
               <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px">Costo por día — comparativo</div>
               <div style="display:flex;flex-direction:column;gap:8px">
-                <div style="background:#0a0a08;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Alquiler de lujo en el mercado</div><div style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</div></div>
-                <div style="background:#0a0a08;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Auto propio (operativos+deprec ÷ 20 días)</div><div id="cv-dia-propio" style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.7)">—</div></div>
-                <div style="background:#111009;padding:14px;border:1px solid rgba(184,147,90,.3)"><div style="font-size:11px;color:var(--gold);margin-bottom:4px">Fractal — tu costo real por día</div><div id="cv-dia-fractal" style="font-family:var(--serif);font-size:28px;color:var(--gold)">—</div></div>
-                <div id="cv-ahorro-box" style="background:#09090a;padding:10px 14px;border:1px solid rgba(122,116,104,.1);font-size:12px;color:var(--stone);line-height:1.6"></div>
+                <div style="background:#f4efe4;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Alquiler de lujo en el mercado</div><div style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.8)">$2.500.000–$5.000.000/día</div></div>
+                <div style="background:#f4efe4;padding:14px;border:1px solid rgba(122,116,104,.1)"><div style="font-size:11px;color:var(--stone);margin-bottom:4px">Auto propio (operativos+deprec ÷ 20 días)</div><div id="cv-dia-propio" style="font-family:var(--serif);font-size:20px;color:rgba(200,80,80,.7)">—</div></div>
+                <div style="background:#f4efe4;padding:14px;border:1px solid rgba(184,147,90,.3)"><div style="font-size:11px;color:var(--gold);margin-bottom:4px">Fractal — tu costo real por día</div><div id="cv-dia-fractal" style="font-family:var(--serif);font-size:28px;color:var(--gold)">—</div></div>
+                <div id="cv-ahorro-box" style="background:#f4efe4;padding:10px 14px;border:1px solid rgba(122,116,104,.1);font-size:12px;color:var(--stone);line-height:1.6"></div>
               </div>
             </div>
           </div>
@@ -413,7 +413,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
   <!-- PORTAFOLIO -->
-  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+  <div class="sec" style="background:#f4efe4;padding-top:56px;padding-bottom:56px">
     <div class="sec-inner">
       <div class="sec-tag">Portafolio y costos reales</div>
       <h2 class="sec-h2">6 marcas. Todo incluido.<br>Sin sorpresas.</h2>

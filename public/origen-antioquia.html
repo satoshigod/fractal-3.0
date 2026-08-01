@@ -20,8 +20,8 @@
 
 <style>
 :root{
-  --ink:#09090a; --ink2:#0d0d0b; --gold:#b8935a; --gold-l:#d4b07a;
-  --cream:#f5f0e8; --stone:#7a7468;
+  --ink:#f4efe4; --ink2:#f4efe4; --gold:#b0894f; --gold-l:#9a7a41;
+  --cream:#26303c; --stone:#8a8377;
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',system-ui,sans-serif;
 }
@@ -36,7 +36,7 @@ nav{
   position:sticky;top:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 48px;height:58px;
-  background:rgba(9,9,10,.96);
+  background:rgba(27,42,65,.96);
   border-bottom:1px solid rgba(122,116,104,.12);
   backdrop-filter:blur(10px);
 }
@@ -112,7 +112,7 @@ h1 em{font-style:italic;color:var(--gold-l)}
 
 /* SECTION BASE */
 .sec{padding:88px 48px}
-.sec-dark{background:#0b0b09}
+.sec-dark{background:#f4efe4}
 .sec-tag{
   font-size:10px;letter-spacing:.22em;text-transform:uppercase;
   color:rgba(122,116,104,.45);display:flex;align-items:center;gap:10px;margin-bottom:18px;
@@ -130,7 +130,7 @@ h1 em{font-style:italic;color:var(--gold-l)}
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:1px;background:rgba(122,116,104,.1);
 }
-.dolor{background:#0b0b09;padding:40px 32px}
+.dolor{background:#f4efe4;padding:40px 32px}
 .dolor-n{
   font-family:var(--serif);font-size:52px;font-weight:300;
   color:rgba(184,147,90,.12);line-height:1;margin-bottom:18px;
@@ -160,7 +160,7 @@ h1 em{font-style:italic;color:var(--gold-l)}
 /* CTA BANDA */
 .cta-banda{
   padding:64px 48px;text-align:center;
-  background:#0b0b09;
+  background:#f4efe4;
   border-top:1px solid rgba(122,116,104,.1);
   border-bottom:1px solid rgba(122,116,104,.1);
 }
@@ -178,8 +178,8 @@ h1 em{font-style:italic;color:var(--gold-l)}
   border:1px solid rgba(122,116,104,.12);
   margin-top:48px;
 }
-.ej-card{background:#0c0c0a;padding:32px 28px}
-.ej-card.hi{background:#101009;border:1px solid rgba(184,147,90,.16)}
+.ej-card{background:#f4efe4;padding:32px 28px}
+.ej-card.hi{background:#f4efe4;border:1px solid rgba(184,147,90,.16)}
 .ej-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:8px}
 .ej-t{font-family:var(--serif);font-size:19px;font-weight:300;color:var(--cream);margin-bottom:8px}
 .ej-d{font-size:12px;color:var(--stone);line-height:1.68}
@@ -195,19 +195,19 @@ h1 em{font-style:italic;color:var(--gold-l)}
 .trust{margin-top:36px;display:flex;flex-direction:column;gap:12px}
 .trust-i{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--stone);line-height:1.5}
 .trust-i span:first-child{color:var(--gold);font-size:11px;margin-top:2px;flex-shrink:0}
-.form-box{background:#0d0d0b;border:1px solid rgba(122,116,104,.15);padding:40px 36px}
+.form-box{background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:40px 36px}
 .form-box h3{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:6px}
 .form-box .sub{font-size:12px;color:var(--stone);margin-bottom:28px}
 .fg{margin-bottom:14px}
 .fg label{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(122,116,104,.55);margin-bottom:5px}
 .fg input,.fg select{
-  width:100%;background:#0a0a08;border:1px solid rgba(122,116,104,.18);
+  width:100%;background:#f4efe4;border:1px solid rgba(122,116,104,.18);
   color:var(--cream);padding:12px 14px;font-size:14px;
   outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0;
 }
 .fg input::placeholder{color:rgba(122,116,104,.38)}
 .fg input:focus,.fg select:focus{border-color:rgba(184,147,90,.38)}
-.fg select option{background:#0d0d0b}
+.fg select option{background:#f4efe4}
 .form-submit{
   width:100%;background:var(--gold);color:var(--ink);border:none;
   cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
@@ -225,7 +225,7 @@ h1 em{font-style:italic;color:var(--gold-l)}
 .gracias p{font-size:13px;color:var(--stone);margin-bottom:20px}
 
 /* CTA FINAL */
-.cta-final{padding:80px 48px;text-align:center;background:#0b0b09}
+.cta-final{padding:80px 48px;text-align:center;background:#f4efe4}
 .cta-final h3{
   font-family:var(--serif);font-size:clamp(24px,3.5vw,46px);
   font-weight:300;color:var(--cream);margin-bottom:12px;line-height:1.2;
@@ -286,6 +286,7 @@ footer{
 }
 </style>
 <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/brand/app-icon.png">
+<style>@media(max-width:640px){html,body{overflow-x:hidden}img,video{max-width:100%;height:auto}}</style>
 </head>
 <body>
 
@@ -298,7 +299,7 @@ footer{
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
     Escríbenos
   </a>
-<a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1a1509;background:#b8935a;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;margin-left:16px">Ingresar</a>
+<a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;margin-left:16px">Ingresar</a>
 </nav>
 
 <!-- HERO -->
@@ -441,7 +442,7 @@ footer{
             </div>
             <div class="fg">
               <label>WhatsApp</label>
-              <div style="display:flex;align-items:center;background:#0a0a08;border:1px solid rgba(122,116,104,.18);transition:border-color .2s" id="wa-wrap">
+              <div style="display:flex;align-items:center;background:#f4efe4;border:1px solid rgba(122,116,104,.18);transition:border-color .2s" id="wa-wrap">
                 <span style="padding:12px 10px 12px 14px;font-size:14px;color:rgba(122,116,104,.6);white-space:nowrap;flex-shrink:0">+57</span>
                 <input type="tel" id="f-wa" placeholder="300 000 0000" required
                   style="border:none;background:transparent;flex:1;padding:12px 14px 12px 0;font-size:14px;color:var(--cream);outline:none"
@@ -583,7 +584,7 @@ window.addEventListener('scroll',function(){
 
 <!-- MODAL CONFIRMACIÓN -->
 <div id="modal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:24px">
-  <div style="background:#0d0d0b;border:1px solid rgba(184,147,90,.25);max-width:440px;width:100%;padding:48px 40px;text-align:center;position:relative">
+  <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.25);max-width:440px;width:100%;padding:48px 40px;text-align:center;position:relative">
     <div style="font-size:32px;margin-bottom:16px">✓</div>
     <h3 style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--cream);margin-bottom:10px">¡Listo, recibido!</h3>
     <p style="font-size:13px;color:var(--stone);line-height:1.7;margin-bottom:28px">Te contactamos en menos de 24 horas para agendar una visita a tu finca.<br>También te abrimos WhatsApp para que puedas escribirnos directo.</p>

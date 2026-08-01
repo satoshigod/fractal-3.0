@@ -203,3 +203,19 @@ tr:last-child td{border-bottom:none}
 .specrow{display:flex;justify-content:space-between;font-size:12.5px;padding:5px 0;border-top:1px solid rgba(42,38,32,.6)}
 .specrow:first-of-type{border-top:none}
 .specrow .s{color:var(--stone)}
+
+/* Responsive — móvil (web móvil siempre) */
+@media(max-width:640px){
+  .wrap{padding-left:16px;padding-right:16px}
+  h1{font-size:24px}
+  .bar{gap:10px}
+  .brand{font-size:17px;letter-spacing:.12em}
+  .card{overflow-x:auto}
+  table{font-size:12px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .mkgrid{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .specgrid,.pasos,.props,.destacados,.grid{grid-template-columns:1fr}
+  .fichahero{height:200px}
+  .thumb{width:56px;height:42px}
+}

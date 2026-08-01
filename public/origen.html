@@ -9,8 +9,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0d0d0b;--cream:#f5f0e8;--gold:#b8935a;--gold-l:#d4b07a;
-  --stone:#7a7468;--w:#fff;--red:rgba(200,80,80,.85);
+  --ink:#f4efe4;--cream:#26303c;--gold:#b0894f;--gold-l:#9a7a41;
+  --stone:#8a8377;--w:#fff;--red:rgba(200,80,80,.85);
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',sans-serif;
 }
@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
 .nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
 .nav-logo span{color:var(--gold)}
 .nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
@@ -38,9 +38,9 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* VERTICAL TABS */
 .vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
-.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#0a0a08;font-family:var(--sans);text-align:left;position:relative}
-.vert-tab:hover{background:#0f0f0d}
-.vert-tab.active{background:#111009;border-top:3px solid var(--gold)}
+.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#f4efe4;font-family:var(--sans);text-align:left;position:relative}
+.vert-tab:hover{background:#f4efe4}
+.vert-tab.active{background:#f4efe4;border-top:3px solid var(--gold)}
 .vt-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);line-height:1;margin-bottom:8px}
 .vert-tab.active .vt-num{color:var(--gold)}
 .vt-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500}
@@ -71,14 +71,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* STAT GRID */
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
-.stat-box{background:#0d0d0b;padding:28px 24px;text-align:center}
+.stat-box{background:#f4efe4;padding:28px 24px;text-align:center}
 .stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
 
 /* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
-.col-card{background:#0d0d0b;padding:32px 28px}
+.col-card{background:#f4efe4;padding:32px 28px}
 .col-card h4{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:10px}
 .col-card p{font-size:13px;color:var(--stone);line-height:1.65}
 .col-num{font-family:var(--serif);font-size:44px;font-weight:300;color:rgba(184,147,90,.18);line-height:1;margin-bottom:8px}
@@ -106,13 +106,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 .proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
 
 /* LEGAL */
-.legal-box{background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
+.legal-box{background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
 .legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
 
 /* BENCHMARK */
 .bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
-.bench-item{background:#0d0d0b;padding:24px 20px;text-align:center}
-.bench-item.highlight{background:#111009;border-top:2px solid var(--gold)}
+.bench-item{background:#f4efe4;padding:24px 20px;text-align:center}
+.bench-item.highlight{background:#f4efe4;border-top:2px solid var(--gold)}
 .bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
 .bench-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:4px}
 .bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
@@ -120,7 +120,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* LEGAL STRUCT */
 .legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
-.ls-item{background:#0d0d0b;padding:24px 20px;position:relative}
+.ls-item{background:#f4efe4;padding:24px 20px;position:relative}
 .ls-num{font-family:var(--serif);font-size:40px;font-weight:300;color:rgba(184,147,90,.15);margin-bottom:8px}
 .ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .ls-desc{font-size:12px;color:var(--stone);line-height:1.6}
@@ -128,26 +128,26 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* RISK GRID */
 .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.risk-item{background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
 .risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
 .risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
 
 /* BOATS */
 .boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
-.bf-item{background:#0d0d0b;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-item{background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
 .bf-icon{font-size:28px;margin-bottom:12px}
 .bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
 
 /* DEST GRID */
 .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-.dest-item{background:#111009;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
 .dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
 .dest-sub{font-size:11px;color:var(--stone)}
 
 /* CTA */
-.vert-cta{background:#111009;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
+.vert-cta{background:#f4efe4;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
 .vc-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--cream);margin-bottom:8px}
 .vc-sub{font-size:14px;color:var(--stone)}
 .vc-btn{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:var(--sans);font-weight:500;text-decoration:none;white-space:nowrap;transition:all .2s}
@@ -163,7 +163,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   .risk-grid{grid-template-columns:1fr}
 }
 /* ── BOTONES CALCULADORAS ── */
-.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#0a0a08;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
 .pyp-pre{font-size:10px;padding:5px 11px}
 .cv-preset{font-size:10px;padding:5px 10px}
 .cv-socios{font-size:11px;padding:8px 16px}
@@ -174,8 +174,8 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;background:linear-gradient(to bottom,rgba(13,13,11,.9),transparent);transition:background .4s}
-nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;background:linear-gradient(to bottom,rgba(27,42,65,.9),transparent);transition:background .4s}
+nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;color:var(--cream);text-decoration:none;text-transform:uppercase}
 .nav-logo span{color:var(--gold)}
 .nav-links{display:flex;gap:28px;list-style:none}
@@ -186,7 +186,7 @@ nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
 
 /* HERO */
 .hero-o{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;padding:0 48px 88px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,13,11,.18) 0%,rgba(13,13,11,.05) 30%,rgba(13,13,11,.82) 72%,var(--ink) 100%),url('images/finca-hero.jpg') center/cover no-repeat}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,42,65,.18) 0%,rgba(27,42,65,.05) 30%,rgba(27,42,65,.82) 72%,var(--ink) 100%),url('images/finca-hero.jpg') center/cover no-repeat}
 .hero-content{position:relative;max-width:820px}
 .hero-eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;display:flex;align-items:center;gap:14px}
 .hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--gold)}
@@ -229,14 +229,14 @@ nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
 .dr-item span{font-size:12px;color:var(--stone);line-height:1.52}
 
 /* COMO */
-.como{background:#0a0a08;padding:108px 48px}
+.como{background:#f4efe4;padding:108px 48px}
 .como-inner{max-width:1100px;margin:0 auto}
 .como-inner h2{font-family:var(--serif);font-size:clamp(32px,3.8vw,52px);font-weight:300;color:var(--cream);margin-bottom:60px;line-height:1.1}
 .como-inner h2 em{font-style:italic;color:var(--gold-light)}
 .como-steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative}
 .como-steps::before{content:'';position:absolute;top:21px;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,rgba(184,147,90,.26),transparent)}
 .cs{padding:0 8px;text-align:center}
-.cs-circle{width:42px;height:42px;border:1px solid rgba(184,147,90,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-family:var(--serif);font-size:17px;font-weight:300;color:var(--gold);background:#0a0a08;position:relative;z-index:1}
+.cs-circle{width:42px;height:42px;border:1px solid rgba(184,147,90,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-family:var(--serif);font-size:17px;font-weight:300;color:var(--gold);background:#f4efe4;position:relative;z-index:1}
 .cs h4{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:7px}
 .cs p{font-size:11px;color:var(--stone);line-height:1.6}
 
@@ -256,7 +256,7 @@ nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
 .rc-nota{font-size:11px;color:rgba(184,147,90,.52);line-height:1.6;border-left:2px solid rgba(184,147,90,.2);padding-left:11px;font-style:italic}
 
 /* EJEMPLO */
-.ejemplo{background:#0c0c0a;padding:96px 48px}
+.ejemplo{background:#f4efe4;padding:96px 48px}
 .ejemplo-inner{max-width:980px;margin:0 auto}
 .ejemplo-inner h2{font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:300;color:var(--cream);margin-bottom:8px}
 .ejemplo-inner > p{font-size:13px;color:var(--stone);margin-bottom:36px;line-height:1.6}
@@ -275,7 +275,7 @@ nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
 .ejemplo-nota{margin-top:14px;font-size:11px;color:rgba(122,116,104,.42);line-height:1.6;font-style:italic}
 
 /* ═══════════════ COTIZADOR ═══════════════ */
-.cotizador{background:#0f0f0d;padding:108px 48px}
+.cotizador{background:#f4efe4;padding:108px 48px}
 .cotizador-inner{max-width:1100px;margin:0 auto}
 .cotizador-top{margin-bottom:48px}
 .cotizador-top h2{font-family:var(--serif);font-size:clamp(32px,3.8vw,52px);font-weight:300;color:var(--cream);margin-bottom:12px;line-height:1.1}
@@ -293,8 +293,8 @@ nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
 .cot-panel{display:none}
 .cot-panel.active{display:block}
 .cot-body{display:grid;grid-template-columns:3fr 2fr;gap:2px;background:rgba(122,116,104,.12)}
-.cot-form{background:#0f0f0d;padding:44px 40px}
-.cot-aside{background:#131210;padding:44px 32px;display:flex;flex-direction:column}
+.cot-form{background:#f4efe4;padding:44px 40px}
+.cot-aside{background:#f4efe4;padding:44px 32px;display:flex;flex-direction:column}
 
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:18px}
 .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
@@ -304,7 +304,7 @@ nav.scrolled{background:rgba(13,13,11,.97);backdrop-filter:blur(12px)}
 .form-input::placeholder{color:rgba(122,116,104,.3)}
 .form-input.error{border-color:rgba(192,57,43,.45)}
 select.form-input{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a7468' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
-select.form-input option{background:#1a1a16;color:var(--cream)}
+select.form-input option{background:#ffffff;color:var(--cream)}
 .form-error{font-size:11px;color:#e07070;margin-top:-10px;margin-bottom:6px;display:none}
 .form-error.show{display:block}
 
@@ -346,9 +346,9 @@ select.form-input option{background:#1a1a16;color:var(--cream)}
 .can-text{font-size:11px;color:var(--stone);line-height:1.58}
 
 /* RESULTADO */
-.resultado-wrap{background:#0f0f0d;padding:44px 40px}
+.resultado-wrap{background:#f4efe4;padding:44px 40px}
 .resultado-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(122,116,104,.11);border:1px solid rgba(122,116,104,.11);margin-bottom:24px}
-.res-card{background:#0f0f0d;padding:28px 24px}
+.res-card{background:#f4efe4;padding:28px 24px}
 .res-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:7px}
 .res-val{font-family:var(--serif);font-size:32px;font-weight:300;line-height:1;margin-bottom:4px}
 .res-sub{font-size:11px;color:rgba(122,116,104,.48);line-height:1.42}
@@ -360,7 +360,7 @@ select.form-input option{background:#1a1a16;color:var(--cream)}
 .fb-sub{font-size:13px;color:var(--stone);line-height:1.58;margin-bottom:10px}
 .fb-tipo{display:inline-block;padding:4px 12px;border:1px solid rgba(184,147,90,.25);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 
-.resultado-breakdown{background:#131210;border:1px solid rgba(122,116,104,.09);padding:28px 32px;margin-bottom:24px}
+.resultado-breakdown{background:#f4efe4;border:1px solid rgba(122,116,104,.09);padding:28px 32px;margin-bottom:24px}
 .rb-title{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:8px}
 .rb-title::before{content:'';width:16px;height:1px;background:var(--gold)}
 .rb-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(122,116,104,.06)}
@@ -416,7 +416,7 @@ select.form-input option{background:#1a1a16;color:var(--cream)}
 
 /* CTA */
 .cta-final{position:relative;min-height:400px;display:flex;align-items:center;justify-content:center;text-align:center;padding:88px 48px;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(13,13,11,.68),rgba(13,13,11,.86)),url('images/finca-cta.jpg') center/cover}
+.cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(27,42,65,.68),rgba(27,42,65,.86)),url('images/finca-cta.jpg') center/cover}
 .cta-content{position:relative;max-width:560px}
 .cta-content h2{font-family:var(--serif);font-size:clamp(36px,5vw,66px);font-weight:300;color:var(--white);line-height:1.04;margin-bottom:16px}
 .cta-content h2 em{font-style:italic;color:var(--gold-light)}
@@ -458,10 +458,10 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 /* Origen overrides */
 .hero-o{padding-top:80px}
 
-.frac-sel{background:#09090a;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:12px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;flex:1;text-align:center;line-height:1.5}
+.frac-sel{background:#f4efe4;border:1px solid rgba(122,116,104,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:12px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;flex:1;text-align:center;line-height:1.5}
 .frac-sel.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .frac-sel:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
-.frac-opt{flex:1;padding:16px 20px;border:1px solid rgba(122,116,104,.2);background:#09090a;cursor:pointer;text-align:center;line-height:1.5;transition:all .15s;color:var(--stone);user-select:none}
+.frac-opt{flex:1;padding:16px 20px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;line-height:1.5;transition:all .15s;color:var(--stone);user-select:none}
 .frac-opt:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
 .frac-radio:checked + .frac-opt{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .frac-radio{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
@@ -479,9 +479,9 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 </head>
 <body>
 
-<nav style="position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
+<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
   <a href="index.html" style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);text-decoration:none;letter-spacing:.04em">Fractal</a>
-  <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1a1509;background:#b8935a;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
+  <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
     <a href="destino.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Destino</a>
     
     
@@ -584,22 +584,22 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
     <!-- PROCESO ESCALONADO -->
     <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px"><span style="width:20px;height:1px;background:var(--gold);display:inline-block"></span>El proceso escalonado — tú decides cuándo parar</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin-bottom:16px">
-      <div style="background:#0d0d0b;padding:28px 22px">
+      <div style="background:#f4efe4;padding:28px 22px">
         <div style="font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);margin-bottom:8px">0</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Antes de vender</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">La propiedad es 100% tuya. Puedes usar la casa cuando quieras. Los costos de operación son todos tuyos.</div>
       </div>
-      <div style="background:#0d0d0b;padding:28px 22px;border-left:1px solid rgba(122,116,104,.1)">
+      <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(122,116,104,.1)">
         <div style="font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);margin-bottom:8px">1</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Primera fracción vendida</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">Recibes los recursos de esa venta menos los pasivos acumulados. Tienes acceso a 7/8 del tiempo de la casa — excepto la ventana del comprador. Los costos se dividen entre 2.</div>
       </div>
-      <div style="background:#0d0d0b;padding:28px 22px;border-left:1px solid rgba(122,116,104,.1)">
+      <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(122,116,104,.1)">
         <div style="font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);margin-bottom:8px">2–6</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Fracciones adicionales</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">Cada nueva venta te da más liquidez y reduce tu proporción de uso. Tú escoges si seguir o parar. Los costos se reparten entre más personas.</div>
       </div>
-      <div style="background:#111009;padding:28px 22px;border-left:1px solid rgba(184,147,90,.15)">
+      <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(184,147,90,.15)">
         <div style="font-family:var(--serif);font-size:36px;font-weight:300;color:var(--gold);margin-bottom:8px">7</div>
         <div style="font-size:12px;font-weight:500;color:var(--gold);margin-bottom:8px">Con tu fracción conservada</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">Vendiste 7 fracciones. Conservas la tuya — escriturada, con días de uso asignados. Los costos se reparten entre los 8 fraccionarios en partes iguales. Sigues siendo propietario.</div>
@@ -607,7 +607,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
     </div>
 
     </div>
-    <div style="background:#0a0a08;border-left:3px solid rgba(184,147,90,.3);padding:16px 20px;font-size:12px;color:var(--stone);line-height:1.75;margin-bottom:48px">
+    <div style="background:#f4efe4;border-left:3px solid rgba(184,147,90,.3);padding:16px 20px;font-size:12px;color:var(--stone);line-height:1.75;margin-bottom:48px">
       <strong style="color:var(--cream)">Si decides no vender más fracciones en algún punto:</strong> dejas de recibir ingresos de ventas y asumes una proporción mayor de los costos de operación — igual que antes, pero con la propiedad funcionando y sin deudas acumuladas. La decisión es tuya y puedes cambiarla en cualquier momento.
     </div>
 
@@ -636,7 +636,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
     <p style="font-size:13px;color:var(--stone);margin-bottom:28px;line-height:1.6">Ajusta los valores con los sliders y ve en tiempo real cómo cambia tu liquidación.</p>
 
     <!-- CONTROLES -->
-    <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.15);padding:28px 32px;margin-bottom:12px">
+    <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.15);padding:28px 32px;margin-bottom:12px">
       <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:20px">Parámetros — arrastra para ajustar</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px 40px">
 
@@ -677,11 +677,11 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
               <div style="font-size:11px;font-weight:500">No conservo</div>
               <div style="font-size:10px">Máxima liquidez</div>
             </div>
-            <div id="ej-opt-wd" onclick="ejFrac('wd')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(122,116,104,.2);background:#09090a;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="ej-opt-wd" onclick="ejFrac('wd')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:11px;font-weight:500">WD</div>
               <div style="font-size:10px">Entre semana</div>
             </div>
-            <div id="ej-opt-ab" onclick="ejFrac('ab')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(122,116,104,.2);background:#09090a;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="ej-opt-ab" onclick="ejFrac('ab')" style="flex:1;min-width:80px;padding:10px 10px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:11px;font-weight:500">A o B</div>
               <div style="font-size:10px">Fin de semana</div>
             </div>
@@ -693,20 +693,20 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
     </div>
 
     <!-- PASO 1 -->
-    <div style="background:#0a0a08;border:1px solid rgba(184,147,90,.12);padding:18px 24px;margin-bottom:8px">
+    <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.12);padding:18px 24px;margin-bottom:8px">
       <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:12px">Paso 1 — Activo fractalizado</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(122,116,104,.1)">
-        <div style="background:#09090a;padding:14px 18px">
+        <div style="background:#f4efe4;padding:14px 18px">
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">Avalúo propiedad</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)" id="ej-valor">—</div>
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Lo que dice el propietario</div>
         </div>
-        <div style="background:#09090a;padding:14px 18px;border-left:1px solid rgba(122,116,104,.1)">
+        <div style="background:#f4efe4;padding:14px 18px;border-left:1px solid rgba(122,116,104,.1)">
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:4px">+ Remodelación Fractal</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)" id="ej-remo">—</div>
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Fractal lo financia</div>
         </div>
-        <div style="background:#111009;padding:14px 18px;border-left:1px solid rgba(184,147,90,.2)">
+        <div style="background:#f4efe4;padding:14px 18px;border-left:1px solid rgba(184,147,90,.2)">
           <div style="font-size:10px;color:rgba(184,147,90,.5);margin-bottom:4px">= Activo fractalizado total</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--gold)" id="ej-fractalizado">—</div>
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-top:2px">Base para las 8 fracciones</div>
@@ -715,25 +715,25 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
     </div>
 
     <!-- PASO 2 -->
-    <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
+    <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
       <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px">Paso 2 — Precio de cada fracción</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:rgba(122,116,104,.1)">
-        <div style="background:#09090a;padding:12px 16px">
+        <div style="background:#f4efe4;padding:12px 16px">
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción A · 15.65%</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--cream)" id="ej-pA">—</div>
           <div style="font-size:10px;color:rgba(122,116,104,.4)">× 2 unidades</div>
         </div>
-        <div style="background:#09090a;padding:12px 16px">
+        <div style="background:#f4efe4;padding:12px 16px">
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción B · 15.65%</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--cream)" id="ej-pB">—</div>
           <div style="font-size:10px;color:rgba(122,116,104,.4)">× 2 unidades</div>
         </div>
-        <div style="background:#09090a;padding:12px 16px">
+        <div style="background:#f4efe4;padding:12px 16px">
           <div style="font-size:10px;color:rgba(122,116,104,.4);margin-bottom:3px">Fracción WD · 9.35%</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--cream)" id="ej-pWD">—</div>
           <div style="font-size:10px;color:rgba(122,116,104,.4)">× 4 unidades</div>
         </div>
-        <div style="background:#111009;padding:12px 16px;border-left:1px solid rgba(184,147,90,.15)">
+        <div style="background:#f4efe4;padding:12px 16px;border-left:1px solid rgba(184,147,90,.15)">
           <div style="font-size:10px;color:rgba(184,147,90,.4);margin-bottom:3px">Total 8 fracciones</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--gold)" id="ej-total8">—</div>
           <div style="font-size:10px;color:rgba(122,116,104,.4)">= activo fractalizado</div>
@@ -742,7 +742,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
     </div>
 
     <!-- PASO 3 -->
-    <div style="background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
+    <div style="background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:18px 24px;margin-bottom:8px">
       <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,116,104,.4);margin-bottom:12px" id="ej-paso3-label">Paso 3 — Propietario conserva 1 WD · vende 2A + 2B + 3WD</div>
       <table class="ejemplo-table">
         <thead><tr><th>CONCEPTO</th><th>DETALLE</th><th>VALOR</th></tr></thead>
@@ -792,7 +792,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
       <div id="ej-aviso" style="display:none;margin-top:12px;padding:12px 16px;background:rgba(192,57,43,.07);border-left:2px solid rgba(192,57,43,.3);font-size:12px;color:rgba(220,100,80,.9);line-height:1.65">
         ⚠ Con estos valores los pasivos superan la bolsa. El propietario necesitaría un avalúo más alto o menor deuda para que el caso sea viable.
       </div>
-      <div style="margin-top:12px;padding:12px 16px;background:#09090a;border-left:2px solid rgba(184,147,90,.3);font-size:12px;color:var(--stone);line-height:1.75">
+      <div style="margin-top:12px;padding:12px 16px;background:#f4efe4;border-left:2px solid rgba(184,147,90,.3);font-size:12px;color:var(--stone);line-height:1.75">
         <strong style="color:var(--cream)">Las fracciones se venden al precio lleno.</strong>
         La remodelación, las deudas y los honorarios se descuentan de <em style="color:var(--cream)">lo que recibes tú</em> — no del precio que pagan los compradores.
       </div>
@@ -914,7 +914,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
               <input type="radio" name="embargo" id="emb-r-no" value="no" checked style="position:absolute;opacity:0;width:0;height:0">
               <label for="emb-r-no" id="emb-lbl-no" style="flex:1;padding:13px 6px;border:2px solid var(--gold);background:rgba(184,147,90,.05);cursor:pointer;text-align:center;color:var(--gold);font-family:var(--sans);font-size:12px;transition:all .15s;display:block" onclick="embargoToggle('no')">No</label>
               <input type="radio" name="embargo" id="emb-r-si" value="si" style="position:absolute;opacity:0;width:0;height:0">
-              <label for="emb-r-si" id="emb-lbl-si" style="flex:1;padding:13px 6px;border:1px solid rgba(122,116,104,.2);background:#09090a;cursor:pointer;text-align:center;color:var(--stone);font-family:var(--sans);font-size:12px;transition:all .15s;display:block" onclick="embargoToggle('si')">Sí — hay embargo o deuda legal</label>
+              <label for="emb-r-si" id="emb-lbl-si" style="flex:1;padding:13px 6px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;color:var(--stone);font-family:var(--sans);font-size:12px;transition:all .15s;display:block" onclick="embargoToggle('si')">Sí — hay embargo o deuda legal</label>
             </div>
             <div id="emb-detalle" style="display:none;margin-top:4px">
               <p class="form-label" style="margin-bottom:6px">Valor estimado del embargo / deuda legal (COP)</p>
@@ -1013,7 +1013,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
         </div>
 
         <!-- SELECTOR FRACCIÓN OPCIONAL -->
-        <div style="background:#131210;border:1px solid rgba(184,147,90,.15);padding:24px 28px;margin-bottom:24px">
+        <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.15);padding:24px 28px;margin-bottom:24px">
           <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:6px">¿Quieres conservar alguna fracción?</div>
           <div style="font-size:12px;color:rgba(122,116,104,.5);margin-bottom:16px;line-height:1.55">Opcional. Si conservas una, su valor se descuenta de tu liquidación. Puedes usar esos días o cederlos al operador.</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -1021,12 +1021,12 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
               <div style="font-size:12px;font-weight:500">No conservo</div>
               <div style="font-size:10px;margin-top:3px;opacity:.7">Máxima liquidez</div>
             </div>
-            <div id="r-opt-wd" onclick="rElegirFrac('wd')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(122,116,104,.2);background:#09090a;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="r-opt-wd" onclick="rElegirFrac('wd')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:12px;font-weight:500">Fracción WD</div>
               <div style="font-size:10px;margin-top:3px">Entre semana · 9.35%</div>
               <div style="font-size:10px;opacity:.5">~43 días/año</div>
             </div>
-            <div id="r-opt-ab" onclick="rElegirFrac('ab')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(122,116,104,.2);background:#09090a;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
+            <div id="r-opt-ab" onclick="rElegirFrac('ab')" style="flex:1;min-width:120px;padding:14px 12px;border:1px solid rgba(122,116,104,.2);background:#f4efe4;cursor:pointer;text-align:center;transition:all .15s;color:var(--stone)">
               <div style="font-size:12px;font-weight:500">Fracción A o B</div>
               <div style="font-size:10px;margin-top:3px">Fin de semana · 15.65%</div>
               <div style="font-size:10px;opacity:.5">~48 días/año</div>
@@ -1060,7 +1060,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
             <div class="cm-nota" id="cm-nota-txt">Si conservas una fracción pagas exactamente 1/8 de los costos totales de la propiedad — igual que cualquier otro fraccionario.</div>
           </div>
           <!-- Mensaje si no conserva -->
-          <div id="cm-nocost" style="display:none;background:#0a0a08;border:1px solid rgba(184,147,90,.12);padding:24px 28px;margin-bottom:24px">
+          <div id="cm-nocost" style="display:none;background:#f4efe4;border:1px solid rgba(184,147,90,.12);padding:24px 28px;margin-bottom:24px">
             <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:10px">Costos mensuales para ti</div>
             <div style="font-family:var(--serif);font-size:36px;font-weight:300;color:var(--gold);margin-bottom:8px">$0</div>
             <div style="font-size:13px;color:var(--stone);line-height:1.7">Si vendes las 8 fracciones, <strong style="color:var(--cream)">no asumes ningún costo mensual</strong>. Los 8 compradores dividen todos los gastos de operación entre ellos en partes iguales. Tú quedas liberado completamente.</div>
@@ -1114,14 +1114,14 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
 </section>
 
 
-<section style="padding:80px 48px;background:#0b0b09">
+<section style="padding:80px 48px;background:#f4efe4">
   <div style="max-width:1200px;margin:0 auto">
     <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(122,116,104,.45);display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:18px;height:1px;background:rgba(122,116,104,.4);display:inline-block"></span>Zonas donde operamos</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:300;color:var(--cream);margin-bottom:48px;line-height:1.2">Fincas en <em style="font-style:italic;color:var(--gold-l)">Antioquia</em></h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
       <div style="position:relative;overflow:hidden;height:280px">
         <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=700&q=85" alt="Suroeste Antioqueño — Cauca Viejo" style="width:100%;height:100%;object-fit:cover;display:block">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,10,.92) 0%,rgba(9,9,10,.2) 55%,transparent 100%)"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(27,42,65,.92) 0%,rgba(27,42,65,.2) 55%,transparent 100%)"></div>
         <div style="position:absolute;bottom:24px;left:24px">
           <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Suroeste Antioqueño</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">Cauca Viejo · Jardín</div>
@@ -1130,7 +1130,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
       </div>
       <div style="position:relative;overflow:hidden;height:280px">
         <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=700&q=85" alt="Oriente Antioqueño — Guatapé" style="width:100%;height:100%;object-fit:cover;display:block">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,10,.92) 0%,rgba(9,9,10,.2) 55%,transparent 100%)"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(27,42,65,.92) 0%,rgba(27,42,65,.2) 55%,transparent 100%)"></div>
         <div style="position:absolute;bottom:24px;left:24px">
           <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Oriente Antioqueño</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">Guatapé · El Retiro</div>
@@ -1139,7 +1139,7 @@ footer{border-top:1px solid rgba(122,116,104,.09);padding:44px 48px 28px;backgro
       </div>
       <div style="position:relative;overflow:hidden;height:280px">
         <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=700&q=85" alt="Occidente Antioqueño — Santa Fe" style="width:100%;height:100%;object-fit:cover;display:block">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,10,.92) 0%,rgba(9,9,10,.2) 55%,transparent 100%)"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(27,42,65,.92) 0%,rgba(27,42,65,.2) 55%,transparent 100%)"></div>
         <div style="position:absolute;bottom:24px;left:24px">
           <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Occidente Antioqueño</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--cream)">Santa Fe · Sopetrán</div>
@@ -1219,14 +1219,14 @@ function elegirFrac(tipo) {
     ab.style.border = '2px solid var(--gold)'; ab.style.background = 'rgba(184,147,90,.05)';
     ab.querySelectorAll('div')[0].style.color = 'var(--gold)';
     ab.querySelectorAll('div')[1].style.color = 'var(--gold)';
-    wd.style.border = '1px solid rgba(122,116,104,.2)'; wd.style.background = '#09090a';
+    wd.style.border = '1px solid rgba(122,116,104,.2)'; wd.style.background = '#f4efe4';
     wd.querySelectorAll('div')[0].style.color = 'var(--stone)';
     wd.querySelectorAll('div')[1].style.color = 'var(--stone)';
   } else {
     wd.style.border = '2px solid var(--gold)'; wd.style.background = 'rgba(184,147,90,.05)';
     wd.querySelectorAll('div')[0].style.color = 'var(--gold)';
     wd.querySelectorAll('div')[1].style.color = 'var(--gold)';
-    ab.style.border = '1px solid rgba(122,116,104,.2)'; ab.style.background = '#09090a';
+    ab.style.border = '1px solid rgba(122,116,104,.2)'; ab.style.background = '#f4efe4';
     ab.querySelectorAll('div')[0].style.color = 'var(--stone)';
     ab.querySelectorAll('div')[1].style.color = 'var(--stone)';
   }
@@ -1417,7 +1417,7 @@ function calcular() {
       const el = document.getElementById('r-opt-' + t);
       if (!el) return;
       el.style.border = t==='none' ? '2px solid var(--gold)' : '1px solid rgba(122,116,104,.2)';
-      el.style.background = t==='none' ? 'rgba(184,147,90,.05)' : '#09090a';
+      el.style.background = t==='none' ? 'rgba(184,147,90,.05)' : '#f4efe4';
       el.style.color = t==='none' ? 'var(--gold)' : 'var(--stone)';
     });
 
@@ -1438,11 +1438,11 @@ function embargoToggle(tipo) {
   const det   = document.getElementById('emb-detalle');
   if (tipo === 'si') {
     lblSi.style.border = '2px solid var(--gold)'; lblSi.style.background = 'rgba(184,147,90,.05)'; lblSi.style.color = 'var(--gold)';
-    lblNo.style.border = '1px solid rgba(122,116,104,.2)'; lblNo.style.background = '#09090a'; lblNo.style.color = 'var(--stone)';
+    lblNo.style.border = '1px solid rgba(122,116,104,.2)'; lblNo.style.background = '#f4efe4'; lblNo.style.color = 'var(--stone)';
     if (det) det.style.display = 'block';
   } else {
     lblNo.style.border = '2px solid var(--gold)'; lblNo.style.background = 'rgba(184,147,90,.05)'; lblNo.style.color = 'var(--gold)';
-    lblSi.style.border = '1px solid rgba(122,116,104,.2)'; lblSi.style.background = '#09090a'; lblSi.style.color = 'var(--stone)';
+    lblSi.style.border = '1px solid rgba(122,116,104,.2)'; lblSi.style.background = '#f4efe4'; lblSi.style.color = 'var(--stone)';
     if (det) det.style.display = 'none';
   }
 }
@@ -1453,7 +1453,7 @@ function rElegirFrac(tipo) {
     const el = document.getElementById('r-opt-' + t);
     if (!el) return;
     el.style.border = '1px solid rgba(122,116,104,.2)';
-    el.style.background = '#09090a';
+    el.style.background = '#f4efe4';
     el.style.color = 'var(--stone)';
   });
   const sel = document.getElementById('r-opt-' + tipo);
@@ -1516,7 +1516,7 @@ function ejFrac(tipo) {
     const el = document.getElementById('ej-opt-' + t);
     if (!el) return;
     el.style.border = '1px solid rgba(122,116,104,.2)';
-    el.style.background = '#09090a';
+    el.style.background = '#f4efe4';
     el.style.color = 'var(--stone)';
   });
   const sel = document.getElementById('ej-opt-' + tipo);

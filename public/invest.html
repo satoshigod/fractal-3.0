@@ -9,8 +9,8 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0d0d0b;--cream:#f5f0e8;--gold:#b8935a;--gold-l:#d4b07a;
-  --stone:#7a7468;--w:#fff;--red:rgba(200,80,80,.85);
+  --ink:#f4efe4;--cream:#26303c;--gold:#b0894f;--gold-l:#9a7a41;
+  --stone:#8a8377;--w:#fff;--red:rgba(200,80,80,.85);
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',sans-serif;
 }
@@ -18,7 +18,7 @@ html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;overflow-x:hidden}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
+nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:18px 56px}
 .nav-logo{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-decoration:none}
 .nav-logo span{color:var(--gold)}
 .nav-back{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
@@ -38,9 +38,9 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* VERTICAL TABS */
 .vert-tabs{display:flex;gap:1px;background:rgba(122,116,104,.12);border-top:1px solid rgba(122,116,104,.12);margin-top:60px}
-.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#0a0a08;font-family:var(--sans);text-align:left;position:relative}
-.vert-tab:hover{background:#0f0f0d}
-.vert-tab.active{background:#111009;border-top:3px solid var(--gold)}
+.vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#f4efe4;font-family:var(--sans);text-align:left;position:relative}
+.vert-tab:hover{background:#f4efe4}
+.vert-tab.active{background:#f4efe4;border-top:3px solid var(--gold)}
 .vt-num{font-family:var(--serif);font-size:36px;font-weight:300;color:rgba(184,147,90,.2);line-height:1;margin-bottom:8px}
 .vert-tab.active .vt-num{color:var(--gold)}
 .vt-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500}
@@ -71,14 +71,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* STAT GRID */
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.12);border:1px solid rgba(122,116,104,.12);margin:40px 0}
-.stat-box{background:#0d0d0b;padding:28px 24px;text-align:center}
+.stat-box{background:#f4efe4;padding:28px 24px;text-align:center}
 .stat-num{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
 .stat-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);line-height:1.4}
 
 /* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1)}
-.col-card{background:#0d0d0b;padding:32px 28px}
+.col-card{background:#f4efe4;padding:32px 28px}
 .col-card h4{font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);margin-bottom:10px}
 .col-card p{font-size:13px;color:var(--stone);line-height:1.65}
 .col-num{font-family:var(--serif);font-size:44px;font-weight:300;color:rgba(184,147,90,.18);line-height:1;margin-bottom:8px}
@@ -106,13 +106,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 .proy-table .total-row td{border-top:1px solid rgba(184,147,90,.2);color:var(--gold);font-weight:500}
 
 /* LEGAL */
-.legal-box{background:#0a0a08;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
+.legal-box{background:#f4efe4;border:1px solid rgba(122,116,104,.15);padding:20px 24px;margin-top:32px}
 .legal-box p{font-size:11px;color:rgba(122,116,104,.5);line-height:1.65}
 
 /* BENCHMARK */
 .bench-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);margin:32px 0}
-.bench-item{background:#0d0d0b;padding:24px 20px;text-align:center}
-.bench-item.highlight{background:#111009;border-top:2px solid var(--gold)}
+.bench-item{background:#f4efe4;padding:24px 20px;text-align:center}
+.bench-item.highlight{background:#f4efe4;border-top:2px solid var(--gold)}
 .bench-name{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:8px}
 .bench-num{font-family:var(--serif);font-size:32px;font-weight:300;color:var(--cream);margin-bottom:4px}
 .bench-sub{font-size:11px;color:rgba(122,116,104,.5)}
@@ -120,7 +120,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* LEGAL STRUCT */
 .legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(122,116,104,.1);border:1px solid rgba(122,116,104,.1);margin:32px 0}
-.ls-item{background:#0d0d0b;padding:24px 20px;position:relative}
+.ls-item{background:#f4efe4;padding:24px 20px;position:relative}
 .ls-num{font-family:var(--serif);font-size:40px;font-weight:300;color:rgba(184,147,90,.15);margin-bottom:8px}
 .ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .ls-desc{font-size:12px;color:var(--stone);line-height:1.6}
@@ -128,26 +128,26 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 
 /* RISK GRID */
 .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.risk-item{background:#0a0a08;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
+.risk-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px 22px}
 .risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
 .risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(122,116,104,.1);padding-top:8px}
 
 /* BOATS */
 .boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
-.bf-item{background:#0d0d0b;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
+.bf-item{background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:24px 22px}
 .bf-icon{font-size:28px;margin-bottom:12px}
 .bf-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .bf-desc{font-size:12px;color:var(--stone);line-height:1.6}
 
 /* DEST GRID */
 .dest-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-.dest-item{background:#111009;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
+.dest-item{background:#f4efe4;border:1px solid rgba(122,116,104,.12);padding:20px;text-align:center}
 .dest-name{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:4px}
 .dest-sub{font-size:11px;color:var(--stone)}
 
 /* CTA */
-.vert-cta{background:#111009;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
+.vert-cta{background:#f4efe4;border:1px solid rgba(184,147,90,.2);padding:48px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:48px}
 .vc-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:300;color:var(--cream);margin-bottom:8px}
 .vc-sub{font-size:14px;color:var(--stone)}
 .vc-btn{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:16px 36px;background:var(--gold);color:var(--ink);border:none;cursor:pointer;font-family:var(--sans);font-weight:500;text-decoration:none;white-space:nowrap;transition:all .2s}
@@ -163,13 +163,13 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   .risk-grid{grid-template-columns:1fr}
 }
 /* ── BOTONES CALCULADORAS ── */
-.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#0a0a08;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
+.pyp-pre,.cv-preset,.cv-socios,.pyp-btn{background:#f4efe4;border:1px solid rgba(122,116,104,.22);color:var(--stone);cursor:pointer;font-family:var(--sans);transition:all .15s;outline:none;-webkit-appearance:none}
 .pyp-pre{font-size:10px;padding:5px 11px}
 .cv-preset{font-size:10px;padding:5px 10px}
 .cv-socios{font-size:11px;padding:8px 16px}
 .pyp-btn{font-size:11px;padding:8px 16px}
 .pyp-pre:hover,.pyp-pre.active,.cv-preset:hover,.cv-preset.active,.cv-socios:hover,.cv-socios.active,.pyp-btn:hover,.pyp-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.06)}
-.back-bar{background:#09090a;border-bottom:1px solid rgba(122,116,104,.15);padding:12px 56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.back-bar{background:#f4efe4;border-bottom:1px solid rgba(122,116,104,.15);padding:12px 56px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
 .back-bar a{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color .15s}
 .back-bar a:hover{color:var(--gold)}
 .back-bar .home-link{color:rgba(184,147,90,.6)}
@@ -194,23 +194,23 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
 </script>
 <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/brand/app-icon.png">
 </head>
-<body style="background:#09090a">
+<body style="background:#f4efe4">
 
-<nav style="position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
+<nav style="position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);border-bottom:1px solid rgba(122,116,104,.12);display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:60px">
   <a href="index.html" style="font-family:var(--serif);font-size:22px;font-weight:300;color:var(--cream);text-decoration:none;letter-spacing:.04em">Fractal</a>
-  <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#1a1509;background:#b8935a;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
+  <div style="display:flex;gap:24px;align-items:center"><a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;order:99">Ingresar</a>
     <a href="destino.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Homes</a>
     <a href="nautico.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Náutico</a><a href="cars.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">Cars</a><a href="pyp.html" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);text-decoration:none">P&P</a>
     
   </div>
 </nav>
 
-<div style="background:#0a0a08;border:1px solid rgba(122,116,104,.1);padding:16px 24px;margin:32px 56px;display:flex;align-items:center;gap:16px"><span style="font-size:20px;opacity:.4">⇄</span><div><div style="font-size:11px;font-weight:500;color:var(--stone);margin-bottom:2px">Fractal Exchange — no aplica a este producto</div><div style="font-size:11px;color:rgba(122,116,104,.5);line-height:1.6">Fractal Invest genera distribución en efectivo, no días de uso. El Exchange está disponible en <a href="destino.html" style="color:rgba(184,147,90,.6);text-decoration:none">Homes</a>, <a href="nautico.html" style="color:rgba(184,147,90,.6);text-decoration:none">Náutico</a> y <a href="cars.html" style="color:rgba(184,147,90,.6);text-decoration:none">Premium Cars</a>.</div></div></div>
+<div style="background:#f4efe4;border:1px solid rgba(122,116,104,.1);padding:16px 24px;margin:32px 56px;display:flex;align-items:center;gap:16px"><span style="font-size:20px;opacity:.4">⇄</span><div><div style="font-size:11px;font-weight:500;color:var(--stone);margin-bottom:2px">Fractal Exchange — no aplica a este producto</div><div style="font-size:11px;color:rgba(122,116,104,.5);line-height:1.6">Fractal Invest genera distribución en efectivo, no días de uso. El Exchange está disponible en <a href="destino.html" style="color:rgba(184,147,90,.6);text-decoration:none">Homes</a>, <a href="nautico.html" style="color:rgba(184,147,90,.6);text-decoration:none">Náutico</a> y <a href="cars.html" style="color:rgba(184,147,90,.6);text-decoration:none">Premium Cars</a>.</div></div></div>
 
 
 
   <!-- INTRO -->
-  <div class="sec" style="background:#09090a;padding-bottom:0">
+  <div class="sec" style="background:#f4efe4;padding-bottom:0">
     <div class="sec-inner">
       <div class="two-col">
         <div>
@@ -234,7 +234,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
   <!-- VS CDT -->
-  <div class="sec" style="background:#09090a;padding-top:48px;padding-bottom:48px">
+  <div class="sec" style="background:#f4efe4;padding-top:48px;padding-bottom:48px">
     <div class="sec-inner">
       <div class="sec-tag">¿Por qué Fractal Invest y no un CDT?</div>
       <h2 class="sec-h2">El CDT paga 11%.<br>Pero tu principal no crece.</h2>
@@ -358,7 +358,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(13,13,11,.97);backdrop-filt
   <div class="v-divider" style="margin:0 56px"><div class="vd-line"></div><div class="vd-dots"><span></span><span></span><span></span></div><div class="vd-line"></div></div>
 
   <!-- ESTRUCTURA LEGAL -->
-  <div class="sec" style="background:#09090a;padding-top:56px;padding-bottom:56px">
+  <div class="sec" style="background:#f4efe4;padding-top:56px;padding-bottom:56px">
     <div class="sec-inner">
       <div class="sec-tag">Estructura legal — inspirada en Protti</div>
       <h2 class="sec-h2">La misma arquitectura de los mejores<br>fondos inmobiliarios privados de Colombia</h2>
