@@ -3,6 +3,8 @@
 :root{
   --bg:#f4efe4; --panel:#ffffff; --panel-2:#f2ece0; --line:#e5ded0;
   --navy:#1b2a41; --gold:#916d2b; --gold-l:#9a7a41; --terra:#c15f3c; --terra-d:#a44e2e;
+  /* NUEVO: bronce profundo legible para labels/eyebrows sobre fondo crema */
+  --gold-bronze:#6b4f2b;
   --cream:#26303c; --stone:#6b6558;
   --ok:#4f7a5e; --warn:#b98a2e; --err:#b85c38; --info:#4a6785;
   --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
@@ -20,7 +22,7 @@ header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:
 .who{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--stone)}
 .rolebadge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);border:1px solid var(--gold);border-radius:20px;padding:3px 11px}
 
-.btn{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.03em;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--cream);padding:8px 14px;border-radius:2px;transition:border-color .2s,color .2s}
+.btn{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.03em;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--cream);padding:8px 14px;border-radiu[...]}
 .btn:hover{border-color:var(--terra);color:var(--terra)}
 .btn.primary{background:var(--terra);border-color:var(--terra);color:#fff;font-weight:500}
 .btn.primary:hover{background:var(--terra-d);border-color:var(--terra-d)}
@@ -50,7 +52,7 @@ input:focus,select:focus{border-color:var(--gold)}
 main{padding:30px 0 80px}
 h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:0 0 2px;color:var(--navy)}
 .lead{color:var(--stone);font-size:14px;margin:0 0 26px}
-.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bronze);margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
 .stat .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone)}
@@ -59,7 +61,7 @@ h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:0 0 2px;color:
 
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
 .tile{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
-.tile h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:0 0 6px}
+.tile h3{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--cream);line-height:1.1}
 .rowl{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-top:1px solid var(--line)}
 .rowl .s{color:var(--stone)}
 
@@ -123,7 +125,7 @@ tr:last-child td{border-bottom:none}
 /* /desarrollo — tabs, cards, lecciones */
 .dtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .dtabs{display:flex;gap:6px}
-.dtabs button{font-family:var(--sans);font-size:13px;letter-spacing:.03em;color:var(--stone);background:transparent;border:1px solid var(--line);padding:7px 16px;border-radius:20px;cursor:pointer}
+.dtabs button{font-family:var(--sans);font-size:13px;letter-spacing:.03em;color:var(--stone);background:transparent;border:1px solid var(--line);padding:7px 16px;border-radius:20px;cursor:pointer[...]
 .dtabs button.on{color:var(--gold-l);border-color:var(--gold)}
 .dtabs button:hover{color:var(--cream)}
 .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0 14px}
@@ -139,7 +141,7 @@ tr:last-child td{border-bottom:none}
 
 .lec .lbody{flex:1}
 .lhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.lcat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:20px;padding:2px 9px;white-space:nowrap}
+.lcat{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bronze);border:1px solid var(--line);border-radius:20px;padding:2px 9px;white-space:nowrap}
 .lcaso{font-size:12.5px;color:var(--stone);margin-top:6px}
 .lregla{font-size:13px;color:var(--cream);margin-top:5px}
 .lcaso b,.lregla b{color:var(--gold-l);font-weight:500}
@@ -149,7 +151,7 @@ tr:last-child td{border-bottom:none}
 .segbody{padding:4px 20px 18px 84px;border-top:1px solid var(--line)}
 .seg{margin-top:14px}
 .seg:first-child{margin-top:6px}
-.segname{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.segname{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bronze);margin-bottom:6px}
 .segtareas{list-style:none;margin:0;padding:0}
 .segtareas li{padding:9px 0;border-top:1px solid rgba(42,38,32,.6)}
 .segtareas li:first-child{border-top:none}
@@ -162,7 +164,7 @@ tr:last-child td{border-bottom:none}
 .mkcard{display:block;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;text-decoration:none;color:var(--cream);transition:border-color .2s,transform .2s}
 .mkcard:hover{border-color:var(--gold);transform:translateY(-2px)}
 .mkimg{height:170px;background-size:cover;background-position:center;position:relative}
-.mkbadge{position:absolute;top:12px;left:12px;background:rgba(27,42,65,.85);border:1px solid rgba(255,255,255,.3);color:#eae4d6;font-size:11px;padding:4px 10px;border-radius:20px;backdrop-filter:blur(4px)}
+.mkbadge{position:absolute;top:12px;left:12px;background:rgba(27,42,65,.85);border:1px solid rgba(255,255,255,.3);color:#eae4d6;font-size:11px;padding:4px 10px;border-radius:20px;backdrop-filter[...]
 .mkbody{padding:14px 16px}
 .mkname{font-family:var(--serif);font-size:19px}
 .mkdest{font-size:12px;color:var(--stone);margin-top:2px}
@@ -218,4 +220,12 @@ tr:last-child td{border-bottom:none}
   .specgrid,.pasos,.props,.destacados,.grid{grid-template-columns:1fr}
   .fichahero{height:200px}
   .thumb{width:56px;height:42px}
+}
+
+/* Excepción: conservar dorado claro cuando el label/eyebrow está sobre héroe/foto oscura */
+.fichahero .eyebrow,
+.fichahero .lcat,
+[data-bg="hero"] .eyebrow,
+[data-bg="hero"] .lcat {
+  color: var(--gold-l) !important;
 }
