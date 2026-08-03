@@ -1,0 +1,54 @@
+/* origen-antioquia-fixes.css
+   Small override to ensure gold labels/titles are legible on dark/photo backgrounds.
+   - Adds a scrim to the hero and to region-card elements
+   - Forces a lighter gold color over dark backgrounds
+   - Keeps selectors specific and uses !important where necessary to override inline fixes
+*/
+:root{
+  --fractal-gold-light: #e7c88c; /* lighter gold for use over dark/photo */
+  --fractal-scrim-top: rgba(6,20,30,0.40);
+  --fractal-scrim-bottom: rgba(6,20,30,0.60);
+}
+
+/* HERO: add a consistent scrim and make sure text sits above it */
+.hero{position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom, var(--fractal-scrim-top) 0%, var(--fractal-scrim-bottom) 100%);
+  pointer-events:none;z-index:1;mix-blend-mode:normal
+}
+.hero .hero-inner{position:relative;z-index:2}
+
+/* enforce lighter gold for hero eyebrow and emphasized parts */
+.hero .eyebrow, .hero-eyebrow, .hero h1 em, [class*="hero"] h1 em {
+  color:var(--fractal-gold-light) !important;
+  text-shadow:0 1px 4px rgba(0,0,0,0.6) !important;
+  -webkit-text-stroke:0.2px rgba(0,0,0,0.45) !important;
+}
+
+/* REGION CARDS: scrim + gold labels */
+.region-card{position:relative;overflow:hidden}
+.region-card::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to bottom, rgba(6,20,30,0.25) 0%, rgba(6,20,30,0.55) 100%);
+  pointer-events:none;z-index:1;
+}
+.region-card *{position:relative;z-index:2}
+
+/* kicker / label styles on cards */
+.region-card .kicker, .region-card .region-label, .region-card .eyebrow, .region-card .region-title .small,
+.region-card .region-thumb .label{
+  color:var(--fractal-gold-light) !important;
+  text-shadow:0 1px 4px rgba(0,0,0,0.6) !important;
+  -webkit-text-stroke:0.12px rgba(0,0,0,0.45) !important;
+}
+
+/* general utility to force gold-on-dark when needed */
+.gold-on-dark{
+  color:var(--fractal-gold-light) !important;
+  text-shadow:0 1px 4px rgba(0,0,0,0.6) !important;
+  -webkit-text-stroke:0.2px rgba(0,0,0,0.45) !important;
+}
+
+/* fallback: ensure large titles on cards remain readable */
+.region-card h3, .region-card .title{color:#fff !important; text-shadow:0 2px 8px rgba(0,0,0,0.6) !important}
