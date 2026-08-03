@@ -2,7 +2,7 @@
 
 :root{
   --bg:#f4efe4; --panel:#ffffff; --panel-2:#f2ece0; --line:#e5ded0;
-  --navy:#1b2a41; --gold:#7a5d20; --gold-l:#7a5d20; --terra:#c15f3c; --terra-d:#a44e2e;
+  --navy:#1b2a41; --gold:#916d2b; --gold-l:#9a7a41; --gold-bronze:#6b4f2b; --terra:#c15f3c; --terra-d:#a44e2e;
   --cream:#26303c; --stone:#6b6558;
   --ok:#4f7a5e; --warn:#b98a2e; --err:#b85c38; --info:#4a6785;
   --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
@@ -20,7 +20,7 @@ header.top{border-bottom:1px solid var(--line);position:sticky;top:0;background:
 .who{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--stone)}
 .rolebadge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);border:1px solid var(--gold);border-radius:20px;padding:3px 11px}
 
-.btn{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.03em;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--cream);padding:8px 14px;border-radius:2px;transition:border-color .2s,color .2s}
+.btn{font-family:var(--sans);font-size:13px;font-weight:400;letter-spacing:.03em;cursor:pointer;border:1px solid var(--line);background:transparent;color:var(--cream);padding:8px 14px;border-radius:4px;transition:border-color .2s,color .2s}
 .btn:hover{border-color:var(--terra);color:var(--terra)}
 .btn.primary{background:var(--terra);border-color:var(--terra);color:#fff;font-weight:500}
 .btn.primary:hover{background:var(--terra-d);border-color:var(--terra-d)}
@@ -50,7 +50,7 @@ input:focus,select:focus{border-color:var(--gold)}
 main{padding:30px 0 80px}
 h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:0 0 2px;color:var(--navy)}
 .lead{color:var(--stone);font-size:14px;margin:0 0 26px}
-.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-bronze);margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .stat{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
 .stat .k{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone)}
