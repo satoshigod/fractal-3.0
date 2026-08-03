@@ -700,12 +700,60 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 .nav-links a{font-size:13px;letter-spacing:.12em}
 .hero-sub{font-size:18.5px}
 </style>
-<style id="fractal-contrast-fix">
-[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;opacity:1!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
-[class*="hero"] h1 em,.hero-o h1 em,.hero h1 em{color:#6b4f2b!important}
-</style>
 <style id="fractal-gold-fix">.hero-eyebrow,[class*="hero"] [class*="eyebrow"],[class*="cta"] [class*="eyebrow"],.cta-content [class*="eyebrow"]{color:#6b4f2b!important}</style>
-<style id="fractal-dark-labels-fix">.zonas-label,[class*="zona"] [class*="label"],[class*="zona"] [class*="eyebrow"],[class*="region"] [class*="label"],[class*="hero"] [class*="eyebrow"],.hero-eyebrow,[class*="cta"] [class*="eyebrow"]{color:#6b4f2b!important}</style>
+<style id="fractal-text-on-photo">
+/* Hero principal — título y subtítulo */
+.hero-o h1, .hero h1, [class*="hero"] h1 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.9) !important;
+  opacity: 1 !important;
+}
+.hero-o h1 em, .hero h1 em, [class*="hero"] h1 em {
+  color: #f0d090 !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,.7) !important;
+}
+.hero-sub, [class*="hero"] p, [class*="hero"] .sub,
+[class*="hero-content"] p {
+  color: rgba(255,255,255,.93) !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,.8) !important;
+}
+.hero-eyebrow, [class*="hero"] [class*="eyebrow"],
+[class*="hero"] [class*="kicker"], [class*="hero"] small {
+  color: #f0d090 !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.8) !important;
+}
+
+/* Tarjetas de zonas (sobre foto) */
+.zonas-label, [class*="zona"] [class*="label"],
+[class*="zona"] [class*="eyebrow"],
+[class*="op-card"] [class*="eyebrow"],
+[class*="op-card"] [class*="label"],
+[class*="region"] [class*="label"] {
+  color: #f0d090 !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.85) !important;
+}
+[class*="zona"] h2, [class*="zona"] h3,
+[class*="op-card"] h2, [class*="op-card"] h3,
+[class*="region"] h2, [class*="region"] h3 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.75) !important;
+}
+[class*="zona"] p, [class*="zona"] span,
+[class*="op-card"] p, [class*="op-card"] span {
+  color: rgba(255,255,255,.88) !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,.75) !important;
+}
+
+/* CTA sobre foto */
+[class*="cta"] h2, [class*="cta"] h3,
+[class*="cta-final"] h2, [class*="cta-banda"] h2 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6) !important;
+}
+[class*="cta"] [class*="eyebrow"], [class*="cta"] [class*="label"] {
+  color: #f0d090 !important;
+}
+</style>
 </head>
 <body>
 
