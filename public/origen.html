@@ -9,7 +9,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#f4efe4;--cream:#26303c;--gold:#916d2b;--gold-l:#9a7a41;
+  --ink:#f4efe4;--cream:#26303c;--gold:#7a5d20;--gold-l:#7a5d20;
   --stone:#4e4a3c;--w:#fff;--red:rgba(200,80,80,.85);
   --serif:'Cormorant Garamond',Georgia,serif;
   --sans:'DM Sans',sans-serif;
@@ -41,14 +41,14 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .vert-tab{flex:1;padding:28px 40px;cursor:pointer;transition:all .2s;border:none;background:#f4efe4;font-family:var(--sans);text-align:left;position:relative}
 .vert-tab:hover{background:#f4efe4}
 .vert-tab.active{background:#f4efe4;border-top:3px solid var(--gold)}
-.vt-num{font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(184,147,90,.2);line-height:1;margin-bottom:8px}
+.vt-num{font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(122,93,32,.2);line-height:1;margin-bottom:8px}
 .vert-tab.active .vt-num{color:var(--gold)}
 .vt-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:6px;font-weight:500}
 .vert-tab.active .vt-name{color:var(--gold)}
 .vt-title{font-family:var(--serif);font-size:20px;font-weight:400;color:rgba(245,240,232,.6);line-height:1.2}
 .vert-tab.active .vt-title{color:var(--cream)}
 .vt-tag{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(92,87,73,.2);color:var(--stone)}
-.vert-tab.active .vt-tag{border-color:rgba(184,147,90,.3);color:var(--gold)}
+.vert-tab.active .vt-tag{border-color:rgba(122,93,32,.3);color:var(--gold)}
 
 /* CONTENT PANELS */
 .vert-content{display:none}
@@ -81,7 +81,7 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 .col-card{background:#f4efe4;padding:32px 28px}
 .col-card h4{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);margin-bottom:10px}
 .col-card p{font-size:13px;color:var(--stone);line-height:1.65}
-.col-num{font-family:var(--serif);font-size:44px;font-weight:400;color:rgba(184,147,90,.18);line-height:1;margin-bottom:8px}
+.col-num{font-family:var(--serif);font-size:44px;font-weight:400;color:rgba(122,93,32,.18);line-height:1;margin-bottom:8px}
 
 /* ROWS */
 .row-table{display:flex;flex-direction:column;gap:0}
@@ -121,17 +121,17 @@ nav{position:sticky;top:0;z-index:99;background:rgba(27,42,65,.97);backdrop-filt
 /* LEGAL STRUCT */
 .legal-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1);margin:32px 0}
 .ls-item{background:#f4efe4;padding:24px 20px;position:relative}
-.ls-num{font-family:var(--serif);font-size:40px;font-weight:400;color:rgba(184,147,90,.15);margin-bottom:8px}
+.ls-num{font-family:var(--serif);font-size:40px;font-weight:400;color:rgba(122,93,32,.15);margin-bottom:8px}
 .ls-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .ls-desc{font-size:12px;color:var(--stone);line-height:1.6}
-.ls-arrow{position:absolute;top:50%;right:-12px;transform:translateY(-50%);font-size:18px;color:rgba(184,147,90,.3);z-index:2}
+.ls-arrow{position:absolute;top:50%;right:-12px;transform:translateY(-50%);font-size:18px;color:rgba(122,93,32,.3);z-index:2}
 
 /* RISK GRID */
 .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
 .risk-item{background:#f4efe4;border:1px solid rgba(92,87,73,.12);padding:20px 22px}
 .risk-name{font-size:12px;font-weight:500;color:var(--cream);margin-bottom:6px}
 .risk-desc{font-size:12px;color:var(--stone);line-height:1.6}
-.risk-sol{font-size:11px;color:rgba(184,147,90,.6);margin-top:8px;border-top:1px solid rgba(92,87,73,.1);padding-top:8px}
+.risk-sol{font-size:11px;color:rgba(122,93,32,.6);margin-top:8px;border-top:1px solid rgba(92,87,73,.1);padding-top:8px}
 
 /* BOATS */
 .boat-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
@@ -250,10 +250,10 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .recibe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(92,87,73,.12);border:1px solid rgba(92,87,73,.12)}
 .recibe-card{background:var(--ink);padding:44px 40px;position:relative}
 .rc-accent{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--gold-light))}
-.rc-num{font-family:var(--serif);font-size:64px;font-weight:400;color:rgba(184,147,90,.09);line-height:1;margin-bottom:18px}
+.rc-num{font-family:var(--serif);font-size:64px;font-weight:400;color:rgba(122,93,32,.09);line-height:1;margin-bottom:18px}
 .rc-title{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--cream);margin-bottom:12px}
 .rc-desc{font-size:13px;color:var(--stone);line-height:1.75;margin-bottom:24px}
-.rc-nota{font-size:11px;color:rgba(184,147,90,.52);line-height:1.6;border-left:2px solid rgba(184,147,90,.2);padding-left:11px;font-style:italic}
+.rc-nota{font-size:11px;color:rgba(122,93,32,.52);line-height:1.6;border-left:2px solid rgba(184,147,90,.2);padding-left:11px;font-style:italic}
 
 /* EJEMPLO */
 .ejemplo{background:#f4efe4;padding:96px 48px}
@@ -286,7 +286,7 @@ nav.scrolled{background:rgba(27,42,65,.97);backdrop-filter:blur(12px)}
 .csn-step{flex:1;padding:13px 6px;text-align:center;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);border-right:1px solid rgba(92,87,73,.1);cursor:pointer;transition:all .2s;position:relative;user-select:none}
 .csn-step:last-child{border-right:none}
 .csn-step.active{color:var(--gold);background:rgba(184,147,90,.05)}
-.csn-step.done{color:rgba(184,147,90,.42)}
+.csn-step.done{color:rgba(122,93,32,.42)}
 .csn-step.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold)}
 .csn-num{display:block;font-family:var(--serif);font-size:19px;font-weight:400;margin-bottom:2px}
 
@@ -315,7 +315,7 @@ select.form-input option{background:#ffffff;color:var(--cream)}
 
 .amenidades-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:3px}
 .amen-check{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid rgba(92,87,73,.13);cursor:pointer;font-size:12px;color:var(--stone);transition:all .2s;user-select:none}
-.amen-check.checked{border-color:rgba(184,147,90,.35);color:var(--cream);background:rgba(184,147,90,.03)}
+.amen-check.checked{border-color:rgba(122,93,32,.35);color:var(--cream);background:rgba(184,147,90,.03)}
 .amen-ck{width:12px;height:12px;border:1px solid rgba(92,87,73,.28);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent;transition:all .2s}
 .amen-check.checked .amen-ck{border-color:var(--gold);background:rgba(184,147,90,.14);color:var(--gold)}
 
@@ -460,9 +460,9 @@ footer{border-top:1px solid rgba(92,87,73,.09);padding:44px 48px 28px;background
 
 .frac-sel{background:#f4efe4;border:1px solid rgba(92,87,73,.2);color:var(--stone);cursor:pointer;font-family:var(--sans);font-size:12px;padding:12px 20px;letter-spacing:.05em;transition:all .15s;outline:none;-webkit-appearance:none;flex:1;text-align:center;line-height:1.5}
 .frac-sel.active{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
-.frac-sel:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
+.frac-sel:hover{border-color:rgba(122,93,32,.4);color:rgba(122,93,32,.7)}
 .frac-opt{flex:1;padding:16px 20px;border:1px solid rgba(92,87,73,.2);background:#f4efe4;cursor:pointer;text-align:center;line-height:1.5;transition:all .15s;color:var(--stone);user-select:none}
-.frac-opt:hover{border-color:rgba(184,147,90,.4);color:rgba(184,147,90,.7)}
+.frac-opt:hover{border-color:rgba(122,93,32,.4);color:rgba(122,93,32,.7)}
 .frac-radio:checked + .frac-opt{border-color:var(--gold);color:var(--gold);background:rgba(184,147,90,.05)}
 .frac-radio{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}.wa-label{background:#25D366;color:#fff;font-size:12px;font-weight:500;padding:7px 14px;border-radius:20px;white-space:nowrap;opacity:0;transform:translateX(10px);transition:opacity .25s,transform .25s;pointer-events:none}.wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.45);text-decoration:none;transition:transform .2s;position:relative}.wa-btn:hover{transform:scale(1.08)}.wa-float:hover .wa-label{opacity:1;transform:translateX(0)}.wa-btn svg{width:30px;height:30px;fill:#fff}.wa-pulse{position:absolute;inset:0;border-radius:50%;background:rgba(37,211,102,.4);animation:waPulse 2.2s ease-out infinite}@keyframes waPulse{0%{transform:scale(1);opacity:.6}70%{transform:scale(1.55);opacity:0}100%{transform:scale(1.55);opacity:0}}@media(max-width:600px){.wa-float{bottom:18px;right:18px}.wa-btn{width:52px;height:52px}}
@@ -485,6 +485,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 [class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;opacity:1!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
 [class*="hero"] h1 em,.hero-o h1 em,.hero h1 em{color:#e7c88c!important}
 </style>
+<style id="fractal-gold-fix">.hero-eyebrow,[class*="hero"] [class*="eyebrow"],[class*="cta"] [class*="eyebrow"],.cta-content [class*="eyebrow"]{color:#cfa869!important}</style>
 </head>
 <body>
 
@@ -527,7 +528,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
       <div class="dolor-card"><div class="dolor-num">04</div><h4>Impuestos y embargos acumulados</h4><p>Predial atrasado, deudas de servicios, embargos preventivos. La propiedad queda bloqueada legalmente y el propietario no puede ni venderla ni usarla.</p></div>
       <div class="dolor-card"><div class="dolor-num">05</div><h4>Ineficiencia económica pura</h4><p>Tener $800M o $2.000M inmovilizados en un activo que no produce nada — mientras se pagan créditos a tasas del 18% — es una de las peores decisiones financieras posibles.</p></div>
       <div class="dolor-card"><div class="dolor-num">06</div><h4>El desapego que ya empezó</h4><p>No es que no quieran el lugar. Es que la vida cambió, los hijos crecieron, los horarios no dan. La casa sigue esperando, pero nadie va.</p></div>
-      <div class="dolor-card" style="border-top:2px solid rgba(184,147,90,.2);background:rgba(184,147,90,.02)"><div class="dolor-num" style="color:rgba(184,147,90,.15)">07</div><h4 style="color:var(--gold)">La herencia que nadie sabe qué hacer con ella</h4><p>Los padres la construyeron con esfuerzo. Los hijos la heredan con amor y culpa. Pero sus vidas, sus ciudades y sus ritmos ya no encajan con esa finca. Ninguno quiere venderla — y ninguno puede mantenerla solo. El resultado: conflicto familiar, deterioro acelerado y un patrimonio que se diluye en discusiones. Fractal Origen les permite decidir juntos cuántas fracciones conservar para el uso familiar y cuántas vender — sin obligar a nadie, sin peleas, con escrituras claras para cada uno.</p></div>
+      <div class="dolor-card" style="border-top:2px solid rgba(184,147,90,.2);background:rgba(184,147,90,.02)"><div class="dolor-num" style="color:rgba(122,93,32,.15)">07</div><h4 style="color:var(--gold)">La herencia que nadie sabe qué hacer con ella</h4><p>Los padres la construyeron con esfuerzo. Los hijos la heredan con amor y culpa. Pero sus vidas, sus ciudades y sus ritmos ya no encajan con esa finca. Ninguno quiere venderla — y ninguno puede mantenerla solo. El resultado: conflicto familiar, deterioro acelerado y un patrimonio que se diluye en discusiones. Fractal Origen les permite decidir juntos cuántas fracciones conservar para el uso familiar y cuántas vender — sin obligar a nadie, sin peleas, con escrituras claras para cada uno.</p></div>
     </div>
     <div class="dolor-resolution">
       <div class="dr-text">
@@ -594,17 +595,17 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
     <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px"><span style="width:20px;height:1px;background:var(--gold);display:inline-block"></span>El proceso escalonado — tú decides cuándo parar</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(92,87,73,.1);border:1px solid rgba(92,87,73,.1);margin-bottom:16px">
       <div style="background:#f4efe4;padding:28px 22px">
-        <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(184,147,90,.2);margin-bottom:8px">0</div>
+        <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(122,93,32,.2);margin-bottom:8px">0</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Antes de vender</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">La propiedad es 100% tuya. Puedes usar la casa cuando quieras. Los costos de operación son todos tuyos.</div>
       </div>
       <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(92,87,73,.1)">
-        <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(184,147,90,.2);margin-bottom:8px">1</div>
+        <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(122,93,32,.2);margin-bottom:8px">1</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Primera fracción vendida</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">Recibes los recursos de esa venta menos los pasivos acumulados. Tienes acceso a 7/8 del tiempo de la casa — excepto la ventana del comprador. Los costos se dividen entre 2.</div>
       </div>
       <div style="background:#f4efe4;padding:28px 22px;border-left:1px solid rgba(92,87,73,.1)">
-        <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(184,147,90,.2);margin-bottom:8px">2–6</div>
+        <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:rgba(122,93,32,.2);margin-bottom:8px">2–6</div>
         <div style="font-size:12px;font-weight:500;color:var(--cream);margin-bottom:8px">Fracciones adicionales</div>
         <div style="font-size:11px;color:var(--stone);line-height:1.65">Cada nueva venta te da más liquidez y reduce tu proporción de uso. Tú escoges si seguir o parar. Los costos se reparten entre más personas.</div>
       </div>
@@ -646,7 +647,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
     <!-- CONTROLES -->
     <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.15);padding:28px 32px;margin-bottom:12px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:20px">Parámetros — arrastra para ajustar</div>
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,93,32,.5);margin-bottom:20px">Parámetros — arrastra para ajustar</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px 40px">
 
         <div>
@@ -703,7 +704,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 
     <!-- PASO 1 -->
     <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.12);padding:18px 24px;margin-bottom:8px">
-      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:12px">Paso 1 — Activo fractalizado</div>
+      <div style="font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,93,32,.5);margin-bottom:12px">Paso 1 — Activo fractalizado</div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:rgba(92,87,73,.1)">
         <div style="background:#f4efe4;padding:14px 18px">
           <div style="font-size:10px;color:rgba(74,70,58,.78);margin-bottom:4px">Avalúo propiedad</div>
@@ -716,7 +717,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           <div style="font-size:10px;color:rgba(74,70,58,.78);margin-top:2px">Fractal lo financia</div>
         </div>
         <div style="background:#f4efe4;padding:14px 18px;border-left:1px solid rgba(184,147,90,.2)">
-          <div style="font-size:10px;color:rgba(184,147,90,.5);margin-bottom:4px">= Activo fractalizado total</div>
+          <div style="font-size:10px;color:rgba(122,93,32,.5);margin-bottom:4px">= Activo fractalizado total</div>
           <div style="font-family:var(--serif);font-size:20px;font-weight:400;color:var(--gold)" id="ej-fractalizado">—</div>
           <div style="font-size:10px;color:rgba(74,70,58,.78);margin-top:2px">Base para las 8 fracciones</div>
         </div>
@@ -743,7 +744,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           <div style="font-size:10px;color:rgba(74,70,58,.78)">× 4 unidades</div>
         </div>
         <div style="background:#f4efe4;padding:12px 16px;border-left:1px solid rgba(184,147,90,.15)">
-          <div style="font-size:10px;color:rgba(184,147,90,.4);margin-bottom:3px">Total 8 fracciones</div>
+          <div style="font-size:10px;color:rgba(122,93,32,.4);margin-bottom:3px">Total 8 fracciones</div>
           <div style="font-family:var(--serif);font-size:16px;color:var(--gold)" id="ej-total8">—</div>
           <div style="font-size:10px;color:rgba(74,70,58,.78)">= activo fractalizado</div>
         </div>
@@ -1016,14 +1017,14 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           <div class="rb-row deduct"><span class="rb-l">— Deuda total asumida por Fractal</span><span class="rb-v" id="rDeuda2">—</span></div>
           <div class="rb-row deduct"><span class="rb-l">— Honorarios Fractal (12% sobre bolsa)</span><span class="rb-v" id="rHon">—</span></div>
           <div class="rb-row" id="rFracRow" style="display:none"><span class="rb-l" id="rFracLabel">— Fracción conservada</span><span class="rb-v" style="color:rgba(220,80,80,.8)" id="rTuFrac">—</span></div>
-          <div id="rNotaRemo" style="font-size:11px;color:rgba(184,147,90,.55);line-height:1.6;padding:8px 0 4px;font-style:italic"></div>
+          <div id="rNotaRemo" style="font-size:11px;color:rgba(122,93,32,.55);line-height:1.6;padding:8px 0 4px;font-style:italic"></div>
           <div id="noViableWarn" style="display:none;background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.2);padding:14px 16px;margin:8px 0;font-size:12px;color:rgba(220,100,80,.9);line-height:1.65">⚠ Los pasivos superan la bolsa. Revisa el valor de la propiedad o las deudas. La visita técnica gratuita afinará los números.</div>
           <div class="rb-row total-rb"><span class="rb-l">Tu liquidación neta en efectivo</span><span class="rb-v" id="rLiq">—</span></div>
         </div>
 
         <!-- SELECTOR FRACCIÓN OPCIONAL -->
         <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.15);padding:24px 28px;margin-bottom:24px">
-          <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:6px">¿Quieres conservar alguna fracción?</div>
+          <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,93,32,.5);margin-bottom:6px">¿Quieres conservar alguna fracción?</div>
           <div style="font-size:12px;color:rgba(74,70,58,.82);margin-bottom:16px;line-height:1.55">Opcional. Si conservas una, su valor se descuenta de tu liquidación. Puedes usar esos días o cederlos al operador.</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <div id="r-opt-none" onclick="rElegirFrac('none')" style="flex:1;min-width:120px;padding:14px 12px;border:2px solid var(--gold);background:rgba(184,147,90,.05);cursor:pointer;text-align:center;transition:all .15s;color:var(--gold)">
@@ -1070,7 +1071,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
           </div>
           <!-- Mensaje si no conserva -->
           <div id="cm-nocost" style="display:none;background:#f4efe4;border:1px solid rgba(184,147,90,.12);padding:24px 28px;margin-bottom:24px">
-            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,147,90,.5);margin-bottom:10px">Costos mensuales para ti</div>
+            <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(122,93,32,.5);margin-bottom:10px">Costos mensuales para ti</div>
             <div style="font-family:var(--serif);font-size:36px;font-weight:400;color:var(--gold);margin-bottom:8px">$0</div>
             <div style="font-size:13px;color:var(--stone);line-height:1.7">Si vendes las 8 fracciones, <strong style="color:var(--cream)">no asumes ningún costo mensual</strong>. Los 8 compradores dividen todos los gastos de operación entre ellos en partes iguales. Tú quedas liberado completamente.</div>
             <div style="margin-top:12px;font-size:11px;color:rgba(74,70,58,.78);line-height:1.6">Referencia: el costo total mensual de operar la propiedad se estima en <span id="cm-total-ref">—</span>, dividido entre 8 fraccionarios.</div>
@@ -1138,7 +1139,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
         </div>
       </div>
       <div style="position:relative;overflow:hidden;height:280px">
-        <img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=700&q=85" alt="Oriente Antioqueño — Guatapé" style="width:100%;height:100%;object-fit:cover;display:block">
+        <img src="/images/finca-hero.jpg" alt="Oriente Antioqueño — Guatapé" style="width:100%;height:100%;object-fit:cover;display:block">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(27,42,65,.92) 0%,rgba(27,42,65,.2) 55%,transparent 100%)"></div>
         <div style="position:absolute;bottom:24px;left:24px">
           <div style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Oriente Antioqueño</div>
