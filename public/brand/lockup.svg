@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <g transform="translate(20,20) scale(0.4)">
+    <polygon points="320,150 250,80 150,80 80,150 80,250 150,320 250,320 320,250" fill="none" stroke="#b8935a" stroke-width="6"/>
+    <polygon points="172,150 172,250 262,200" fill="#c2a15c"/>
+    <circle cx="172" cy="250" r="8" fill="#b8935a"/>
+  </g>
+  <text x="210" y="118" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="500" letter-spacing="14" fill="#f5f0e8">FRACTAL</text>
+  <text x="213" y="150" font-family="'DM Sans',system-ui,sans-serif" font-size="18" letter-spacing="9" fill="#b8935a">COPROPIEDAD · COLOMBIA</text>
+</svg>

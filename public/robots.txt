@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vivefractal.com/sitemap.xml

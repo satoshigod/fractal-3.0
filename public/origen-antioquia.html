@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fractal Origen — Convierte tu finca sin venderla · Antioquia</title>
+<meta name="description" content="¿Tienes una finca en Antioquia que no estás usando? Fractal asume las deudas, la remodela y te da liquidez. Tú conservas tu parte de la casa.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://vivefractal.com/origen-antioquia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FNYVWMH7V7"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('config','G-FNYVWMH7V7');
+</script>
+
+<style>
+:root{
+  --ink:#f4efe4; --ink2:#f4efe4; --gold:#916d2b; --gold-l:#9a7a41;--gold-bronze:#6b4f2b;
+  --cream:#26303c; --stone:#4e4a3c;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+input,select,button{font-family:var(--sans)}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:58px;
+  background:rgba(27,42,65,.96);
+  border-bottom:1px solid rgba(92,87,73,.12);
+  backdrop-filter:blur(10px);
+}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:400;letter-spacing:.06em}
+.nav-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:#25D366;border:1px solid rgba(37,211,102,.28);
+  padding:8px 20px;transition:background .2s;
+}
+.nav-wa:hover{background:rgba(37,211,102,.08)}
+.nav-wa svg{width:13px;height:13px;fill:#25D366;flex-shrink:0}
+
+/* HERO */
+.hero{
+  min-height:88vh;display:flex;align-items:center;
+  padding:80px 48px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 60% at 65% 45%,rgba(184,147,90,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:620px;position:relative;z-index:1}
+.eyebrow{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-bronze);display:flex;align-items:center;gap:10px;margin-bottom:28px;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold-bronze)}
+h1{
+  font-family:var(--serif);font-size:clamp(38px,5.5vw,68px);
+  font-weight:400;line-height:1.1;color:var(--cream);margin-bottom:24px;
+}
+h1 em{font-style:italic;color:var(--gold-l)}
+.hero-sub{
+  font-size:16px;color:rgba(245,240,232,.6);line-height:1.75;
+  max-width:480px;margin-bottom:40px;
+}
+.hero-sub strong{color:var(--cream);font-weight:400}
+.ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--ink);
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  padding:14px 32px;transition:background .2s,transform .15s;cursor:pointer;border:none;
+}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-1px)}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#25D366;color:#fff;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  padding:14px 32px;transition:background .2s;
+}
+.btn-wa:hover{background:#1fba59}
+.btn-wa svg,.nav-wa svg{fill:currentColor}
+.btn-ghost{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--stone);border-bottom:1px solid rgba(74,70,58,.7);
+  padding-bottom:2px;transition:color .2s,border-color .2s;
+}
+.btn-ghost:hover{color:var(--cream);border-color:var(--cream)}
+.zonas{
+  margin-top:48px;padding-top:32px;
+  border-top:1px solid rgba(92,87,73,.12);
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+}
+.zonas-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-right:4px}
+.zona{
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(74,70,58,.82);border:1px solid rgba(92,87,73,.16);
+  padding:5px 12px;
+}
+
+/* SECTION BASE */
+.sec{padding:88px 48px}
+.sec-dark{background:#f4efe4}
+.sec-tag{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-bronze);display:flex;align-items:center;gap:10px;margin-bottom:18px;
+}
+.sec-tag::before{content:'';width:18px;height:1px;background:var(--gold-bronze)}
+.sec-h{
+  font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);
+  font-weight:400;color:var(--cream);margin-bottom:56px;line-height:1.15;
+}
+.sec-h em{font-style:italic;color:var(--gold-l)}
+.divider{height:1px;background:rgba(92,87,73,.1);margin:0 48px}
+
+/* DOLORES */
+.dolores-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(92,87,73,.1);
+}
+.dolor{background:#f4efe4;padding:40px 32px}
+.dolor-n{
+  font-family:var(--serif);font-size:52px;font-weight:400;
+  color:rgba(184,147,90,.12);line-height:1;margin-bottom:18px;
+}
+.dolor-t{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:10px;line-height:1.35}
+.dolor-d{font-size:13px;color:var(--stone);line-height:1.7}
+
+/* PASOS */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;position:relative}
+.pasos::before{
+  content:'';position:absolute;top:27px;
+  left:calc(16.66% + 12px);right:calc(16.66% + 12px);
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(184,147,90,.18) 20%,rgba(184,147,90,.18) 80%,transparent);
+}
+.paso{text-align:center}
+.paso-n{
+  width:54px;height:54px;border-radius:50%;
+  border:1px solid rgba(184,147,90,.22);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;font-weight:400;color:var(--gold);
+  margin:0 auto 22px;background:var(--ink);position:relative;z-index:1;
+}
+.paso-t{font-size:14px;font-weight:500;color:var(--cream);margin-bottom:10px}
+.paso-d{font-size:12px;color:var(--stone);line-height:1.7}
+
+/* CTA BANDA */
+.cta-banda{
+  padding:64px 48px;text-align:center;
+  background:#f4efe4;
+  border-top:1px solid rgba(92,87,73,.1);
+  border-bottom:1px solid rgba(92,87,73,.1);
+}
+.cta-banda p{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:14px}
+.cta-banda h3{
+  font-family:var(--serif);font-size:clamp(22px,3vw,38px);
+  font-weight:400;color:var(--cream);margin-bottom:28px;line-height:1.25;
+}
+.cta-banda .ctas{justify-content:center}
+
+/* EJEMPLO */
+.ej-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:rgba(92,87,73,.12);
+  border:1px solid rgba(92,87,73,.12);
+  margin-top:48px;
+}
+.ej-card{background:#f4efe4;padding:32px 28px}
+.ej-card.hi{background:#f4efe4;border:1px solid rgba(184,147,90,.16)}
+.ej-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(74,70,58,.78);margin-bottom:8px}
+.ej-t{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--cream);margin-bottom:8px}
+.ej-d{font-size:12px;color:var(--stone);line-height:1.68}
+.ej-num{font-family:var(--serif);font-size:44px;font-weight:400;color:var(--gold);line-height:1;margin-bottom:8px}
+.ej-nota{margin-top:24px;font-size:11px;color:rgba(92,87,73,.38);font-style:italic}
+
+/* FORM */
+.form-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:72px;align-items:start;
+}
+.form-left-copy p{font-size:14px;color:var(--stone);line-height:1.8;margin-top:20px;max-width:360px}
+.trust{margin-top:36px;display:flex;flex-direction:column;gap:12px}
+.trust-i{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--stone);line-height:1.5}
+.trust-i span:first-child{color:var(--gold);font-size:11px;margin-top:2px;flex-shrink:0}
+.form-box{background:#f4efe4;border:1px solid rgba(92,87,73,.15);padding:40px 36px}
+.form-box h3{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);margin-bottom:6px}
+.form-box .sub{font-size:12px;color:var(--stone);margin-bottom:28px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(74,70,58,.83);margin-bottom:5px}
+.fg input,.fg select{
+  width:100%;background:#f4efe4;border:1px solid rgba(92,87,73,.18);
+  color:var(--cream);padding:12px 14px;font-size:14px;
+  outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0;
+}
+.fg input::placeholder{color:rgba(92,87,73,.38)}
+.fg input:focus,.fg select:focus{border-color:rgba(184,147,90,.38)}
+.fg select option{background:#f4efe4}
+.form-submit{
+  width:100%;background:var(--gold);color:var(--ink);border:none;
+  cursor:pointer;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:500;padding:15px;margin-top:6px;transition:background .2s;
+}
+.form-submit:hover{background:var(--gold-l)}
+.alt-wa{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:14px;font-size:12px;color:var(--stone);
+}
+.alt-wa a{color:#25D366;font-weight:500}
+.alt-wa svg{width:13px;height:13px;fill:#25D366;flex-shrink:0}
+.gracias{display:none;text-align:center;padding:40px 16px}
+.gracias h3{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--cream);margin-bottom:10px}
+.gracias p{font-size:13px;color:var(--stone);margin-bottom:20px}
+
+/* CTA FINAL */
+.cta-final{padding:80px 48px;text-align:center;background:#f4efe4}
+.cta-final h3{
+  font-family:var(--serif);font-size:clamp(24px,3.5vw,46px);
+  font-weight:400;color:var(--cream);margin-bottom:12px;line-height:1.2;
+}
+.cta-final h3 em{color:var(--gold-l);font-style:italic}
+.cta-final p{font-size:14px;color:var(--stone);margin-bottom:32px}
+.cta-final .zonas-text{
+  margin-top:16px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(92,87,73,.32);
+}
+
+/* FOOTER */
+footer{
+  padding:36px 48px;border-top:1px solid rgba(92,87,73,.1);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.foot-logo{font-family:var(--serif);font-size:18px;font-weight:400;color:rgba(245,240,232,.25)}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{font-size:11px;color:rgba(92,87,73,.38);transition:color .2s}
+.foot-links a:hover{color:var(--stone)}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-lbl{
+  background:#25D366;color:#fff;font-size:11px;font-weight:500;
+  padding:7px 14px;border-radius:20px;white-space:nowrap;
+  opacity:0;transform:translateX(10px);
+  transition:opacity .25s,transform .25s;pointer-events:none;
+  box-shadow:0 4px 14px rgba(37,211,102,.3);
+}
+.wa-circle{
+  width:56px;height:56px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.4);
+  text-decoration:none;transition:transform .2s;position:relative;
+}
+.wa-circle:hover{transform:scale(1.08)}
+.wa-float:hover .wa-lbl{opacity:1;transform:translateX(0)}
+.wa-circle svg{width:27px;height:27px;fill:#fff}
+.wa-ring{position:absolute;inset:0;border-radius:50%;background:rgba(37,211,102,.35);animation:ring 2.2s ease-out infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.6}70%{transform:scale(1.6);opacity:0}100%{transform:scale(1.6);opacity:0}}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  nav,footer{padding:0 24px}
+  nav{height:54px}
+  .hero,.sec{padding:60px 24px}
+  .dolores-grid{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr;gap:28px}
+  .pasos::before{display:none}
+  .ej-grid{grid-template-columns:1fr}
+  .form-wrap{grid-template-columns:1fr;gap:40px}
+  .cta-banda,.cta-final{padding:56px 24px}
+  .divider{margin:0 24px}
+  footer{padding:28px 24px;flex-direction:column;align-items:flex-start}
+  .wa-float{bottom:18px;right:18px}
+  .wa-circle{width:52px;height:52px}
+}
+</style>
+<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/brand/app-icon.png">
+<style>@media(max-width:640px){html,body{overflow-x:hidden}img,video{max-width:100%;height:auto}}</style>
+<style id="fractal-nav-typo-fix">
+nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;backdrop-filter:blur(8px)}
+.nav-links a{font-size:13px;letter-spacing:.12em}
+.hero-sub{font-size:18.5px}
+</style>
+<style id="fractal-contrast-fix">
+[class*="hero"] h1,.hero-o h1,.hero h1{color:#f6f1e6!important;opacity:1!important;text-shadow:0 2px 22px rgba(10,15,25,.45)}
+[class*="hero"] h1 em,.hero-o h1 em,.hero h1 em{color:#e7c88c!important}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://vivefractal.com" class="nav-logo">Fractal</a>
+  <a href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal"
+     target="_blank" rel="noopener" class="nav-wa"
+     onclick="gtag('event','click_whatsapp',{event_category:'nav',event_label:'nav'})">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
+    Escríbenos
+  </a>
+<a href="/plataforma" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#ffffff;background:#b0894f;text-decoration:none;padding:8px 16px;border-radius:2px;white-space:nowrap;margin-left:16px">Ingresar</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Fractal Origen · Antioquia</div>
+    <h1><em>"Deja de perder<br>dinero con<br>tu finca."</em></h1>
+    <p class="hero-sub">Tienes plata atrapada en una finca en Antioquia que no estás disfrutando — y encima te está costando cada mes.</p>
+    <p class="hero-sub" style="margin-top:-16px">Te ayudamos a convertirla en ingresos, quedándote con una parte tuya y sin tener que operarla.</p>
+    <p style="font-size:11px;letter-spacing:.08em;color:rgba(184,147,90,.55);margin-bottom:28px">Solo trabajamos con fincas en Oriente, Suroeste y Occidente de Antioquia</p>
+    <div class="ctas">
+      <a href="#formulario" class="btn-gold" onclick="gtag('event','click_cta',{event_category:'hero',event_label:'hero_form'})">Evaluar mi finca gratis</a>
+      <a href="#como" class="btn-ghost">¿Cómo funciona? →</a>
+    </div>
+    <p style="margin-top:16px;font-size:11px;color:rgba(74,70,58,.8)">Respuesta en menos de 24 horas · Sin compromiso · Evaluación personalizada según tu finca</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DOLORES -->
+<section class="sec sec-dark">
+  <div class="sec-tag">El problema</div>
+  <h2 class="sec-h">Tu finca vale — pero ese valor<br>está <em>enterrado sin producir nada</em></h2>
+  <div class="dolores-grid">
+    <div class="dolor">
+      <div class="dolor-n">01</div>
+      <div class="dolor-t">Deudas que no paran de crecer</div>
+      <div class="dolor-d">Mayordomía, administración, servicios. Meses sin pagar. El predio se deteriora y la deuda crece. Un círculo sin salida que bloquea la propiedad.</div>
+    </div>
+    <div class="dolor">
+      <div class="dolor-n">02</div>
+      <div class="dolor-t">Capital inmovilizado que no produce nada</div>
+      <div class="dolor-d">La propiedad puede valer $800M, $1.200M o $2.000M — pero ese dinero no genera nada. Y el mantenimiento mínimo sigue costando cada mes.</div>
+    </div>
+    <div class="dolor">
+      <div class="dolor-n">03</div>
+      <div class="dolor-t">No la usas, pero no quieres venderla</div>
+      <div class="dolor-d">La vida cambió, los ritmos cambiaron. Venderla se siente como perder algo construido con esfuerzo. Hay una tercera opción que casi nadie conoce.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO -->
+<section class="sec" id="como">
+  <div class="sec-tag">La solución</div>
+  <h2 class="sec-h">Cómo Fractal activa tu propiedad<br><em>sin que la pierdas</em></h2>
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-n">1</div>
+      <div class="paso-t">Evaluamos tu finca gratis</div>
+      <div class="paso-d">Visita técnica sin costo ni compromiso. Un arquitecto Fractal va a la propiedad y te presenta los números exactos de tu caso antes de firmar nada.</div>
+    </div>
+    <div class="paso">
+      <div class="paso-n">2</div>
+      <div class="paso-t">Fractal asume todo</div>
+      <div class="paso-d">Las deudas de mayordomía, administración e impuestos. La remodelación al estándar Fractal. Sin un peso de tu bolsillo hoy — se descuenta de las ventas.</div>
+    </div>
+    <div class="paso">
+      <div class="paso-n">3</div>
+      <div class="paso-t">Recibes liquidez y conservas tu parte</div>
+      <div class="paso-d">Recibes el dinero de las partes vendidas. Y una parte de la casa sigue siendo tuya — escriturada a tu nombre, con días de uso asignados. Sin cargas.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA BANDA MEDIA -->
+<div class="cta-banda">
+  <p>Sin costo · Sin compromiso · Respuesta en menos de 24 horas</p>
+  <h3>¿Tienes una finca en el Oriente,<br>Suroeste u Occidente de Antioquia?</h3>
+  <div class="ctas">
+    <a href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal"
+       target="_blank" rel="noopener" class="btn-wa"
+       onclick="gtag('event','click_whatsapp',{event_category:'banda',event_label:'banda_wa'})">
+      <svg width="14" height="14" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
+      Evaluar por WhatsApp
+    </a>
+    <a href="#formulario" class="btn-ghost"
+       onclick="gtag('event','click_cta',{event_category:'banda',event_label:'banda_form'})">
+      Dejar mis datos →
+    </a>
+  </div>
+</div>
+
+<!-- EJEMPLO -->
+<section class="sec sec-dark">
+  <div class="sec-tag">Ejemplo real</div>
+  <h2 class="sec-h">Así se ven los números con una<br>finca del <em>Suroeste antioqueño</em></h2>
+  <div class="ej-grid">
+    <div class="ej-card">
+      <div class="ej-lbl">La propiedad</div>
+      <div class="ej-t">Finca en el Suroeste antioqueño</div>
+      <div class="ej-d">Valuada en $1.200M · ~380 m² construidos · piscina · 3 habitaciones · $18M en deudas de mayordomía y servicios acumulados</div>
+    </div>
+    <div class="ej-card">
+      <div class="ej-lbl">Lo que hace Fractal</div>
+      <div class="ej-t">Sanea y remodela</div>
+      <div class="ej-d">Asume los $18M de deuda · financia $60M de remodelación · la propiedad queda operativa en 4–5 meses desde la firma</div>
+    </div>
+    <div class="ej-card hi">
+      <div class="ej-lbl">El propietario recibe en efectivo</div>
+      <div class="ej-num">~$927M</div>
+      <div class="ej-d">De la venta de las otras partes de la casa — menos remodelación, deudas y honorarios Fractal del 12%</div>
+    </div>
+    <div class="ej-card hi">
+      <div class="ej-lbl">Y su parte de la casa vale</div>
+      <div class="ej-num">~$118M</div>
+      <div class="ej-d">Escriturada a su nombre · 43 días de uso al año · sin deudas · los gastos se reparten entre los 8 dueños de la casa</div>
+    </div>
+  </div>
+  <p class="ej-nota">* Ejemplo con valores orientativos. Los números exactos se definen en visita técnica gratuita, antes de firmar.</p>
+</section>
+
+<!-- FORMULARIO -->
+<section class="sec" id="formulario">
+  <div class="form-wrap">
+    <div class="form-left-copy">
+      <div class="sec-tag">Siguiente paso</div>
+      <h2 class="sec-h" style="font-size:clamp(24px,3vw,40px);margin-bottom:0">Evalúa tu finca.<br><em>Gratis. Sin compromiso.</em></h2>
+      <p>Cuéntanos lo básico y te contactamos en menos de 24 horas con los números de tu caso.</p>
+      <div class="trust">
+        <div class="trust-i"><span>✓</span> Visita técnica sin costo ni compromiso</div>
+        <div class="trust-i"><span>✓</span> Tu información es estrictamente confidencial</div>
+        <div class="trust-i"><span>✓</span> Sin pago inicial — todo se descuenta de las ventas</div>
+        <div class="trust-i"><span>✓</span> Una parte de la casa sigue siendo tuya y puedes usarla</div>
+        <div class="trust-i"><span>✓</span> Tú decides cuánto vender y cuándo parar</div>
+      </div>
+    </div>
+    <div>
+      <div class="form-box">
+        <h3>Cuéntanos de tu finca</h3>
+        <p class="sub">4 datos · te respondemos en menos de 24 horas</p>
+        <div id="form-content">
+          <form id="lf" onsubmit="enviar(event)">
+            <div class="fg">
+              <label>Tu nombre</label>
+              <input type="text" id="f-nombre" placeholder="¿Cómo te llamamos?" required>
+            </div>
+            <div class="fg">
+              <label>WhatsApp</label>
+              <div style="display:flex;align-items:center;background:#f4efe4;border:1px solid rgba(92,87,73,.18);transition:border-color .2s" id="wa-wrap">
+                <span style="padding:12px 10px 12px 14px;font-size:14px;color:rgba(74,70,58,.85);white-space:nowrap;flex-shrink:0">+57</span>
+                <input type="tel" id="f-wa" placeholder="300 000 0000" required
+                  style="border:none;background:transparent;flex:1;padding:12px 14px 12px 0;font-size:14px;color:var(--cream);outline:none"
+                  oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                  onfocus="document.getElementById('wa-wrap').style.borderColor='rgba(184,147,90,.38)'"
+                  onblur="document.getElementById('wa-wrap').style.borderColor='rgba(92,87,73,.18)'">
+              </div>
+            </div>
+            <div class="fg">
+              <label>Municipio o zona</label>
+              <select id="f-zona" required>
+                <option value="" disabled selected>¿Dónde está la finca?</option>
+                <option>Oriente Antioqueño (Guatapé, El Retiro, Llanogrande)</option>
+                <option>Suroeste Antioqueño (Cauca Viejo, Jardín, Támesis)</option>
+                <option>Occidente Antioqueño (Santa Fe, Sopetrán)</option>
+                <option>Norte de Antioquia</option>
+                <option>Otro municipio en Antioquia</option>
+                <option>Otro departamento</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Valor estimado de la propiedad</label>
+              <select id="f-valor" required>
+                <option value="" disabled selected>Rango aproximado</option>
+                <option>Entre $400M y $700M</option>
+                <option>Entre $700M y $1.200M</option>
+                <option>Entre $1.200M y $2.000M</option>
+                <option>Más de $2.000M</option>
+                <option>No lo sé con exactitud</option>
+              </select>
+            </div>
+            <button type="submit" class="form-submit">Quiero que evalúen mi finca →</button>
+          </form>
+          <div class="alt-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
+            ¿Prefieres hablar ya? &nbsp;<a href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal" target="_blank" onclick="gtag('event','click_whatsapp',{event_category:'form',event_label:'form_wa'})">Escríbenos por WhatsApp</a>
+          </div>
+          <div id="gracias" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h3>Tu finca merece<br><em>volver a trabajar para ti.</em></h3>
+  <p>Una finca en el Suroeste antioqueño puede generar $927M en efectivo para el propietario — sin venderla.</p>
+  <a href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal"
+     target="_blank" rel="noopener" class="btn-wa"
+     onclick="gtag('event','click_whatsapp',{event_category:'final',event_label:'final_wa'})">
+    <svg width="15" height="15" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
+    Evaluar mi finca — gratis
+  </a>
+  <p class="zonas-text">Oriente · Suroeste · Santa Fe · Sopetrán · Guatapé · El Retiro · Llanogrande</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-logo">Fractal</span>
+  <div class="foot-links">
+    <a href="https://vivefractal.com">vivefractal.com</a>
+    <a href="mailto:info@vivefractal.com">info@vivefractal.com</a>
+    <a href="https://wa.me/573005485019">+57 300 548 5019</a>
+    <a href="https://www.instagram.com/vive_fractal" target="_blank">@vive_fractal</a>
+  </div>
+</footer>
+
+<!-- WA FLOTANTE -->
+<div class="wa-float">
+  <span class="wa-lbl">Evaluar mi finca</span>
+  <a class="wa-circle"
+     href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal"
+     target="_blank" rel="noopener"
+     onclick="gtag('event','click_whatsapp',{event_category:'float',event_label:'float'})">
+    <span class="wa-ring"></span>
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
+  </a>
+</div>
+
+<script>
+function enviar(e){
+  e.preventDefault();
+  var n = document.getElementById('f-nombre').value.trim();
+  var w = '+57' + document.getElementById('f-wa').value.trim();
+  var z = document.getElementById('f-zona').value;
+  var v = document.getElementById('f-valor').value;
+
+  // 1. Deshabilitar botón para evitar doble envío
+  var btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+
+  // 2. GA
+  if(typeof gtag!=='undefined') gtag('event','lead_form',{event_category:'conversion',event_label:z+' · '+v});
+
+  // 3. Email via Formspree
+  fetch('https://formspree.io/f/xlgoyekn',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({
+      nombre:n, whatsapp:w, zona:z, valor:v,
+      _subject:'Lead Fractal Origen — '+z
+    })
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    // 4. Mostrar modal con link WA listo
+    var msg = encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi número es '+w+'. Quiero evaluarla con Fractal.');
+    document.getElementById('wa-modal-btn').href = 'https://wa.me/573005485019?text='+msg;
+    var modal = document.getElementById('modal');
+    modal.style.display = 'flex';
+    // Ocultar formulario
+    document.getElementById('lf').style.display='none';
+    document.querySelector('.alt-wa').style.display='none';
+    // Abrir WhatsApp automáticamente
+    window.open('https://wa.me/573005485019?text='+msg, '_blank');
+  })
+  .catch(function(){
+    // Aunque falle el email, mostrar modal y WA igualmente
+    var msg = encodeURIComponent('Hola, soy '+n+'. Tengo una finca en '+z+', valor estimado '+v+'. Mi número es '+w+'. Quiero evaluarla con Fractal.');
+    document.getElementById('wa-modal-btn').href = 'https://wa.me/573005485019?text='+msg;
+    document.getElementById('modal').style.display = 'flex';
+    document.getElementById('lf').style.display='none';
+    document.querySelector('.alt-wa').style.display='none';
+    // Abrir WhatsApp automáticamente
+    window.open('https://wa.me/573005485019?text='+msg, '_blank');
+  });
+}
+var s50=false;
+window.addEventListener('scroll',function(){
+  if(s50)return;
+  if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>=0.5){
+    s50=true;gtag('event','scroll_50',{event_category:'engagement'});
+  }
+},{passive:true});
+[30,60,120].forEach(function(s){setTimeout(function(){gtag('event','tiempo',{event_category:'engagement',event_label:s+'s'});},s*1000);});
+</script>
+
+<!-- MODAL CONFIRMACIÓN -->
+<div id="modal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:24px">
+  <div style="background:#f4efe4;border:1px solid rgba(184,147,90,.25);max-width:440px;width:100%;padding:48px 40px;text-align:center;position:relative">
+    <div style="font-size:32px;margin-bottom:16px">✓</div>
+    <h3 style="font-family:var(--serif);font-size:26px;font-weight:400;color:var(--cream);margin-bottom:10px">¡Listo, recibido!</h3>
+    <p style="font-size:13px;color:var(--stone);line-height:1.7;margin-bottom:28px">Te contactamos en menos de 24 horas para agendar una visita a tu finca.<br>También te abrimos WhatsApp para que puedas escribirnos directo.</p>
+    <a id="wa-modal-btn"
+       href="#"
+       target="_blank"
+       style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;padding:14px 28px;text-decoration:none;margin-bottom:16px">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg>
+      Abrir WhatsApp
+    </a>
+    <br>
+    <button onclick="document.getElementById('modal').style.display='none'"
+      style="background:none;border:none;color:rgba(74,70,58,.82);font-size:11px;cursor:pointer;letter-spacing:.1em;text-transform:uppercase">
+      Cerrar
+    </button>
+  </div>
+</div>
+
+
+
+</body>
+</html>
