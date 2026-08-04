@@ -1224,9 +1224,7 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
     <!-- TABS -->
     <div class="calc-tabs">
       <button class="calc-tab active" onclick="switchTab('compra')">Quiero comprar una fracción</button>
-      <button class="calc-tab" onclick="switchTab('vende')">Tengo una propiedad</button>
-      <button class="calc-tab" onclick="switchTab('lote')">Tengo un lote</button>
-    </div>
+      </div>
 
     <!-- TAB 1: COMPRAR FRACCIÓN -->
     <div id="tab-compra" class="calc-tab-content active">
@@ -1287,183 +1285,6 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
             <p style="font-size:10px;color:rgba(74,70,58,.78);margin-top:14px;line-height:1.65">Las comisiones de OTAs aplican solo si el propietario cede días al operador para alquiler.</p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- TAB 2: TRAE TU PROPIEDAD -->
-    <div id="tab-vende" class="calc-tab-content">
-      <div class="calc-body">
-
-        <!-- INPUTS VENDEDOR -->
-        <div class="calc-left">
-
-          <div style="background:rgba(184,147,90,.07);border:1px solid rgba(184,147,90,.2);padding:18px 22px;margin-bottom:32px">
-            <div style="font-size:11px;font-weight:500;color:var(--gold);margin-bottom:8px;letter-spacing:.06em;text-transform:uppercase">¿Cómo funciona?</div>
-            <div style="font-size:12px;color:rgba(50,45,38,.80);line-height:1.75">Trae tu propiedad al modelo Fractal. Nosotros la evaluamos, definimos el costo de remodelación para cumplir el estándar, y tú recibes liquidez inmediata quedando como copropietario con fracción preferente — pagando menos al mes que los demás copropietarios.</div>
-          </div>
-
-          <label class="calc-input-label">¿Cuánto vale tu propiedad hoy?</label>
-          <div class="calc-input-wrap">
-            <span class="calc-prefix">$</span>
-            <input type="text" id="v-precio" placeholder="4.800.000.000" autocomplete="off">
-          </div>
-          <div class="calc-hint">Valor comercial actual de tu propiedad</div>
-
-          <label class="calc-input-label" style="margin-top:28px">Costo estimado de remodelación</label>
-          <div class="calc-input-wrap" id="v-remod-wrap" style="border-color:rgba(92,87,73,.15)">
-            <span class="calc-prefix" style="opacity:.4">$</span>
-            <input type="text" id="v-remod" placeholder="Lo define Fractal tras visita" autocomplete="off" style="opacity:.5" disabled>
-          </div>
-          <div class="calc-hint">Fractal determina este valor después de visitar la propiedad. Puedes simular con un estimado.</div>
-
-          <button id="v-habilitar" style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border:1px solid rgba(74,70,58,.7);color:var(--stone);background:transparent;cursor:pointer;margin-bottom:28px;font-family:var(--sans);transition:all .2s">
-            Simular con mi estimado
-          </button>
-
-          <label class="calc-slider-label">¿Qué fracción quieres conservar?</label>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px">
-            <button class="v-frac-btn active" data-frac="A">Fracción A (15.65%)</button>
-            <button class="v-frac-btn" data-frac="B">Fracción B (15.65%)</button>
-            <button class="v-frac-btn" data-frac="WD">Weekday (9.35%)</button>
-          </div>
-
-        </div>
-
-        <!-- RESULTADOS VENDEDOR -->
-        <div class="calc-right">
-          <div class="calc-results-title">Tu propuesta Fractal</div>
-
-          <!-- estado vacío -->
-          <div id="v-empty" style="padding:40px 0;text-align:center">
-            <div style="font-family:var(--serif);font-size:48px;font-weight:400;color:rgba(92,87,73,.2);margin-bottom:16px">→</div>
-            <div style="font-size:13px;color:var(--stone);line-height:1.65">Ingresa el valor de tu propiedad<br>para ver tu propuesta personalizada</div>
-          </div>
-
-          <!-- resultados -->
-          <div id="v-results" style="display:none">
-
-            <div class="frac-result">
-              <div class="fr-info"><span class="fr-name">Valor comercial actual</span><span class="fr-detail">Lo que vale tu propiedad hoy</span></div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-precio" style="color:var(--cream)">—</span></div>
-            </div>
-
-            <div class="frac-result">
-              <div class="fr-info"><span class="fr-name">Valor post-remodelación</span><span class="fr-detail">Valor del activo Fractal tras inversión</span></div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-postval">—</span></div>
-            </div>
-
-            <div class="frac-result">
-              <div class="fr-info">
-                <span class="fr-name">Liquidez que recibes</span>
-                <span class="fr-detail" id="v-r-frac-label">Por las fracciones que vende al mercado</span>
-              </div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-liquidez" style="color:var(--gold)">—</span><div class="fr-pct" id="v-r-pct-vende">—</div></div>
-            </div>
-
-            <div class="frac-result">
-              <div class="fr-info">
-                <span class="fr-name">Tu fracción conservada</span>
-                <span class="fr-detail" id="v-r-tu-frac-det">Fracción A · Weekend · 48 días/año</span>
-              </div>
-              <div class="fr-price"><span class="fr-amount" id="v-r-tu-frac" style="color:var(--gold-light)">—</span><div class="fr-pct" id="v-r-tu-pct">—</div></div>
-            </div>
-
-            <div class="calc-total-row">
-              <span class="calc-total-label">Valor total del activo Fractal</span>
-              <span class="calc-total-val" id="v-r-total">—</span>
-            </div>
-
-            <!-- diferencia de costos -->
-            <div class="calc-costo-note">
-              <div class="calc-costo-title">Tu costo mensual vs un copropietario externo</div>
-              <div class="calc-costo-rows">
-                <div class="ccr">
-                  <span class="ccr-label">Copropietario externo paga</span>
-                  <span class="ccr-val" id="v-r-mes-ext">—</span>
-                </div>
-                <div class="ccr" style="background:rgba(184,147,90,.04)">
-                  <span class="ccr-label" style="color:var(--gold)">Tú pagas (propietario original)</span>
-                  <span class="ccr-val" id="v-r-mes-tu" style="color:var(--gold)">—</span>
-                </div>
-                <div class="ccr">
-                  <span class="ccr-label">Ahorro mensual vs externo</span>
-                  <span class="ccr-val" id="v-r-ahorro" style="color:var(--gold-light)">—</span>
-                </div>
-              </div>
-              <p id="v-r-nota" style="font-size:10px;color:rgba(74,70,58,.78);margin-top:14px;line-height:1.65"></p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <p style="font-size:11px;color:rgba(74,70,58,.74);text-align:center;margin-top:24px;line-height:1.7">
-        Esta simulación es orientativa. El valor final del activo, el costo de remodelación y las condiciones de la propuesta se definen tras la visita técnica de Fractal a la propiedad.
-      </p>
-    </div>
-
-    <!-- TAB LOTE -->
-    <div id="tab-lote" class="calc-tab-content">
-      <div class="lote-wrap">
-
-        <div class="lote-left">
-          <div class="section-tag">Tu lote · Tu capital</div>
-          <h3 class="lote-h">Convierte tu lote en fracciones Fractal</h3>
-          <p class="lote-p">Tienes un lote bien ubicado pero no los recursos para construir. Fractal lo valora, lo desarrolla y te paga el valor tasado en fracciones — no en efectivo que se gasta, sino en propiedad real que se usa y se valoriza.</p>
-          <div class="lote-modos">
-            <div class="lote-modo active" data-modo="casa" onclick="setLoteModo('casa')">
-              <div class="lote-modo-n">01</div>
-              <div class="lote-modo-title">Una casa estilo Fractal</div>
-              <div class="lote-modo-desc">Fractal diseña y construye una casa premium sobre tu lote. Se fraccionaliza entre 8 copropietarios. Recibes fracciones equivalentes al valor tasado de tu terreno.</div>
-            </div>
-            <div class="lote-modo" data-modo="cluster" onclick="setLoteModo('cluster')">
-              <div class="lote-modo-n">02</div>
-              <div class="lote-modo-title">Desarrollo de múltiples unidades</div>
-              <div class="lote-modo-desc">Tu lote permite un cluster de varias casas Fractal. Fractal desarrolla el proyecto completo. Recibes fracciones proporcionales del portafolio de unidades.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="lote-right">
-          <div class="lote-calc">
-            <label class="lote-calc-label">Valor tasado de tu lote (COP)</label>
-            <div class="lote-input-row">
-              <span class="calc-prefix">$</span>
-              <input type="text" id="lote-val" placeholder="500.000.000" autocomplete="off" oninput="onLoteInput(this)" style="flex:1;background:#f4efe4;border:none;color:var(--cream);padding:14px 16px;font-family:var(--serif);font-size:18px;outline:none;">
-            </div>
-            <div class="lote-presets-row">
-              <button class="lote-pre" data-lv="200000000" onclick="setLotePreset(this)">$200M</button>
-              <button class="lote-pre" data-lv="400000000" onclick="setLotePreset(this)">$400M</button>
-              <button class="lote-pre active" data-lv="600000000" onclick="setLotePreset(this)">$600M</button>
-              <button class="lote-pre" data-lv="1000000000" onclick="setLotePreset(this)">$1.000M</button>
-              <button class="lote-pre" data-lv="1500000000" onclick="setLotePreset(this)">$1.500M</button>
-            </div>
-
-            <div class="lote-modo-badge" id="lote-modo-badge">Modalidad: Una casa estilo Fractal</div>
-
-            <div class="lote-filas" id="lote-filas">
-              <div class="lote-fila"><span>Valor tasado tu lote</span><strong id="lr-lote">—</strong></div>
-              <div class="lote-fila"><span id="lr-label-const">Construcción estimada Fractal</span><strong id="lr-const">—</strong></div>
-              <div class="lote-fila"><span>Valor total del activo fractalizado</span><strong id="lr-activo">—</strong></div>
-              <div class="lote-fila lote-hi"><span>% que representa tu lote</span><strong id="lr-pct">—</strong></div>
-              <div class="lote-fila lote-hi"><span>Fracciones que recibes</span><strong id="lr-fracs">—</strong></div>
-              <div class="lote-fila"><span>Tipo de fracciones</span><strong id="lr-tipo">—</strong></div>
-              <div class="lote-fila"><span>Días de uso al año</span><strong id="lr-dias">—</strong></div>
-              <div class="lote-fila"><span>Costo mensual de tu(s) fracción(es)</span><strong id="lr-mes">—</strong></div>
-              <div class="lote-fila"><span>Valor fracción(es) en 5 años (+8%/año)</span><strong id="lr-val5">—</strong></div>
-            </div>
-
-            <div class="lote-resultado" id="lote-resultado">
-              <div class="lote-res-tag">Lo que recibes</div>
-              <div class="lote-res-num" id="lr-resnum">—</div>
-              <div class="lote-res-desc" id="lr-resdesc">—</div>
-            </div>
-
-            <div class="lote-aviso">Fractal avalúa el lote con perito independiente. El valor aprobado determina las fracciones asignadas. Sin efectivo — tu lote entra como capital al proyecto.</div>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -2414,16 +2235,8 @@ document.querySelectorAll('.stat,.frac-card,.step,.dest-card,.ps,.ctb,.rs,.faq-i
 
 // ── TABS CALCULADORA ─────────────────────────────────────────────────────────
 function switchTab(tab) {
-  document.querySelectorAll('.calc-tab').forEach(function(t,i) {
-    t.classList.toggle('active',
-      (i===0 && tab==='compra') ||
-      (i===1 && tab==='vende')  ||
-      (i===2 && tab==='lote'));
-  });
-  document.getElementById('tab-compra').classList.toggle('active', tab==='compra');
-  document.getElementById('tab-vende').classList.toggle('active',  tab==='vende');
-  var tabLote = document.getElementById('tab-lote');
-  if (tabLote) tabLote.classList.toggle('active', tab==='lote');
+  document.querySelectorAll('.calc-tab').forEach(function(t,i){ t.classList.toggle('active', i===0); });
+  var c=document.getElementById('tab-compra'); if(c) c.classList.toggle('active', true);
 }
 
 // ── TENGO UN LOTE ─────────────────────────────────────────────────────────────
@@ -2458,7 +2271,7 @@ function onLoteInput(el) {
   calcLote();
 }
 
-function calcLote() {
+function calcLote(){ if(!document.getElementById('tab-lote')) return;
   var inp = document.getElementById('lote-val');
   if (!inp) return;
   var valLote = parseInt(inp.value.replace(/\D/g,'')) || 0;
@@ -2530,7 +2343,7 @@ const FRACS = {
 let selectedFrac = 'A';
 let remodEnabled = false;
 
-function calcVendedor() {
+function calcVendedor(){ if(!document.getElementById('tab-vende')) return;
   const precio = parseVal(document.getElementById('v-precio').value || '0');
   const remod  = remodEnabled ? parseVal(document.getElementById('v-remod').value || '0') : 0;
   if (!precio) {
