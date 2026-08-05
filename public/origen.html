@@ -536,6 +536,43 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
 }
 </style>
 <style id="fractal-cta-text">[class*="cta"] p,.cta-content p{color:rgba(255,255,255,.93)!important;text-shadow:0 1px 8px rgba(0,0,0,.8)!important}[class*="cta"] .section-tag,.cta-content .section-tag{color:#f0d090!important;text-shadow:0 1px 6px rgba(0,0,0,.8)!important}</style>
+<style id="lote-css">
+.calc-prefix{padding:16px 18px;font-family:var(--serif);font-size:20px;color:var(--stone);background:rgba(92,87,73,.07);border-right:1px solid rgba(92,87,73,.15);flex-shrink:0;user-select:none}
+.lote-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding:48px}
+.lote-h{font-family:var(--serif);font-size:26px;font-weight:400;color:var(--cream);margin-bottom:12px;line-height:1.2}
+.lote-p{font-size:13px;color:var(--stone);line-height:1.75;margin-bottom:28px}
+.lote-modos{display:flex;flex-direction:column;gap:10px}
+.lote-modo{padding:18px 22px;border:1px solid rgba(92,87,73,.15);cursor:pointer;transition:all .2s}
+.lote-modo:hover{border-color:rgba(122,93,32,.3)}
+.lote-modo.active{border-color:var(--gold);background:rgba(184,147,90,.05)}
+.lote-modo-n{font-family:var(--serif);font-size:26px;font-weight:400;color:rgba(122,93,32,.2);margin-bottom:6px}
+.lote-modo.active .lote-modo-n{color:var(--gold)}
+.lote-modo-title{font-size:13px;font-weight:500;color:var(--cream);margin-bottom:5px}
+.lote-modo-desc{font-size:11px;color:var(--stone);line-height:1.6}
+.lote-calc{background:#f4efe4;border:1px solid rgba(92,87,73,.15);padding:28px}
+.lote-calc-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);display:block;margin-bottom:10px}
+.lote-input-row{display:flex;align-items:center;border:1px solid rgba(92,87,73,.25);margin-bottom:10px}
+.lote-presets-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px}
+.lote-pre{font-size:10px;padding:5px 10px;border:1px solid rgba(92,87,73,.18);color:var(--stone);background:#f4efe4;cursor:pointer;font-family:var(--sans);transition:all .15s;-webkit-appearance:none;outline:none}
+.lote-pre:hover,.lote-pre.active{border-color:var(--gold);color:var(--gold)}
+.lote-modo-badge{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding-bottom:12px;border-bottom:1px solid rgba(184,147,90,.12);margin-bottom:14px}
+.lote-filas{display:flex;flex-direction:column;margin-bottom:14px}
+.lote-fila{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid rgba(92,87,73,.07);gap:8px;font-size:12px}
+.lote-fila:last-child{border-bottom:none}
+.lote-fila span{color:rgba(50,45,38,.72);flex:1}
+.lote-fila strong{font-family:var(--serif);font-size:15px;font-weight:400;color:var(--cream);text-align:right;white-space:nowrap}
+.lote-hi{background:rgba(184,147,90,.05);padding:7px 8px;margin:0 -8px}
+.lote-hi span{color:rgba(122,93,32,.7)}
+.lote-hi strong{color:var(--gold)}
+.lote-resultado{background:rgba(184,147,90,.06);border:1px solid rgba(184,147,90,.18);padding:18px;margin-bottom:14px}
+.lote-res-tag{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.lote-res-num{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--cream);margin-bottom:4px}
+.lote-res-desc{font-size:11px;color:var(--stone);line-height:1.6}
+.lote-aviso{font-size:11px;color:rgba(74,70,58,.78);line-height:1.65;border-top:1px solid rgba(92,87,73,.1);padding-top:12px}
+.lote-wrap{grid-template-columns:1fr;padding:24px;gap:32px}
+.lote-pre').forEach(function(b){ b.classList.remove('active'); }
+
+</style>
 </head>
 <body>
 
@@ -1173,6 +1210,75 @@ nav{--cream:#f0ebe0;--stone:#d2ccbd;background:rgba(27,42,65,.97)!important;back
   </div>
 </section>
 
+  <!-- ═══════════════ LOTE (traes tu lote) ═══════════════ -->
+  <section id="lote" style="background:#efe9dd;padding:96px 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#6b4f2b;display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:18px;height:1px;background:#6b4f2b;display:inline-block"></span>Fractal Origen · Lote</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:var(--cream);margin-bottom:36px;line-height:1.2">¿Tienes un <em style="font-style:italic;color:var(--gold-l)">lote</em>?</h2>
+      <div class="lote-wrap">
+
+        <div class="lote-left">
+          <div class="section-tag">Tu lote · Tu capital</div>
+          <h3 class="lote-h">Convierte tu lote en fracciones Fractal</h3>
+          <p class="lote-p">Tienes un lote bien ubicado pero no los recursos para construir. Fractal lo valora, lo desarrolla y te paga el valor tasado en fracciones — no en efectivo que se gasta, sino en propiedad real que se usa y se valoriza.</p>
+          <div class="lote-modos">
+            <div class="lote-modo active" data-modo="casa" onclick="setLoteModo('casa')">
+              <div class="lote-modo-n">01</div>
+              <div class="lote-modo-title">Una casa estilo Fractal</div>
+              <div class="lote-modo-desc">Fractal diseña y construye una casa premium sobre tu lote. Se fraccionaliza entre 8 copropietarios. Recibes fracciones equivalentes al valor tasado de tu terreno.</div>
+            </div>
+            <div class="lote-modo" data-modo="cluster" onclick="setLoteModo('cluster')">
+              <div class="lote-modo-n">02</div>
+              <div class="lote-modo-title">Desarrollo de múltiples unidades</div>
+              <div class="lote-modo-desc">Tu lote permite un cluster de varias casas Fractal. Fractal desarrolla el proyecto completo. Recibes fracciones proporcionales del portafolio de unidades.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lote-right">
+          <div class="lote-calc">
+            <label class="lote-calc-label">Valor tasado de tu lote (COP)</label>
+            <div class="lote-input-row">
+              <span class="calc-prefix">$</span>
+              <input type="text" id="lote-val" placeholder="500.000.000" autocomplete="off" oninput="onLoteInput(this)" style="flex:1;background:#f4efe4;border:none;color:var(--cream);padding:14px 16px;font-family:var(--serif);font-size:18px;outline:none;">
+            </div>
+            <div class="lote-presets-row">
+              <button class="lote-pre" data-lv="200000000" onclick="setLotePreset(this)">$200M</button>
+              <button class="lote-pre" data-lv="400000000" onclick="setLotePreset(this)">$400M</button>
+              <button class="lote-pre active" data-lv="600000000" onclick="setLotePreset(this)">$600M</button>
+              <button class="lote-pre" data-lv="1000000000" onclick="setLotePreset(this)">$1.000M</button>
+              <button class="lote-pre" data-lv="1500000000" onclick="setLotePreset(this)">$1.500M</button>
+            </div>
+
+            <div class="lote-modo-badge" id="lote-modo-badge">Modalidad: Una casa estilo Fractal</div>
+
+            <div class="lote-filas" id="lote-filas">
+              <div class="lote-fila"><span>Valor tasado tu lote</span><strong id="lr-lote">—</strong></div>
+              <div class="lote-fila"><span id="lr-label-const">Construcción estimada Fractal</span><strong id="lr-const">—</strong></div>
+              <div class="lote-fila"><span>Valor total del activo fractalizado</span><strong id="lr-activo">—</strong></div>
+              <div class="lote-fila lote-hi"><span>% que representa tu lote</span><strong id="lr-pct">—</strong></div>
+              <div class="lote-fila lote-hi"><span>Fracciones que recibes</span><strong id="lr-fracs">—</strong></div>
+              <div class="lote-fila"><span>Tipo de fracciones</span><strong id="lr-tipo">—</strong></div>
+              <div class="lote-fila"><span>Días de uso al año</span><strong id="lr-dias">—</strong></div>
+              <div class="lote-fila"><span>Costo mensual de tu(s) fracción(es)</span><strong id="lr-mes">—</strong></div>
+              <div class="lote-fila"><span>Valor fracción(es) en 5 años (+8%/año)</span><strong id="lr-val5">—</strong></div>
+            </div>
+
+            <div class="lote-resultado" id="lote-resultado">
+              <div class="lote-res-tag">Lo que recibes</div>
+              <div class="lote-res-num" id="lr-resnum">—</div>
+              <div class="lote-res-desc" id="lr-resdesc">—</div>
+            </div>
+
+            <div class="lote-aviso">Fractal avalúa el lote con perito independiente. El valor aprobado determina las fracciones asignadas. Sin efectivo — tu lote entra como capital al proyecto.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
 
 <section style="padding:80px 48px;background:#f4efe4">
   <div style="max-width:1200px;margin:0 auto">
@@ -1680,6 +1786,96 @@ function togFaq(el) {
 }
 
 
+
+/* ── LOTE ── */
+var _loteModo = 'casa';
+
+function setLoteModo(modo) {
+  _loteModo = modo;
+  document.querySelectorAll('.lote-modo').forEach(function(m) {
+    m.classList.toggle('active', m.dataset.modo === modo);
+  });
+  var badge = document.getElementById('lote-modo-badge');
+  if (badge) badge.textContent = modo === 'casa'
+    ? 'Modalidad: Una casa estilo Fractal'
+    : 'Modalidad: Desarrollo de múltiples unidades';
+  calcLote();
+}
+
+function setLotePreset(btn) {
+  var v = +btn.dataset.lv;
+  var inp = document.getElementById('lote-val');
+  if (inp) inp.value = v.toLocaleString('es-CO');
+  document.querySelectorAll('.lote-pre').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  calcLote();
+}
+
+function onLoteInput(el) {
+  var raw = parseInt(el.value.replace(/\D/g,'')) || 0;
+  document.querySelectorAll('.lote-pre').forEach(function(b){
+    b.classList.toggle('active', +b.dataset.lv === raw);
+  });
+  calcLote();
+}
+
+function calcLote() {
+  var inp = document.getElementById('lote-val');
+  if (!inp) return;
+  var valLote = parseInt(inp.value.replace(/\D/g,'')) || 0;
+  var lc = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
+  var s  = function(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; };
+
+  if (!valLote || valLote < 50000000) {
+    document.getElementById('lote-resultado').style.display = 'none';
+    return;
+  }
+
+  var construccion, unidades, tipoFrac, diasStr;
+
+  if (_loteModo === 'casa') {
+    construccion = Math.max(900000000, valLote * 1.5);
+    unidades     = 1;
+    tipoFrac     = 'A/B Weekend o Weekday';
+    diasStr      = '43–48 días/año';
+  } else {
+    unidades     = Math.max(2, Math.floor(valLote / 350000000));
+    construccion = unidades * 750000000;
+    tipoFrac     = 'Mix A/B + Weekday por unidad';
+    diasStr      = '43–48 días/año por unidad';
+  }
+
+  var activo    = valLote + construccion;
+  var pctLote   = (valLote / activo * 100).toFixed(1);
+  var fracVal   = activo * 0.1565;          // precio fracción A/B
+  var nFracs    = valLote / fracVal;
+  var fracStr   = nFracs.toFixed(2) + ' fracciones';
+  var mesBase   = 1776056 * (activo / 4800000000);
+  var mes       = mesBase * Math.min(nFracs, 2);   // hasta 2 fracciones
+  var val5      = valLote * Math.pow(1.08, 5);
+
+  s('lr-lote',       lc(valLote));
+  s('lr-label-const', _loteModo === 'casa'
+    ? 'Construcción estimada Fractal'
+    : 'Construcción (' + unidades + ' unidades)');
+  s('lr-const',      lc(construccion));
+  s('lr-activo',     lc(activo));
+  s('lr-pct',        pctLote + '% del activo');
+  s('lr-fracs',      fracStr);
+  s('lr-tipo',       tipoFrac);
+  s('lr-dias',       diasStr);
+  s('lr-mes',        lc(mes) + '/mes');
+  s('lr-val5',       lc(val5));
+
+  var res = document.getElementById('lote-resultado');
+  if (res) res.style.display = 'block';
+  s('lr-resnum',  fracStr + ' valoradas en ' + lc(valLote));
+  s('lr-resdesc', 'Tu lote entra como capital. Fractal construye '
+    + (_loteModo === 'casa' ? 'la casa' : unidades + ' casas')
+    + '. Sin poner un peso más recibes ' + fracStr
+    + ' con ' + diasStr + ' de uso personal.');
+}
+setLoteModo("casa");
 </script>
 
 <div class="wa-float"><span class="wa-label">Evaluar mi finca</span><a class="wa-btn" href="https://wa.me/573005485019?text=Hola%2C%20quiero%20evaluar%20mi%20finca%20con%20Fractal" target="_blank" rel="noopener noreferrer" onclick="if(typeof gtag!=='undefined'){gtag('event','click_whatsapp',{event_category:'contacto',event_label:'floating_button'});}"><span class="wa-pulse"></span><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.524 5.847L.057 23.617a.5.5 0 0 0 .608.625l5.92-1.531A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.893 9.893 0 0 1-5.035-1.374l-.361-.214-3.741.981.998-3.648-.235-.374A9.859 9.859 0 0 1 2.107 12C2.107 6.59 6.59 2.107 12 2.107S21.894 6.59 21.894 12 17.41 21.894 12 21.894z"/></svg></a></div>
