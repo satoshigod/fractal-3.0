@@ -2163,177 +2163,7 @@ function toggleAcc(header) {
   }
 }
 
-// ── CALCULADORA COMPARACIÓN ──────────────────────────────────────────────────
-function calcComparacion(val) {
-  if (!val || val < 500000000) return;
-  var cmpCop = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
-  var safe   = function(id, v){ var el=document.getElementById(id); if(el) el.textContent=v; };
 
-  var escrit        = val * 0.02;
-  var invPropia     = val + escrit + 300000000;
-  var mesPropia     = 100000 + (val*0.00052) + 1300000 + 1068750 + 2525000 + 800000;
-  var anioPropia    = mesPropia * 12;
-  var opPropia      = val * 0.08;
-  var totalAnioPropia = anioPropia + opPropia;
-  var costoPropiaDia  = totalAnioPropia / 30;
-
-  var fracAB        = val * 0.1565;
-  var entradaAB     = fracAB * 0.08;
-  var invAB         = fracAB + entradaAB;
-  var mesAB         = 1601056 + (val * 0.005 / 12 / 8);
-  var anioAB        = mesAB * 12;
-  var opAB          = fracAB * 0.08;
-  var totalAnioAB   = anioAB + opAB;
-  var costoABDia    = totalAnioAB / 48;
-
-  var ahorroInv     = invPropia - invAB;
-  var ahorroAnual   = totalAnioPropia - totalAnioAB;
-  var ahorro10      = ahorroInv + ahorroAnual * 10;
-  var ahorroDia     = costoPropiaDia - costoABDia;
-
-  safe('cmp-val-label',    cmpCop(val));
-  safe('cmp-p-inversion2', cmpCop(invPropia));
-  safe('cmp-p-mes2',       cmpCop(mesPropia));
-  safe('cmp-p-op2',        cmpCop(opPropia) + '/año');
-  safe('cmp-p-dia2',       cmpCop(costoPropiaDia));
-  safe('cmp-p-total2',     cmpCop(totalAnioPropia));
-  safe('cmp-p-dia3',       cmpCop(costoPropiaDia));
-  safe('cmp-f-inversion2', cmpCop(invAB));
-  safe('cmp-f-mes2',       cmpCop(mesAB));
-  safe('cmp-f-dia2',       cmpCop(costoABDia));
-  safe('cmp-f-total2',     cmpCop(totalAnioAB));
-  safe('cmp-f-dia3',       cmpCop(costoABDia));
-  safe('cmp-ahorro-inv',   cmpCop(ahorroInv));
-  safe('cmp-ahorro-anual', cmpCop(ahorroAnual));
-  safe('cmp-ahorro-10',    cmpCop(ahorro10));
-  safe('cmp-dia-propia',   cmpCop(costoPropiaDia));
-  safe('cmp-dia-fractal',  cmpCop(costoABDia));
-  safe('cmp-ahorro-dia',   cmpCop(ahorroDia));
-}
-
-
-
-// Nav scroll
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-
-// Scroll reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.style.opacity = '1';
-      e.target.style.transform = 'translateY(0)';
-    }
-  });
-}, {threshold: 0.08});
-
-document.querySelectorAll('.stat,.frac-card,.step,.dest-card,.ps,.ctb,.rs,.faq-item,.am').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(22px)';
-  el.style.transition = 'opacity .65s ease, transform .65s ease';
-  observer.observe(el);
-});
-
-// ── TABS CALCULADORA ─────────────────────────────────────────────────────────
-function switchTab(tab) {
-  document.querySelectorAll('.calc-tab').forEach(function(t,i){ t.classList.toggle('active', i===0); });
-  var c=document.getElementById('tab-compra'); if(c) c.classList.toggle('active', true);
-}
-
-// ── TENGO UN LOTE ─────────────────────────────────────────────────────────────
-var _loteModo = 'casa';
-
-function setLoteModo(modo) {
-  _loteModo = modo;
-  document.querySelectorAll('.lote-modo').forEach(function(m) {
-    m.classList.toggle('active', m.dataset.modo === modo);
-  });
-  var badge = document.getElementById('lote-modo-badge');
-  if (badge) badge.textContent = modo === 'casa'
-    ? 'Modalidad: Una casa estilo Fractal'
-    : 'Modalidad: Desarrollo de múltiples unidades';
-  calcLote();
-}
-
-function setLotePreset(btn) {
-  var v = +btn.dataset.lv;
-  var inp = document.getElementById('lote-val');
-  if (inp) inp.value = v.toLocaleString('es-CO');
-  document.querySelectorAll('.lote-pre').forEach(function(b){ b.classList.remove('active'); });
-  btn.classList.add('active');
-  calcLote();
-}
-
-function onLoteInput(el) {
-  var raw = parseInt(el.value.replace(/\D/g,'')) || 0;
-  document.querySelectorAll('.lote-pre').forEach(function(b){
-    b.classList.toggle('active', +b.dataset.lv === raw);
-  });
-  calcLote();
-}
-
-function calcLote(){ if(!document.getElementById('tab-lote')) return;
-  var inp = document.getElementById('lote-val');
-  if (!inp) return;
-  var valLote = parseInt(inp.value.replace(/\D/g,'')) || 0;
-  var lc = function(n){ return '$' + Math.round(n).toLocaleString('es-CO'); };
-  var s  = function(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; };
-
-  if (!valLote || valLote < 50000000) {
-    document.getElementById('lote-resultado').style.display = 'none';
-    return;
-  }
-
-  var construccion, unidades, tipoFrac, diasStr;
-
-  if (_loteModo === 'casa') {
-    construccion = Math.max(900000000, valLote * 1.5);
-    unidades     = 1;
-    tipoFrac     = 'A/B Weekend o Weekday';
-    diasStr      = '43–48 días/año';
-  } else {
-    unidades     = Math.max(2, Math.floor(valLote / 350000000));
-    construccion = unidades * 750000000;
-    tipoFrac     = 'Mix A/B + Weekday por unidad';
-    diasStr      = '43–48 días/año por unidad';
-  }
-
-  var activo    = valLote + construccion;
-  var pctLote   = (valLote / activo * 100).toFixed(1);
-  var fracVal   = activo * 0.1565;          // precio fracción A/B
-  var nFracs    = valLote / fracVal;
-  var fracStr   = nFracs.toFixed(2) + ' fracciones';
-  var mesBase   = 1776056 * (activo / 4800000000);
-  var mes       = mesBase * Math.min(nFracs, 2);   // hasta 2 fracciones
-  var val5      = valLote * Math.pow(1.08, 5);
-
-  s('lr-lote',       lc(valLote));
-  s('lr-label-const', _loteModo === 'casa'
-    ? 'Construcción estimada Fractal'
-    : 'Construcción (' + unidades + ' unidades)');
-  s('lr-const',      lc(construccion));
-  s('lr-activo',     lc(activo));
-  s('lr-pct',        pctLote + '% del activo');
-  s('lr-fracs',      fracStr);
-  s('lr-tipo',       tipoFrac);
-  s('lr-dias',       diasStr);
-  s('lr-mes',        lc(mes) + '/mes');
-  s('lr-val5',       lc(val5));
-
-  var res = document.getElementById('lote-resultado');
-  if (res) res.style.display = 'block';
-  s('lr-resnum',  fracStr + ' valoradas en ' + lc(valLote));
-  s('lr-resdesc', 'Tu lote entra como capital. Fractal construye '
-    + (_loteModo === 'casa' ? 'la casa' : unidades + ' casas')
-    + '. Sin poner un peso más recibes ' + fracStr
-    + ' con ' + diasStr + ' de uso personal.');
-}
-
-// Inicializar lote con preset $600M
-(function(){
-  var inp = document.getElementById('lote-val');
-  if (inp) { inp.value = (600000000).toLocaleString('es-CO'); calcLote(); }
-})();
 
 // ── CALCULADORA VENDEDOR ──────────────────────────────────────────────────────
 const FRACS = {
@@ -2663,38 +2493,11 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// ── CALCULADORA COMPARACIÓN ───────────────────────────────────────────────────
-
-
-
-
-
 // ── ACORDEÓN ──────────────────────────────────────────────────────────────────
 
 
 // ── FILTROS CALENDARIO ────────────────────────────────────────────────────────
 
-// ── CALCULADORA COMPARACIÓN ──────────────────────────────────────────────────
-(function() {
-  var sl = document.getElementById('cmpSlider');
-  function runCmp(v) {
-    calcComparacion(v);
-    document.querySelectorAll('.vsu-presets .preset-btn').forEach(function(b) {
-      b.classList.toggle('active', +b.dataset.cmp === v);
-    });
-  }
-  if (sl) {
-    sl.addEventListener('input', function() { runCmp(+this.value); });
-  }
-  document.querySelectorAll('.vsu-presets .preset-btn[data-cmp]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var v = +this.dataset.cmp;
-      if (sl) sl.value = v;
-      runCmp(v);
-    });
-  });
-  runCmp(4800000000);
-})();
 </script>
 <script>
 function togAcd(id){
@@ -2710,5 +2513,54 @@ function togAcd(id){
 <script>(function(){var s50=false;window.addEventListener('scroll',function(){if(s50)return;if((window.scrollY+window.innerHeight)/document.documentElement.scrollHeight>=0.5){s50=true;if(typeof gtag!=='undefined')gtag('event','scroll_50',{event_category:'engagement',event_label:window.location.pathname});}},{passive:true});[30,60,120].forEach(function(s){setTimeout(function(){if(typeof gtag!=='undefined')gtag('event','tiempo_en_pagina',{event_category:'engagement',event_label:s+'s',value:s});},s*1000);});document.querySelectorAll('a[href*="wa.me"]').forEach(function(el){el.addEventListener('click',function(){if(typeof gtag!=='undefined')gtag('event','click_whatsapp',{event_category:'contacto',event_label:'wa_link'});});});})();</script>
 
 
+<script>
+/* ===== Comparadora robusta: aislada, DOMContentLoaded, try-catch, formulas identicas ===== */
+(function(){
+  function fmt(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
+  function set(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+  function calc(val){
+    if(!val || val < 500000000) return;
+    var escrit=val*0.02, invPropia=val+escrit+300000000;
+    var mesPropia=100000+(val*0.00052)+1300000+1068750+2525000+800000;
+    var anioPropia=mesPropia*12, opPropia=val*0.08;
+    var totalAnioPropia=anioPropia+opPropia, costoPropiaDia=totalAnioPropia/30;
+    var fracAB=val*0.1565, entradaAB=fracAB*0.08, invAB=fracAB+entradaAB;
+    var mesAB=1601056+(val*0.005/12/8), anioAB=mesAB*12, opAB=fracAB*0.08;
+    var totalAnioAB=anioAB+opAB, costoABDia=totalAnioAB/48;
+    var ahorroInv=invPropia-invAB, ahorroAnual=totalAnioPropia-totalAnioAB;
+    var ahorro10=ahorroInv+ahorroAnual*10, ahorroDia=costoPropiaDia-costoABDia;
+    set('cmp-val-label',fmt(val));
+    set('cmp-p-inversion2',fmt(invPropia)); set('cmp-p-mes2',fmt(mesPropia));
+    set('cmp-p-op2',fmt(opPropia)+'/año'); set('cmp-p-dia2',fmt(costoPropiaDia));
+    set('cmp-p-total2',fmt(totalAnioPropia)); set('cmp-p-dia3',fmt(costoPropiaDia));
+    set('cmp-f-inversion2',fmt(invAB)); set('cmp-f-mes2',fmt(mesAB));
+    set('cmp-f-dia2',fmt(costoABDia)); set('cmp-f-total2',fmt(totalAnioAB));
+    set('cmp-f-dia3',fmt(costoABDia)); set('cmp-ahorro-inv',fmt(ahorroInv));
+    set('cmp-ahorro-anual',fmt(ahorroAnual)); set('cmp-ahorro-10',fmt(ahorro10));
+    set('cmp-dia-propia',fmt(costoPropiaDia)); set('cmp-dia-fractal',fmt(costoABDia));
+    set('cmp-ahorro-dia',fmt(ahorroDia));
+  }
+  function run(v){
+    try{
+      calc(v);
+      var btns=document.querySelectorAll('.vsu-presets .preset-btn');
+      for(var i=0;i<btns.length;i++){ btns[i].classList.toggle('active', +btns[i].dataset.cmp===v); }
+    }catch(e){}
+  }
+  function init(){
+    try{
+      var sl=document.getElementById('cmpSlider');
+      if(!sl && !document.querySelector('.vsu-presets .preset-btn')) return;
+      if(sl){ sl.addEventListener('input',function(){ run(+this.value); }); }
+      var btns=document.querySelectorAll('.vsu-presets .preset-btn[data-cmp]');
+      for(var i=0;i<btns.length;i++){
+        (function(btn){ btn.addEventListener('click',function(){ var v=+btn.dataset.cmp; if(sl) sl.value=v; run(v); }); })(btns[i]);
+      }
+      run(sl ? (+sl.value||4800000000) : 4800000000);
+    }catch(e){ if(window.console) console.warn('comparadora init:', e); }
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
+})();
+</script>
 </body>
 </html>
